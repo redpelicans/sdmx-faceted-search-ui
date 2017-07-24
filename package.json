@@ -1,7 +1,14 @@
 {
   "name": "sdmx-faceted-search-ui",
   "version": "0.1.0",
-  "private": true,
+  "author": "redpelicans",
+  "description": "Faceted Search UI for Enterprise SDMX Search Engine",
+  "keywords": [
+    "SDMX",
+    "Elastic Search",
+    "NodeJS",
+    "Faceted Search"
+  ],
   "dependencies": {
     "ramda": "^0.24.1",
     "react": "^15.6.1",
