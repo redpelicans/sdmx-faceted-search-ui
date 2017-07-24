@@ -9,6 +9,11 @@
     "NodeJS",
     "Faceted Search"
   ],
+  "tags": [
+    "SDMX",
+    "NodeJS",
+    "Faceted Search"
+  ],
   "dependencies": {
     "ramda": "^0.24.1",
     "react": "^15.6.1",
