@@ -1,4 +1,7 @@
 .App {
+  display: flex;
+  flex-direction: column;
+  height:100%;
   text-align: center;
 }
 
@@ -21,4 +24,17 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+.all
+{
+  display: flex;
+  width: 100%;
+  height:calc(100vh - 70px);
+}
+.main
+{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: rgb(243,243,243);
 }

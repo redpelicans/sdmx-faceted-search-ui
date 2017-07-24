@@ -1,0 +1,9 @@
+.searchbox
+{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 25px;
+  width:calc(100% - 25px);
+  height:100px;
+}
