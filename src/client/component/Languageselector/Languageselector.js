@@ -1,11 +1,17 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-import './Languageselector.css';
+import './LanguageSelector.css';
 
-const Languageselector = ({ language }) => (
+const LanguageSelector = ({ language }) => (
   <div className="languageselector">
     <p>{language}</p>
+    <i className="fa fa-chevron-down chev" aria-hidden="true" />
   </div>
 );
 
-export default Languageselector;
+LanguageSelector.propTypes = {
+  language: PropTypes.string.isRequired,
+};
+
+export default LanguageSelector;

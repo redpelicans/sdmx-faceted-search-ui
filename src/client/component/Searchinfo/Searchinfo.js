@@ -1,11 +1,11 @@
 import React from 'react';
 
-import './Searchinfo.css';
+import './SearchInfo.css';
 
-const Searchinfo = () => (
+const SearchInfo = () => (
   <div className="searchinfo">
-
+    <p>5 results for...</p>
   </div>
 );
 
-export default Searchinfo;
+export default SearchInfo;

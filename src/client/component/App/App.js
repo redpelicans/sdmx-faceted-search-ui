@@ -1,25 +1,14 @@
-import React, { Component } from 'react';
-import Header from '../Header'
-import Side from '../Side';
-import Searchbox from '../Searchbox';
-import Dataflow from '../Dataflow';
+import React from 'react';
+import Container from '../Container';
+import SidePanel from '../SidePanel';
+
 import './App.css';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <Header />
-        <div className="all">
-          <Side />
-          <div className="main">
-            <Searchbox />
-            <Dataflow />
-          </div>
-        </div>
-      </div>
-    );
-  }
-}
+const App = () => (
+  <div className="App">
+    <SidePanel />
+    <Container />
+  </div>
+);
 
 export default App;

@@ -1,6 +1,6 @@
 import React from 'react';
 import Title from '../Title';
-import Languageselector from '../Languageselector';
+import LanguageSelector from '../LanguageSelector';
 import './Header.css';
 
 const Header = () => (
@@ -8,7 +8,7 @@ const Header = () => (
     <Title
       name="SDMX"
     />
-    <Languageselector
+    <LanguageSelector
       language="Fr"
     />
   </div>

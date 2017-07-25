@@ -1,14 +1,11 @@
 import React from 'react';
-import Dataelem from '../Dataelem';
 
-import './Dataflow.css';
+import './DataFlow.css';
 
-const Dataflow = () => (
-  <div className="dataflow">
-    <Dataelem />
-    <Dataelem />
-    <Dataelem />
+const DataFlow = () => (
+  <div className="dataflowcontainer">
+    <div className="dataflowelem" />
   </div>
 );
 
-export default Dataflow;
+export default DataFlow;

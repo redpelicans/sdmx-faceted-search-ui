@@ -1,4 +1,9 @@
 .searchinfo
 {
-  
+  display: flex;
+  align-items: center;
+  min-height:40px;
+  max-height:40px;
+  color:rgb(45,45,45);
+  width:100%;
 }

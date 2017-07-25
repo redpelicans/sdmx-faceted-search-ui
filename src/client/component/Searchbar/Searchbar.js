@@ -1,12 +1,13 @@
 import React from 'react';
-import PropTypes from 'prop-types'
 
-import './Searchbar.css';
+import './SearchBar.css';
 
-const Searchbar = () => (
+const SearchBar = () => (
   <div className="searchbar">
-    
+    <div className="searchbar_leftside">
+      <i className="fa fa-search searchicone" aria-hidden="true" />
+    </div>
   </div>
 );
 
-export default Searchbar;
+export default SearchBar;
