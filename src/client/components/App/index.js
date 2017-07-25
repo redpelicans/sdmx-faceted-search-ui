@@ -1,8 +1,14 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import registerServiceWorker from '../../../registerServiceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
-registerServiceWorker();
+import './app.css';
+import SidePanel from '../SidePanel';
+import Container from '../Container';
+
+const App = () => (
+  <div className="app-container">
+    <SidePanel />
+    <Container />
+  </div>
+);
+
+export default App;

@@ -1,0 +1,6 @@
+.side-panel-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  width: 200px;
+}
