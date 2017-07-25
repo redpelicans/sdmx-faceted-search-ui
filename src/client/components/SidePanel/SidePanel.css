@@ -1,12 +1,14 @@
 .side
 {
   display: flex;
-  position: fixed;
+  position: relative;
+  left:0;
+  z-index:100;
   padding-top: 25px;
   align-items: center;
   flex-direction: column;
-  height:100vw;
-  min-width:240px;
+  height:100%;
+  width:240px;
   background-color:rgb(250,250,250);
   border-right: 1px solid rgba(100, 100, 100, 0.1);
 }
