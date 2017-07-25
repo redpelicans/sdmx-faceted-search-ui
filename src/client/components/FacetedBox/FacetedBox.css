@@ -2,17 +2,16 @@
 {
   width:90%;
   border-radius: 2px;
-  background-color: white;
   overflow: hidden;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
   color:rgb(45,45,45);
   margin-top:25px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 30px;
 }
 .facetedboxname
 {
   text-align: left;
   margin-left: 20px;
   margin-top:10px;
-  color:rgb(45,45,45);
+  color:rgb(6,84,186);
 }

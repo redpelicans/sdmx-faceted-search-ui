@@ -3,7 +3,8 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  width:100%;
+  width:calc(100% - 25px);
   height:100%;
   background-color: white;
+  padding-left: 25px;
 }

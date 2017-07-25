@@ -1,11 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import FacetedBox from '../FacetedBox';
 
 import './SidePanel.css';
 
-const SidePanel = () => (
-  <div className="side">
-    <i className="fa fa-bars menuicone" aria-hidden="true" />
+
+const SidePanel = ({ showSidePanel, displayShowPanel }) => (
+  <div className={`side${showSidePanel}`}>
+    <i onClick={displayShowPanel} className="fa fa-times cross" aria-hidden="true" />
     <FacetedBox
       name="Categories"
     />
@@ -17,5 +19,10 @@ const SidePanel = () => (
     />
   </div>
 );
+
+SidePanel.propTypes = {
+  showSidePanel: PropTypes.string.isRequired,
+  displayShowPanel: PropTypes.func.isRequired,
+};
 
 export default SidePanel;

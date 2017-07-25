@@ -8,13 +8,16 @@ const FacetedBox = ({ name }) => (
   <div className="facetedbox">
     <p className="facetedboxname">{name}</p>
     <Items
-      name="item 1"
+      name="Tout"
     />
     <Items
-      name="item 2"
+      name="Sports, vacances"
     />
     <Items
-      name="item 3"
+      name="Autres"
+    />
+    <Items
+      name="Camping, randonnée"
     />
   </div>
 );

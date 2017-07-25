@@ -5,7 +5,7 @@ import ResultPanel from '../ResultPanel';
 import './MainPanel.css';
 
 const MainPanel = () => (
-  <div className="mainPanel">
+  <div className="mainpanel">
     <SearchPanel />
     <ResultPanel />
   </div>

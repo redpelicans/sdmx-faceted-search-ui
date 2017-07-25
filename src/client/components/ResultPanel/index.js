@@ -4,24 +4,27 @@ import Searchinfo from '../SearchInfo';
 
 import './ResultPanel.css';
 
-const Data = {
-  test: 1,
-  test2: 2,
-};
+const list = [
+  'Vtt1',
+  'Vtt2',
+  'Vtt3',
+  'Vtt4',
+  'Vtt5',
+  'Vtt6',
+  'Vtt7',
+  'Vtt8',
+  'Vtt9',
+  'Vtt10',
+  'Vtt11',
+  'Vtt12',
+];
 
 const ResultPanel = () => (
   <div className="resultpanel">
     <Searchinfo
-      dataflow={Data}
+      list={list}
     />
-    <DataFlow />
-    <DataFlow />
-    <DataFlow />
-    <DataFlow />
-    <DataFlow />
-    <DataFlow />
-    <DataFlow />
-    <DataFlow />
+    {list.map(lis => (<DataFlow key={lis} name={lis} />)) }
   </div>
 );
 

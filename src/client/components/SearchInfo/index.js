@@ -2,9 +2,9 @@ import React from 'react';
 
 import './SearchInfo.css';
 
-const SearchInfo = () => (
+const SearchInfo = ({ list }) => (
   <div className="searchinfo">
-    <p>5 results for...</p>
+    <p>{list.length} results for...</p>
   </div>
 );
 

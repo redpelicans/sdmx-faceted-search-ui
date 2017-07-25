@@ -1,7 +1,11 @@
 .languageselector
 {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-self: flex-start;
+  flex-wrap: nowrap;
+  margin-top:12px;
+  overflow: hidden;
   justify-content: space-around;
   width:80px;
   height:45px;
@@ -12,8 +16,18 @@
 	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
   color:rgb(45,45,45);
 }
+.unwraped
+{
+  height:auto;
+}
 .chev
 {
   cursor: pointer;
   color:rgb(45,45,45);
+}
+.selectedlanguage
+{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }

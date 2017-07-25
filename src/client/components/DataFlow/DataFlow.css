@@ -9,11 +9,25 @@
 
 .dataflowelem
 {
+  display: flex;
   width:80%;
   max-width:900px;
   height:200px;
+  padding-top: 30px;
   background-color: white;
   border-radius: 3px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
+  border-bottom: 1px solid #ccc;
+}
+.imagecontainer
+{
+  width:150px;
+  height:150px;
+  background-color: rgb(250,250,250);
+}
+.dataflowname
+{
+  color:rgb(45,45,45);
+  margin-top:0;
+  margin-left:15px;
+  color:rgb(6,84,186);
 }
