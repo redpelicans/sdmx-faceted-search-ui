@@ -1,0 +1,7 @@
+.headerleft
+{
+  display: flex;
+  height:100%;
+  padding-left:50px;
+  align-items:flex-end;
+}

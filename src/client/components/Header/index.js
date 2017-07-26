@@ -1,30 +1,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import HeaderLeft from './HeaderLeft';
+import HeaderRight from './HeaderRight';
 
-import Title from '../Title';
-import LanguageSelector from '../LanguageSelector';
 import './Header.css';
 
-const Header = ({ displayShowPanel, showSidePanel }) => (
-  <div className="header">
-    <i
-      onClick={displayShowPanel}
-      className={showSidePanel ? 'fa fa-bars menuicone'
-        : 'fa fa-bars menuiconehidden'}
-      aria-hidden="true"
-    />
-    <Title
-      name="SDMX"
-    />
-    <LanguageSelector
-      language="Fr"
-    />
-  </div>
-);
+
+const Header = ({ children }) => {
+  const headerLeft = () => (
+      React.Children.toArray(children.find(child => child.type === HeaderLeft))
+    );
+
+  const headerRight = () => (
+    React.Children.toArray(children.find(child => child.type === HeaderRight))
+  );
+
+  return (
+    <div className="header">
+      {headerLeft()}
+      {headerRight()}
+    </div>
+  );
+};
 
 Header.propTypes = {
-  displayShowPanel: PropTypes.func.isRequired,
-  showSidePanel: PropTypes.bool.isRequired,
+  children: PropTypes.node.isRequired,
 };
 
 export default Header;

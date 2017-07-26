@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import connect from '../../connect';
 import Container from '../Container';
 import SidePanel from '../SidePanel';
 
@@ -10,26 +12,34 @@ class App extends Component {
   }
 
   displayShowPanel = () => {
-    const { showSidePanel } = this.state;
-
-    this.setState({ showSidePanel: !showSidePanel });
+    this.setState(({ showSidePanel }) => ({ showSidePanel: !showSidePanel }));
   }
 
   render() {
     const { showSidePanel } = this.state;
+    const { title, language } = this.props;
     return (
       <div className="App">
         <SidePanel
-          showSidePanel={showSidePanel ? 'hidden' : ''}
+          showSidePanel={showSidePanel}
           displayShowPanel={this.displayShowPanel}
         />
         <Container
-          showSidePanel={showSidePanel}
-          displayShowPanel={this.displayShowPanel}
+          language={language}
+          title={title}
         />
       </div>
     );
   }
 }
 
-export default App;
+App.propTypes = {
+  title: PropTypes.string.isRequired,
+  language: PropTypes.array.isRequired,
+};
+
+App.childContextTypes = {
+  store: PropTypes.object.isRequired,
+};
+
+export default connect(App);

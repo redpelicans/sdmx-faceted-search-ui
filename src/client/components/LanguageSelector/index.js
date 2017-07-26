@@ -9,9 +9,7 @@ class LanguageSelector extends Component {
   }
 
   changeLanguageSelectorState = () => {
-    const { active } = this.state;
-
-    this.setState({ active: !active });
+    this.setState(({ active }) => ({ active: !active }));
   }
 
   render() {
@@ -21,17 +19,24 @@ class LanguageSelector extends Component {
     return (
       <div className={active ? 'languageselector unwraped' : 'languageselector'}>
         <div className="selectedlanguage">
-          <p>{language}</p>
-          <i onClick={this.changeLanguageSelectorState} className="fa fa-chevron-down chev" aria-hidden="true" />
+          <p>{language[0]}</p>
+          <i
+            onClick={this.changeLanguageSelectorState}
+            className={active ? 'fa fa-chevron-up chev' : 'fa fa-chevron-down chev'}
+            aria-hidden="true"
+          />
         </div>
-        <p>{language}</p>
+        {active && language.map(lang => (<div
+          key={lang}
+          className="languageitem"
+        ><p>{lang}</p></div>))}
       </div>
     );
   }
 }
 
 LanguageSelector.propTypes = {
-  language: PropTypes.string.isRequired,
+  language: PropTypes.array.isRequired,
 };
 
 export default LanguageSelector;

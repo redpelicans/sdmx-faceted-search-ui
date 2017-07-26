@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import DataFlow from '../DataFlow';
-import Searchinfo from '../SearchInfo';
+import SearchInfo from '../SearchInfo';
 
 import './ResultPanel.css';
 
@@ -19,13 +20,17 @@ const list = [
   'Vtt12',
 ];
 
-const ResultPanel = () => (
+const ResultPanel = ({ searchValue }) => (
   <div className="resultpanel">
-    <Searchinfo
+    <SearchInfo
       list={list}
+      searchValue={searchValue}
     />
-    {list.map(lis => (<DataFlow key={lis} name={lis} />)) }
+    {list.map(lis => ((lis === searchValue || !searchValue) && <DataFlow key={lis} name={lis} />)) }
   </div>
 );
+ResultPanel.propTypes = {
+  searchValue: PropTypes.string.isRequired,
+};
 
 export default ResultPanel;

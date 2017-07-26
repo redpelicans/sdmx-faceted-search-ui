@@ -1,14 +1,33 @@
-import React from 'react';
+import React, { Component } from 'react';
 import SearchPanel from '../SearchPanel';
 import ResultPanel from '../ResultPanel';
 
 import './MainPanel.css';
 
-const MainPanel = () => (
-  <div className="mainpanel">
-    <SearchPanel />
-    <ResultPanel />
-  </div>
-);
+
+class MainPanel extends Component {
+
+  state = {
+    searchValue: '',
+  }
+  research = (value) => {
+    this.setState({ searchValue: value });
+  };
+
+  render() {
+    const { searchValue } = this.state;
+
+    return (
+      <div className="mainpanel">
+        <SearchPanel
+          research={this.research}
+        />
+        <ResultPanel
+          searchValue={searchValue}
+        />
+      </div>
+    );
+  }
+}
 
 export default MainPanel;

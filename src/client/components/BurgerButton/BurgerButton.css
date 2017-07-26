@@ -1,0 +1,31 @@
+.burgerbutton
+{
+  position: absolute;
+  width:100%;
+  margin-top:-5px;
+  text-align: right;
+  padding-left:100px;
+  transition: all 0.3s ease-out;
+}
+
+.burgerbuttonhidden
+{
+  position: absolute;
+  width:100%;
+  margin-top:-60px;
+  text-align: right;
+  padding-left:100px;
+  transition: all 0.3s ease-out;
+}
+
+.menuicone
+{
+  cursor: pointer;
+  font-size:2em;
+  margin-left:15px;
+  color:rgb(45,45,45);
+  transition: all 0.3s ease-out;
+}
+.menuicone:hover{
+  opacity: 0.7;
+}
