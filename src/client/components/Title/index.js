@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 
 import './title.css';
 
-const Title = ({ titleName }) => (
+const Title = ({ title }) => (
   <div className="title-container">
-    <h2>{ titleName }</h2>
+    <h2>{ title }</h2>
   </div>
 );
 
 Title.propTypes = {
-  titleName: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
 };
 
 export default Title;

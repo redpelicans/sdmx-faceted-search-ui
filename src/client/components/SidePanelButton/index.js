@@ -4,10 +4,12 @@ import React from 'react';
 import './side_panel_button.css';
 
 const SidePanelButton = () => (
-  <i onClikc={e => {
+  <button onClick={e => {
     e.preventDefault();
   }}
-  />
+  >
+    <i />
+  </button>
 );
 
 // SidePanelButton.propTypes = {

@@ -10,7 +10,7 @@ const HeaderRight = ({ children }) => (
 );
 
 HeaderRight.propTypes = {
-  children: PropTypes.object.isRequired,
+  children: PropTypes.node.isRequired,
 };
 
 export default HeaderRight;

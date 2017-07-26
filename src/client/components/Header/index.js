@@ -1,22 +1,30 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import './header.css';
-import Title from '../Title';
-import LanguageSelector from '../LanguageSelector';
-import HeaderLeft from '../HeaderLeft';
-import HeaderRight from '../HeaderRight';
-import SidePanelButton from '../SidePanelButton';
+import HeaderLeft from './HeaderLeft';
+import HeaderRight from './HeaderRight';
 
-const Header = () => (
-  <div className="header-container">
-    <HeaderLeft>
-      <SidePanelButton />
-      <Title titleName="SDMX" />
-    </HeaderLeft>
-    <HeaderRight>
-      <LanguageSelector langs={['anglais', 'allemand']} />
-    </HeaderRight>
-  </div>
-);
+
+const Header = ({ children }) => {
+  const headerLeft = () => (
+    React.Children.toArray(children).find(child => child.type === HeaderLeft)
+  );
+
+  const headerRight = () => (
+    React.Children.toArray(children).find(child => child.type === HeaderRight)
+  );
+
+  return (
+    <div className="header-container">
+      {headerLeft()}
+      {headerRight()}
+    </div>
+  );
+};
+
+Header.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
 export default Header;
