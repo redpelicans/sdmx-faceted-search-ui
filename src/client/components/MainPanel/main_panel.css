@@ -1,0 +1,11 @@
+.main-panel-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.search-panel-item {
+}
+
+.results-panel-item {
+}
