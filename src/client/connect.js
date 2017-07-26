@@ -5,7 +5,7 @@ const connect = Component => {
   class Connector extends React.PureComponent {
     render() {
       const { store: { getState } } = this.context;
-      const props = { ...getState() };
+      const props = { ...this.props, ...getState() };
       return <Component {...props} />;
     }
   }

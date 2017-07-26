@@ -9,14 +9,14 @@ import MainPanel from '../MainPanel';
 import Title from '../Title';
 import './Container.css';
 
-const Container = ({ title, language }) => (
+const Container = ({ title }) => (
   <div className="container">
     <Header>
       <HeaderLeft>
         <Title name={title} />
       </HeaderLeft>
       <HeaderRight>
-        <LanguageSelector language={language} />
+        <LanguageSelector />
       </HeaderRight>
     </Header>
     <MainPanel />
@@ -25,7 +25,6 @@ const Container = ({ title, language }) => (
 
 Container.propTypes = {
   title: PropTypes.string.isRequired,
-  language: PropTypes.array.isRequired,
 };
 
 export default Container;

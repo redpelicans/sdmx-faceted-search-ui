@@ -17,7 +17,7 @@ class App extends Component {
 
   render() {
     const { showSidePanel } = this.state;
-    const { title, language } = this.props;
+    const { title } = this.props;
     return (
       <div className="App">
         <SidePanel
@@ -25,7 +25,6 @@ class App extends Component {
           displayShowPanel={this.displayShowPanel}
         />
         <Container
-          language={language}
           title={title}
         />
       </div>
@@ -35,7 +34,6 @@ class App extends Component {
 
 App.propTypes = {
   title: PropTypes.string.isRequired,
-  language: PropTypes.array.isRequired,
 };
 
 App.childContextTypes = {

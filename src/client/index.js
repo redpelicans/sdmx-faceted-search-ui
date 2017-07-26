@@ -9,6 +9,21 @@ import './index.css';
 const initialState = {
   title: 'SDMX',
   language: ['Fr', 'En'],
+  list: [
+    'Vtt1',
+    'Vtt2',
+    'Vtt3',
+    'Vtt4',
+    'Vtt5',
+    'Vtt6',
+    'Vtt7',
+    'Vtt8',
+    'Vtt9',
+    'Vtt10',
+    'Vtt11',
+    'Vtt12',
+    'Vtt13',
+  ],
 };
 const store = createStore(initialState);
 

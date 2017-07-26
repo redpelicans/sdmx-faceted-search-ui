@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import SearchBar from '../SearchBar';
+import SearchBar from './SearchBar';
+import SearchButton from './SearchButton';
 
 import './SearchPanel.css';
 
@@ -9,6 +10,7 @@ const SearchPanel = ({ research }) => (
     <SearchBar
       research={research}
     />
+    <SearchButton />
   </div>
 );
 

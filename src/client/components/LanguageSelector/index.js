@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import connect from '../../connect';
 
 import './LanguageSelector.css';
 
@@ -39,4 +40,4 @@ LanguageSelector.propTypes = {
   language: PropTypes.array.isRequired,
 };
 
-export default LanguageSelector;
+export default connect(LanguageSelector);
