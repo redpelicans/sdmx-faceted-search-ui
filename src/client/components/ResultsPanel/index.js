@@ -5,17 +5,25 @@ import './results_panel.css';
 import SearchInfo from '../SearchInfo';
 import DataFlow from '../DataFlow';
 
-const ResultsPanel = ({ results }) => (
-  <div className="results-panel-container">
-    <SearchInfo numberResults={results.length} />
-    <ul>
-      { results.map(result => <DataFlow key={result} result={result} />) }
-    </ul>
-  </div>
-);
+const ResultsPanel = ({ resultItems, searchValue }) => {
+  const items = resultItems.filter(item =>
+    item.value.match(searchValue) !== null);
+
+  const display = items.map(result => <DataFlow key={result.id} result={result.value} />);
+
+  return (
+    <div className="results-panel-container">
+      <SearchInfo numberResults={items.length} />
+      <ul>
+        {display}
+      </ul>
+    </div>
+  );
+};
 
 ResultsPanel.propTypes = {
-  results: PropTypes.array.isRequired,
+  resultItems: PropTypes.array.isRequired,
+  searchValue: PropTypes.string.isRequired,
 };
 
 export default ResultsPanel;

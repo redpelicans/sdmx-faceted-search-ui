@@ -10,7 +10,7 @@ import MainPanel from '../MainPanel';
 import LanguageSelector from '../LanguageSelector';
 import SidePanelButton from '../SidePanelButton';
 
-const Container = ({ title, langs }) => (
+const Container = ({ title, langs, resultItems }) => (
   <div className="container-container">
     <Header>
       <HeaderLeft>
@@ -21,13 +21,14 @@ const Container = ({ title, langs }) => (
         <LanguageSelector langs={langs} />
       </HeaderRight>
     </Header>
-    <MainPanel />
+    <MainPanel resultItems={resultItems} />
   </div>
 );
 
 Container.propTypes = {
   title: PropTypes.string.isRequired,
   langs: PropTypes.array.isRequired,
+  resultItems: PropTypes.array.isRequired,
 };
 
 export default Container;

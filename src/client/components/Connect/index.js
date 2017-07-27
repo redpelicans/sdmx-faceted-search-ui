@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Connect = Component => {
+const connect = Component => {
   class Connector extends React.PureComponent {
     render() {
       const { store: { getState } } = this.context;
@@ -16,8 +16,8 @@ const Connect = Component => {
   return Connector;
 };
 
-Connect.propTypes = {
+connect.propTypes = {
   Component: PropTypes.node.isRequired,
 };
 
-export default Connect;
+export default connect;
