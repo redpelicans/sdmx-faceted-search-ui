@@ -1,13 +1,25 @@
 .searchinfo
 {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  min-height:40px;
-  max-height:40px;
-  width:80%;
+  justify-content: space-around;
+  height:auto;
+  width:calc(90% - 25px);
+  max-width:1100px;
   max-width:900px;
   color:rgb(45,45,45);
-  padding-top:10px;
-  padding-bottom:10px;
-  border-bottom: 1px solid #ccc;
+}
+.searchinfo p
+{
+  margin:auto;
+}
+.searchcounter
+{
+  display: flex;
+  align-items: center;
+  width:50%;
+  min-width:200px;
+  height: 100%;
+  margin-bottom: 10px;
 }

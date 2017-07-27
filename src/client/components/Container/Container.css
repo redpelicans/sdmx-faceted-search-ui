@@ -4,5 +4,6 @@
   display: flex;
   flex-direction: column;
   width:100%;
-  background-color: rgb(250,250,250);
+  background-color: rgb(245,248,250);
+  padding-bottom: 25px;
 }

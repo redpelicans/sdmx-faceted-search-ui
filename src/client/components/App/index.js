@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Media from 'react-media';
 import PropTypes from 'prop-types';
 import connect from '../../connect';
 import Container from '../Container';
@@ -17,15 +18,28 @@ class App extends Component {
 
   render() {
     const { showSidePanel } = this.state;
-    const { title } = this.props;
+
     return (
       <div className="App">
-        <SidePanel
-          showSidePanel={showSidePanel}
-          displayShowPanel={this.displayShowPanel}
-        />
+        <Media query="(max-width: 599px)">
+          {matches => matches ? (
+            <SidePanel
+              showSidePanel={showSidePanel}
+              displayShowPanel={this.displayShowPanel}
+              visibility="sidehidden"
+              behavior="overlay"
+            />
+         ) : (
+           <SidePanel
+             showSidePanel={showSidePanel}
+             displayShowPanel={this.displayShowPanel}
+             visibility="side"
+             behavior="push"
+           />
+         )}
+        </Media>
         <Container
-          title={title}
+          displayShowPanel={this.displayShowPanel}
         />
       </div>
     );

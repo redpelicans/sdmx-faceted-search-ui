@@ -4,26 +4,20 @@ import Items from '../Items';
 
 import './FacetedBox.css';
 
-const FacetedBox = ({ name }) => (
-  <div className="facetedbox">
+const FacetedBox = ({ name, facets }) => (
+  <div className="pt-card pt-elevation-0 facetedbox">
     <p className="facetedboxname">{name}</p>
-    <Items
-      name="Tout"
-    />
-    <Items
-      name="Sports, vacances"
-    />
-    <Items
-      name="Autres"
-    />
-    <Items
-      name="Camping, randonnée"
-    />
+    {facets.map(fa => (
+      <Items
+        name={fa}
+      />
+    ))}
   </div>
 );
 
 FacetedBox.propTypes = {
   name: PropTypes.string.isRequired,
+  facets: PropTypes.array.isRequired,
 };
 
 export default FacetedBox;

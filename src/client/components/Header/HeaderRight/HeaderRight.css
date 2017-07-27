@@ -1,9 +1,0 @@
-.headerright
-{
-  display: flex;
-  height:100%;
-  align-items: center;
-  align-self: flex-start;
-  margin-top: 15px;
-  z-index: 10;
-}

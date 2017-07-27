@@ -9,20 +9,24 @@ import './index.css';
 const initialState = {
   title: 'SDMX',
   language: ['Fr', 'En'],
-  list: [
-    'Vtt1',
-    'Vtt2',
-    'Vtt3',
-    'Vtt4',
-    'Vtt5',
-    'Vtt6',
-    'Vtt7',
-    'Vtt8',
-    'Vtt9',
-    'Vtt10',
-    'Vtt11',
-    'Vtt12',
-    'Vtt13',
+  list: ['Vtt1', 'Vtt2', 'Vtt3', 'Vtt4', 'Vtt5', 'Vtt6', 'Vtt7',
+    'Vtt8', 'Vtt9', 'Vtt10', 'Vtt11', 'Vtt12', 'Vtt13',
+  ],
+  facetedbox: [
+    {
+      name: 'Categories',
+      facets: ['Tout', 'Sports, vacances', 'Autres', 'Camping, randonnée'],
+    },
+  ],
+  filterbox: [
+    {
+      name: 'Area',
+      filtres: ['Tout', 'Sports', 'vacances', 'Autres', 'Camping', 'randonnée'],
+    },
+    {
+      name: 'Colors',
+      filtres: ['Red', 'Blue', 'Yellow', 'Green'],
+    },
   ],
 };
 const store = createStore(initialState);

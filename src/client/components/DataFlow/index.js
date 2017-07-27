@@ -4,11 +4,9 @@ import PropTypes from 'prop-types';
 import './DataFlow.css';
 
 const DataFlow = ({ name }) => (
-  <div className="dataflowcontainer">
-    <div className="dataflowelem">
-      <div className="imagecontainer" />
-      <p className="dataflowname">{name}</p>
-    </div>
+  <div className="pt-card pt-elevation-0 dataflowcontainer">
+    <div className="imagecontainer" />
+    <p className="dataflowname">{name}</p>
   </div>
 );
 

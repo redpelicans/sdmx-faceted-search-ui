@@ -1,12 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import SortBox from './SortBox';
 
 import './SearchInfo.css';
 
 const SearchInfo = ({ list, searchValue }) => (
   <div className="searchinfo">
-    {searchValue && <p>{list.length} results for {searchValue}</p>}
-    {!searchValue && <p>{list.length} products available</p>}
+    <div className="searchcounter">
+      {searchValue && <p>{list.length} results for {searchValue}</p>}
+      {!searchValue && <p>{list.length} products available</p>}
+    </div>
+    <SortBox />
   </div>
 );
 

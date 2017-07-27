@@ -1,16 +1,8 @@
-.searchbutton
+.searchbuttoncontainer
 {
-  padding-left:15px;
-  padding-right:15px;
-  height:50px;
-  border-radius: 3px;
-  background: -webkit-gradient(linear,left top,left bottom,from(#0079bc),to(#00509d));
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
-  color:white;
-  cursor: pointer;
+  width:200px;
 }
-.searchbutton:hover
+.searchbutton:focus
 {
-  background: #00509d;
+  outline: none;
 }

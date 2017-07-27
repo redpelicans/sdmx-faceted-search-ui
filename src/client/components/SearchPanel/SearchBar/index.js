@@ -21,18 +21,13 @@ class SearchBar extends Component {
 
   render() {
     return (
-      <div className="searchbar">
-        <div className="searchbar_leftside">
-          <i className="fa fa-search searchicone" aria-hidden="true" />
-        </div>
+      <div className="searchbarcontainer">
         <input
-          spellCheck="false"
-          type="text"
-          placeholder="Search..."
-          name="search"
-          className="researchinput"
-          onKeyPress={this.startSearch}
           onChange={this.changeSearchValue}
+          onKeyPress={this.startSearch}
+          className="pt-input pt-fill"
+          placeholder="Search"
+          type="text"
         />
       </div>
     );

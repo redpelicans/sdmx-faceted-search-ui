@@ -1,21 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import connect from '../../connect';
 import './BurgerButton.css';
 
-const BurgerButton = ({ displayShowPanel, showSidePanel }) => (
-  <div className={showSidePanel ? 'burgerbutton' : 'burgerbuttonhidden'}>
-    <i
-      onClick={displayShowPanel}
-      className="fa fa-bars menuicone"
-      aria-hidden="true"
-    />
+const BurgerButton = ({ displayShowPanel }) => (
+  <div className="burgerbutton" onClick={displayShowPanel}>
+    <span className="pt-icon-large pt-icon-menu" />
   </div>
 );
 
 BurgerButton.propTypes = {
   displayShowPanel: PropTypes.func.isRequired,
-  showSidePanel: PropTypes.bool.isRequired,
 };
 
-export default BurgerButton;
+export default connect(BurgerButton);
