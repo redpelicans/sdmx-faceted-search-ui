@@ -9,6 +9,7 @@ const FacetedBox = ({ name, facets }) => (
     <p className="facetedboxname">{name}</p>
     {facets.map(fa => (
       <Items
+        key={fa.id}
         name={fa}
       />
     ))}

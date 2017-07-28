@@ -26,19 +26,18 @@ class App extends Component {
             <SidePanel
               showSidePanel={showSidePanel}
               displayShowPanel={this.displayShowPanel}
-              visibility="sidehidden"
-              behavior="overlay"
+              behavior="absolute"
             />
          ) : (
            <SidePanel
              showSidePanel={showSidePanel}
              displayShowPanel={this.displayShowPanel}
-             visibility="side"
-             behavior="push"
+             behavior="relative"
            />
          )}
         </Media>
         <Container
+          showSidePanel={showSidePanel}
           displayShowPanel={this.displayShowPanel}
         />
       </div>

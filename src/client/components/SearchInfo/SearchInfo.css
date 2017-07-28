@@ -10,9 +10,10 @@
   max-width:900px;
   color:rgb(45,45,45);
 }
-.searchinfo p
+.searchcountertext
 {
   margin:auto;
+  margin-bottom: 0;
 }
 .searchcounter
 {

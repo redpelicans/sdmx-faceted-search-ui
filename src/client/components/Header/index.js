@@ -7,10 +7,11 @@ import BurgerButton from '../BurgerButton';
 import './Header.css';
 
 
-const Header = ({ title, displayShowPanel }) => (
+const Header = ({ title, displayShowPanel, showSidePanel }) => (
   <nav className="pt-navbar pt-dark">
     <div className="pt-navbar-group pt-align-left">
       <BurgerButton
+        showSidePanel={showSidePanel}
         displayShowPanel={displayShowPanel}
       />
       <div className="pt-navbar-heading">{ title }</div>
@@ -25,6 +26,7 @@ const Header = ({ title, displayShowPanel }) => (
 Header.propTypes = {
   title: PropTypes.string.isRequired,
   displayShowPanel: PropTypes.func.isRequired,
+  showSidePanel: PropTypes.bool.isRequired,
 };
 
 export default connect(Header);

@@ -7,8 +7,8 @@ import './SearchInfo.css';
 const SearchInfo = ({ list, searchValue }) => (
   <div className="searchinfo">
     <div className="searchcounter">
-      {searchValue && <p>{list.length} results for {searchValue}</p>}
-      {!searchValue && <p>{list.length} products available</p>}
+      {searchValue && <p className="searchcountertext">{list.length} results for {searchValue}</p>}
+      {!searchValue && <p className="searchcountertext">{list.length} products available</p>}
     </div>
     <SortBox />
   </div>

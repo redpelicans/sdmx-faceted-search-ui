@@ -12,7 +12,9 @@ const ResultPanel = ({ searchValue, list }) => (
       list={list}
       searchValue={searchValue}
     />
-    {list.map(lis => ((lis === searchValue || !searchValue) && <DataFlow key={lis} name={lis} />)) }
+    {list.map(lis => ((lis === searchValue || !searchValue) &&
+      <DataFlow key={lis.id} data={lis} />
+    )) }
   </div>
 );
 

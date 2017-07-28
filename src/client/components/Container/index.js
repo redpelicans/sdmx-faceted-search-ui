@@ -5,9 +5,10 @@ import Header from '../Header';
 import MainPanel from '../MainPanel';
 import './Container.css';
 
-const Container = ({ displayShowPanel }) => (
+const Container = ({ showSidePanel, displayShowPanel }) => (
   <div className="container">
     <Header
+      showSidePanel={showSidePanel}
       displayShowPanel={displayShowPanel}
     />
     <MainPanel />
@@ -15,6 +16,7 @@ const Container = ({ displayShowPanel }) => (
 );
 
 Container.propTypes = {
+  showSidePanel: PropTypes.bool.isRequired,
   displayShowPanel: PropTypes.func.isRequired,
 };
 
