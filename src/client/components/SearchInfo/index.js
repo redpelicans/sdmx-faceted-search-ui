@@ -10,6 +10,11 @@ const SearchInfo = ({ list, searchValue }) => (
       {searchValue && <p className="searchcountertext">{list.length} results for {searchValue}</p>}
       {!searchValue && <p className="searchcountertext">{list.length} products available</p>}
     </div>
+    <div className="pt-button-group typeselector">
+      <a className="pt-button" tabIndex="0" role="button">Tout</a>
+      <a className="pt-button" tabIndex="0" role="button">Enchères</a>
+      <a className="pt-button" tabIndex="0" role="button">Achat immédiat</a>
+    </div>
     <SortBox />
   </div>
 );

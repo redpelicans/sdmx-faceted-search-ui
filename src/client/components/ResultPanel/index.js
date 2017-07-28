@@ -12,7 +12,7 @@ const ResultPanel = ({ searchValue, list }) => (
       list={list}
       searchValue={searchValue}
     />
-    {list.map(lis => ((lis === searchValue || !searchValue) &&
+    {list.map(lis => ((lis.Name.toLowerCase().match(encodeURIComponent(searchValue).toLowerCase()) || !searchValue) &&
       <DataFlow key={lis.id} data={lis} />
     )) }
   </div>

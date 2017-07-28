@@ -10,6 +10,7 @@ class MainPanel extends Component {
   state = {
     searchValue: '',
   }
+
   research = (value) => {
     this.setState({ searchValue: value });
   };

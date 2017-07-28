@@ -30,6 +30,22 @@
 {
   color:rgb(45,45,45);
   margin-top:0;
-  margin-left:15px;
   color:rgb(6,84,186);
+  text-align: left;
+  cursor: pointer;
+}
+.dataflowname:hover
+{
+  text-decoration: underline;
+}
+.price
+{
+  text-align: left;
+}
+.dataflowinfo
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-left:15px;
 }
