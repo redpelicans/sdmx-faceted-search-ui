@@ -1,5 +1,10 @@
 .burgerbutton
 {
-  padding-right:25px;
   cursor: pointer;
+  margin-right: 25px;
+  min-width:80px;
+}
+.burgerbutton:focus
+{
+  outline: none;
 }

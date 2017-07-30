@@ -2,20 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import connect from '../../connect';
 import LanguageSelector from '../LanguageSelector';
-import BurgerButton from '../BurgerButton';
 
 import './Header.css';
 
 
-const Header = ({ title, displayShowPanel }) => (
-  <nav className="pt-navbar pt-dark">
+const Header = ({ title }) => (
+  <nav className="pt-navbar pt-intent-success">
     <div className="pt-navbar-group pt-align-left">
-      <BurgerButton
-        displayShowPanel={displayShowPanel}
-      />
       <div className="pt-navbar-heading">{ title }</div>
     </div>
     <div className="pt-navbar-group pt-align-right">
+      <span className="pt-icon-large pt-icon-shopping-cart pt-intent-primary" />
       <div className="pt-navbar-divider" />
       <LanguageSelector />
     </div>
@@ -24,7 +21,6 @@ const Header = ({ title, displayShowPanel }) => (
 
 Header.propTypes = {
   title: PropTypes.string.isRequired,
-  displayShowPanel: PropTypes.func.isRequired,
 };
 
 export default connect(Header);

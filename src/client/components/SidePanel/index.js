@@ -1,4 +1,5 @@
 import React from 'react';
+import { Motion, spring } from 'react-motion';
 import PropTypes from 'prop-types';
 import FacetedBox from '../FacetedBox';
 import FilterBox from '../FilterBox';
@@ -7,31 +8,42 @@ import connect from '../../connect';
 import './SidePanel.css';
 
 
-const SidePanel = ({ facetedbox, filterbox, showSidePanel, displayShowPanel, visibility, behavior }) => (
-  <div className={`${visibility} ${behavior} ${showSidePanel ? 'wrap' : 'unwrap'}`}>
-    <div onClick={displayShowPanel} className="crosscontainer">
-      <span className="pt-icon-large pt-icon-cross" />
-    </div>
-    {facetedbox.map(facetedelem => (
-      <FacetedBox
-        name={facetedelem.name}
-        facets={facetedelem.facets}
-      />
+const SidePanel = ({ facetedbox, filterbox, showSidePanel, displayShowPanel, behavior }) => (
+  <Motion style={{ x: spring(showSidePanel ? -240 : 0) }}>
+    {({ x }) =>
+      (<div
+        style={{
+          marginLeft: `${x}px`,
+          position: behavior,
+        }}
+        className="sidepanel"
+      >
+        <div onClick={displayShowPanel} className="crosscontainer">
+          <span className="pt-icon-large pt-icon-cross" />
+        </div>
+        {facetedbox.map(facetedelem => (
+          <FacetedBox
+            key={facetedelem.id}
+            name={facetedelem.name}
+            facets={facetedelem.facets}
+          />
     ))}
-    {filterbox.map(filterelem => (
-      <FilterBox
-        name={filterelem.name}
-        filters={filterelem.filtres}
-      />
+        {filterbox.map(filterelem => (
+          <FilterBox
+            key={filterelem.id}
+            name={filterelem.name}
+            filters={filterelem.filtres}
+          />
     ))}
-  </div>
+      </div>)
+  }
+  </Motion>
 );
 
 SidePanel.propTypes = {
-  facetedbox: PropTypes.object.isRequired,
-  filterbox: PropTypes.object.isRequired,
+  facetedbox: PropTypes.array.isRequired,
+  filterbox: PropTypes.array.isRequired,
   showSidePanel: PropTypes.bool.isRequired,
-  visibility: PropTypes.string.isRequired,
   behavior: PropTypes.string.isRequired,
   displayShowPanel: PropTypes.func.isRequired,
 };

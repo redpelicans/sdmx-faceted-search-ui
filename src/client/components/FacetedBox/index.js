@@ -7,7 +7,7 @@ import './FacetedBox.css';
 const FacetedBox = ({ name, facets }) => (
   <div className="pt-card pt-elevation-0 facetedbox">
     <p className="facetedboxname">{name}</p>
-    {facets.map(fa => (
+    {facets.map((fa) => (
       <Items
         name={fa}
       />

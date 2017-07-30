@@ -4,9 +4,7 @@ import connect from '../../connect';
 import './BurgerButton.css';
 
 const BurgerButton = ({ displayShowPanel }) => (
-  <div className="burgerbutton" onClick={displayShowPanel}>
-    <span className="pt-icon-large pt-icon-menu" />
-  </div>
+  <button type="button" onClick={displayShowPanel} className="pt-button pt-intent-primary pt-icon-menu burgerbutton">Affiner</button>
 );
 
 BurgerButton.propTypes = {
