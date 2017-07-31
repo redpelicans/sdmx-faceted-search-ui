@@ -1,8 +1,32 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { render } from 'react-dom';
 import './index.css';
 import App from './App';
-import registerServiceWorker from '../../registerServiceWorker';
+import Provider from './Provider';
+import { createStore } from './Store';
 
-ReactDOM.render(<App />, document.getElementById('root'));
-registerServiceWorker();
+const title = 'SDMX';
+const langs = ['Fr', 'En', 'Du'];
+const resultItems = [
+  { id: 1, value: 'vtt' },
+  { id: 2, value: 'velo de course' },
+  { id: 3, value: 'velo de ville' },
+  { id: 4, value: 'velo electrique' },
+];
+
+const initialState = {
+  title,
+  langs,
+  resultItems,
+};
+
+const store = createStore(initialState);
+
+const root = (
+  <Provider store={store}>
+    <App />
+  </Provider>
+);
+const mountNode = document.getElementById('root');
+
+render(root, mountNode);
