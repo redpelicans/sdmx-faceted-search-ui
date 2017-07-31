@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import connect from '../../connect';
 import './BurgerButton.css';
 
 const BurgerButton = ({ displayShowPanel }) => (
@@ -11,4 +10,4 @@ BurgerButton.propTypes = {
   displayShowPanel: PropTypes.func.isRequired,
 };
 
-export default connect(BurgerButton);
+export default BurgerButton;

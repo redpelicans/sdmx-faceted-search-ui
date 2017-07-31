@@ -18,18 +18,23 @@ class App extends Component {
 
   render() {
     const { showSidePanel } = this.state;
+    const { facetedbox, filterbox, title, language, list } = this.props;
 
     return (
       <div className="App">
         <Media query="(max-width: 599px)">
           {matches => matches ? (
             <SidePanel
+              facetedbox={facetedbox}
+              filterbox={filterbox}
               showSidePanel={showSidePanel}
               displayShowPanel={this.displayShowPanel}
               behavior="absolute"
             />
          ) : (
            <SidePanel
+             facetedbox={facetedbox}
+             filterbox={filterbox}
              showSidePanel={showSidePanel}
              displayShowPanel={this.displayShowPanel}
              behavior="relative"
@@ -37,6 +42,9 @@ class App extends Component {
          )}
         </Media>
         <Container
+          title={title}
+          list={list}
+          language={language}
           showSidePanel={showSidePanel}
           displayShowPanel={this.displayShowPanel}
         />
@@ -46,7 +54,11 @@ class App extends Component {
 }
 
 App.propTypes = {
+  facetedbox: PropTypes.array.isRequired,
+  filterbox: PropTypes.array.isRequired,
+  list: PropTypes.array.isRequired,
   title: PropTypes.string.isRequired,
+  language: PropTypes.array.isRequired,
 };
 
 App.childContextTypes = {

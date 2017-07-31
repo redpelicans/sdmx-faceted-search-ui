@@ -18,7 +18,7 @@ class MainPanel extends Component {
 
   render() {
     const { searchValue } = this.state;
-    const { displayShowPanel, size } = this.props;
+    const { displayShowPanel, size, list } = this.props;
 
     return (
       <div className="mainpanel">
@@ -27,6 +27,7 @@ class MainPanel extends Component {
             research={this.research}
           />
           <ResultPanel
+            list={list}
             searchValue={searchValue}
             displayShowPanel={displayShowPanel}
           />
@@ -37,6 +38,7 @@ class MainPanel extends Component {
 }
 
 MainPanel.propTypes = {
+  list: PropTypes.array.isRequired,
   displayShowPanel: PropTypes.func.isRequired,
   size: PropTypes.string.isRequired,
 };

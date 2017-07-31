@@ -1,15 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import Filtre from './Filtre';
 import './FilterBox.css';
-
-const Filtre = ({ filter }) => (
-  <label htmlFor={filter} className="pt-control pt-checkbox filteritems">
-    <input type="checkbox" id={filter} className="checkbox" />
-    <span className="pt-control-indicator checkbox" />
-    {filter}
-  </label>
-);
 
 const FilterBox = ({ name, filters }) => (
   <div className="pt-card pt-elevation-0 filterbox">

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Collapse } from '@blueprintjs/core';
 import PropTypes from 'prop-types';
-import connect from '../../connect';
 
 import './LanguageSelector.css';
 
@@ -40,4 +39,4 @@ LanguageSelector.propTypes = {
   language: PropTypes.array.isRequired,
 };
 
-export default connect(LanguageSelector);
+export default LanguageSelector;

@@ -5,7 +5,6 @@
   import SearchInfo from './SearchInfo';
   import SearchParams from '../SearchParams';
   import EmptySearch from './EmptySearch';
-  import connect from '../../connect';
 
   import './ResultPanel.css';
 
@@ -73,4 +72,4 @@
     list: PropTypes.array.isRequired,
   };
 
-  export default connect(ResultPanel);
+  export default ResultPanel;

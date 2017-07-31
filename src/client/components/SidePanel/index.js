@@ -3,7 +3,6 @@ import { Motion, spring } from 'react-motion';
 import PropTypes from 'prop-types';
 import FacetedBox from '../FacetedBox';
 import FilterBox from '../FilterBox';
-import connect from '../../connect';
 
 import './SidePanel.css';
 
@@ -48,4 +47,4 @@ SidePanel.propTypes = {
   displayShowPanel: PropTypes.func.isRequired,
 };
 
-export default connect(SidePanel);
+export default SidePanel;
