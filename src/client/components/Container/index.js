@@ -3,24 +3,11 @@ import PropTypes from 'prop-types';
 
 import './container.css';
 import Header from '../Header';
-import HeaderLeft from '../Header/HeaderLeft';
-import HeaderRight from '../Header/HeaderRight';
-import Title from '../Title';
 import MainPanel from '../MainPanel';
-import LanguageSelector from '../LanguageSelector';
-import SidePanelButton from '../SidePanelButton';
 
-const Container = ({ title, langs, resultItems }) => (
+const Container = ({ title, langs, resultItems, showOverlayPanel, isHidden }) => (
   <div className="container-container">
-    <Header>
-      <HeaderLeft>
-        <SidePanelButton />
-        <Title title={title} />
-      </HeaderLeft>
-      <HeaderRight>
-        <LanguageSelector langs={langs} />
-      </HeaderRight>
-    </Header>
+    <Header title={title} langs={langs} showOverlayPanel={showOverlayPanel} isHidden={isHidden} />
     <MainPanel resultItems={resultItems} />
   </div>
 );
@@ -29,6 +16,8 @@ Container.propTypes = {
   title: PropTypes.string.isRequired,
   langs: PropTypes.array.isRequired,
   resultItems: PropTypes.array.isRequired,
+  showOverlayPanel: PropTypes.func.isRequired,
+  isHidden: PropTypes.bool.isRequired,
 };
 
 export default Container;
