@@ -5,7 +5,7 @@ import Header from '../Header';
 import MainPanel from '../MainPanel';
 import './Container.css';
 
-const Container = ({ title, list, language, showSidePanel, displayShowPanel }) => (
+const Container = ({ title, list, language, showSidePanel, displayShowPanel, Search, searchValue }) => (
   <div className="container">
     <Header
       title={title}
@@ -19,12 +19,16 @@ const Container = ({ title, list, language, showSidePanel, displayShowPanel }) =
           size="100"
           list={list}
           displayShowPanel={displayShowPanel}
+          Search={Search}
+          searchValue={searchValue}
         />
             ) : (
               <MainPanel
                 size="80"
                 list={list}
                 displayShowPanel={displayShowPanel}
+                Search={Search}
+                searchValue={searchValue}
               />
             )}
     </Media>
@@ -38,6 +42,8 @@ Container.propTypes = {
   language: PropTypes.array.isRequired,
   showSidePanel: PropTypes.bool.isRequired,
   displayShowPanel: PropTypes.func.isRequired,
+  Search: PropTypes.func.isRequired,
+  searchValue: PropTypes.string.isRequired,
 };
 
 export default Container;

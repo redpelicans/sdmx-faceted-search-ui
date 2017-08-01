@@ -7,16 +7,14 @@ import BurgerButton from '../BurgerButton';
 import './SearchParams.css';
 
 
-const SearchParams = ({ displayShowPanel, handleChangeTypeOfSale }) => (
+const SearchParams = ({ displayShowPanel }) => (
   <Media query="(max-width: 800px)">
     {matches => matches ? (
       <div className="searchparams-container_small">
         <BurgerButton
           displayShowPanel={displayShowPanel}
         />
-        <TypeSelector
-          handleChangeTypeOfSale={handleChangeTypeOfSale}
-        />
+        <TypeSelector />
         <SortBox />
       </div>
           ) : (
@@ -24,9 +22,7 @@ const SearchParams = ({ displayShowPanel, handleChangeTypeOfSale }) => (
               <BurgerButton
                 displayShowPanel={displayShowPanel}
               />
-              <TypeSelector
-                handleChangeTypeOfSale={handleChangeTypeOfSale}
-              />
+              <TypeSelector />
               <SortBox />
             </div>
           )}
@@ -35,7 +31,6 @@ const SearchParams = ({ displayShowPanel, handleChangeTypeOfSale }) => (
 
 SearchParams.propTypes = {
   displayShowPanel: PropTypes.func.isRequired,
-  handleChangeTypeOfSale: PropTypes.func.isRequired,
 };
 
 export default SearchParams;
