@@ -39,6 +39,6 @@ describe('Container component', function() {
     it('should have 5 props', function() {
         const wrapper1 = shallow(root).props().children[0].props;
         const wrapper2 = shallow(root).props().children[1].props;
-        should(nbItems(wrapper1) + nbItems(wrapper2)).eql(5);
+        should(nbItems(wrapper1) + nbItems(wrapper2)).eql(7);
     });
 });
