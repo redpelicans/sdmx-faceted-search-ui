@@ -1,23 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const connect = Component => {
+const connect = (mapStateToProps, mapDispatchToProps) => Component => {
   class Connector extends React.PureComponent {
+    componentWillMount() {
+      const { store } = this.context;
+      store.subscribe(() => this.forceUpdate());
+    }
     render() {
-      const { store: { getState } } = this.context;
-      const props = { ...getState() };
-      return (<Component {...props} />);
+      const { store: { getState, dispatch } } = this.context;
+      const props = { ...mapStateToProps(getState()), ...mapDispatchToProps(dispatch) };
+      return <Component {...props} />;
     }
   }
-
   Connector.contextTypes = {
     store: PropTypes.object.isRequired,
   };
   return Connector;
-};
-
-connect.propTypes = {
-  Component: PropTypes.node.isRequired,
 };
 
 export default connect;
