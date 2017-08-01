@@ -1,0 +1,11 @@
+.mainpanel
+{
+  display: flex;
+  flex-direction: column;
+  padding:2%;
+}
+.mainpanel_inner
+{
+  display: flex;
+  flex-direction: column;
+}
