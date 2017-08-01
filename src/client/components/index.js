@@ -4,6 +4,7 @@ import { render } from 'react-dom';
 import './index.css';
 import App from './App';
 import Provider from './Provider';
+import reducer from '../reducers';
 import { createStore } from './Store';
 
 const title = 'SDMX';
@@ -23,9 +24,11 @@ const initialState = {
   title,
   langs,
   resultItems,
+  count: 0,
+  searchValue: '',
 };
 
-const store = createStore(initialState);
+const store = createStore(reducer, initialState);
 
 const root = (
   <Provider store={store}>

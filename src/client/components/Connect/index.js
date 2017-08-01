@@ -1,12 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const connect = Component => {
+const connect = (mapStateToProps, mapDispatchToProps) => Component => {
   class Connector extends React.PureComponent {
-    lint = {};
+    componentWillMount() {
+      const { store } = this.context;
+      store.subscribe(() => this.forceUpdate());
+    }
     render() {
-      const { store: { getState } } = this.context;
-      const props = { ...getState() };
+      const { store: { getState, dispatch } } = this.context;
+      const props = { ...mapStateToProps(getState()), ...mapDispatchToProps(dispatch) };
       return <Component {...props} />;
     }
   }
