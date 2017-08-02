@@ -1,4 +1,5 @@
 import React from 'react';
+import { onlyUpdateForKeys } from 'recompose';
 import PropTypes from 'prop-types';
 
 import './DataFlow.css';
@@ -20,4 +21,4 @@ DataFlow.propTypes = {
   direction: PropTypes.string.isRequired,
 };
 
-export default DataFlow;
+export default onlyUpdateForKeys(['data', 'direction'])(DataFlow);

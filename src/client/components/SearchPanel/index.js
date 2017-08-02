@@ -5,10 +5,10 @@ import SearchButton from './SearchButton';
 
 import './SearchPanel.css';
 
-const SearchPanel = ({ Search }) => (
+const SearchPanel = ({ search }) => (
   <div className="searchpanel">
     <SearchBar
-      Search={Search}
+      search={search}
     />
     <SearchButton
       startSearch={this.startClickSearch}
@@ -17,7 +17,7 @@ const SearchPanel = ({ Search }) => (
 );
 
 SearchPanel.propTypes = {
-  Search: PropTypes.func.isRequired,
+  search: PropTypes.func.isRequired,
 };
 
 export default SearchPanel;

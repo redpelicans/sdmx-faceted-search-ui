@@ -9,7 +9,6 @@ const { describe, it } = global;
 
 const displayShowPanel = () => {
   console.log('function');
-  //this.setState(({ showSidePanel }) => ({ showSidePanel: !showSidePanel }));
 };
 
 describe ('<Container />', function () {
