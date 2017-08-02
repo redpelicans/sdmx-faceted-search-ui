@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { onlyUpdateForKeys } from 'recompose';
 
 import './header.css';
 import SidePanelButton from '../SidePanelButton';
@@ -29,4 +30,4 @@ Header.propTypes = {
   isHidden: PropTypes.bool.isRequired,
 };
 
-export default Header;
+export default onlyUpdateForKeys(['isHidden'])(Header);

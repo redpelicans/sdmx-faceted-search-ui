@@ -1,11 +1,9 @@
 import '@blueprintjs/core/dist/blueprint.css';
 import React from 'react';
 import { render } from 'react-dom';
-import './index.css';
-import App from './App';
-import Provider from './Provider';
-import reducer from '../reducers';
-import { createStore } from './Store';
+import { Provider } from 'react-redux';
+import App from './components/App';
+import configureStore from './store';
 
 const title = 'SDMX';
 const langs = [
@@ -20,21 +18,25 @@ const resultItems = [
   { id: 4, value: 'velo electrique' },
 ];
 
+const searchValue = '';
+const isHidden = true;
+
 const initialState = {
   title,
   langs,
   resultItems,
-  count: 0,
-  searchValue: '',
+  searchValue,
+  isHidden,
 };
 
-const store = createStore(reducer, initialState);
+const store = configureStore(initialState);
 
 const root = (
   <Provider store={store}>
     <App />
   </Provider>
 );
+
 const mountNode = document.getElementById('root');
 
 render(root, mountNode);

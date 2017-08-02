@@ -1,3 +1,6 @@
-export const GET_SEARCH_VALUE = 'GET_SEARCH_VALUE';
+export const SEARCH = 'SEARCH';
+export const SET_VISIBILITY = 'SET_VISIBILITY';
 
-export const getSearchValue = value => ({ type: GET_SEARCH_VALUE, value });
+export const search = value => ({ type: SEARCH, value });
+export const setVisibility = () => ({ type: SET_VISIBILITY });
+

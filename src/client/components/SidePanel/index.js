@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { onlyUpdateForKeys } from 'recompose';
 
 import './side_panel.css';
 import FacetedBox from '../FacetedBox';
@@ -17,4 +18,4 @@ SidePanel.propTypes = {
   isHidden: PropTypes.bool.isRequired,
 };
 
-export default SidePanel;
+export default onlyUpdateForKeys(['isHidden'])(SidePanel);

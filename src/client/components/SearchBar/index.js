@@ -1,20 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { withHandlers } from 'recompose';
 
 import './search_bar.css';
 
-const SearchBar = ({ searchHandler }) => (
+const SearchBar = ({ handleInput }) => (
   <div className="search-bar-container">
     <input
       type="text"
       placeholder="Search..."
-      onChange={searchHandler}
+      onChange={handleInput}
     />
   </div>
 );
 
 SearchBar.propTypes = {
-  searchHandler: PropTypes.func.isRequired,
+  handleInput: PropTypes.func.isRequired,
 };
 
-export default SearchBar;
+export default withHandlers({
+  handleInput: ({ searchHandler }) => event => {
+    event.preventDefault();
+    searchHandler(event.target.value);
+  },
+})(SearchBar);

@@ -1,21 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { withHandlers } from 'recompose';
 
 import './side_panel_button.css';
 
-const SidePanelButton = ({ isHidden, showOverlayPanel }) => (
+const SidePanelButton = ({ isHidden, handleInput }) => (
   <div className="side-panel-button-container">
     <button
       id="overlay-button"
       className={isHidden === false ? 'pt-button pt-minimal pt-icon-cross' : 'pt-button pt-minimal pt-icon-list'}
-      onClick={showOverlayPanel}
+      onClick={handleInput}
     />
   </div>
 );
 
 SidePanelButton.propTypes = {
-  showOverlayPanel: PropTypes.func.isRequired,
+  handleInput: PropTypes.func.isRequired,
   isHidden: PropTypes.bool.isRequired,
 };
 
-export default SidePanelButton;
+export default withHandlers({
+  handleInput: ({ showOverlayPanel }) => event => {
+    event.preventDefault();
+    showOverlayPanel();
+  },
+})(SidePanelButton);

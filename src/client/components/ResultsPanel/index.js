@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { onlyUpdateForKeys } from 'recompose';
 
 import './results_panel.css';
 import SearchInfo from '../SearchInfo';
@@ -22,4 +23,4 @@ ResultsPanel.propTypes = {
   searchValue: PropTypes.string.isRequired,
 };
 
-export default ResultsPanel;
+export default onlyUpdateForKeys(['searchValue'])(ResultsPanel);
