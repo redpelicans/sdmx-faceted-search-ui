@@ -6,14 +6,14 @@ import ResultPanel from '../ResultPanel';
 import './MainPanel.css';
 
 
-const MainPanel = ({ displayShowPanel, size, list, Search, searchValue }) => (
+const MainPanel = ({ displayShowPanel, size, dataflows, Search, searchValue }) => (
   <div className="mainpanel">
     <div style={{ width: `${size}%` }} className="pt-card mainpanel_inner">
       <SearchPanel
         Search={Search}
       />
       <ResultPanel
-        list={list}
+        dataflows={dataflows}
         searchValue={searchValue}
         displayShowPanel={displayShowPanel}
       />
@@ -21,7 +21,7 @@ const MainPanel = ({ displayShowPanel, size, list, Search, searchValue }) => (
   </div>);
 
 MainPanel.propTypes = {
-  list: PropTypes.array.isRequired,
+  dataflows: PropTypes.array.isRequired,
   displayShowPanel: PropTypes.func.isRequired,
   size: PropTypes.string.isRequired,
   Search: PropTypes.func.isRequired,

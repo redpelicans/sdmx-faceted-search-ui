@@ -8,17 +8,17 @@
 
   import './ResultPanel.css';
 
-  const ResultPanel = ({ displayShowPanel, searchValue, list }) => (
+  const ResultPanel = ({ displayShowPanel, searchValue, dataflows }) => (
     <div className="resultpanel">
       <SearchInfo
-        list={list}
+        dataflows={dataflows}
         searchValue={searchValue}
-        searchsize={list.length}
+        searchsize={dataflows.length}
       />
       <SearchParams
         displayShowPanel={displayShowPanel}
       />
-      {list.map(lis => (
+      {dataflows.map(lis => (
         <Media key={lis.id} query={{ maxWidth: 599 }}>
           {matches => matches ? (
             <DataFlow data={lis} direction="column" />
@@ -27,14 +27,14 @@
           )}
         </Media>
     )) }
-      {!list.length && <EmptySearch />}
+      {!dataflows.length && <EmptySearch />}
     </div>
     );
 
   ResultPanel.propTypes = {
     displayShowPanel: PropTypes.func.isRequired,
     searchValue: PropTypes.string.isRequired,
-    list: PropTypes.array.isRequired,
+    dataflows: PropTypes.array.isRequired,
   };
 
   export default ResultPanel;
