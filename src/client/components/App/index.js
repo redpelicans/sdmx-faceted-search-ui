@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { getSearchValue } from '../../actions';
+import { getSearchBarInput } from '../../actions';
 
 import connect from '../connect';
 
@@ -8,7 +8,7 @@ import './App.css';
 import SidePanel from '../SidePanel';
 import Container from '../Container';
 
-const myFilter = (resultList, keyWord) =>
+const resultsFilter = (resultList, keyWord) =>
   resultList.filter(item => item.value.match(keyWord.toLowerCase()) !== null);
 
 class App extends Component {
@@ -21,8 +21,8 @@ class App extends Component {
   };
 
   searchHandler = ({ target: { value } }) => {
-    const { getSearchValue: get_search_value } = this.props;
-    get_search_value(value);
+    const { getSearchBarInput: get_search_bar_input } = this.props;
+    get_search_bar_input(value);
   };
 
   render() {
@@ -50,19 +50,18 @@ class App extends Component {
 const mapStateToProps = state => ({
   title: state.title,
   langs: state.langs,
-  resultItems: myFilter(state.resultItems, state.searchValue),
-  count: state.count,
-  getSearchValue: state.getSearchValue,
+  resultItems: resultsFilter(state.resultItems, state.searchValue),
+  getSearchBarInput: state.getSearchBarInput,
   searchValue: state.searchValue,
 });
 
-const mapDispatchToProps = dispatch => ({ getSearchValue: (value) => dispatch(getSearchValue(value)) });
+const mapDispatchToProps = dispatch => ({ getSearchBarInput: (value) => dispatch(getSearchBarInput(value)) });
 
 App.propTypes = {
   title: PropTypes.string.isRequired,
   langs: PropTypes.array.isRequired,
   resultItems: PropTypes.array.isRequired,
-  getSearchValue: PropTypes.func.isRequired,
+  getSearchBarInput: PropTypes.func.isRequired,
   searchValue: PropTypes.string.isRequired,
 };
 
