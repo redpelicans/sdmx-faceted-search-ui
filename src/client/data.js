@@ -92,11 +92,11 @@ const Data = {
       facets: [
         {
           id: 0,
-          name: 'Tout',
+          name: 'All',
         },
         {
           id: 1,
-          name: 'Sports, vacances',
+          name: 'sport',
         },
         {
           id: 2,
@@ -136,7 +136,7 @@ const Data = {
         },
         {
           id: 5,
-          name: 'Tout',
+          name: 'All',
         },
       ],
     },
