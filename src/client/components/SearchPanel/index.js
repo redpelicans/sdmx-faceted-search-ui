@@ -3,17 +3,15 @@ import PropTypes from 'prop-types';
 
 import './search_panel.css';
 import SearchBar from '../SearchBar';
-import SearchButton from '../SearchButton';
 
-const SearchPanel = ({ getSearchValue }) => (
+const SearchPanel = ({ searchHandler }) => (
   <div className="search-panel-container">
-    <SearchBar getSearchValue={getSearchValue} />
-    <SearchButton />
+    <SearchBar searchHandler={searchHandler} />
   </div>
 );
 
 SearchPanel.propTypes = {
-  getSearchValue: PropTypes.func.isRequired,
+  searchHandler: PropTypes.func.isRequired,
 };
 
 export default SearchPanel;
