@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { onlyUpdateForKeys } from 'recompose';
 import { Button, Collapse } from '@blueprintjs/core';
 import PropTypes from 'prop-types';
 
@@ -39,4 +40,4 @@ LanguageSelector.propTypes = {
   language: PropTypes.array.isRequired,
 };
 
-export default LanguageSelector;
+export default onlyUpdateForKeys(['language'])(LanguageSelector);

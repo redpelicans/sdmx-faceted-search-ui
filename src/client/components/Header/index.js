@@ -1,4 +1,5 @@
 import React from 'react';
+import { onlyUpdateForKeys } from 'recompose';
 import PropTypes from 'prop-types';
 import LanguageSelector from '../LanguageSelector';
 
@@ -25,4 +26,4 @@ Header.propTypes = {
   language: PropTypes.array.isRequired,
 };
 
-export default Header;
+export default onlyUpdateForKeys(['title', 'language'])(Header);

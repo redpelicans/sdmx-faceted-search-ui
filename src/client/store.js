@@ -1,12 +1,12 @@
-export const createStore = (reducer, initialState) => {
-  let state = initialState;
-  const listeners = [];
-  const getState = () => state;
-  const subscribe = cb => listeners.push(cb);
-  const dispatch = action => {
-    state = reducer(state, action);
-    listeners.forEach(cb => cb(state));
-    return action;
-  };
-  return { getState, dispatch, subscribe };
-};
+import { createStore, applyMiddleware } from 'redux';
+import createLogger from 'redux-logger';
+import reducer from './reducers';
+
+const configureStore = (initialState) =>
+  createStore(
+      reducer,
+      initialState,
+      applyMiddleware(createLogger),
+    );
+
+export default configureStore;

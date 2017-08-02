@@ -1,4 +1,5 @@
 import React from 'react';
+import { onlyUpdateForKeys } from 'recompose';
 import PropTypes from 'prop-types';
 import Items from './Items';
 
@@ -23,4 +24,4 @@ FacetedBox.propTypes = {
   facetedSearch: PropTypes.func.isRequired,
 };
 
-export default FacetedBox;
+export default onlyUpdateForKeys(['name', 'facets'])(FacetedBox);

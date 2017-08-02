@@ -1,78 +1,50 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Media from 'react-media';
 import PropTypes from 'prop-types';
-import connect from '../../connect';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import Container from '../Container';
 import SidePanel from '../SidePanel';
-import { search, filter, facetedSearch } from '../../actions';
+import { search, filter, facetedSearch, moveSidePanel } from '../../actions';
 import './App.css';
 
-class App extends Component {
-  state = {
-    showSidePanel: true,
-  }
-
-  displayShowPanel = () => {
-    this.setState(({ showSidePanel }) => ({ showSidePanel: !showSidePanel }));
-  }
-
-  search = ({ target: { value } }) => {
-    const { search: srch } = this.props;
-    srch(value);
-  };
-
-  filter = (value) => {
-    const { filter: fltr } = this.props;
-    fltr(value);
-  }
-
-  facetedSearch = (value) => {
-    const { facetedSearch: fct } = this.props;
-    fct(value);
-  }
-
-  render() {
-    const { showSidePanel } = this.state;
-    const { facetedbox, filterbox, title, searchValue, language, dataflows } = this.props;
-
-    return (
-      <div className="App">
-        <Media query="(max-width: 599px)">
-          {matches => matches ? (
-            <SidePanel
-              facetedbox={facetedbox}
-              filterbox={filterbox}
-              showSidePanel={showSidePanel}
-              displayShowPanel={this.displayShowPanel}
-              behavior="absolute"
-              filter={this.filter}
-              FacetedSearch={this.FacetedSearch}
-            />
+const App = ({ facetedbox, filterbox, title, searchValue,
+  language, dataflows, showSidePanel, facetedSearch: doFacetedSearch, filter: doFilter, search: doSearch, moveSidePanel: doMoveSidePanel }) => (
+    <div className="App">
+      <Media query="(max-width: 599px)">
+        {matches => matches ? (
+          <SidePanel
+            facetedbox={facetedbox}
+            filterbox={filterbox}
+            showSidePanel={showSidePanel}
+            moveSidePanel={doMoveSidePanel}
+            behavior="absolute"
+            filter={doFilter}
+            FacetedSearch={doFacetedSearch}
+          />
          ) : (
            <SidePanel
              facetedbox={facetedbox}
              filterbox={filterbox}
              showSidePanel={showSidePanel}
-             displayShowPanel={this.displayShowPanel}
+             moveSidePanel={doMoveSidePanel}
              behavior="relative"
-             filter={this.filter}
-             facetedSearch={this.facetedSearch}
+             filter={doFilter}
+             facetedSearch={doFacetedSearch}
            />
          )}
-        </Media>
-        <Container
-          title={title}
-          dataflows={dataflows}
-          Search={this.search}
-          searchValue={searchValue}
-          language={language}
-          showSidePanel={showSidePanel}
-          displayShowPanel={this.displayShowPanel}
-        />
-      </div>
-    );
-  }
-}
+      </Media>
+      <Container
+        title={title}
+        dataflows={dataflows}
+        search={doSearch}
+        searchValue={searchValue}
+        language={language}
+        showSidePanel={showSidePanel}
+        displayShowPanel={doMoveSidePanel}
+      />
+    </div>
+);
 
 App.propTypes = {
   facetedbox: PropTypes.array.isRequired,
@@ -84,10 +56,8 @@ App.propTypes = {
   search: PropTypes.func.isRequired,
   filter: PropTypes.func.isRequired,
   facetedSearch: PropTypes.func.isRequired,
-};
-
-App.childContextTypes = {
-  store: PropTypes.object.isRequired,
+  moveSidePanel: PropTypes.func.isRequired,
+  showSidePanel: PropTypes.bool.isRequired,
 };
 
 const filterDataFlows = ({ dataflows, searchValue, filterValue, facetedValue }) => {
@@ -106,6 +76,9 @@ const filterDataFlows = ({ dataflows, searchValue, filterValue, facetedValue }) 
   }
 };
 
+
+const actions = { search, filter, facetedSearch, moveSidePanel };
+
 const mapStateToProps = state => ({
   title: state.title,
   facetedbox: state.facetedbox,
@@ -115,11 +88,9 @@ const mapStateToProps = state => ({
   searchValue: state.searchValue,
   filterValue: state.filterValue,
   facetedValue: state.facetedValue,
+  showSidePanel: state.showSidePanel,
 });
 
-const mapDispatchToProps = dispatch => ({
-  facetedSearch: (value) => dispatch(facetedSearch(value)),
-  search: (value) => dispatch(search(value)),
-  filter: (value) => dispatch(filter(value)),
-});
+const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);
+
 export default connect(mapStateToProps, mapDispatchToProps)(App);

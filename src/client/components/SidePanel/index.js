@@ -7,7 +7,7 @@ import FilterBox from '../FilterBox';
 import './SidePanel.css';
 
 
-const SidePanel = ({ facetedbox, filterbox, showSidePanel, displayShowPanel, behavior, filter, facetedSearch }) => (
+const SidePanel = ({ facetedbox, filterbox, showSidePanel, moveSidePanel, behavior, filter, facetedSearch }) => (
   <Motion style={{ x: spring(showSidePanel ? -240 : 0) }}>
     {({ x }) =>
       (<div
@@ -17,7 +17,7 @@ const SidePanel = ({ facetedbox, filterbox, showSidePanel, displayShowPanel, beh
         }}
         className="sidepanel"
       >
-        <div onClick={displayShowPanel} className="crosscontainer">
+        <div onClick={moveSidePanel} className="crosscontainer">
           <span className="pt-icon-large pt-icon-cross" />
         </div>
         {facetedbox.map(facetedelem => (
@@ -46,7 +46,7 @@ SidePanel.propTypes = {
   filterbox: PropTypes.array.isRequired,
   showSidePanel: PropTypes.bool.isRequired,
   behavior: PropTypes.string.isRequired,
-  displayShowPanel: PropTypes.func.isRequired,
+  moveSidePanel: PropTypes.func.isRequired,
   filter: PropTypes.func.isRequired,
   facetedSearch: PropTypes.func.isRequired,
 };
