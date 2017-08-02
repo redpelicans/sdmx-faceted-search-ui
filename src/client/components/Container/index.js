@@ -5,7 +5,7 @@ import Header from '../Header';
 import MainPanel from '../MainPanel';
 import './Container.css';
 
-const Container = ({ title, list, language, showSidePanel, displayShowPanel }) => (
+const Container = ({ title, dataflows, language, showSidePanel, displayShowPanel, Search, searchValue }) => (
   <div className="container">
     <Header
       title={title}
@@ -17,14 +17,18 @@ const Container = ({ title, list, language, showSidePanel, displayShowPanel }) =
       {matches => matches ? (
         <MainPanel
           size="100"
-          list={list}
+          dataflows={dataflows}
           displayShowPanel={displayShowPanel}
+          Search={Search}
+          searchValue={searchValue}
         />
             ) : (
               <MainPanel
                 size="80"
-                list={list}
+                dataflows={dataflows}
                 displayShowPanel={displayShowPanel}
+                Search={Search}
+                searchValue={searchValue}
               />
             )}
     </Media>
@@ -34,10 +38,12 @@ const Container = ({ title, list, language, showSidePanel, displayShowPanel }) =
 
 Container.propTypes = {
   title: PropTypes.string.isRequired,
-  list: PropTypes.array.isRequired,
+  dataflows: PropTypes.array.isRequired,
   language: PropTypes.array.isRequired,
   showSidePanel: PropTypes.bool.isRequired,
   displayShowPanel: PropTypes.func.isRequired,
+  Search: PropTypes.func.isRequired,
+  searchValue: PropTypes.string.isRequired,
 };
 
 export default Container;

@@ -28,13 +28,11 @@ class TypeSelector extends Component {
     this.setState({ selectedButton: buttonId });
   }
 
-
   render() {
     const { selectedButton } = this.state;
-    const { handleChangeTypeOfSale } = this.props;
 
     return (
-      <div className="pt-button-group typeselector" onMouseUp={() => handleChangeTypeOfSale(selectedButton)}>
+      <div className="pt-button-group typeselector">
         <Button
           handleChangeActiveButton={this.handleChangeActiveButton}
           name="Tout"
@@ -58,9 +56,6 @@ class TypeSelector extends Component {
   }
 }
 
-TypeSelector.propTypes = {
-  handleChangeTypeOfSale: PropTypes.func.isRequired,
-};
 
 Button.propTypes = {
   handleChangeActiveButton: PropTypes.func.isRequired,

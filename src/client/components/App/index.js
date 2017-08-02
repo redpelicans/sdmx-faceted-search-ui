@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import connect from '../../connect';
 import Container from '../Container';
 import SidePanel from '../SidePanel';
-
+import { search, filter, facetedSearch } from '../../actions';
 import './App.css';
 
 class App extends Component {
@@ -16,9 +16,24 @@ class App extends Component {
     this.setState(({ showSidePanel }) => ({ showSidePanel: !showSidePanel }));
   }
 
+  search = ({ target: { value } }) => {
+    const { search: srch } = this.props;
+    srch(value);
+  };
+
+  filter = (value) => {
+    const { filter: fltr } = this.props;
+    fltr(value);
+  }
+
+  facetedSearch = (value) => {
+    const { facetedSearch: fct } = this.props;
+    fct(value);
+  }
+
   render() {
     const { showSidePanel } = this.state;
-    const { facetedbox, filterbox, title, language, list } = this.props;
+    const { facetedbox, filterbox, title, searchValue, language, dataflows } = this.props;
 
     return (
       <div className="App">
@@ -30,6 +45,8 @@ class App extends Component {
               showSidePanel={showSidePanel}
               displayShowPanel={this.displayShowPanel}
               behavior="absolute"
+              filter={this.filter}
+              FacetedSearch={this.FacetedSearch}
             />
          ) : (
            <SidePanel
@@ -38,12 +55,16 @@ class App extends Component {
              showSidePanel={showSidePanel}
              displayShowPanel={this.displayShowPanel}
              behavior="relative"
+             filter={this.filter}
+             facetedSearch={this.facetedSearch}
            />
          )}
         </Media>
         <Container
           title={title}
-          list={list}
+          dataflows={dataflows}
+          Search={this.search}
+          searchValue={searchValue}
           language={language}
           showSidePanel={showSidePanel}
           displayShowPanel={this.displayShowPanel}
@@ -56,13 +77,49 @@ class App extends Component {
 App.propTypes = {
   facetedbox: PropTypes.array.isRequired,
   filterbox: PropTypes.array.isRequired,
-  list: PropTypes.array.isRequired,
+  dataflows: PropTypes.array.isRequired,
   title: PropTypes.string.isRequired,
   language: PropTypes.array.isRequired,
+  searchValue: PropTypes.string.isRequired,
+  search: PropTypes.func.isRequired,
+  filter: PropTypes.func.isRequired,
+  facetedSearch: PropTypes.func.isRequired,
 };
 
 App.childContextTypes = {
   store: PropTypes.object.isRequired,
 };
 
-export default connect(App);
+const filterDataFlows = ({ dataflows, searchValue, filterValue, facetedValue }) => {
+  let newDataflows = dataflows;
+  if (facetedValue && facetedValue !== 'All') {
+    newDataflows = newDataflows.filter((li) => (li.Categories === facetedValue));
+  }
+  if (!searchValue && (!filterValue || filterValue === 'All')) {
+    return newDataflows;
+  } else if (searchValue && (!filterValue || filterValue === 'All')) {
+    return newDataflows.filter((li) => (li.Name.toLowerCase().match(searchValue.toLowerCase())));
+  } else if (filterValue && searchValue) {
+    return newDataflows.filter((li) => (li.Name.toLowerCase().match(searchValue.toLowerCase()) && filterValue === li.Type));
+  } else if (!searchValue && (filterValue && filterValue !== 'All')) {
+    return newDataflows.filter((li) => (filterValue === li.Type));
+  }
+};
+
+const mapStateToProps = state => ({
+  title: state.title,
+  facetedbox: state.facetedbox,
+  filterbox: state.filterbox,
+  language: state.language,
+  dataflows: filterDataFlows(state),
+  searchValue: state.searchValue,
+  filterValue: state.filterValue,
+  facetedValue: state.facetedValue,
+});
+
+const mapDispatchToProps = dispatch => ({
+  facetedSearch: (value) => dispatch(facetedSearch(value)),
+  search: (value) => dispatch(search(value)),
+  filter: (value) => dispatch(filter(value)),
+});
+export default connect(mapStateToProps, mapDispatchToProps)(App);

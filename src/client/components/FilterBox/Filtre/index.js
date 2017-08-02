@@ -1,9 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Filtre = ({ filter }) => (
-  <label htmlFor={filter} className="pt-control pt-checkbox filteritems">
-    <input type="checkbox" id={filter} className="checkbox" />
+const Filtre = ({ filter, filterFunc }) => (
+  <label htmlFor={filter} className="pt-control pt-radio filteritems">
+    <input
+      type="radio"
+      id={filter}
+      name="docs-radio-regular"
+      className="checkbox"
+      onClick={() => filterFunc(filter)}
+    />
     <span className="pt-control-indicator checkbox" />
     {filter}
   </label>
@@ -11,6 +17,7 @@ const Filtre = ({ filter }) => (
 
 Filtre.propTypes = {
   filter: PropTypes.string.isRequired,
+  filterFunc: PropTypes.func.isRequired,
 };
 
 export default Filtre;

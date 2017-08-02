@@ -20,7 +20,7 @@ class LanguageSelector extends Component {
     return (
       <div className="languageselector">
         <Button onClick={this.handleClick}>
-          {language[0]}
+          {language[0].name}
         </Button>
         <Collapse isOpen={isOpen}>
           <pre>

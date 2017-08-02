@@ -13,24 +13,19 @@ const displayShowPanel = () => {
 };
 
 describe ('<Container />', function () {
+  const wrapper = shallow(<Container
+    title="title"
+    list={[]}
+    language={[]}
+    showSidePanel={true}
+    displayShowPanel={displayShowPanel}
+    Search={() => {}}
+    searchValue=""
+  />);
   it('Container should render a container div', function () {
-    const wrapper = shallow(<Container
-      title="title"
-      list={[]}
-      language={[]}
-      showSidePanel={true}
-      displayShowPanel={displayShowPanel}
-    />);
     should(wrapper.find('.container')).length(1);
   })
   it('Container should render a Header Component', function () {
-    const wrapper = shallow(<Container
-      title="title"
-      list={[]}
-      language={[]}
-      showSidePanel={true}
-      displayShowPanel={displayShowPanel}
-    />);
     should(wrapper.find(Header)).length(1);
   })
 })

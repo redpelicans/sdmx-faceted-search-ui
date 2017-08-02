@@ -1,16 +1,12 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { AnchorButton } from '@blueprintjs/core';
 
 import './SearchButton.css';
 
-const SearchButton = ({ startSearch }) => (
+const SearchButton = () => (
   <div className="searchbuttoncontainer">
-    <AnchorButton onClick={startSearch} text="Search" iconName="search" className="searchbutton" />
+    <AnchorButton text="Search" iconName="search" className="searchbutton" />
   </div>
 );
 
-SearchButton.propTypes = {
-  startSearch: PropTypes.func.isRequired,
-};
 export default SearchButton;

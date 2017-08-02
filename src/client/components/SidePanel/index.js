@@ -7,7 +7,7 @@ import FilterBox from '../FilterBox';
 import './SidePanel.css';
 
 
-const SidePanel = ({ facetedbox, filterbox, showSidePanel, displayShowPanel, behavior }) => (
+const SidePanel = ({ facetedbox, filterbox, showSidePanel, displayShowPanel, behavior, filter, facetedSearch }) => (
   <Motion style={{ x: spring(showSidePanel ? -240 : 0) }}>
     {({ x }) =>
       (<div
@@ -25,6 +25,7 @@ const SidePanel = ({ facetedbox, filterbox, showSidePanel, displayShowPanel, beh
             key={facetedelem.id}
             name={facetedelem.name}
             facets={facetedelem.facets}
+            facetedSearch={facetedSearch}
           />
     ))}
         {filterbox.map(filterelem => (
@@ -32,6 +33,7 @@ const SidePanel = ({ facetedbox, filterbox, showSidePanel, displayShowPanel, beh
             key={filterelem.id}
             name={filterelem.name}
             filters={filterelem.filtres}
+            filter={filter}
           />
     ))}
       </div>)
@@ -45,6 +47,8 @@ SidePanel.propTypes = {
   showSidePanel: PropTypes.bool.isRequired,
   behavior: PropTypes.string.isRequired,
   displayShowPanel: PropTypes.func.isRequired,
+  filter: PropTypes.func.isRequired,
+  facetedSearch: PropTypes.func.isRequired,
 };
 
 export default SidePanel;
