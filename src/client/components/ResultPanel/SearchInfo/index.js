@@ -3,15 +3,15 @@ import PropTypes from 'prop-types';
 
 import './SearchInfo.css';
 
-const SearchInfo = ({ list, searchValue, searchsize }) => (
+const SearchInfo = ({ dataflows, searchValue, searchsize }) => (
   <div className="searchinfo">
     {searchValue && <p>{searchsize} results for {searchValue}</p>}
-    {!searchValue && <p>{list.length} products available</p>}
+    {!searchValue && <p>{dataflows.length} products available</p>}
   </div>
 );
 
 SearchInfo.propTypes = {
-  list: PropTypes.array.isRequired,
+  dataflows: PropTypes.array.isRequired,
   searchValue: PropTypes.string.isRequired,
   searchsize: PropTypes.number.isRequired,
 };

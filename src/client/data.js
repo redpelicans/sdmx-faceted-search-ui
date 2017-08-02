@@ -13,7 +13,7 @@ const Data = {
       name: 'En',
     },
   ],
-  list: [
+  dataflows: [
     {
       id: 0,
       Name: 'VTT Tout Suspendu 26\'\' Bliss Noir Orange Freins à Disques 21 Vit TC 47 cm 532M',

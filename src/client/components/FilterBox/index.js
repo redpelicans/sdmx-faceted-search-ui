@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 import Filtre from './Filtre';
 import './FilterBox.css';
 
-const FilterBox = ({ name, filters, Filter }) => (
+const FilterBox = ({ name, filters, filter }) => (
   <div className="pt-card pt-elevation-0 filterbox">
     <p className="filterboxname">{name}</p>
-    {filters.map((filter) => (
+    {filters.map((fil) => (
       <Filtre
-        key={filter.id}
-        filter={filter.name}
-        FilterFunc={Filter}
+        key={fil.id}
+        filter={fil.name}
+        filterFunc={filter}
       />
     ))}
   </div>
@@ -19,7 +19,7 @@ const FilterBox = ({ name, filters, Filter }) => (
 FilterBox.propTypes = {
   name: PropTypes.string.isRequired,
   filters: PropTypes.array.isRequired,
-  Filter: PropTypes.func.isRequired,
+  filter: PropTypes.func.isRequired,
 };
 
 Filtre.propTypes = {

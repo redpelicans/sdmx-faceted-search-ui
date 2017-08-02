@@ -16,24 +16,24 @@ class App extends Component {
     this.setState(({ showSidePanel }) => ({ showSidePanel: !showSidePanel }));
   }
 
-  Search = ({ target: { value } }) => {
+  search = ({ target: { value } }) => {
     const { search: srch } = this.props;
     srch(value);
   };
 
-  Filter = (value) => {
+  filter = (value) => {
     const { filter: fltr } = this.props;
     fltr(value);
   }
 
-  FacetedSearch = (value) => {
+  facetedSearch = (value) => {
     const { facetedSearch: fct } = this.props;
     fct(value);
   }
 
   render() {
     const { showSidePanel } = this.state;
-    const { facetedbox, filterbox, title, searchValue, language, list } = this.props;
+    const { facetedbox, filterbox, title, searchValue, language, dataflows } = this.props;
 
     return (
       <div className="App">
@@ -45,7 +45,7 @@ class App extends Component {
               showSidePanel={showSidePanel}
               displayShowPanel={this.displayShowPanel}
               behavior="absolute"
-              Filter={this.Filter}
+              filter={this.filter}
               FacetedSearch={this.FacetedSearch}
             />
          ) : (
@@ -55,15 +55,15 @@ class App extends Component {
              showSidePanel={showSidePanel}
              displayShowPanel={this.displayShowPanel}
              behavior="relative"
-             Filter={this.Filter}
-             FacetedSearch={this.FacetedSearch}
+             filter={this.filter}
+             facetedSearch={this.facetedSearch}
            />
          )}
         </Media>
         <Container
           title={title}
-          list={list}
-          Search={this.Search}
+          dataflows={dataflows}
+          Search={this.search}
           searchValue={searchValue}
           language={language}
           showSidePanel={showSidePanel}
@@ -77,7 +77,7 @@ class App extends Component {
 App.propTypes = {
   facetedbox: PropTypes.array.isRequired,
   filterbox: PropTypes.array.isRequired,
-  list: PropTypes.array.isRequired,
+  dataflows: PropTypes.array.isRequired,
   title: PropTypes.string.isRequired,
   language: PropTypes.array.isRequired,
   searchValue: PropTypes.string.isRequired,
@@ -90,19 +90,19 @@ App.childContextTypes = {
   store: PropTypes.object.isRequired,
 };
 
-const filterList = ({ list, searchValue, filterValue, facetedValue }) => {
-  let newList = list;
+const filterDataFlows = ({ dataflows, searchValue, filterValue, facetedValue }) => {
+  let newDataflows = dataflows;
   if (facetedValue && facetedValue !== 'All') {
-    newList = newList.filter((li) => (li.Categories === facetedValue));
+    newDataflows = newDataflows.filter((li) => (li.Categories === facetedValue));
   }
   if (!searchValue && (!filterValue || filterValue === 'All')) {
-    return newList;
+    return newDataflows;
   } else if (searchValue && (!filterValue || filterValue === 'All')) {
-    return newList.filter((li) => (li.Name.toLowerCase().match(searchValue.toLowerCase())));
+    return newDataflows.filter((li) => (li.Name.toLowerCase().match(searchValue.toLowerCase())));
   } else if (filterValue && searchValue) {
-    return newList.filter((li) => (li.Name.toLowerCase().match(searchValue.toLowerCase()) && filterValue === li.Type));
+    return newDataflows.filter((li) => (li.Name.toLowerCase().match(searchValue.toLowerCase()) && filterValue === li.Type));
   } else if (!searchValue && (filterValue && filterValue !== 'All')) {
-    return newList.filter((li) => (filterValue === li.Type));
+    return newDataflows.filter((li) => (filterValue === li.Type));
   }
 };
 
@@ -111,7 +111,7 @@ const mapStateToProps = state => ({
   facetedbox: state.facetedbox,
   filterbox: state.filterbox,
   language: state.language,
-  list: filterList(state),
+  dataflows: filterDataFlows(state),
   searchValue: state.searchValue,
   filterValue: state.filterValue,
   facetedValue: state.facetedValue,
