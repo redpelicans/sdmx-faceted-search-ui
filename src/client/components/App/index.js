@@ -2,6 +2,7 @@ import React from 'react';
 import Media from 'react-media';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
+import { createSelector } from 'reselect';
 import { connect } from 'react-redux';
 import Container from '../Container';
 import SidePanel from '../SidePanel';
