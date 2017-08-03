@@ -60,7 +60,7 @@ App.propTypes = {
 
 const enhance = compose(
   connect(mapStateToProps, mapDispatchToProps),
-  withState('isHidden', 'doSetVisibility', true),
+  withState('isHidden', 'doSetVisibility', false),
   withHandlers({ togglePanel: ({ doSetVisibility }) => () => doSetVisibility() }),
 );
 
