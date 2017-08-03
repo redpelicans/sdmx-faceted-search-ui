@@ -1,5 +1,8 @@
-.title-container {
-  display: flex;
-  justify-content: center;
-  width: 100%;
+.title
+{
+  width:180px;
+  letter-spacing: 0.7em;
+  margin-left:25px;
+  font-size:1em;
+  color:rgb(45,45,45);
 }

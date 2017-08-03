@@ -1,4 +1,5 @@
 import React from 'react';
+import { onlyUpdateForKeys } from 'recompose';
 import PropTypes from 'prop-types';
 
 <<<<<<< HEAD
@@ -32,4 +33,4 @@ DataFlow.propTypes = {
 >>>>>>> 90f809d7875700e59c659a9be270a13db607ee4b
 };
 
-export default DataFlow;
+export default onlyUpdateForKeys(['data', 'direction'])(DataFlow);

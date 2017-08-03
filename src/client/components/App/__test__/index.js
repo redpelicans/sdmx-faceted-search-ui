@@ -2,7 +2,6 @@ import React from 'react';
 import should from 'should';
 import { shallow } from 'enzyme';
 import App from '..';
-import Provider from '../../../Provider';
 import Container from '../../Container';
 
 const { describe, it } = global;

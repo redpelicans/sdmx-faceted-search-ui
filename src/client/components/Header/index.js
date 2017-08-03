@@ -1,9 +1,8 @@
 import React from 'react';
+import { onlyUpdateForKeys } from 'recompose';
 import PropTypes from 'prop-types';
 <<<<<<< HEAD
 import LanguageSelector from '../LanguageSelector';
-
-import './Header.css';
 
 
 const Header = ({ title, language }) => (
@@ -54,4 +53,4 @@ Header.propTypes = {
 >>>>>>> 90f809d7875700e59c659a9be270a13db607ee4b
 };
 
-export default Header;
+export default onlyUpdateForKeys(['title', 'language'])(Header);

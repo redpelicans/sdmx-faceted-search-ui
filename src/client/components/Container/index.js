@@ -4,9 +4,8 @@ import PropTypes from 'prop-types';
 import Media from 'react-media';
 import Header from '../Header';
 import MainPanel from '../MainPanel';
-import './Container.css';
 
-const Container = ({ title, dataflows, language, showSidePanel, displayShowPanel, Search, searchValue }) => (
+const Container = ({ title, dataflows, language, showSidePanel, displayShowPanel, search, searchValue }) => (
   <div className="container">
     <Header
       title={title}
@@ -20,7 +19,7 @@ const Container = ({ title, dataflows, language, showSidePanel, displayShowPanel
           size="100"
           dataflows={dataflows}
           displayShowPanel={displayShowPanel}
-          Search={Search}
+          search={search}
           searchValue={searchValue}
         />
             ) : (
@@ -28,7 +27,7 @@ const Container = ({ title, dataflows, language, showSidePanel, displayShowPanel
                 size="80"
                 dataflows={dataflows}
                 displayShowPanel={displayShowPanel}
-                Search={Search}
+                search={search}
                 searchValue={searchValue}
               />
             )}
@@ -55,7 +54,7 @@ Container.propTypes = {
   language: PropTypes.array.isRequired,
   showSidePanel: PropTypes.bool.isRequired,
   displayShowPanel: PropTypes.func.isRequired,
-  Search: PropTypes.func.isRequired,
+  search: PropTypes.func.isRequired,
   searchValue: PropTypes.string.isRequired,
 =======
   langs: PropTypes.array.isRequired,

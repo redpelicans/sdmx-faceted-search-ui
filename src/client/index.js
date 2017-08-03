@@ -1,15 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import configureStore from './store';
 import App from './components/App';
-import Provider from './Provider';
 import Data from './data';
-import reducer from './reducers';
-import { createStore } from './store';
 
 import './index.css';
 
-const initialState = Data;
-const store = createStore(reducer, initialState);
+const store = configureStore(Data);
+
 const root = (
   <Provider store={store}>
     <App />

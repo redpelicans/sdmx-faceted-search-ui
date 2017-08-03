@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { withHandlers } from 'recompose';
 
 import './SearchBar.css';
 
 
-const SearchBar = ({ Search }) => (
+const SearchBar = ({ handleInput }) => (
   <div className="searchbarcontainer">
     <input
-      onChange={Search}
+      onChange={handleInput}
       className="pt-input pt-fill"
       placeholder="Search"
       type="text"
@@ -16,7 +17,12 @@ const SearchBar = ({ Search }) => (
 );
 
 SearchBar.propTypes = {
-  Search: PropTypes.func.isRequired,
+  handleInput: PropTypes.func.isRequired,
 };
 
-export default SearchBar;
+export default withHandlers({
+  handleInput: ({ search }) => event => {
+    event.preventDefault();
+    search(event.target.value);
+  },
+})(SearchBar);

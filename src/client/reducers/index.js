@@ -1,12 +1,9 @@
-import { SEARCH, FILTER, FACETEDSEARCH } from '../actions';
+import { SEARCH, FILTER, FACETEDSEARCH, MOVESIDEPANEL } from '../actions';
+import Data from '../data';
 
-const reducer = (state, action) => {
+
+const reducer = (state = Data, action) => {
   switch (action.type) {
-    case SEARCH:
-      return {
-        ...state,
-        searchValue: action.value,
-      };
     case FILTER:
       return {
         ...state,
@@ -15,7 +12,17 @@ const reducer = (state, action) => {
     case FACETEDSEARCH:
       return {
         ...state,
-        facetedValue: action.value,
+        filterValue: action.value,
+      };
+    case MOVESIDEPANEL:
+      return {
+        ...state,
+        showSidePanel: !state.showSidePanel,
+      };
+    case SEARCH:
+      return {
+        ...state,
+        searchValue: action.value,
       };
     default:
       return (state);
