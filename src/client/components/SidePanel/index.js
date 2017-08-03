@@ -1,4 +1,5 @@
 import React from 'react';
+<<<<<<< HEAD
 import { Motion, spring } from 'react-motion';
 import PropTypes from 'prop-types';
 import FacetedBox from '../FacetedBox';
@@ -49,6 +50,24 @@ SidePanel.propTypes = {
   displayShowPanel: PropTypes.func.isRequired,
   filter: PropTypes.func.isRequired,
   facetedSearch: PropTypes.func.isRequired,
+=======
+import PropTypes from 'prop-types';
+
+import './side_panel.css';
+import FacetedBox from '../FacetedBox';
+
+const SidePanel = ({ isHidden }) => (
+  <div className="side-panel-container" style={{ display: isHidden ? 'none' : 'flex' }}>
+    <FacetedBox titleName="premier" />
+    <FacetedBox titleName="deuxieme" />
+    <FacetedBox titleName="troisieme" />
+    <FacetedBox titleName="quatrieme" />
+  </div>
+);
+
+SidePanel.propTypes = {
+  isHidden: PropTypes.bool.isRequired,
+>>>>>>> 90f809d7875700e59c659a9be270a13db607ee4b
 };
 
 export default SidePanel;

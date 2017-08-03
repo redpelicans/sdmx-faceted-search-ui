@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+<<<<<<< HEAD
 import Media from 'react-media';
 import PropTypes from 'prop-types';
 import connect from '../../connect';
@@ -68,6 +69,35 @@ class App extends Component {
           language={language}
           showSidePanel={showSidePanel}
           displayShowPanel={this.displayShowPanel}
+=======
+import PropTypes from 'prop-types';
+
+import Connect from '../connect';
+
+import './App.css';
+import SidePanel from '../SidePanel';
+import Container from '../Container';
+
+class App extends Component {
+  state = {
+    isHidden: true,
+  }
+  showOverlayPanel = () => {
+    this.setState(({ isHidden }) => ({ isHidden: !isHidden }));
+  };
+  render() {
+    const { isHidden } = this.state;
+    const { title, langs, resultItems } = this.props;
+    return (
+      <div className="app-container">
+        <SidePanel isHidden={isHidden} />
+        <Container
+          title={title}
+          langs={langs}
+          resultItems={resultItems}
+          showOverlayPanel={this.showOverlayPanel}
+          isHidden={isHidden}
+>>>>>>> 90f809d7875700e59c659a9be270a13db607ee4b
         />
       </div>
     );
@@ -75,6 +105,7 @@ class App extends Component {
 }
 
 App.propTypes = {
+<<<<<<< HEAD
   facetedbox: PropTypes.array.isRequired,
   filterbox: PropTypes.array.isRequired,
   dataflows: PropTypes.array.isRequired,
@@ -123,3 +154,11 @@ const mapDispatchToProps = dispatch => ({
   filter: (value) => dispatch(filter(value)),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(App);
+=======
+  title: PropTypes.string.isRequired,
+  langs: PropTypes.array.isRequired,
+  resultItems: PropTypes.array.isRequired,
+};
+
+export default Connect(App);
+>>>>>>> 90f809d7875700e59c659a9be270a13db607ee4b

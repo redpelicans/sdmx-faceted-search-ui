@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { Component } from 'react';
 import { Button, Collapse } from '@blueprintjs/core';
 import PropTypes from 'prop-types';
@@ -37,6 +38,23 @@ class LanguageSelector extends Component {
 
 LanguageSelector.propTypes = {
   language: PropTypes.array.isRequired,
+=======
+import React from 'react';
+import PropTypes from 'prop-types';
+
+import './language_selector.css';
+
+const LanguageSelector = ({ langs }) => (
+  <div className="language-selector-container">
+    <select>
+      { langs.map(lang => <option key={lang.id}>{lang.value}</option>) }
+    </select>
+  </div>
+);
+
+LanguageSelector.propTypes = {
+  langs: PropTypes.array.isRequired,
+>>>>>>> 90f809d7875700e59c659a9be270a13db607ee4b
 };
 
 export default LanguageSelector;

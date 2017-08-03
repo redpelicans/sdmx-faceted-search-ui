@@ -35,10 +35,17 @@ export default function register() {
 
       if (!isLocalhost) {
         // Is not local host. Just register service worker
+<<<<<<< HEAD
         registerValidSW(swUrl); // eslint-disable-line
       } else {
         // This is running on localhost. Lets check if a service worker still exists or not.
         checkValidServiceWorker(swUrl); // eslint-disable-line
+=======
+        registerValidSW(swUrl); // eslint-disable-line 
+      } else {
+        // This is running on localhost. Lets check if a service worker still exists or not.
+        checkValidServiceWorker(swUrl); // eslint-disable-line  
+>>>>>>> 90f809d7875700e59c659a9be270a13db607ee4b
       }
     });
   }
@@ -48,7 +55,11 @@ function registerValidSW(swUrl) {
   navigator.serviceWorker
     .register(swUrl)
     .then(registration => {
+<<<<<<< HEAD
       registration.onupdatefound = () => { // eslint-disable-line
+=======
+      registration.onupdatefound = () => { // eslint-disable-line 
+>>>>>>> 90f809d7875700e59c659a9be270a13db607ee4b
         const installingWorker = registration.installing;
         installingWorker.onstatechange = () => {
           if (installingWorker.state === 'installed') {
@@ -57,19 +68,31 @@ function registerValidSW(swUrl) {
               // the fresh content will have been added to the cache.
               // It's the perfect time to display a "New content is
               // available; please refresh." message in your web app.
+<<<<<<< HEAD
               console.log('New content is available; please refresh.'); // eslint-disable-line
+=======
+              console.log('New content is available; please refresh.'); // eslint-disable-line 
+>>>>>>> 90f809d7875700e59c659a9be270a13db607ee4b
             } else {
               // At this point, everything has been precached.
               // It's the perfect time to display a
               // "Content is cached for offline use." message.
+<<<<<<< HEAD
               console.log('Content is cached for offline use.'); // eslint-disable-line
+=======
+              console.log('Content is cached for offline use.'); // eslint-disable-line 
+>>>>>>> 90f809d7875700e59c659a9be270a13db607ee4b
             }
           }
         };
       };
     })
     .catch(error => {
+<<<<<<< HEAD
       console.error('Error during service worker registration:', error); // eslint-disable-line
+=======
+      console.error('Error during service worker registration:', error); // eslint-disable-line 
+>>>>>>> 90f809d7875700e59c659a9be270a13db607ee4b
     });
 }
 
@@ -94,7 +117,11 @@ function checkValidServiceWorker(swUrl) {
       }
     })
     .catch(() => {
+<<<<<<< HEAD
       console.log( // eslint-disable-line
+=======
+      console.log( // eslint-disable-line 
+>>>>>>> 90f809d7875700e59c659a9be270a13db607ee4b
         'No internet connection found. App is running in offline mode.',
       );
     });
