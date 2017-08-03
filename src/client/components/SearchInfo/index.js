@@ -8,7 +8,7 @@ const SearchInfo = ({ numberResults, searchValue }) => {
     `${numberResults} results found for ${searchValue}` :
     `${numberResults} result found for ${searchValue}`;
   return (
-    <div className="search-info-container">
+    <div className="searchinfo">
       <p>{formatedResult}</p>
     </div>
   );

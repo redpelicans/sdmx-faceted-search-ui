@@ -9,7 +9,7 @@ import DataFlow from '../DataFlow';
 const ResultsPanel = ({ resultItems, searchValue }) => {
   const display = resultItems.map(result => <DataFlow key={result.id} result={result.value} />);
   return (
-    <div className="results-panel-container">
+    <div className="resultpanel">
       <SearchInfo numberResults={resultItems.length} searchValue={searchValue} />
       <ul>
         {display}

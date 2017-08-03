@@ -1,3 +1,14 @@
-.items-container {
-  display: flex;
+.itemsname
+{
+  cursor:pointer;
+  text-align: left;
+  margin-left: 20px;
+  color:rgb(45,45,45);
+}
+.itemsname:hover
+{
+  text-align: left;
+  margin-left: 20px;
+  color:rgb(45,45,45);
+  text-decoration: underline;
 }

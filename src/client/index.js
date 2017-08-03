@@ -5,6 +5,8 @@ import { Provider } from 'react-redux';
 import App from './components/App';
 import configureStore from './store';
 
+import './index.css';
+
 const title = 'SDMX';
 const langs = [
   { id: 1, value: 'Fr' },
@@ -22,11 +24,11 @@ const searchValue = '';
 const isHidden = true;
 
 const initialState = {
+  isHidden,
   title,
   langs,
   resultItems,
   searchValue,
-  isHidden,
 };
 
 const store = configureStore(initialState);

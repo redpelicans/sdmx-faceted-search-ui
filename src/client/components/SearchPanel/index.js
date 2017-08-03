@@ -5,7 +5,7 @@ import './search_panel.css';
 import SearchBar from '../SearchBar';
 
 const SearchPanel = ({ searchHandler }) => (
-  <div className="search-panel-container">
+  <div className="searchpanel">
     <SearchBar searchHandler={searchHandler} />
   </div>
 );

@@ -6,16 +6,18 @@ import SearchPanel from '../SearchPanel/';
 import ResultsPanel from '../ResultsPanel';
 
 const MainPanel = ({ searchValue, resultItems, searchHandler }) => (
-  <div className="main-panel-container">
-    <SearchPanel
-      className="search-panel-item"
-      searchHandler={searchHandler}
-    />
-    <ResultsPanel
-      className="results-panel-item"
-      resultItems={resultItems}
-      searchValue={searchValue}
-    />
+  <div className="mainpanel">
+    <div className="pt-card mainpanel_inner">
+      <SearchPanel
+        className="search-panel-item"
+        searchHandler={searchHandler}
+      />
+      <ResultsPanel
+        className="results-panel-item"
+        resultItems={resultItems}
+        searchValue={searchValue}
+      />
+    </div>
   </div>
 );
 

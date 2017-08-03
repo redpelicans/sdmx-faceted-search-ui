@@ -3,7 +3,7 @@ import React from 'react';
 import './search_button.css';
 
 const SearchButton = () => (
-  <div className="search-button-container">
+  <div className="searchbuttoncontainer">
     <button
       onClick={(e) => {
         e.preventDefault();

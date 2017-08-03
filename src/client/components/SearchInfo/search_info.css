@@ -1,3 +1,9 @@
-.search-info-container {
-  display: flex;
+.searchinfo
+{
+  text-align: left;
+  width:100%;
+  color:rgb(45,45,45);
+}
+.searchinfo p {
+  margin:0;
 }
