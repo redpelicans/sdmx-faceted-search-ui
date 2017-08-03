@@ -1,33 +1,26 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
+import { withHandlers } from 'recompose';
 
 import './search_bar.css';
 
-const DEBOUNCE_LIMIT = 500; // milisecond
-
-class SearchBar extends Component {
-
-  updateSearchValue = ({ target: { value } }) => {
-    const { getSearchValue } = this.props;
-    clearTimeout(this.timeout);
-    this.timeout = setTimeout(() => getSearchValue(value), DEBOUNCE_LIMIT);
-  }
-
-  render() {
-    return (
-      <div className="search-bar-container">
-        <input
-          type="text"
-          placeholder="Search..."
-          onChange={this.updateSearchValue}
-        />
-      </div>
-    );
-  }
-}
+const SearchBar = ({ handleInput }) => (
+  <div className="search-bar-container">
+    <input
+      type="text"
+      placeholder="Search..."
+      onChange={handleInput}
+    />
+  </div>
+);
 
 SearchBar.propTypes = {
-  getSearchValue: PropTypes.func.isRequired,
+  handleInput: PropTypes.func.isRequired,
 };
 
-export default SearchBar;
+export default withHandlers({
+  handleInput: ({ searchHandler }) => event => {
+    event.preventDefault();
+    searchHandler(event.target.value);
+  },
+})(SearchBar);

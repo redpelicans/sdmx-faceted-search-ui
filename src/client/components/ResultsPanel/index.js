@@ -1,19 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { onlyUpdateForKeys } from 'recompose';
 
 import './results_panel.css';
 import SearchInfo from '../SearchInfo';
 import DataFlow from '../DataFlow';
 
 const ResultsPanel = ({ resultItems, searchValue }) => {
-  const items = resultItems.filter(item =>
-    item.value.match(searchValue) !== null);
-
-  const display = items.map(result => <DataFlow key={result.id} result={result.value} />);
-
+  const display = resultItems.map(result => <DataFlow key={result.id} result={result.value} />);
   return (
     <div className="results-panel-container">
-      <SearchInfo numberResults={items.length} />
+      <SearchInfo numberResults={resultItems.length} searchValue={searchValue} />
       <ul>
         {display}
       </ul>
@@ -26,4 +23,4 @@ ResultsPanel.propTypes = {
   searchValue: PropTypes.string.isRequired,
 };
 
-export default ResultsPanel;
+export default onlyUpdateForKeys(['searchValue'])(ResultsPanel);
