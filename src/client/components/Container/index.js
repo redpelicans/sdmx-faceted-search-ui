@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-<<<<<<< HEAD
 import Media from 'react-media';
 import Header from '../Header';
 import MainPanel from '../MainPanel';
