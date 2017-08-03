@@ -6,11 +6,11 @@ import SidePanelButton from '../SidePanelButton';
 import Title from '../Title';
 import LanguageSelector from '../LanguageSelector';
 
-const Header = ({ title, langs, showOverlayPanel, isHidden }) => (
+const Header = ({ title, langs, setVisibility, isHidden }) => (
   <div>
-    <nav className="pt-navbar pt-intent-success">
+    <nav className="pt-navbar pt-intent-success pt-dark">
       <div className="pt-navbar-group pt-align-left">
-        <SidePanelButton isHidden={isHidden} showOverlayPanel={showOverlayPanel} />
+        <SidePanelButton isHidden={isHidden} setVisibility={setVisibility} />
       </div>
       <div className="pt-navbar-group pt-align-left">
         <Title title={title} />
@@ -29,7 +29,7 @@ const Header = ({ title, langs, showOverlayPanel, isHidden }) => (
 Header.propTypes = {
   title: PropTypes.string.isRequired,
   langs: PropTypes.array.isRequired,
-  showOverlayPanel: PropTypes.func.isRequired,
+  setVisibility: PropTypes.func.isRequired,
   isHidden: PropTypes.bool.isRequired,
 };
 

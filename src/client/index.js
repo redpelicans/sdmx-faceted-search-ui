@@ -21,10 +21,8 @@ const resultItems = [
 ];
 
 const searchValue = '';
-const isHidden = true;
 
 const initialState = {
-  isHidden,
   title,
   langs,
   resultItems,

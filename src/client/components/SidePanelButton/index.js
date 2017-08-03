@@ -20,8 +20,8 @@ SidePanelButton.propTypes = {
 };
 
 export default withHandlers({
-  handleInput: ({ showOverlayPanel }) => event => {
+  handleInput: ({ setVisibility }) => event => {
     event.preventDefault();
-    showOverlayPanel();
+    setVisibility();
   },
 })(SidePanelButton);

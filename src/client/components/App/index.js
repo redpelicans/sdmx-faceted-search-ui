@@ -4,8 +4,8 @@ import { bindActionCreators } from 'redux';
 import { compose, withHandlers, withState } from 'recompose';
 import { createSelector } from 'reselect';
 import PropTypes from 'prop-types';
-import { search, setVisibility } from '../../actions';
 
+import { search, setVisibility } from '../../actions';
 import './App.css';
 import SidePanel from '../SidePanel';
 import Container from '../Container';
@@ -17,7 +17,7 @@ const App = ({ title, langs, resultItems, searchValue, isHidden, search: doSearc
       title={title}
       langs={langs}
       resultItems={resultItems}
-      showOverlayPanel={doSetVisibility}
+      setVisibility={doSetVisibility}
       isHidden={isHidden}
       searchHandler={doSearch}
       searchValue={searchValue}
@@ -61,7 +61,7 @@ App.propTypes = {
 const enhance = compose(
   connect(mapStateToProps, mapDispatchToProps),
   withState('isHidden', 'doSetVisibility', true),
-  withHandlers({ togglePanel: ({ doSetVisibility, isHidden }) => () => doSetVisibility(!isHidden) }),
+  withHandlers({ togglePanel: ({ doSetVisibility }) => () => doSetVisibility() }),
 );
 
 export default enhance(App);
