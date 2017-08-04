@@ -1,24 +1,27 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { compose, withHandlers, withState } from 'recompose';
+import { compose, withStateHandlers } from 'recompose';
 import { createSelector } from 'reselect';
 import PropTypes from 'prop-types';
 
-import { search, setVisibility } from '../../actions';
+import { search } from '../../actions';
 import './App.css';
 import SidePanel from '../SidePanel';
 import Container from '../Container';
 
-const App = ({ title, langs, resultItems, searchValue, isHidden, search: doSearch, setVisibility: doSetVisibility }) => (
+const App = ({ title, langs, resultItems, searchValue, isHidden, search: doSearch, toggleIsHiddenHandler }) => (
   <div className="App">
-    <SidePanel isHidden={isHidden} />
+    <SidePanel
+      isHidden={isHidden}
+      toggleIsHiddenHandler={toggleIsHiddenHandler}
+    />
     <Container
       title={title}
       langs={langs}
       resultItems={resultItems}
-      setVisibility={doSetVisibility}
       isHidden={isHidden}
+      toggleIsHiddenHandler={toggleIsHiddenHandler}
       searchHandler={doSearch}
       searchValue={searchValue}
     />
@@ -36,14 +39,12 @@ const filterDataFlows = createSelector(
 const mapStateToProps = state => ({
   title: state.title,
   langs: state.langs,
-  isHidden: state.isHidden,
   searchValue: state.searchValue,
   resultItems: filterDataFlows(state),
 });
 
 const actions = {
   search,
-  setVisibility,
 };
 
 const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);
@@ -53,15 +54,23 @@ App.propTypes = {
   langs: PropTypes.array.isRequired,
   resultItems: PropTypes.array.isRequired,
   search: PropTypes.func.isRequired,
-  setVisibility: PropTypes.func.isRequired,
+  toggleIsHiddenHandler: PropTypes.func.isRequired,
   searchValue: PropTypes.string.isRequired,
   isHidden: PropTypes.bool.isRequired,
 };
 
 const enhance = compose(
   connect(mapStateToProps, mapDispatchToProps),
-  withState('isHidden', 'doSetVisibility', false),
-  withHandlers({ togglePanel: ({ doSetVisibility }) => () => doSetVisibility() }),
+  withStateHandlers(
+    ({ initialIsHidden = true }) => ({
+      isHidden: initialIsHidden,
+    }),
+    {
+      toggleIsHiddenHandler: ({ isHidden }) => () => ({
+        isHidden: !isHidden,
+      }),
+    },
+  ),
 );
 
 export default enhance(App);

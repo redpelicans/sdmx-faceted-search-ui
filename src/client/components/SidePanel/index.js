@@ -4,9 +4,11 @@ import { onlyUpdateForKeys } from 'recompose';
 
 import './side_panel.css';
 import FacetedBox from '../FacetedBox';
+import SidePanelButton from '../SidePanelButton';
 
-const SidePanel = ({ isHidden }) => (
+const SidePanel = ({ isHidden, toggleIsHiddenHandler }) => (
   <div className="sidepanel" style={{ display: isHidden ? 'none' : 'flex' }}>
+    <SidePanelButton isHidden={isHidden} toggleIsHiddenHandler={toggleIsHiddenHandler} />
     <FacetedBox titleName="premier" />
     <FacetedBox titleName="deuxieme" />
     <FacetedBox titleName="troisieme" />
@@ -16,6 +18,7 @@ const SidePanel = ({ isHidden }) => (
 
 SidePanel.propTypes = {
   isHidden: PropTypes.bool.isRequired,
+  toggleIsHiddenHandler: PropTypes.func.isRequired,
 };
 
 export default onlyUpdateForKeys(['isHidden'])(SidePanel);

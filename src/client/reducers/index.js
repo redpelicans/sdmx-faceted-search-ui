@@ -1,4 +1,4 @@
-import { SEARCH, SET_VISIBILITY } from '../actions';
+import { SEARCH } from '../actions';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -6,11 +6,6 @@ const reducer = (state, action) => {
       return {
         ...state,
         searchValue: action.value,
-      };
-    case SET_VISIBILITY:
-      return {
-        ...state,
-        isHidden: !state.isHidden,
       };
     default:
       return state;
