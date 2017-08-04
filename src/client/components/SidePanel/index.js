@@ -6,7 +6,7 @@ import './side_panel.css';
 import FacetedBox from '../FacetedBox';
 
 const SidePanel = ({ isHidden }) => (
-  <div className="side-panel-container" style={{ display: isHidden ? 'none' : 'flex' }}>
+  <div className="sidepanel" style={{ display: isHidden ? 'none' : 'flex' }}>
     <FacetedBox titleName="premier" />
     <FacetedBox titleName="deuxieme" />
     <FacetedBox titleName="troisieme" />

@@ -2,23 +2,26 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { onlyUpdateForKeys } from 'recompose';
 
-import './header.css';
 import SidePanelButton from '../SidePanelButton';
 import Title from '../Title';
 import LanguageSelector from '../LanguageSelector';
 
-const Header = ({ title, langs, showOverlayPanel, isHidden }) => (
+const Header = ({ title, langs, setVisibility, isHidden }) => (
   <div>
-    <nav className="pt-navbar pt-dark">
-      <span className="pt-navbar-group pt-align-left">
-        <SidePanelButton isHidden={isHidden} showOverlayPanel={showOverlayPanel} />
-      </span>
-      <span className="pt-navbar-group">
+    <nav className="pt-navbar pt-intent-success pt-dark">
+      <div className="pt-navbar-group pt-align-left">
+        <SidePanelButton isHidden={isHidden} setVisibility={setVisibility} />
+      </div>
+      <div className="pt-navbar-group pt-align-left">
         <Title title={title} />
-      </span>
-      <span className="pt-navbar-group pt-align-right">
-        <LanguageSelector langs={langs} />
-      </span>
+      </div>
+      <div className="pt-navbar-group pt-align-right">
+        <span className="pt-icon-large pt-icon-shopping-cart pt-intent-primary" />
+        <div className="pt-navbar-divider" />
+        <LanguageSelector
+          langs={langs}
+        />
+      </div>
     </nav>
   </div>
 );
@@ -26,7 +29,7 @@ const Header = ({ title, langs, showOverlayPanel, isHidden }) => (
 Header.propTypes = {
   title: PropTypes.string.isRequired,
   langs: PropTypes.array.isRequired,
-  showOverlayPanel: PropTypes.func.isRequired,
+  setVisibility: PropTypes.func.isRequired,
   isHidden: PropTypes.bool.isRequired,
 };
 

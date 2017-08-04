@@ -5,8 +5,8 @@ import './faceted_box.css';
 import Items from '../Items';
 
 const FacetedBox = ({ titleName }) => (
-  <div className="faceted-box-container">
-    <p>{ titleName }</p>
+  <div className="pt-card pt-elevation-0 facetedbox">
+    <p className="facetedboxname">{titleName}</p>
     <ul>
       <Items />
     </ul>

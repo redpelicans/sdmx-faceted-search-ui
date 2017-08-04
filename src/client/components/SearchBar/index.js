@@ -5,10 +5,11 @@ import { withHandlers } from 'recompose';
 import './search_bar.css';
 
 const SearchBar = ({ handleInput }) => (
-  <div className="search-bar-container">
+  <div className="searchbarcontainer">
     <input
       type="text"
       placeholder="Search..."
+      className="pt-input pt-fill"
       onChange={handleInput}
     />
   </div>

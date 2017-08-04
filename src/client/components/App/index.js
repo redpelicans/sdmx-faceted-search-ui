@@ -2,38 +2,43 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { compose, withHandlers, withState } from 'recompose';
+import { createSelector } from 'reselect';
 import PropTypes from 'prop-types';
-import { search, setVisibility } from '../../actions';
 
+import { search, setVisibility } from '../../actions';
 import './App.css';
 import SidePanel from '../SidePanel';
 import Container from '../Container';
 
-const filterDataFlows = (resultList, keyWord) =>
-  resultList.filter(item => item.value.match(keyWord.toLowerCase()) !== null);
-
 const App = ({ title, langs, resultItems, searchValue, isHidden, search: doSearch, setVisibility: doSetVisibility }) => (
-  <div className="app-container">
-    <div>
-      <SidePanel isHidden={isHidden} />
-      <Container
-        title={title}
-        langs={langs}
-        resultItems={resultItems}
-        showOverlayPanel={doSetVisibility}
-        isHidden={isHidden}
-        searchHandler={doSearch}
-        searchValue={searchValue}
-      />
-    </div>
+  <div className="App">
+    <SidePanel isHidden={isHidden} />
+    <Container
+      title={title}
+      langs={langs}
+      resultItems={resultItems}
+      setVisibility={doSetVisibility}
+      isHidden={isHidden}
+      searchHandler={doSearch}
+      searchValue={searchValue}
+    />
   </div>
+);
+
+const getList = state => state.resultItems;
+const getSearchValue = state => state.searchValue;
+
+const filterDataFlows = createSelector(
+  [getList, getSearchValue],
+  (resultItems, searchValue) => resultItems.filter(item => item.value.match(searchValue.toLowerCase()) !== null),
 );
 
 const mapStateToProps = state => ({
   title: state.title,
   langs: state.langs,
-  resultItems: filterDataFlows(state.resultItems, state.searchValue),
+  isHidden: state.isHidden,
   searchValue: state.searchValue,
+  resultItems: filterDataFlows(state),
 });
 
 const actions = {
@@ -55,8 +60,8 @@ App.propTypes = {
 
 const enhance = compose(
   connect(mapStateToProps, mapDispatchToProps),
-  withState('isHidden', 'doSetVisibility', true),
-  withHandlers({ togglePanel: ({ doSetVisibility, isHidden }) => () => doSetVisibility(!isHidden) }),
+  withState('isHidden', 'doSetVisibility', false),
+  withHandlers({ togglePanel: ({ doSetVisibility }) => () => doSetVisibility() }),
 );
 
 export default enhance(App);

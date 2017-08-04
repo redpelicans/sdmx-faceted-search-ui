@@ -3,7 +3,7 @@ import React from 'react';
 import './items.css';
 
 const Items = () => (
-  <li className="items-container" >Items</li>
+  <li className="items" >Items</li>
 );
 
 export default Items;
