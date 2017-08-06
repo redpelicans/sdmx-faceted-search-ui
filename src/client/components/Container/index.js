@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Media from 'react-media';
 import Header from '../Header';
 import MainPanel from '../MainPanel';
 import './Container.css';
 
-const Container = ({ title, dataflows, language, showSidePanel, displayShowPanel, search, searchValue }) => (
+const Container = ({ title, sortTypes, dataflows, language, showSidePanel, displayShowPanel, search, searchValue, marques, sortByMark }) => (
   <div className="container">
     <Header
       title={title}
@@ -13,26 +12,15 @@ const Container = ({ title, dataflows, language, showSidePanel, displayShowPanel
       showSidePanel={showSidePanel}
       displayShowPanel={displayShowPanel}
     />
-    <Media query={{ maxWidth: 599 }}>
-      {matches => matches ? (
-        <MainPanel
-          size="100"
-          dataflows={dataflows}
-          displayShowPanel={displayShowPanel}
-          search={search}
-          searchValue={searchValue}
-        />
-            ) : (
-              <MainPanel
-                size="80"
-                dataflows={dataflows}
-                displayShowPanel={displayShowPanel}
-                search={search}
-                searchValue={searchValue}
-              />
-            )}
-    </Media>
-
+    <MainPanel
+      dataflows={dataflows}
+      marques={marques}
+      displayShowPanel={displayShowPanel}
+      search={search}
+      searchValue={searchValue}
+      sortByMark={sortByMark}
+      sortTypes={sortTypes}
+    />
   </div>
 );
 
@@ -44,6 +32,9 @@ Container.propTypes = {
   displayShowPanel: PropTypes.func.isRequired,
   search: PropTypes.func.isRequired,
   searchValue: PropTypes.string.isRequired,
+  marques: PropTypes.array.isRequired,
+  sortByMark: PropTypes.func.isRequired,
+  sortTypes: PropTypes.array.isRequired,
 };
 
 export default Container;

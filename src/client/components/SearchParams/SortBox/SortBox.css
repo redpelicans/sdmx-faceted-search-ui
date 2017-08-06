@@ -15,9 +15,31 @@
 .sortboxcontent
 {
   position:absolute;
-  width:200px;
-  height:200px;
-  margin-left:-200px;
-  top:10px;
+  width:150px;
+  margin-left:-150px;
+  top:4px;
   background-color:white;
+  text-align: right;
+  padding: 4px;
+}
+.sortboxcontent_elem
+{
+  display: flex;
+  justify-content: flex-end;
+  align-content: center;
+  width:100%;
+  background-color:none;
+  padding-top:5px;
+  padding-bottom:5x;
+  padding-right:10px;
+}
+.sortboxcontent_elem:hover
+{
+  background-color:rgb(240,240,240);
+  cursor: pointer;
+}
+.sortboxcontent_elem p
+{ 
+  margin: 0;
+  margin-bottom: 5px;
 }

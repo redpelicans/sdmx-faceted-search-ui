@@ -6,12 +6,12 @@ import './DataFlow.css';
 
 const DataFlow = ({ data, direction }) => (
   <div className="pt-card pt-elevation-0 dataflowcontainer" style={{ flexDirection: direction }}>
-    <div className="imagecontainer">
+    <div className="pt-card imagecontainer">
       <img alt="" className="image" src={data.Image} />
     </div>
     <div className="dataflowinfo">
       <p className="dataflowname">{data.Name}</p>
-      <p className="price">{data.Prix} $</p>
+      <h3 className="price">{data.Prix} $</h3>
     </div>
   </div>
 );

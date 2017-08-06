@@ -6,26 +6,31 @@ import ResultPanel from '../ResultPanel';
 import './MainPanel.css';
 
 
-const MainPanel = ({ displayShowPanel, size, dataflows, search, searchValue }) => (
+const MainPanel = ({ displayShowPanel, sortTypes, dataflows, search, searchValue, marques, sortByMark }) => (
   <div className="mainpanel">
-    <div style={{ width: `${size}%` }} className="pt-card mainpanel_inner">
+    <div className="pt-card mainpanel_inner">
       <SearchPanel
         search={search}
       />
       <ResultPanel
         dataflows={dataflows}
+        marques={marques}
         searchValue={searchValue}
         displayShowPanel={displayShowPanel}
+        sortByMark={sortByMark}
+        sortTypes={sortTypes}
       />
     </div>
   </div>);
 
 MainPanel.propTypes = {
-  dataflows: PropTypes.array.isRequired,
-  displayShowPanel: PropTypes.func.isRequired,
-  size: PropTypes.string.isRequired,
-  search: PropTypes.func.isRequired,
   searchValue: PropTypes.string.isRequired,
+  displayShowPanel: PropTypes.func.isRequired,
+  search: PropTypes.func.isRequired,
+  sortByMark: PropTypes.func.isRequired,
+  dataflows: PropTypes.array.isRequired,
+  marques: PropTypes.array.isRequired,
+  sortTypes: PropTypes.array.isRequired,
 };
 
 export default MainPanel;

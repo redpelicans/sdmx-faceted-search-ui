@@ -3,6 +3,7 @@ const Data = {
   searchValue: '',
   facetedValue: '',
   filterValue: '',
+  markValue: '',
   title: 'SDMX',
   language: [
     {
@@ -14,6 +15,9 @@ const Data = {
       name: 'En',
     },
   ],
+  marques: [{ id: 0, name: 'DECATHLON' }, { id: 1, name: 'Giant' }, { id: 2, name: 'SCOTT' }, { id: 3, name: 'Cube' },
+  { id: 4, name: 'Specialized' }],
+  sortTypes: [{ id: 0, name: 'Durée' }, { id: 1, name: 'Prix' }, { id: 2, name: 'Distance' }, { id: 3, name: 'Etats' }],
   dataflows: [
     {
       id: 0,
@@ -22,7 +26,7 @@ const Data = {
       Image: 'http://www.cyclesduloir.com/media/g_vignette/118312',
       Categories: 'sport',
       Type: 'Vélo tout terrain',
-      Marque: 'SCOTT',
+      Mark: 'SCOTT',
       Vente: 'enchère',
     },
     {
@@ -32,7 +36,7 @@ const Data = {
       Image: 'https://www.decathlon.fr/media/834/8343668/big_9c4a3fe98ffc40538619ed177c8b15ea.jpg',
       Categories: 'sport',
       Type: 'Vélo BMX',
-      Marque: 'GT',
+      Mark: 'GT',
       Vente: 'achat immédiat',
     },
     {
@@ -42,7 +46,7 @@ const Data = {
       Image: 'https://static.cyclelab.eu/velos/scott/2007/highres/249692.jpg',
       Categories: 'sport',
       Type: 'Vélo de route',
-      Marque: 'GT',
+      Mark: 'GT',
       Vente: 'enchère',
     },
     {
@@ -52,7 +56,7 @@ const Data = {
       Image: 'https://www.topvelo.fr/documents/Image/different-type-vtt-2.jpg',
       Categories: 'sport',
       Type: 'Vélo tout terrain',
-      Marque: 'DECATHLON',
+      Mark: 'DECATHLON',
       Vente: 'achat immédiat',
     },
     {
@@ -62,7 +66,7 @@ const Data = {
       Image: 'https://www.wayscral.com/493-thickbox_default/493-velo-a-assistance-electrique-wayscral-city-415.jpg',
       Categories: 'sport',
       Type: 'Vélo électrique',
-      Marque: 'GT',
+      Mark: 'GT',
       Vente: 'enchère',
     },
     {
@@ -72,7 +76,7 @@ const Data = {
       Image: 'https://i.ebayimg.com/images/g/vfcAAOSwnHZYY-yb/s-l300.jpg',
       Categories: 'sport',
       Type: 'Vélo pliable',
-      Marque: 'DECATHLON',
+      Mark: 'DECATHLON',
       Vente: 'enchère',
     },
     {
@@ -82,7 +86,7 @@ const Data = {
       Image: 'https://www.decathlon.fr/media/836/8360776/big_dd156c57efc14504b0919bfc5aa53b17.jpg',
       Categories: 'Camping, randonnée',
       Type: '',
-      Marque: 'DECATHLON',
+      Mark: 'DECATHLON',
       Vente: 'enchère',
     },
     {
@@ -92,7 +96,7 @@ const Data = {
       Image: 'http://www.cyclesduloir.com/media/g_vignette/118312',
       Categories: 'sport',
       Type: 'Vélo tout terrain',
-      Marque: 'SCOTT',
+      Mark: 'SCOTT',
       Vente: 'enchère',
     },
     {
@@ -102,7 +106,7 @@ const Data = {
       Image: 'https://www.decathlon.fr/media/834/8343668/big_9c4a3fe98ffc40538619ed177c8b15ea.jpg',
       Categories: 'sport',
       Type: 'Vélo BMX',
-      Marque: 'GT',
+      Mark: 'GT',
       Vente: 'achat immédiat',
     },
     {
@@ -112,7 +116,7 @@ const Data = {
       Image: 'https://static.cyclelab.eu/velos/scott/2007/highres/249692.jpg',
       Categories: 'sport',
       Type: 'Vélo de route',
-      Marque: 'GT',
+      Mark: 'GT',
       Vente: 'enchère',
     },
     {
@@ -122,7 +126,7 @@ const Data = {
       Image: 'https://www.topvelo.fr/documents/Image/different-type-vtt-2.jpg',
       Categories: 'sport',
       Type: 'Vélo tout terrain',
-      Marque: 'DECATHLON',
+      Mark: 'DECATHLON',
       Vente: 'achat immédiat',
     },
     {
@@ -132,7 +136,7 @@ const Data = {
       Image: 'https://www.wayscral.com/493-thickbox_default/493-velo-a-assistance-electrique-wayscral-city-415.jpg',
       Categories: 'sport',
       Type: 'Vélo électrique',
-      Marque: 'GT',
+      Mark: 'GT',
       Vente: 'enchère',
     },
     {
@@ -142,7 +146,7 @@ const Data = {
       Image: 'https://i.ebayimg.com/images/g/vfcAAOSwnHZYY-yb/s-l300.jpg',
       Categories: 'sport',
       Type: 'Vélo pliable',
-      Marque: 'DECATHLON',
+      Mark: 'DECATHLON',
       Vente: 'enchère',
     },
     {
@@ -152,7 +156,7 @@ const Data = {
       Image: 'https://www.decathlon.fr/media/836/8360776/big_dd156c57efc14504b0919bfc5aa53b17.jpg',
       Categories: 'Camping, randonnée',
       Type: '',
-      Marque: 'DECATHLON',
+      Mark: 'DECATHLON',
       Vente: 'enchère',
     },
   ],
@@ -208,32 +212,6 @@ const Data = {
         {
           id: 5,
           name: 'All',
-        },
-      ],
-    },
-    {
-      id: 1,
-      name: 'Marque',
-      filtres: [
-        {
-          id: 0,
-          name: 'DECATHLON',
-        },
-        {
-          id: 1,
-          name: 'SCOTT',
-        },
-        {
-          id: 2,
-          name: 'SPECIALIZED',
-        },
-        {
-          id: 3,
-          name: 'GT',
-        },
-        {
-          id: 4,
-          name: 'TOUT',
         },
       ],
     },

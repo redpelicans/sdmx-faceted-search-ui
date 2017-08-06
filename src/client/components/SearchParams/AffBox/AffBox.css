@@ -1,0 +1,15 @@
+.aff_box_container
+{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-left:25px;
+  margin-bottom:10px;
+}
+.aff_box_container p
+{
+  padding-right:15px;
+  margin-right:0;
+  margin-bottom: 0;
+}
+
