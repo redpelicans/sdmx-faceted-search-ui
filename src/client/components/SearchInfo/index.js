@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { onlyUpdateForKeys } from 'recompose';
 
 import './search_info.css';
 
@@ -9,7 +10,7 @@ const SearchInfo = ({ numberResults, searchValue }) => {
     `${numberResults} result found for ${searchValue}`;
   return (
     <div className="searchinfo">
-      <p>{formatedResult}</p>
+      <p>{searchValue && formatedResult}</p>
     </div>
   );
 };
@@ -19,4 +20,4 @@ SearchInfo.propTypes = {
   searchValue: PropTypes.string.isRequired,
 };
 
-export default SearchInfo;
+export default onlyUpdateForKeys(['numberResults'])(SearchInfo);
