@@ -19,9 +19,11 @@ SidePanelButton.propTypes = {
   isHidden: PropTypes.bool.isRequired,
 };
 
-export default withHandlers({
-  handleInput: ({ setVisibility }) => event => {
+const handler = withHandlers({
+  handleInput: ({ toggleIsHiddenHandler }) => event => {
     event.preventDefault();
-    setVisibility();
+    toggleIsHiddenHandler();
   },
 })(SidePanelButton);
+
+export default handler;

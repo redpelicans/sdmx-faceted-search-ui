@@ -4,17 +4,18 @@ import PropTypes from 'prop-types';
 import './faceted_box.css';
 import Items from '../Items';
 
-const FacetedBox = ({ titleName }) => (
+const FacetedBox = ({ handleInput }) => (
   <div className="pt-card pt-elevation-0 facetedbox">
-    <p className="facetedboxname">{titleName}</p>
-    <ul>
-      <Items />
-    </ul>
+    <Items titleName="vtt" handleInput={handleInput} />
+    <Items titleName="velo de ville" handleInput={handleInput} />
+    <Items titleName="velo de course" handleInput={handleInput} />
+    <Items titleName="velo electrique" handleInput={handleInput} />
+    <Items titleName="all" handleInput={handleInput} />
   </div>
 );
 
 FacetedBox.propTypes = {
-  titleName: PropTypes.string.isRequired,
+  handleInput: PropTypes.func.isRequired,
 };
 
 export default FacetedBox;
