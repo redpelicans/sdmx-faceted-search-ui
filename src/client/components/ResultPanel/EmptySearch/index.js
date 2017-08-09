@@ -3,7 +3,7 @@ import React from 'react';
 import './EmptySearch.css';
 
 const EmptySearch = () => (
-  <div className="pt-callout pt-intent-primary pt-icon-info-sign emptysearch">
+  <div className="pt-callout pt-icon-info-sign pt-intent-primary emptysearch">
     <h5>Astuces de recherche</h5>
     <ul className="pt-list">
       <li>Vérifiez que l orthographe des mots-clés est correcte</li>

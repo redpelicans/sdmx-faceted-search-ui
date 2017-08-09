@@ -1,10 +1,10 @@
 .facetedbox
 {
-  width:90%;
+  width:210px;
   border-radius: 2px;
   overflow: hidden;
   color:rgb(45,45,45);
-  margin-top:25px;
+  margin-top:20px;
   border-bottom: 1px solid #ccc;
   padding-bottom: 30px;
 }
