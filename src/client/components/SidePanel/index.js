@@ -3,23 +3,26 @@ import { Motion, spring } from 'react-motion';
 import PropTypes from 'prop-types';
 import FacetedBox from '../FacetedBox';
 import FilterBox from '../FilterBox';
+import BurgerButton from './BurgerButton';
 
 import './SidePanel.css';
 
 
-const SidePanel = ({ facetedbox, filterbox, showSidePanel, moveSidePanel, behavior, filter, facetedSearch }) => (
+const SidePanel = ({ facetedbox, filterbox, showSidePanel, moveSidePanel, filter, facetedSearch }) => (
   <Motion style={{ x: spring(showSidePanel ? -240 : 0) }}>
     {({ x }) =>
       (<div
         style={{
           marginLeft: `${x}px`,
-          position: behavior,
         }}
         className="sidepanel"
       >
-        <div onClick={moveSidePanel} className="crosscontainer">
+        {showSidePanel && <BurgerButton
+          displayShowPanel={moveSidePanel}
+        />}
+        {!showSidePanel && <div onClick={moveSidePanel} className="crosscontainer">
           <span className="pt-icon-large pt-icon-cross" />
-        </div>
+        </div>}
         {facetedbox.map(facetedelem => (
           <FacetedBox
             key={facetedelem.id}
@@ -45,7 +48,6 @@ SidePanel.propTypes = {
   facetedbox: PropTypes.array.isRequired,
   filterbox: PropTypes.array.isRequired,
   showSidePanel: PropTypes.bool.isRequired,
-  behavior: PropTypes.string.isRequired,
   moveSidePanel: PropTypes.func.isRequired,
   filter: PropTypes.func.isRequired,
   facetedSearch: PropTypes.func.isRequired,

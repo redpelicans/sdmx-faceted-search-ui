@@ -1,4 +1,4 @@
-import { SEARCH, FILTER, FACETEDSEARCH, MOVESIDEPANEL, SORTBYMARK } from '../actions';
+import { SEARCH, FILTER, FACETEDSEARCH, MOVESIDEPANEL } from '../actions';
 import Data from '../data';
 
 
@@ -23,11 +23,6 @@ const reducer = (state = Data, action) => {
       return {
         ...state,
         searchValue: action.value,
-      };
-    case SORTBYMARK:
-      return {
-        ...state,
-        markValue: action.mark,
       };
     default:
       return (state);

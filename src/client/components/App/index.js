@@ -1,42 +1,27 @@
 import React from 'react';
-import Media from 'react-media';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { createSelector } from 'reselect';
 import { connect } from 'react-redux';
 import { compose, withHandlers, withState } from 'recompose';
+
 import Container from '../Container';
 import SidePanel from '../SidePanel';
-import { search, filter, facetedSearch, moveSidePanel, sortByMark } from '../../actions';
+import { search, filter, facetedSearch, moveSidePanel } from '../../actions';
 import './App.css';
 
 const App = ({ facetedbox, sortTypes, filterbox, title, searchValue, marques,
   language, dataflows, showSidePanel, facetedSearch: doFacetedSearch, filter: doFilter,
   search: doSearch, toggleshowSidePanelHandler: doMoveSidePanel, sortByMark: doSortByMark }) => (
     <div className="App">
-      <Media query="(max-width: 599px)">
-        {matches => matches ? (
-          <SidePanel
-            facetedbox={facetedbox}
-            filterbox={filterbox}
-            showSidePanel={showSidePanel}
-            moveSidePanel={doMoveSidePanel}
-            behavior="absolute"
-            filter={doFilter}
-            FacetedSearch={doFacetedSearch}
-          />
-         ) : (
-           <SidePanel
-             facetedbox={facetedbox}
-             filterbox={filterbox}
-             showSidePanel={showSidePanel}
-             moveSidePanel={doMoveSidePanel}
-             behavior="relative"
-             filter={doFilter}
-             facetedSearch={doFacetedSearch}
-           />
-         )}
-      </Media>
+      <SidePanel
+        facetedbox={facetedbox}
+        filterbox={filterbox}
+        showSidePanel={showSidePanel}
+        moveSidePanel={doMoveSidePanel}
+        filter={doFilter}
+        FacetedSearch={doFacetedSearch}
+      />
       <Container
         title={title}
         dataflows={dataflows}
@@ -73,15 +58,11 @@ const getDataFlows = state => state.dataflows;
 const getSearchValue = state => state.searchValue;
 const getFilterValue = state => state.filterValue;
 const getFacetedValue = state => state.facetedValue;
-const getMarkValue = state => state.markValue;
 
 const filterDataFlows = createSelector(
-  [getDataFlows, getSearchValue, getFilterValue, getFacetedValue, getMarkValue],
-  (dataflows, searchValue, filterValue, facetedValue, markValue) => {
+  [getDataFlows, getSearchValue, getFilterValue, getFacetedValue],
+  (dataflows, searchValue, filterValue, facetedValue) => {
     let newDataflows = dataflows;
-    if (markValue) {
-      newDataflows = newDataflows.filter(li => (li.Mark === markValue));
-    }
     if (facetedValue && facetedValue !== 'All') {
       newDataflows = newDataflows.filter(li => (li.Categories === facetedValue));
     }
@@ -98,7 +79,7 @@ const filterDataFlows = createSelector(
 );
 
 
-const actions = { search, filter, facetedSearch, moveSidePanel, sortByMark };
+const actions = { search, filter, facetedSearch, moveSidePanel };
 
 const mapStateToProps = state => ({
   title: state.title,
