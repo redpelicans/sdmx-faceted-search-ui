@@ -10,9 +10,9 @@ import SidePanel from '../SidePanel';
 import { search, filter, facetedSearch, moveSidePanel } from '../../actions';
 import './App.css';
 
-const App = ({ facetedbox, sortTypes, filterbox, title, searchValue, marques,
-  language, dataflows, showSidePanel, facetedSearch: doFacetedSearch, filter: doFilter,
-  search: doSearch, toggleshowSidePanelHandler: doMoveSidePanel, sortByMark: doSortByMark }) => (
+const App = ({ facetedbox, filterbox, title, searchValue,
+  languages, dataflows, showSidePanel, facetedSearch: doFacetedSearch, filter: doFilter,
+  search: doSearch, toggleshowSidePanelHandler: doMoveSidePanel }) => (
     <div className="App">
       <SidePanel
         facetedbox={facetedbox}
@@ -20,19 +20,16 @@ const App = ({ facetedbox, sortTypes, filterbox, title, searchValue, marques,
         showSidePanel={showSidePanel}
         moveSidePanel={doMoveSidePanel}
         filter={doFilter}
-        FacetedSearch={doFacetedSearch}
+        facetedSearch={doFacetedSearch}
       />
       <Container
         title={title}
         dataflows={dataflows}
-        marques={marques}
         search={doSearch}
         searchValue={searchValue}
-        language={language}
+        languages={languages}
         showSidePanel={showSidePanel}
         displayShowPanel={doMoveSidePanel}
-        sortByMark={doSortByMark}
-        sortTypes={sortTypes}
       />
     </div>
 );
@@ -42,16 +39,13 @@ App.propTypes = {
   filterbox: PropTypes.array.isRequired,
   dataflows: PropTypes.array.isRequired,
   title: PropTypes.string.isRequired,
-  language: PropTypes.array.isRequired,
+  languages: PropTypes.array.isRequired,
   searchValue: PropTypes.string.isRequired,
   search: PropTypes.func.isRequired,
   filter: PropTypes.func.isRequired,
   facetedSearch: PropTypes.func.isRequired,
   toggleshowSidePanelHandler: PropTypes.func.isRequired,
   showSidePanel: PropTypes.bool.isRequired,
-  marques: PropTypes.array.isRequired,
-  sortByMark: PropTypes.func.isRequired,
-  sortTypes: PropTypes.array.isRequired,
 };
 
 const getDataFlows = state => state.dataflows;
@@ -85,12 +79,11 @@ const mapStateToProps = state => ({
   title: state.title,
   facetedbox: state.facetedbox,
   filterbox: state.filterbox,
-  language: state.language,
+  languages: state.languages,
   dataflows: filterDataFlows(state),
   searchValue: state.searchValue,
   filterValue: state.filterValue,
   facetedValue: state.facetedValue,
-  marques: state.marques,
   sortTypes: state.sortTypes,
 });
 

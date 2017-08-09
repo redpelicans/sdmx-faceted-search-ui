@@ -7,8 +7,8 @@ import './DataFlow.css';
 const DataFlow = ({ data }) => (
   <div className="pt-card pt-elevation-0 dataflowcontainer">
     <p className="name">{data.name}</p>
-    <p>Agency: {data.agency}</p>
-    <p>Version: {data.version}</p>
+    <p className="agency" >Agency: {data.agency}</p>
+    <p className="version">Version: {data.version}</p>
   </div>
 );
 

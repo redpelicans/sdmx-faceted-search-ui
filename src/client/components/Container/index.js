@@ -4,37 +4,32 @@ import Header from '../Header';
 import MainPanel from '../MainPanel';
 import './Container.css';
 
-const Container = ({ title, sortTypes, dataflows, language, showSidePanel, displayShowPanel, search, searchValue, marques, sortByMark }) => (
-  <div className="container">
-    <Header
-      title={title}
-      language={language}
-      showSidePanel={showSidePanel}
-      displayShowPanel={displayShowPanel}
-    />
-    <MainPanel
-      dataflows={dataflows}
-      marques={marques}
-      displayShowPanel={displayShowPanel}
-      search={search}
-      searchValue={searchValue}
-      sortByMark={sortByMark}
-      sortTypes={sortTypes}
-    />
-  </div>
+const Container = ({ title, dataflows, languages, showSidePanel,
+  displayShowPanel, search, searchValue }) => (
+    <div className="container">
+      <Header
+        title={title}
+        languages={languages}
+        showSidePanel={showSidePanel}
+        displayShowPanel={displayShowPanel}
+      />
+      <MainPanel
+        dataflows={dataflows}
+        displayShowPanel={displayShowPanel}
+        search={search}
+        searchValue={searchValue}
+      />
+    </div>
 );
 
 Container.propTypes = {
   title: PropTypes.string.isRequired,
   dataflows: PropTypes.array.isRequired,
-  language: PropTypes.array.isRequired,
+  languages: PropTypes.array.isRequired,
   showSidePanel: PropTypes.bool.isRequired,
   displayShowPanel: PropTypes.func.isRequired,
   search: PropTypes.func.isRequired,
   searchValue: PropTypes.string.isRequired,
-  marques: PropTypes.array.isRequired,
-  sortByMark: PropTypes.func.isRequired,
-  sortTypes: PropTypes.array.isRequired,
 };
 
 export default Container;

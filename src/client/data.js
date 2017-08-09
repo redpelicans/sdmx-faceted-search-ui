@@ -3,93 +3,31 @@ const Data = {
   searchValue: '',
   facetedValue: '',
   filterValue: '',
-  markValue: '',
   title: 'SDMX Faceted Search',
-  language: [
+  languages: [
     {
       id: 0,
-      name: 'FR',
-    },
-    {
-      id: 1,
       name: 'En',
     },
-  ],
-  marques: [{ id: 0, name: 'DECATHLON' }, { id: 1, name: 'Giant' }, { id: 2, name: 'SCOTT' }, { id: 3, name: 'Cube' },
-  { id: 4, name: 'Specialized' }],
-  sortTypes: [{ id: 0, name: 'Durée' }, { id: 1, name: 'Prix' }, { id: 2, name: 'Distance' }, { id: 3, name: 'Etats' }],
-  dataflows: [
-    {
-      id: 0,
-      agency: 'ECB',
-      version: '1.0',
-      name: 'Interest rate statistics',
-    },
     {
       id: 1,
-      agency: 'ECB',
-      version: '1.0',
-      name: 'Interest rate statistics',
+      name: 'Cz',
     },
     {
       id: 2,
-      agency: 'ECB',
-      version: '1.0',
-      name: 'Interest rate statistics',
-    },
-    {
-      id: 3,
-      agency: 'ECB',
-      version: '1.0',
-      name: 'Interest rate statistics',
-    },
-    {
-      id: 4,
-      agency: 'ECB',
-      version: '1.0',
-      name: 'Interest rate statistics',
-    },
-    {
-      id: 5,
-      agency: 'ECB',
-      version: '1.0',
-      name: 'Interest rate statistics',
-    },
-    {
-      id: 6,
-      agency: 'ECB',
-      version: '1.0',
-      name: 'Interest rate statistics',
-    },
-    {
-      id: 7,
-      agency: 'ECB',
-      version: '1.0',
-      name: 'Interest rate statistics',
-    },
-    {
-      id: 8,
-      agency: 'ECB',
-      version: '1.0',
-      name: 'Interest rate statistics',
-    },
-    {
-      id: 9,
-      agency: 'ECB',
-      version: '1.0',
-      name: 'Interest rate statistics',
-    },
-    {
-      id: 10,
-      agency: 'ECB',
-      version: '1.0',
-      name: 'Interest rate statistics',
+      name: 'Fr',
     },
   ],
+  dataflows: [{
+    id: 'IRS',
+    agency: 'ECB',
+    version: '1.0',
+    name: 'Interest rate statistics',
+  }],
   facetedbox: [
     {
       id: 0,
-      name: 'Categories',
+      name: 'Reference area',
       facets: [
         {
           id: 0,
@@ -97,15 +35,33 @@ const Data = {
         },
         {
           id: 1,
-          name: 'sport',
+          name: 'Austria (AT)',
         },
         {
           id: 2,
-          name: 'Camping, randonnée',
+          name: 'Belgium (BE)',
+        },
+      ],
+    },
+    {
+      id: 1,
+      name: 'Frequency',
+      facets: [
+        {
+          id: 0,
+          name: 'All',
+        },
+        {
+          id: 1,
+          name: 'Daily',
+        },
+        {
+          id: 2,
+          name: 'Monthly',
         },
         {
           id: 3,
-          name: 'Equipement du cycliste',
+          name: 'Yearly',
         },
       ],
     },

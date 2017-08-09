@@ -9,11 +9,12 @@ import './SidePanel.css';
 
 
 const SidePanel = ({ facetedbox, filterbox, showSidePanel, moveSidePanel, filter, facetedSearch }) => (
-  <Motion style={{ x: spring(showSidePanel ? -240 : 0) }}>
-    {({ x }) =>
+  <Motion style={{ x: spring(showSidePanel ? -240 : 0), y: spring(showSidePanel ? 300 : 250) }}>
+    {({ x, y }) =>
       (<div
         style={{
           marginLeft: `${x}px`,
+          minWidth: `${y}px`,
         }}
         className="sidepanel"
       >
