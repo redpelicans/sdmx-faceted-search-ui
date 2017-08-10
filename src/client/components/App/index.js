@@ -1,41 +1,65 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-
-import Connect from '../connect';
-
-import './App.css';
-import SidePanel from '../SidePanel';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { compose, withHandlers, withState } from 'recompose';
 import Container from '../Container';
+import SidePanel from '../SidePanel';
+import { handleSearch, filter, facetedSearch, moveSidePanel } from '../../actions';
+import './App.css';
 
-class App extends Component {
-  state = {
-    isHidden: true,
-  }
-  showOverlayPanel = () => {
-    this.setState(({ isHidden }) => ({ isHidden: !isHidden }));
-  };
-  render() {
-    const { isHidden } = this.state;
-    const { title, langs, resultItems } = this.props;
-    return (
-      <div className="app-container">
-        <SidePanel isHidden={isHidden} />
-        <Container
-          title={title}
-          langs={langs}
-          resultItems={resultItems}
-          showOverlayPanel={this.showOverlayPanel}
-          isHidden={isHidden}
-        />
-      </div>
-    );
-  }
-}
+const App = ({ facetedbox, title, languages, dataflows, showSidePanel, searchValue,
+  handleSearch: goHandleSearch, toggleshowSidePanelHandler: doMoveSidePanel }) => (
+    <div className="App">
+      <SidePanel
+        facetedbox={facetedbox}
+        showSidePanel={showSidePanel}
+        moveSidePanel={doMoveSidePanel}
+      />
+      <Container
+        title={title}
+        dataflows={dataflows}
+        handleSearch={goHandleSearch}
+        languages={languages}
+        showSidePanel={showSidePanel}
+        displayShowPanel={doMoveSidePanel}
+        searchValue={searchValue}
+      />
+    </div>
+);
 
 App.propTypes = {
+  facetedbox: PropTypes.object.isRequired,
+  dataflows: PropTypes.array.isRequired,
   title: PropTypes.string.isRequired,
-  langs: PropTypes.array.isRequired,
-  resultItems: PropTypes.array.isRequired,
+  languages: PropTypes.array.isRequired,
+  handleSearch: PropTypes.func.isRequired,
+  toggleshowSidePanelHandler: PropTypes.func.isRequired,
+  showSidePanel: PropTypes.bool.isRequired,
+  searchValue: PropTypes.string.isRequired,
 };
 
-export default Connect(App);
+const actions = { handleSearch, filter, facetedSearch, moveSidePanel };
+
+const mapStateToProps = state => ({
+  title: state.title,
+  facetedbox: state.facetedbox,
+  filterbox: state.filterbox,
+  languages: state.languages,
+  dataflows: state.dataflows,
+  searchValue: state.searchValue,
+  filterValue: state.filterValue,
+  facetedValue: state.facetedValue,
+  sortTypes: state.sortTypes,
+});
+
+const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);
+
+const enhance = compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  withState('showSidePanel', 'toggleshowSidePanel', true),
+  withHandlers({ toggleshowSidePanelHandler: ({ toggleshowSidePanel }) => () => toggleshowSidePanel((showSidePanel) => !showSidePanel) }),
+);
+
+
+export default enhance(App);

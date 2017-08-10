@@ -1,18 +1,23 @@
 import React from 'react';
+import { onlyUpdateForKeys } from 'recompose';
 import PropTypes from 'prop-types';
 
-import './language_selector.css';
+import './LanguageSelector.css';
 
-const LanguageSelector = ({ langs }) => (
-  <div className="language-selector-container">
-    <select>
-      { langs.map(lang => <option key={lang.id}>{lang.value}</option>) }
-    </select>
+const LanguageSelector = ({ languages }) => (
+  <div className="languageselector">
+    <div className="pt-select">
+      <select>
+        {languages.map((language) => (
+          <option key={language.id} value={language.id}>{language.name}</option>
+        ))}
+      </select>
+    </div>
   </div>
 );
 
 LanguageSelector.propTypes = {
-  langs: PropTypes.array.isRequired,
+  languages: PropTypes.array.isRequired,
 };
 
-export default LanguageSelector;
+export default onlyUpdateForKeys(['language'])(LanguageSelector);

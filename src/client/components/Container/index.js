@@ -1,23 +1,34 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
-import './container.css';
 import Header from '../Header';
 import MainPanel from '../MainPanel';
+import './Container.css';
 
-const Container = ({ title, langs, resultItems, showOverlayPanel, isHidden }) => (
-  <div className="container-container">
-    <Header title={title} langs={langs} showOverlayPanel={showOverlayPanel} isHidden={isHidden} />
-    <MainPanel resultItems={resultItems} />
+const Container = ({ title, dataflows, searchValue, languages, showSidePanel, displayShowPanel, handleSearch }) => (
+  <div className="container">
+    <Header
+      title={title}
+      languages={languages}
+      showSidePanel={showSidePanel}
+      displayShowPanel={displayShowPanel}
+    />
+    <MainPanel
+      dataflows={dataflows}
+      displayShowPanel={displayShowPanel}
+      handleSearch={handleSearch}
+      searchValue={searchValue}
+    />
   </div>
 );
 
 Container.propTypes = {
   title: PropTypes.string.isRequired,
-  langs: PropTypes.array.isRequired,
-  resultItems: PropTypes.array.isRequired,
-  showOverlayPanel: PropTypes.func.isRequired,
-  isHidden: PropTypes.bool.isRequired,
+  dataflows: PropTypes.array.isRequired,
+  languages: PropTypes.array.isRequired,
+  showSidePanel: PropTypes.bool.isRequired,
+  displayShowPanel: PropTypes.func.isRequired,
+  handleSearch: PropTypes.func.isRequired,
+  searchValue: PropTypes.string.isRequired,
 };
 
 export default Container;

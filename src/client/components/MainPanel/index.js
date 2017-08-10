@@ -1,41 +1,30 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
+import SearchPanel from '../SearchPanel';
+import ResultPanel from '../ResultPanel';
 
-import './main_panel.css';
-import SearchPanel from '../SearchPanel/';
-import ResultsPanel from '../ResultsPanel';
+import './MainPanel.css';
 
-class MainPanel extends Component {
-  state = {
-    searchValue: '',
-  };
 
-  getSearchValue = value => {
-    this.setState({ searchValue: value });
-  };
-
-  render() {
-    const { searchValue } = this.state;
-    const { resultItems } = this.props;
-
-    return (
-      <div className="main-panel-container">
-        <SearchPanel
-          className="search-panel-item"
-          getSearchValue={this.getSearchValue}
-        />
-        <ResultsPanel
-          className="results-panel-item"
-          resultItems={resultItems}
-          searchValue={searchValue}
-        />
-      </div>
-    );
-  }
-}
+const MainPanel = ({ displayShowPanel, dataflows, handleSearch, searchValue }) => (
+  <div className="mainpanel">
+    <div className="pt-card mainpanel_inner">
+      <SearchPanel
+        handleSearch={handleSearch}
+      />
+      <ResultPanel
+        dataflows={dataflows}
+        displayShowPanel={displayShowPanel}
+        searchValue={searchValue}
+      />
+    </div>
+  </div>);
 
 MainPanel.propTypes = {
-  resultItems: PropTypes.array.isRequired,
+  displayShowPanel: PropTypes.func.isRequired,
+  handleSearch: PropTypes.func.isRequired,
+  dataflows: PropTypes.array.isRequired,
+  searchValue: PropTypes.string.isRequired,
 };
 
 export default MainPanel;

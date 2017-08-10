@@ -1,20 +1,42 @@
 import React from 'react';
+import { Motion, spring } from 'react-motion';
 import PropTypes from 'prop-types';
-
-import './side_panel.css';
+import BurgerButton from './BurgerButton';
 import FacetedBox from '../FacetedBox';
 
-const SidePanel = ({ isHidden }) => (
-  <div className="side-panel-container" style={{ display: isHidden ? 'none' : 'flex' }}>
-    <FacetedBox titleName="premier" />
-    <FacetedBox titleName="deuxieme" />
-    <FacetedBox titleName="troisieme" />
-    <FacetedBox titleName="quatrieme" />
-  </div>
+import './SidePanel.css';
+
+
+const SidePanel = ({ facetedbox, showSidePanel, moveSidePanel }) => (
+  <Motion style={{ x: spring(showSidePanel ? -240 : 0), y: spring(showSidePanel ? 300 : 250) }}>
+    {({ x, y }) =>
+      (<div
+        style={{
+          marginLeft: `${x}px`,
+          minWidth: `${y}px`,
+        }}
+        className="sidepanel"
+      >
+        {showSidePanel && <BurgerButton
+          displayShowPanel={moveSidePanel}
+        />}
+        {!showSidePanel && <div onClick={moveSidePanel} className="crosscontainer">
+          <span className="pt-icon-large pt-icon-cross" />
+        </div>}
+        {Object.entries(facetedbox).map(facets => (
+          <FacetedBox
+            name={facets[0]}
+          />
+        ))}
+      </div>)
+  }
+  </Motion>
 );
 
 SidePanel.propTypes = {
-  isHidden: PropTypes.bool.isRequired,
+  showSidePanel: PropTypes.bool.isRequired,
+  moveSidePanel: PropTypes.func.isRequired,
+  facetedbox: PropTypes.object.isRequired,
 };
 
 export default SidePanel;
