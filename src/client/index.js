@@ -1,14 +1,38 @@
-import '@blueprintjs/core/dist/blueprint.css';
 import React from 'react';
-import { render } from 'react-dom';
+import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import App from './components/App';
 import configureStore from './store';
+import App from './components/App';
+import { getFacetedBoxs } from './actions';
 
-import './index.css';
-import { initialState } from './store/data';
+const initialState = {
+  showSidePanel: false,
+  searchValue: '',
+  facetedValue: '',
+  filterValue: '',
+  title: 'SDMX Faceted Search',
+  languages: [
+    {
+      id: 0,
+      name: 'En',
+    },
+    {
+      id: 1,
+      name: 'Cz',
+    },
+    {
+      id: 2,
+      name: 'Fr',
+    },
+  ],
+  dataflows: [],
+  facetedbox: {},
+  filterbox: [],
+};
 
 const store = configureStore(initialState);
+
+store.dispatch(getFacetedBoxs());
 
 const root = (
   <Provider store={store}>
@@ -16,6 +40,4 @@ const root = (
   </Provider>
 );
 
-const mountNode = document.getElementById('root');
-
-render(root, mountNode);
+ReactDOM.render(root, document.getElementById('root'));

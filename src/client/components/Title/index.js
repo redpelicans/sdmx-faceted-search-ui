@@ -1,16 +1,15 @@
 import React from 'react';
+import { onlyUpdateForKeys } from 'recompose';
 import PropTypes from 'prop-types';
 
-import './title.css';
-
-const Title = ({ title }) => (
+const Title = ({ name }) => (
   <div className="title">
-    <h2>{ title }</h2>
+    <h1>{name}</h1>
   </div>
 );
 
 Title.propTypes = {
-  title: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
 };
 
-export default Title;
+export default onlyUpdateForKeys(['name'])(Title);

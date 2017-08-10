@@ -1,0 +1,9 @@
+.searchpanel
+{
+  display: flex;
+  justify-content: space-between;
+  width:100%;
+  align-items: center;
+  margin-top:10px;
+  margin-bottom:25px;
+}

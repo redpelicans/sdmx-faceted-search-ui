@@ -13,4 +13,8 @@ require('whatwg-fetch');
 
 // Object.assign() is commonly used with React.
 // It will use the native implementation if it's present and isn't buggy.
+<<<<<<< HEAD
 Object.assign = require('object-assign');
+=======
+Object.assign = require('object-assign');
+>>>>>>> 9b0d6c0241d11e899b6e7ee707bc2d93fc686a3a

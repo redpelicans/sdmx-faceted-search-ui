@@ -1,38 +1,29 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { onlyUpdateForKeys } from 'recompose';
-
-import SidePanelButton from '../SidePanelButton';
-import Title from '../Title';
+import PropTypes from 'prop-types';
 import LanguageSelector from '../LanguageSelector';
+import './Header.css';
 
-const Header = ({ title, langs, toggleIsHiddenHandler, isHidden }) => (
-  <div>
-    <nav className="pt-navbar pt-intent-success pt-dark">
-      <div className="pt-navbar-group pt-align-left">
-        <div style={{ display: isHidden ? 'flex' : 'none' }}>
-          <SidePanelButton isHidden={isHidden} toggleIsHiddenHandler={toggleIsHiddenHandler} />
-        </div>
+
+const Header = ({ title, languages }) => (
+  <nav className="pt-navbar pt-intent-success header">
+    <div className="pt-navbar-group pt-align-left">
+      <div className="logo">
+        <i className="fa fa-paper-plane" aria-hidden="true" />
       </div>
-      <div className="pt-navbar-group pt-align-left">
-        <Title title={title} />
-      </div>
-      <div className="pt-navbar-group pt-align-right">
-        <span className="pt-icon-large pt-icon-shopping-cart pt-intent-primary" />
-        <div className="pt-navbar-divider" />
-        <LanguageSelector
-          langs={langs}
-        />
-      </div>
-    </nav>
-  </div>
+      <div className="pt-navbar-heading">{ title }</div>
+    </div>
+    <div className="pt-navbar-group pt-align-right">
+      <LanguageSelector
+        languages={languages}
+      />
+    </div>
+  </nav>
 );
 
 Header.propTypes = {
   title: PropTypes.string.isRequired,
-  langs: PropTypes.array.isRequired,
-  toggleIsHiddenHandler: PropTypes.func.isRequired,
-  isHidden: PropTypes.bool.isRequired,
+  languages: PropTypes.array.isRequired,
 };
 
-export default onlyUpdateForKeys(['isHidden'])(Header);
+export default onlyUpdateForKeys(['language'])(Header);

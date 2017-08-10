@@ -1,32 +1,20 @@
 import React from 'react';
+import { onlyUpdateForKeys } from 'recompose';
 import PropTypes from 'prop-types';
-import { withHandlers } from 'recompose';
 
-import './data_flow.css';
+import './DataFlow.css';
 
-const DataFlow = ({ result, handleInput }) => (
+const DataFlow = ({ data }) => (
   <div className="pt-card pt-elevation-0 dataflowcontainer">
-    <div className="imagecontainer">
-      <img alt="" className="image" src={result.payload.image} />
-    </div>
-    <div className="dataflowinfo">
-      <li className="dataflowname">{result.payload.name}</li>
-      <p className="price">price: {result.payload.price} $</p>
-    </div>
-    <button id={result.id} onClick={handleInput} />
+    <p className="name">Name: </p>
+    <p>{data.name}</p>
+    <p className="id">ID: </p>
+    <p>{data.id}</p>
   </div>
 );
 
 DataFlow.propTypes = {
-  result: PropTypes.object.isRequired,
-  handleInput: PropTypes.func.isRequired,
+  data: PropTypes.object.isRequired,
 };
 
-const handler = withHandlers({
-  handleInput: ({ addToCard }) => event => {
-    event.preventDefault();
-    addToCard(event.target.id);
-  },
-})(DataFlow);
-
-export default handler;
+export default onlyUpdateForKeys(['data', 'direction'])(DataFlow);

@@ -1,26 +1,34 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
-import './container.css';
 import Header from '../Header';
 import MainPanel from '../MainPanel';
+import './Container.css';
 
-const Container = ({ title, langs, resultItems, toggleIsHiddenHandler, isHidden, searchHandler, searchValue, addToCard }) => (
-  <div className="container-container">
-    <Header title={title} langs={langs} toggleIsHiddenHandler={toggleIsHiddenHandler} isHidden={isHidden} />
-    <MainPanel searchValue={searchValue} resultItems={resultItems} searchHandler={searchHandler} addToCard={addToCard} />
+const Container = ({ title, dataflows, searchValue, languages, showSidePanel, displayShowPanel, handleSearch }) => (
+  <div className="container">
+    <Header
+      title={title}
+      languages={languages}
+      showSidePanel={showSidePanel}
+      displayShowPanel={displayShowPanel}
+    />
+    <MainPanel
+      dataflows={dataflows}
+      displayShowPanel={displayShowPanel}
+      handleSearch={handleSearch}
+      searchValue={searchValue}
+    />
   </div>
 );
 
 Container.propTypes = {
   title: PropTypes.string.isRequired,
-  langs: PropTypes.array.isRequired,
-  resultItems: PropTypes.array.isRequired,
-  toggleIsHiddenHandler: PropTypes.func.isRequired,
-  isHidden: PropTypes.bool.isRequired,
-  searchHandler: PropTypes.func.isRequired,
+  dataflows: PropTypes.array.isRequired,
+  languages: PropTypes.array.isRequired,
+  showSidePanel: PropTypes.bool.isRequired,
+  displayShowPanel: PropTypes.func.isRequired,
+  handleSearch: PropTypes.func.isRequired,
   searchValue: PropTypes.string.isRequired,
-  addToCard: PropTypes.func.isRequired,
 };
 
 export default Container;
