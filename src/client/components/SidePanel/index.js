@@ -1,14 +1,13 @@
 import React from 'react';
 import { Motion, spring } from 'react-motion';
 import PropTypes from 'prop-types';
-import FacetedBox from '../FacetedBox';
-import FilterBox from '../FilterBox';
 import BurgerButton from './BurgerButton';
+import FacetedBox from '../FacetedBox';
 
 import './SidePanel.css';
 
 
-const SidePanel = ({ facetedbox, filterbox, showSidePanel, moveSidePanel, filter, facetedSearch }) => (
+const SidePanel = ({ facetedbox, showSidePanel, moveSidePanel }) => (
   <Motion style={{ x: spring(showSidePanel ? -240 : 0), y: spring(showSidePanel ? 300 : 250) }}>
     {({ x, y }) =>
       (<div
@@ -24,34 +23,20 @@ const SidePanel = ({ facetedbox, filterbox, showSidePanel, moveSidePanel, filter
         {!showSidePanel && <div onClick={moveSidePanel} className="crosscontainer">
           <span className="pt-icon-large pt-icon-cross" />
         </div>}
-        {facetedbox.map(facetedelem => (
+        {Object.entries(facetedbox).map(facets => (
           <FacetedBox
-            key={facetedelem.id}
-            name={facetedelem.name}
-            facets={facetedelem.facets}
-            facetedSearch={facetedSearch}
+            name={facets[0]}
           />
-    ))}
-        {filterbox.map(filterelem => (
-          <FilterBox
-            key={filterelem.id}
-            name={filterelem.name}
-            filters={filterelem.filtres}
-            filter={filter}
-          />
-    ))}
+        ))}
       </div>)
   }
   </Motion>
 );
 
 SidePanel.propTypes = {
-  facetedbox: PropTypes.array.isRequired,
-  filterbox: PropTypes.array.isRequired,
   showSidePanel: PropTypes.bool.isRequired,
   moveSidePanel: PropTypes.func.isRequired,
-  filter: PropTypes.func.isRequired,
-  facetedSearch: PropTypes.func.isRequired,
+  facetedbox: PropTypes.object.isRequired,
 };
 
 export default SidePanel;

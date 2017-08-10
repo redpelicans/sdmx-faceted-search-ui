@@ -1,86 +1,52 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
-import { createSelector } from 'reselect';
 import { connect } from 'react-redux';
 import { compose, withHandlers, withState } from 'recompose';
-
 import Container from '../Container';
 import SidePanel from '../SidePanel';
-import { search, filter, facetedSearch, moveSidePanel } from '../../actions';
+import { handleSearch, filter, facetedSearch, moveSidePanel } from '../../actions';
 import './App.css';
 
-const App = ({ facetedbox, filterbox, title, searchValue,
-  languages, dataflows, showSidePanel, facetedSearch: doFacetedSearch, filter: doFilter,
-  search: doSearch, toggleshowSidePanelHandler: doMoveSidePanel }) => (
+const App = ({ facetedbox, title, languages, dataflows, showSidePanel, searchValue,
+  handleSearch: goHandleSearch, toggleshowSidePanelHandler: doMoveSidePanel }) => (
     <div className="App">
       <SidePanel
         facetedbox={facetedbox}
-        filterbox={filterbox}
         showSidePanel={showSidePanel}
         moveSidePanel={doMoveSidePanel}
-        filter={doFilter}
-        facetedSearch={doFacetedSearch}
       />
       <Container
         title={title}
         dataflows={dataflows}
-        search={doSearch}
-        searchValue={searchValue}
+        handleSearch={goHandleSearch}
         languages={languages}
         showSidePanel={showSidePanel}
         displayShowPanel={doMoveSidePanel}
+        searchValue={searchValue}
       />
     </div>
 );
 
 App.propTypes = {
-  facetedbox: PropTypes.array.isRequired,
-  filterbox: PropTypes.array.isRequired,
+  facetedbox: PropTypes.object.isRequired,
   dataflows: PropTypes.array.isRequired,
   title: PropTypes.string.isRequired,
   languages: PropTypes.array.isRequired,
-  searchValue: PropTypes.string.isRequired,
-  search: PropTypes.func.isRequired,
-  filter: PropTypes.func.isRequired,
-  facetedSearch: PropTypes.func.isRequired,
+  handleSearch: PropTypes.func.isRequired,
   toggleshowSidePanelHandler: PropTypes.func.isRequired,
   showSidePanel: PropTypes.bool.isRequired,
+  searchValue: PropTypes.string.isRequired,
 };
 
-const getDataFlows = state => state.dataflows;
-const getSearchValue = state => state.searchValue;
-const getFilterValue = state => state.filterValue;
-const getFacetedValue = state => state.facetedValue;
-
-const filterDataFlows = createSelector(
-  [getDataFlows, getSearchValue, getFilterValue, getFacetedValue],
-  (dataflows, searchValue, filterValue, facetedValue) => {
-    let newDataflows = dataflows;
-    if (facetedValue && facetedValue !== 'All') {
-      newDataflows = newDataflows.filter(li => (li.Categories === facetedValue));
-    }
-    if (!searchValue && (!filterValue || filterValue === 'All')) {
-      return newDataflows;
-    } else if (searchValue && (!filterValue || filterValue === 'All')) {
-      return newDataflows.filter((li) => (li.Name.toLowerCase().match(searchValue.toLowerCase())));
-    } else if (filterValue && searchValue) {
-      return newDataflows.filter((li) => (li.Name.toLowerCase().match(searchValue.toLowerCase()) && filterValue === li.Type));
-    } else if (!searchValue && (filterValue && filterValue !== 'All')) {
-      return newDataflows.filter((li) => (filterValue === li.Type));
-    }
-  },
-);
-
-
-const actions = { search, filter, facetedSearch, moveSidePanel };
+const actions = { handleSearch, filter, facetedSearch, moveSidePanel };
 
 const mapStateToProps = state => ({
   title: state.title,
   facetedbox: state.facetedbox,
   filterbox: state.filterbox,
   languages: state.languages,
-  dataflows: filterDataFlows(state),
+  dataflows: state.dataflows,
   searchValue: state.searchValue,
   filterValue: state.filterValue,
   facetedValue: state.facetedValue,

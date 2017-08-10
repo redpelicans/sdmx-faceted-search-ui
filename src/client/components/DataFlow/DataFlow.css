@@ -1,9 +1,8 @@
 .dataflowcontainer
 {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
+  justify-content: flex-start;
+  align-items: center;
   margin-top:25px;
   width: 100%;
   max-width:1100px;
@@ -13,16 +12,13 @@
   margin-top:5px;
   margin-bottom:5px;
 }
-.name
+.name, .id
 {
   color:#0654ba;
   font-size:1.3em;
+  margin-right:20px;
 }
-.agency
-{
-  margin-left:25px;
-}
-.version
+.id
 {
   margin-left:25px;
 }

@@ -7,12 +7,12 @@
 
   import './ResultPanel.css';
 
-  const ResultPanel = ({ searchValue, dataflows }) => (
+  const ResultPanel = ({ dataflows, searchValue }) => (
     <div className="resultpanel">
       <SearchInfo
         dataflows={dataflows}
-        searchValue={searchValue}
         searchsize={dataflows.length}
+        searchValue={searchValue}
       />
       {dataflows.map(lis => (
         <Media key={lis.id} query={{ maxWidth: 599 }}>
@@ -28,8 +28,8 @@
     );
 
   ResultPanel.propTypes = {
-    searchValue: PropTypes.string.isRequired,
     dataflows: PropTypes.array.isRequired,
+    searchValue: PropTypes.string.isRequired,
   };
 
   export default ResultPanel;

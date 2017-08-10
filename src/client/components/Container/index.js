@@ -4,8 +4,8 @@ import Header from '../Header';
 import MainPanel from '../MainPanel';
 import './Container.css';
 
-const Container = ({ title, dataflows, languages, showSidePanel,
-  displayShowPanel, search, searchValue }) => (
+const Container = ({ title, dataflows, searchValue, languages, showSidePanel,
+  displayShowPanel, handleSearch }) => (
     <div className="container">
       <Header
         title={title}
@@ -16,7 +16,7 @@ const Container = ({ title, dataflows, languages, showSidePanel,
       <MainPanel
         dataflows={dataflows}
         displayShowPanel={displayShowPanel}
-        search={search}
+        handleSearch={handleSearch}
         searchValue={searchValue}
       />
     </div>
@@ -28,7 +28,7 @@ Container.propTypes = {
   languages: PropTypes.array.isRequired,
   showSidePanel: PropTypes.bool.isRequired,
   displayShowPanel: PropTypes.func.isRequired,
-  search: PropTypes.func.isRequired,
+  handleSearch: PropTypes.func.isRequired,
   searchValue: PropTypes.string.isRequired,
 };
 

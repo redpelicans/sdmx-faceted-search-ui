@@ -1,9 +1,30 @@
-import { SEARCH, FILTER, FACETEDSEARCH, MOVESIDEPANEL } from '../actions';
+import { FILTER, FACETEDSEARCH, MOVESIDEPANEL,
+  GETFACETEDBOXS, GETDATAFLOW, RESETDATAFLOW, SEARCH } from '../actions';
 import Data from '../data';
 
 
 const reducer = (state = Data, action) => {
   switch (action.type) {
+    case SEARCH:
+      return {
+        ...state,
+        searchValue: action.value,
+      };
+    case RESETDATAFLOW:
+      return {
+        ...state,
+        dataflows: [],
+      };
+    case GETDATAFLOW:
+      return {
+        ...state,
+        dataflows: action.data.data.dataflows,
+      };
+    case GETFACETEDBOXS:
+      return {
+        ...state,
+        facetedbox: action.data.data.facets,
+      };
     case FILTER:
       return {
         ...state,
@@ -18,11 +39,6 @@ const reducer = (state = Data, action) => {
       return {
         ...state,
         showSidePanel: !state.showSidePanel,
-      };
-    case SEARCH:
-      return {
-        ...state,
-        searchValue: action.value,
       };
     default:
       return (state);

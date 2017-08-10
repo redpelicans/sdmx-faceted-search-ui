@@ -6,9 +6,10 @@ import './DataFlow.css';
 
 const DataFlow = ({ data }) => (
   <div className="pt-card pt-elevation-0 dataflowcontainer">
-    <p className="name">{data.name}</p>
-    <p className="agency" >Agency: {data.agency}</p>
-    <p className="version">Version: {data.version}</p>
+    <p className="name">Name: </p>
+    <p>{data.name}</p>
+    <p className="id">ID: </p>
+    <p>{data.id}</p>
   </div>
 );
 
