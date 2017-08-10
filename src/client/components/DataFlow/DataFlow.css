@@ -1,52 +1,24 @@
 .dataflowcontainer
 {
   display: flex;
-  margin-top:25px;
-  width: 90%;
-  max-width:1100px;
-  min-height:170px;
-}
-
-.dataflowelem
-{
-  display: flex;
-  width:90%;
-  max-width:1100px;
-  height:200px;
-  padding-top: 30px;
-  background-color: white;
-  border-radius: 3px;
-}
-.imagecontainer
-{
-  min-width:150px;
-  border-radius: 2px;
-  background-color: white;
-}
-.image
-{
-  width:150px;
-}
-.dataflowname
-{
-  color:rgb(45,45,45);
-  margin-top:0;
-  color:rgb(6,84,186);
-  text-align: left;
-  cursor: pointer;
-}
-.dataflowname:hover
-{
-  text-decoration: underline;
-}
-.price
-{
-  text-align: left;
-}
-.dataflowinfo
-{
-  display: flex;
-  flex-direction: column;
   justify-content: flex-start;
-  padding-left:15px;
+  align-items: center;
+  margin-top:25px;
+  width: 100%;
+  max-width:1100px;
+}
+.dataflowcontainer p
+{
+  margin-top:5px;
+  margin-bottom:5px;
+}
+.name, .id
+{
+  color:#0654ba;
+  font-size:1.3em;
+  margin-right:20px;
+}
+.id
+{
+  margin-left:25px;
 }

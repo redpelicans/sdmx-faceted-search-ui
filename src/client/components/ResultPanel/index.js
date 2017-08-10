@@ -3,20 +3,16 @@
   import Media from 'react-media';
   import DataFlow from '../DataFlow';
   import SearchInfo from './SearchInfo';
-  import SearchParams from '../SearchParams';
   import EmptySearch from './EmptySearch';
 
   import './ResultPanel.css';
 
-  const ResultPanel = ({ displayShowPanel, searchValue, dataflows }) => (
+  const ResultPanel = ({ dataflows, searchValue }) => (
     <div className="resultpanel">
       <SearchInfo
         dataflows={dataflows}
-        searchValue={searchValue}
         searchsize={dataflows.length}
-      />
-      <SearchParams
-        displayShowPanel={displayShowPanel}
+        searchValue={searchValue}
       />
       {dataflows.map(lis => (
         <Media key={lis.id} query={{ maxWidth: 599 }}>
@@ -32,9 +28,8 @@
     );
 
   ResultPanel.propTypes = {
-    displayShowPanel: PropTypes.func.isRequired,
-    searchValue: PropTypes.string.isRequired,
     dataflows: PropTypes.array.isRequired,
+    searchValue: PropTypes.string.isRequired,
   };
 
   export default ResultPanel;

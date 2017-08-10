@@ -4,16 +4,15 @@ import { onlyUpdateForKeys } from 'recompose';
 import './BurgerButton.css';
 
 const BurgerButton = ({ displayShowPanel }) => (
-  <button
-    type="button"
+  <div
+    className="burger_button_container"
     onClick={(e) => {
       e.preventDefault();
       displayShowPanel();
     }}
-    className="pt-button pt-intent-primary pt-icon-menu burgerbutton"
   >
-    Affine
-  </button>
+    <span className="pt-icon-large pt-icon-menu" />
+  </div>
 );
 
 BurgerButton.propTypes = {

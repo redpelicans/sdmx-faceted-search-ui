@@ -1,23 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import SearchBar from './SearchBar';
-import SearchButton from './SearchButton';
 
 import './SearchPanel.css';
 
-const SearchPanel = ({ search }) => (
+const SearchPanel = ({ handleSearch }) => (
   <div className="searchpanel">
     <SearchBar
-      search={search}
-    />
-    <SearchButton
-      startSearch={this.startClickSearch}
+      handleSearch={handleSearch}
     />
   </div>
 );
 
 SearchPanel.propTypes = {
-  search: PropTypes.func.isRequired,
+  handleSearch: PropTypes.func.isRequired,
 };
 
 export default SearchPanel;
