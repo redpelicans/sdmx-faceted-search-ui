@@ -1,7 +1,5 @@
-.header-container {
-  display: flex;
-  flex-wrap: nowrap;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 100%;
+.logo
+{
+  margin-right:10px;
+  color:rgb(205, 68, 64)
 }
