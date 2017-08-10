@@ -24,8 +24,4 @@ if (!process.env.CI && argv.indexOf('--coverage') < 0) {
 }
 
 
-<<<<<<< HEAD
 jest.run(argv);
-=======
-jest.run(argv);
->>>>>>> 9b0d6c0241d11e899b6e7ee707bc2d93fc686a3a

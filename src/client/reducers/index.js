@@ -1,9 +1,17 @@
-import { FILTER, FACETEDSEARCH, MOVESIDEPANEL,
+import { GETALERTMESSAGE, FILTER, FACETEDSEARCH, MOVESIDEPANEL,
   GETFACETEDBOXS, GETDATAFLOW, RESETDATAFLOW, SEARCH } from '../actions';
 
 
 const reducer = (state, action) => {
   switch (action.type) {
+    case GETALERTMESSAGE:
+      return {
+        ...state,
+        err: {
+          message: action.message,
+          status: action.status,
+        },
+      };
     case SEARCH:
       return {
         ...state,
