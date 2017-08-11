@@ -3,46 +3,49 @@ import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { compose, withHandlers, withState } from 'recompose';
-// import Container from '../Container';
-// import SidePanel from '../SidePanel';
-import Alert from '../Alert';
+import Container from '../Container';
+import SidePanel from '../SidePanel';
 import { search } from '../../actions/dataflows';
 import { alert } from '../../actions/message';
 import './App.css';
 
-const App = ({ alert: doAlert, message }) => (
+const App = ({ facets, toggleSidePanel, showSidePanel, dataflows, searchValue, search: goSearch }) => (
   <div className="App">
-    {/*
-      <SidePanel
-        facetedbox={facetedbox}
-        showSidePanel={showSidePanel}
-        moveSidePanel={doMoveSidePanel}
-      />
-      */}
-    <Alert alert={doAlert} message={message} />
-    {/*
-    <Container
-      title={title}
-      dataflows={dataflows}
-      handleSearch={goHandleSearch}
-      languages={languages}
+    <SidePanel
+      facets={facets}
       showSidePanel={showSidePanel}
-      displayShowPanel={doMoveSidePanel}
+      moveSidePanel={toggleSidePanel}
+    />
+    <Container
+      dataflows={dataflows}
+      showSidePanel={showSidePanel}
+      displayShowPanel={toggleSidePanel}
       searchValue={searchValue}
-      />
-      */}
+      search={goSearch}
+    />
   </div>
 );
 
 App.propTypes = {
-  alert: PropTypes.func.isRequired,
-  message: PropTypes.object,
+  toggleSidePanel: PropTypes.func.isRequired,
+  showSidePanel: PropTypes.bool.isRequired,
+  facets: PropTypes.object.isRequired,
+  dataflows: PropTypes.object.isRequired,
+  searchValue: PropTypes.string.isRequired,
+  search: PropTypes.func.isRequired,
+};
+
+App.defaultProps = {
+  showSidePanel: false,
 };
 
 const actions = { search, alert };
 
 const mapStateToProps = state => ({
   message: state.message,
+  facets: state.facets,
+  dataflows: state.dataflows,
+  searchValue: state.search.searchValue,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);
@@ -50,7 +53,7 @@ const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);
 const enhance = compose(
   connect(mapStateToProps, mapDispatchToProps),
   withState('showSidePanel', 'toggleshowSidePanel', true),
-  withHandlers({ toggleshowSidePanelHandler: ({ toggleshowSidePanel }) => () => toggleshowSidePanel((showSidePanel) => !showSidePanel) }),
+  withHandlers({ toggleSidePanel: ({ toggleshowSidePanel }) => () => toggleshowSidePanel((showSidePanel) => !showSidePanel) }),
 );
 
 

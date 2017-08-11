@@ -6,7 +6,7 @@ import { shallow } from 'enzyme';
 
 const { describe, it } = global;
 
-describe('<FilterBox />', function () {
+describe ('<FilterBox />', function () {
   const wrapper = shallow(<FilterBox
     name="test"
     filters={[

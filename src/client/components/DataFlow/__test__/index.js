@@ -2,63 +2,41 @@ import React from 'react';
 import should from 'should';
 import { shallow } from 'enzyme';
 import DataFlow from '..';
+import PopHoverElem from '..';
 
 const { describe, it } = global;
 
-describe('<Container />', function () {
-  const data = {
-    id: 0,
-    Name: 'VTT Tout Suspendu 26\'\' Bliss Noir Orange Freins à Disques 21 Vit TC 47 cm 532M',
-    Prix: 1763.00,
-    Image: 'http://www.cyclesduloir.com/media/g_vignette/118312',
-    Categories: 'sport',
-    Type: [
-      'Vélo tout terrain',
-      'Vélo pliable',
-    ],
-    Marque: 'SCOTT',
-    Vente: 'enchère',
-  }
-  it('DataFlow should render a dataflowcontainer', function () {
-    const wrapper = shallow(<DataFlow
-      data={data}
-      direction="column"
-    />);
-    should(wrapper.find('.dataflowcontainer')).length(1);
-  })
-  it('DataFlow should render an imagecontainer', function () {
-    const wrapper = shallow(<DataFlow
-      data={data}
-      direction="column"
-    />);
-    should(wrapper.find('.imagecontainer')).length(1);
-  })
-  it('DataFlow should render an image', function () {
-    const wrapper = shallow(<DataFlow
-      data={data}
-      direction="column"
-    />);
-    should(wrapper.find('.image')).length(1);
-  })
-  it('DataFlow should render a dataflowinfo', function () {
-    const wrapper = shallow(<DataFlow
-      data={data}
-      direction="column"
-    />);
-    should(wrapper.find('.dataflowinfo')).length(1);
-  })
-  it('DataFlow should render a dataflowname', function () {
-    const wrapper = shallow(<DataFlow
-      data={data}
-      direction="column"
-    />);
-    should(wrapper.find('.dataflowname')).length(1);
-  })
-  it('DataFlow should render a price', function () {
-    const wrapper = shallow(<DataFlow
-      data={data}
-      direction="column"
-    />);
-    should(wrapper.find('.price')).length(1);
+describe ('<Container />', function () {
+  const data =
+    {
+      id: "ERGONOMIC COTTON COMPUTER-195",
+      agency: "SAS",
+      version: "6.9.0",
+      name: "back-end Intelligent Ergonomic Concrete Pizza (EN)",
+      description: "Ut non tempora adipisci et ducimus et doloribus. (EN)",
+      frequency: [
+      "Monthly (M)",
+      "Yearly (Y)"
+      ],
+      reference_area: [
+      "Senegal (SB)",
+      "Canada (NZ)",
+      "Romania (SA)",
+      "Western Sahara (SS)",
+      "French Guiana (AS)",
+      "Jamaica (MH)",
+      "Saint Barthelemy (CI)"
+      ],
+      interest_rate_type: [
+      "Bank interest rates (B)",
+      "Money market interest rates (M)"
+      ],
+      score: 0.0004996253
+    }
+  const wrapper = shallow(<DataFlow
+    data={data}
+  />);
+  it('DataFlow should render a PopHoverElem', function () {
+    should(wrapper.find(<PopHoverElem />));
   })
 })

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import params from '../../params';
+import params from '../../../params';
 
 export const HANDLESEARCH = 'HANDLESEARCH';
 export const FILTER = 'FILTER';

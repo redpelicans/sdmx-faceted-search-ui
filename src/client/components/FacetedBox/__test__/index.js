@@ -6,7 +6,7 @@ import Items from '../Items';
 
 const { describe, it } = global;
 
-describe('<FacetedBox />', function () {
+describe ('<FacetedBox />', function () {
   const wrapper = shallow(<FacetedBox
     name="test"
     facets={[

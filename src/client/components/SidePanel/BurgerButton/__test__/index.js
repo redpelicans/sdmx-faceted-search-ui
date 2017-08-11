@@ -1,9 +1,7 @@
 import React from 'react';
 import should from 'should';
 import { shallow } from 'enzyme';
-import BurgerButton from '..'
-import App from '../../App';
-import store from '../../../store';
+import BurgerButton from '..';
 
 const { describe, it } = global;
 
@@ -12,19 +10,10 @@ const displayShowPanel = () => {
 };
 
 describe('<BurgerButton />', function () {
+  const wrapper = shallow(<BurgerButton
+    displayShowPanel={displayShowPanel}
+  />);
   it('BurgerButton should render a button', function () {
-    const wrapper = shallow(<BurgerButton
-      store={store}
-      displayShowPanel={displayShowPanel}
-    />);
-    should(wrapper.matchesElement(<button />))
+    should(wrapper.matchesElement(<div />));
   })
-  it('simulates click events', () => {
-    const wrapper = shallow(<BurgerButton
-      store={store}
-      displayShowPanel={displayShowPanel}
-    />);
-    wrapper.find('button').simulate('click');
-    should(displayShowPanel.calledOnce);
-  });
 })
