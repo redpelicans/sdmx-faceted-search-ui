@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
-import message from './message';
-import dataflows from './dataflows';
+import alert from './alert';
+import search from './search';
 
 const reducer = combineReducers({
-  message,
-  dataflows,
+  alert,
+  search,
 });
 
 export default reducer;

@@ -4,7 +4,7 @@ import { Intent, Position, Toaster } from '@blueprintjs/core';
 
 class Alert extends React.Component {
   state = {
-    launchAlert: false,
+    show: false,
   }
 
   componentDidMount() {
@@ -14,21 +14,21 @@ class Alert extends React.Component {
   }
 
   componentWillReceiveProps() {
-    if (!this.state.launchAlert) {
-      this.setState({ launchAlert: true });
+    if (!this.state.show) {
+      this.setState({ show: true });
     }
   }
 
   componentDidUpdate() {
-    const { message, status } = this.props.err;
-    this.toaster.update(this.toaster.show({ message }), { message, intent: status === 'DANGER' ? Intent.DANGER : Intent.SUCCESS });
+    const { label, status } = this.props.message;
+    this.toaster.update(this.toaster.show({ label }), { label, intent: status === 'DANGER' ? Intent.DANGER : Intent.SUCCESS });
   }
 
   render() {
     return (
       <input onChange={event => {
         event.preventDefault();
-        this.props.getAlertMessage('SUCCESS', event.target.value);
+        this.props.alert('SUCCESS', event.target.value);
       }}
       />
     );
@@ -36,8 +36,8 @@ class Alert extends React.Component {
 }
 
 Alert.propTypes = {
-  err: PropTypes.object.isRequired,
-  getAlertMessage: PropTypes.func.isRequired,
+  message: PropTypes.object,
+  alert: PropTypes.func.isRequired,
 };
 
 export default Alert;

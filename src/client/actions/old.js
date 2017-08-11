@@ -9,7 +9,6 @@ export const GETFACETEDBOXS = 'GETFACETEDBOXS';
 export const GETDATAFLOW = 'GETDATAFLOW';
 export const RESETDATAFLOW = 'RESETDATAFLOW';
 export const SEARCH = 'SEARCH';
-export const GETALERTMESSAGE = 'GETALERTMESSAGE';
 
 export const filter = value => ({ type: FILTER, value });
 export const facetedSearch = value => ({ type: FACETEDSEARCH, value });
@@ -19,7 +18,6 @@ const { server: { host, port } } = params;
 
 export const getTheSearch = (value) => axios.post(`http://${host}:${port}/api/search`, { search: value });
 
-export const getAlertMessage = (status, message) => ({ type: GETALERTMESSAGE, message, status });
 
 export const search = value => ({ type: SEARCH, value });
 

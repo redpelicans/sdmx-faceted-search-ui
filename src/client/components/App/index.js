@@ -3,59 +3,46 @@ import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { compose, withHandlers, withState } from 'recompose';
-import Container from '../Container';
-import SidePanel from '../SidePanel';
+// import Container from '../Container';
+// import SidePanel from '../SidePanel';
 import Alert from '../Alert';
-import { handleSearch, filter, facetedSearch, moveSidePanel, getAlertMessage } from '../../actions';
+import { search } from '../../actions/dataflows';
+import { alert } from '../../actions/message';
 import './App.css';
 
-const App = ({ facetedbox, title, languages, dataflows, showSidePanel, searchValue, err,
-  getAlertMessage: doGetAlertMessage, handleSearch: goHandleSearch, toggleshowSidePanelHandler: doMoveSidePanel }) => (
-    <div className="App">
+const App = ({ alert: doAlert, message }) => (
+  <div className="App">
+    {/*
       <SidePanel
         facetedbox={facetedbox}
         showSidePanel={showSidePanel}
         moveSidePanel={doMoveSidePanel}
       />
-      <Alert getAlertMessage={doGetAlertMessage} err={err} />
-      <Container
-        title={title}
-        dataflows={dataflows}
-        handleSearch={goHandleSearch}
-        languages={languages}
-        showSidePanel={showSidePanel}
-        displayShowPanel={doMoveSidePanel}
-        searchValue={searchValue}
+      */}
+    <Alert alert={doAlert} message={message} />
+    {/*
+    <Container
+      title={title}
+      dataflows={dataflows}
+      handleSearch={goHandleSearch}
+      languages={languages}
+      showSidePanel={showSidePanel}
+      displayShowPanel={doMoveSidePanel}
+      searchValue={searchValue}
       />
-    </div>
+      */}
+  </div>
 );
 
 App.propTypes = {
-  facetedbox: PropTypes.object.isRequired,
-  dataflows: PropTypes.array.isRequired,
-  title: PropTypes.string.isRequired,
-  languages: PropTypes.array.isRequired,
-  handleSearch: PropTypes.func.isRequired,
-  getAlertMessage: PropTypes.func.isRequired,
-  toggleshowSidePanelHandler: PropTypes.func.isRequired,
-  showSidePanel: PropTypes.bool.isRequired,
-  searchValue: PropTypes.string.isRequired,
-  err: PropTypes.object.isRequired,
+  alert: PropTypes.func.isRequired,
+  message: PropTypes.object,
 };
 
-const actions = { handleSearch, filter, facetedSearch, moveSidePanel, getAlertMessage };
+const actions = { search, alert };
 
 const mapStateToProps = state => ({
-  title: state.title,
-  facetedbox: state.facetedbox,
-  filterbox: state.filterbox,
-  languages: state.languages,
-  dataflows: state.dataflows,
-  searchValue: state.searchValue,
-  filterValue: state.filterValue,
-  facetedValue: state.facetedValue,
-  sortTypes: state.sortTypes,
-  err: state.err,
+  message: state.message,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);
