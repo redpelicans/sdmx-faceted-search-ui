@@ -1,11 +1,11 @@
 import React from 'react';
 import { onlyUpdateForKeys } from 'recompose';
-import PropTypes from 'prop-types';
 import LanguageSelector from '../LanguageSelector';
+import { title } from '../../../params';
 import './Header.css';
 
 
-const Header = ({ title, languages }) => (
+const Header = () => (
   <nav className="pt-navbar pt-intent-success header">
     <div className="pt-navbar-group pt-align-left">
       <div className="logo">
@@ -14,16 +14,9 @@ const Header = ({ title, languages }) => (
       <div className="pt-navbar-heading">{ title }</div>
     </div>
     <div className="pt-navbar-group pt-align-right">
-      <LanguageSelector
-        languages={languages}
-      />
+      <LanguageSelector />
     </div>
   </nav>
 );
-
-Header.propTypes = {
-  title: PropTypes.string.isRequired,
-  languages: PropTypes.array.isRequired,
-};
 
 export default onlyUpdateForKeys(['language'])(Header);

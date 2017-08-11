@@ -20,4 +20,8 @@ LanguageSelector.propTypes = {
   languages: PropTypes.array.isRequired,
 };
 
+LanguageSelector.defaultProps = {
+  languages: [],
+};
+
 export default onlyUpdateForKeys(['language'])(LanguageSelector);

@@ -7,11 +7,11 @@ import Pager from '../Pager';
 import './MainPanel.css';
 
 
-const MainPanel = ({ displayShowPanel, dataflows, handleSearch, searchValue }) => (
+const MainPanel = ({ displayShowPanel, dataflows, searchValue, search }) => (
   <div className="mainpanel">
     <div className="pt-card mainpanel_inner">
       <SearchPanel
-        handleSearch={handleSearch}
+        search={search}
       />
       <ResultPanel
         dataflows={dataflows}
@@ -24,9 +24,9 @@ const MainPanel = ({ displayShowPanel, dataflows, handleSearch, searchValue }) =
 
 MainPanel.propTypes = {
   displayShowPanel: PropTypes.func.isRequired,
-  handleSearch: PropTypes.func.isRequired,
-  dataflows: PropTypes.array.isRequired,
+  dataflows: PropTypes.object.isRequired,
   searchValue: PropTypes.string.isRequired,
+  search: PropTypes.func.isRequired,
 };
 
 export default MainPanel;

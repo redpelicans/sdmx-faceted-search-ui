@@ -4,12 +4,12 @@ import PropTypes from 'prop-types';
 import './SearchBar.css';
 
 
-const SearchBar = ({ handleSearch }) => (
+const SearchBar = ({ search }) => (
   <div className="searchbarcontainer">
     <input
       onChange={(event) => {
         event.preventDefault();
-        handleSearch(event.target.value);
+        search(event.target.value);
       }}
       className="pt-input pt-fill"
       placeholder="Search"
@@ -19,7 +19,7 @@ const SearchBar = ({ handleSearch }) => (
 );
 
 SearchBar.propTypes = {
-  handleSearch: PropTypes.func.isRequired,
+  search: PropTypes.func.isRequired,
 };
 
 export default SearchBar;

@@ -1,15 +1,7 @@
-/* eslint-disable */
-const R = require('ramda');
-const defaultConfig = require('./default');
-const { deepMerge } = require('./utils');
-
-const supportedModes = {
-  development: require('./development'),
-  production: require('./production'),
-  testing: require('./test'),
+module.exports = {
+  title: 'SDMX Faceted Search',
+  server: {
+    host: 'rp3.redpelicans.com',
+    port: 3006,
+  },
 };
-const config = supportedModes[process.env.NODE_ENV] || {};
-// const { secret: { path } = {} } = config;
-////  const sConfig = path ? require(path) : {};
-//module.exports = deepMerge(R.merge(defaultConfig, config), sConfig);
-module.exports = config;

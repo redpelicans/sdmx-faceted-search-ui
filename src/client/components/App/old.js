@@ -1,5 +1,5 @@
 import axios from 'axios';
-import params from '../../params';
+import params from '../../../params';
 
 export const HANDLESEARCH = 'HANDLESEARCH';
 export const FILTER = 'FILTER';
@@ -17,6 +17,7 @@ export const moveSidePanel = () => ({ type: MOVESIDEPANEL });
 const { server: { host, port } } = params;
 
 export const getTheSearch = (value) => axios.post(`http://${host}:${port}/api/search`, { search: value });
+
 
 export const search = value => ({ type: SEARCH, value });
 
