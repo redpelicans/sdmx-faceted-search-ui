@@ -1,12 +1,11 @@
-.main-panel-container {
+.mainpanel
+{
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  padding-left: 250px;
+  padding:2%;
 }
-
-.search-panel-item {
-}
-
-.results-panel-item {
+.mainpanel_inner
+{
+  display: flex;
+  flex-direction: column;
 }

@@ -5,17 +5,19 @@ import { connect } from 'react-redux';
 import { compose, withHandlers, withState } from 'recompose';
 import Container from '../Container';
 import SidePanel from '../SidePanel';
-import { handleSearch, filter, facetedSearch, moveSidePanel } from '../../actions';
+import Alert from '../Alert';
+import { handleSearch, filter, facetedSearch, moveSidePanel, getAlertMessage } from '../../actions';
 import './App.css';
 
-const App = ({ facetedbox, title, languages, dataflows, showSidePanel, searchValue,
-  handleSearch: goHandleSearch, toggleshowSidePanelHandler: doMoveSidePanel }) => (
+const App = ({ facetedbox, title, languages, dataflows, showSidePanel, searchValue, err,
+  getAlertMessage: doGetAlertMessage, handleSearch: goHandleSearch, toggleshowSidePanelHandler: doMoveSidePanel }) => (
     <div className="App">
       <SidePanel
         facetedbox={facetedbox}
         showSidePanel={showSidePanel}
         moveSidePanel={doMoveSidePanel}
       />
+      <Alert getAlertMessage={doGetAlertMessage} err={err} />
       <Container
         title={title}
         dataflows={dataflows}
@@ -34,12 +36,14 @@ App.propTypes = {
   title: PropTypes.string.isRequired,
   languages: PropTypes.array.isRequired,
   handleSearch: PropTypes.func.isRequired,
+  getAlertMessage: PropTypes.func.isRequired,
   toggleshowSidePanelHandler: PropTypes.func.isRequired,
   showSidePanel: PropTypes.bool.isRequired,
   searchValue: PropTypes.string.isRequired,
+  err: PropTypes.object.isRequired,
 };
 
-const actions = { handleSearch, filter, facetedSearch, moveSidePanel };
+const actions = { handleSearch, filter, facetedSearch, moveSidePanel, getAlertMessage };
 
 const mapStateToProps = state => ({
   title: state.title,
@@ -51,6 +55,7 @@ const mapStateToProps = state => ({
   filterValue: state.filterValue,
   facetedValue: state.facetedValue,
   sortTypes: state.sortTypes,
+  err: state.err,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);

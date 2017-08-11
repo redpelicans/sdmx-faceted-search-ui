@@ -28,6 +28,10 @@ const initialState = {
   dataflows: [],
   facetedbox: {},
   filterbox: [],
+  err: {
+    message: '',
+    status: 'DANGER',
+  },
 };
 
 const store = configureStore(initialState);
