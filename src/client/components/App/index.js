@@ -9,7 +9,7 @@ import { search } from '../../actions/dataflows';
 import { alert } from '../../actions/message';
 import './App.css';
 
-const App = ({ facets, toggleSidePanel, showSidePanel, dataflows, searchValue, search: goSearch }) => (
+const App = ({ facets, toggleSidePanel, showSidePanel, dataflows, searchValue, search: doSearch }) => (
   <div className="App">
     <SidePanel
       facets={facets}
@@ -21,7 +21,7 @@ const App = ({ facets, toggleSidePanel, showSidePanel, dataflows, searchValue, s
       showSidePanel={showSidePanel}
       displayShowPanel={toggleSidePanel}
       searchValue={searchValue}
-      search={goSearch}
+      search={doSearch}
     />
   </div>
 );
@@ -55,6 +55,5 @@ const enhance = compose(
   withState('showSidePanel', 'toggleshowSidePanel', true),
   withHandlers({ toggleSidePanel: ({ toggleshowSidePanel }) => () => toggleshowSidePanel((showSidePanel) => !showSidePanel) }),
 );
-
 
 export default enhance(App);

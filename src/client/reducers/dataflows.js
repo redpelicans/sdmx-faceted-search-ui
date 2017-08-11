@@ -1,4 +1,4 @@
-import { DATAFLOWSLOADED, RESETDATAFLOW } from '../actions/dataflows';
+import { DATAFLOWSLOADED } from '../actions/dataflows';
 
 const reducer = (state = { data: [] }, action) => {
   switch (action.type) {
@@ -6,11 +6,6 @@ const reducer = (state = { data: [] }, action) => {
       return {
         ...state,
         data: action.dataflows,
-      };
-    case RESETDATAFLOW:
-      return {
-        ...state,
-        data: [],
       };
     default:
       return state;
