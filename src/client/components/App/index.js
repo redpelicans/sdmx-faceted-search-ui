@@ -30,7 +30,7 @@ App.propTypes = {
   toggleSidePanel: PropTypes.func.isRequired,
   showSidePanel: PropTypes.bool.isRequired,
   facets: PropTypes.object.isRequired,
-  dataflows: PropTypes.object.isRequired,
+  dataflows: PropTypes.array.isRequired,
   searchValue: PropTypes.string.isRequired,
   search: PropTypes.func.isRequired,
 };

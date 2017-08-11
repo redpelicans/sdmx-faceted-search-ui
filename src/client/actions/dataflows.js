@@ -1,3 +1,4 @@
+import { propOr } from 'ramda';
 import { requestJson } from '../utils';
 
 export const DATAFLOWSLOADED = 'DATAFLOWSLOADED';
@@ -10,6 +11,6 @@ const dataflowsLoaded = dataflows => ({
 
 export const search = value => dispatch => {
   requestJson({ dispatch, method: 'post', url: '/api/search', body: { search: value } })
-    .then(data => dispatch(dataflowsLoaded(data.dataflows)));
+    .then(data => dispatch(dataflowsLoaded(propOr([], 'dataflows', data))));
 };
 

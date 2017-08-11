@@ -20,7 +20,7 @@ const Container = ({ dataflows, searchValue, showSidePanel, displayShowPanel, se
 );
 
 Container.propTypes = {
-  dataflows: PropTypes.object.isRequired,
+  dataflows: PropTypes.array.isRequired,
   showSidePanel: PropTypes.bool.isRequired,
   displayShowPanel: PropTypes.func.isRequired,
   searchValue: PropTypes.string.isRequired,

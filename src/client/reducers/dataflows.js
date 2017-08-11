@@ -1,12 +1,9 @@
 import { DATAFLOWSLOADED } from '../actions/dataflows';
 
-const reducer = (state = { data: [] }, action) => {
+const reducer = (state = [], action) => {
   switch (action.type) {
     case DATAFLOWSLOADED:
-      return {
-        ...state,
-        data: action.dataflows,
-      };
+      return action.dataflows;
     default:
       return state;
   }

@@ -13,7 +13,7 @@
         dataflows={dataflows}
         searchValue={searchValue}
       />
-      {dataflows.data.map(lis => (
+      {dataflows.map(lis => (
         <Media key={lis.id} query={{ maxWidth: 599 }}>
           {matches => matches ? (
             <DataFlow data={lis} direction="column" />
@@ -22,12 +22,12 @@
           )}
         </Media>
     )) }
-      {!dataflows.data.length && <EmptySearch />}
+      {!dataflows.length && <EmptySearch />}
     </div>
     );
 
   ResultPanel.propTypes = {
-    dataflows: PropTypes.object.isRequired,
+    dataflows: PropTypes.array.isRequired,
     searchValue: PropTypes.string.isRequired,
   };
 

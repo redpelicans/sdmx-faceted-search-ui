@@ -24,7 +24,7 @@ const MainPanel = ({ displayShowPanel, dataflows, searchValue, search }) => (
 
 MainPanel.propTypes = {
   displayShowPanel: PropTypes.func.isRequired,
-  dataflows: PropTypes.object.isRequired,
+  dataflows: PropTypes.array.isRequired,
   searchValue: PropTypes.string.isRequired,
   search: PropTypes.func.isRequired,
 };
