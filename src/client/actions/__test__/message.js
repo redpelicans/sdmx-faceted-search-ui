@@ -8,7 +8,7 @@ import { alert,  ALERT } from '../message';
 const { describe, it } = global;
 
 describe('Action:message', () => {
-  it('ALERT', function(done) {
+  it('ALERT Once', function(done) {
     const [LABEL, STATUS] = ['label', 'status'];
     const hook = {
       ALERT: getState =>  {
@@ -21,4 +21,21 @@ describe('Action:message', () => {
     const store = configureStore(reducer, {}, hook);
     store.dispatch(alert(LABEL, STATUS));
   });
+  // it('ALERT Many', function(done) {
+  //   const [LABEL1, LABEL2, STATUS] = ['label1', 'label2', 'status'];
+  //   const hook = {
+  //     ALERT: getState =>  {
+  //       const { message } = getState();
+  //       if (message.id === 2) {
+  //         should(message.label).eql(LABEL2);
+  //         should(message.status).eql(STATUS);
+  //         done();
+  //       }
+  //     }
+  //   };
+  //   const store = configureStore(reducer, {}, hook);
+  //   store.dispatch(alert(LABEL1, STATUS));
+  //   store.dispatch(alert(LABEL2, STATUS));
+  // });
+
 });
