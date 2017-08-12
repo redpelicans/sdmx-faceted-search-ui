@@ -23,11 +23,17 @@ export const PopHoverElem = ({ data }) => (
       <p className="title">Version: </p>
       <p>{data.version}</p>
     </div>
+    <div className="text_container">
+      <p className="title">Description: </p>
+      <p>{data.description}</p>
+    </div>
     {data.frequency && <div className="text_container">
       <p className="title">Frequency: </p>
-      {data.frequency && data.frequency.map(frequence => (
-        <p>{frequence}</p>
-      ))}
+      <div className="ref_area_container">
+        {data.frequency && data.frequency.map(frequence => (
+          <p>{frequence}\</p>
+        ))}
+      </div>
     </div>}
     {data.interest_rate_type && <div className="text_container">
       <p className="title">Interest rate type: </p>
@@ -39,37 +45,47 @@ export const PopHoverElem = ({ data }) => (
       <p className="title">Reference area: </p>
       <div className="ref_area_container">
         {data.reference_area && data.reference_area.map(ref => (
-          <p>{ref}</p>
+          <p className="ref">{ref}\ </p>
         ))}
       </div>
     </div>}
   </div>
 );
 
-const DataFlow = ({ data }) => (
-  <Popover
-    content={
-      <PopHoverElem data={data} />
-    }
-    target={
-      <div className="pt-card pt-elevation-0 pt-interactive dataflowcontainer">
-        <p className="name">{data.name}</p>
-        <p className="id">{data.id}</p>
-      </div>
-    }
-    position={Position.BOTTOM}
-    interactionKind={PopoverInteractionKind.HOVER}
-    openOnTargetFocus
-    inheritDarkTheme
-  />
+const DataFlow = ({ data, screenSize, popoverPosition }) => (
+  <div
+    className={screenSize ?
+      'pt-card pt-elevation-0 pt-interactive dataflowcontainer large' :
+      'pt-card pt-elevation-0 pt-interactive dataflowcontainer small'
+      }
+  >
+    <Popover
+      content={
+        <PopHoverElem data={data} />
+      }
+      target={
+        <div className="info_container">
+          <i className="fa fa-info" aria-hidden="true" />
+        </div>
+      }
+      position={popoverPosition ? Position.RIGHT : Position.LEFT}
+      interactionKind={PopoverInteractionKind.HOVER}
+      hoverCloseDelay={500}
+      popoverClassName="popover"
+    />
+    <p className="name">{data.name}</p>
+    <p className="id">{data.id}</p>
+  </div>
 );
 
 DataFlow.propTypes = {
   data: PropTypes.object.isRequired,
+  screenSize: PropTypes.bool.isRequired,
+  popoverPosition: PropTypes.bool.isRequired,
 };
 
 PopHoverElem.propTypes = {
   data: PropTypes.object.isRequired,
 };
 
-export default onlyUpdateForKeys(['data'])(DataFlow);
+export default onlyUpdateForKeys(['data', 'screenSize'])(DataFlow);

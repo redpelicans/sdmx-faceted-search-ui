@@ -10,7 +10,12 @@ const dataflowsLoaded = dataflows => ({
 });
 
 export const search = value => dispatch => {
-  requestJson({ dispatch, method: 'post', url: '/api/search', body: { search: value } })
-    .then(data => dispatch(dataflowsLoaded(propOr([], 'dataflows', data))));
+  if (!value) {
+    requestJson({ dispatch, method: 'post', url: '/api/search', body: { search: value } })
+    .then(() => dispatch(dataflowsLoaded([])));
+  } else {
+    requestJson({ dispatch, method: 'post', url: '/api/search', body: { search: value } })
+      .then(data => dispatch(dataflowsLoaded(propOr([], 'dataflows', data))));
+  }
 };
 

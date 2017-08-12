@@ -13,15 +13,42 @@
         dataflows={dataflows}
         searchValue={searchValue}
       />
-      {dataflows.map(lis => (
-        <Media key={lis.id} query={{ maxWidth: 599 }}>
-          {matches => matches ? (
-            <DataFlow data={lis} direction="column" />
-          ) : (
-            <DataFlow data={lis} direction="row" />
-          )}
-        </Media>
-    )) }
+      {dataflows.map((lis, i) => {
+        if (i % 3 !== 0) {
+          return (
+            <Media key={lis.id} query={{ maxWidth: 1100 }}>
+              {matches => matches ? (
+                <DataFlow
+                  data={lis}
+                  screenSize
+                />
+              ) : (
+                <DataFlow
+                  data={lis}
+                  screenSize={false}
+                  popoverPosition={false}
+                />
+              )}
+            </Media>
+          );
+        }
+        return (
+          <Media key={lis.id} query={{ maxWidth: 1100 }}>
+            {matches => matches ? (
+              <DataFlow
+                data={lis}
+                screenSize
+              />
+            ) : (
+              <DataFlow
+                data={lis}
+                screenSize={false}
+                popoverPosition
+              />
+            )}
+          </Media>
+        );
+      })}
       {!dataflows.length && <EmptySearch />}
     </div>
     );
