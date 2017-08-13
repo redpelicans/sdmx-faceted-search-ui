@@ -2,27 +2,27 @@
 {
   display: flex;
   justify-content: flex-start;
-  flex-wrap: wrap;
   align-items: center;
-  margin-top:25px;
+  flex-wrap: wrap;
+  margin-top:17px;
 }
 .dataflowcontainer p
 {
-  margin-top:5px;
-  margin-bottom:5px;
+  margin:0;
 }
 .name
 {
-  color:#0654ba;
+  color:rgb(79, 119, 255);;
   font-size:1.3em;
-  margin-right:20px;
   text-align: left;
-  flex:1;
   min-width:200px;
+  flex:2;
 }
 .id
 {
   margin-left:25px;
+  flex:1;
+  text-align: right;
 }
 .id:hover
 {
@@ -35,7 +35,7 @@
 }
 .pophover_title
 {
-  color:#0654ba;
+  color:rgb(79, 119, 255);
 }
 .text_container
 {
@@ -49,13 +49,11 @@
 }
 .title
 {
-  color:#0654ba;
-  margin-right:20px;
+  color:rgb(79, 119, 255);
 }
 .logo_info
 {
-  margin-right:20px;
-  color:#0654ba;
+  color:rgb(79, 119, 255);
 }
 .ref_area_container
 {
@@ -69,12 +67,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-right:10px;
   width:20px;
   height:20px;
   color: white;
   border-radius: 100px;
-  margin-right:25px;
-  background-color:#0654ba;;
+  background-color:rgb(79, 119, 255);
 }
 .large
 {

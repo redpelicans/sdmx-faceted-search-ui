@@ -31,21 +31,21 @@ export const PopHoverElem = ({ data }) => (
       <p className="title">Frequency: </p>
       <div className="ref_area_container">
         {data.frequency && data.frequency.map(frequence => (
-          <p>{frequence}\</p>
+          <p key={frequence}>{frequence}\</p>
         ))}
       </div>
     </div>}
     {data.interest_rate_type && <div className="text_container">
       <p className="title">Interest rate type: </p>
       {data.interest_rate_type && data.interest_rate_type.map(type => (
-        <p>{type}</p>
+        <p key={type}>{type}</p>
       ))}
     </div>}
     {data.reference_area && <div className="text_container">
       <p className="title">Reference area: </p>
       <div className="ref_area_container">
         {data.reference_area && data.reference_area.map(ref => (
-          <p className="ref">{ref}\ </p>
+          <p className="ref" key={ref}>{ref}\ </p>
         ))}
       </div>
     </div>}
@@ -68,7 +68,7 @@ const DataFlow = ({ data, screenSize, popoverPosition }) => (
           <i className="fa fa-info" aria-hidden="true" />
         </div>
       }
-      position={popoverPosition ? Position.RIGHT : Position.LEFT}
+      position={popoverPosition ? Position.BOTTOM_LEFT : Position.BOTTOM_RIGHT}
       interactionKind={PopoverInteractionKind.HOVER}
       hoverCloseDelay={500}
       popoverClassName="popover"

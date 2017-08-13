@@ -4,8 +4,8 @@ import './EmptySearch.css';
 
 const EmptySearch = () => (
   <div className="empty_search_container">
-    <div className="pt-callout pt-icon-info-sign pt-intent-primary emptysearch">
-      <h5>Astuces de recherche</h5>
+    <div className="emptysearch">
+      <h5 className="empty_search_title">Astuces de recherche</h5>
       <ul className="pt-list">
         <li>Vérifiez que l orthographe des mots-clés est correcte</li>
         <li>Utilisez des mots-clés différents</li>

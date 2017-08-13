@@ -13,18 +13,19 @@
         dataflows={dataflows}
         searchValue={searchValue}
       />
-      {dataflows.map((lis, i) => {
-        if (i % 3 !== 0) {
+      {dataflows.map((dataflow, i) => {
+        if (i % 3 === 2) {
           return (
-            <Media key={lis.id} query={{ maxWidth: 1100 }}>
+            <Media key={dataflow.id} query={{ maxWidth: 1100 }}>
               {matches => matches ? (
                 <DataFlow
-                  data={lis}
+                  data={dataflow}
                   screenSize
+                  popoverPosition
                 />
               ) : (
                 <DataFlow
-                  data={lis}
+                  data={dataflow}
                   screenSize={false}
                   popoverPosition={false}
                 />
@@ -33,15 +34,16 @@
           );
         }
         return (
-          <Media key={lis.id} query={{ maxWidth: 1100 }}>
+          <Media key={dataflow.id} query={{ maxWidth: 1100 }}>
             {matches => matches ? (
               <DataFlow
-                data={lis}
+                data={dataflow}
                 screenSize
+                popoverPosition
               />
             ) : (
               <DataFlow
-                data={lis}
+                data={dataflow}
                 screenSize={false}
                 popoverPosition
               />

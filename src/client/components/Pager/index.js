@@ -9,7 +9,7 @@ const Pager = () => (
       <div className="pager_elem prev">
         <span className="pt-icon-standard pt-icon-double-chevron-left" />
       </div>
-      <div className="pager_elem">1</div>
+      <div className="pager_elem selected">1</div>
       <div className="pager_elem">2</div>
       <div className="pager_elem">3</div>
       <div className="pager_elem next">

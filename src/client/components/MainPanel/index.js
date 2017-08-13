@@ -9,16 +9,16 @@ import './MainPanel.css';
 
 const MainPanel = ({ displayShowPanel, dataflows, searchValue, search }) => (
   <div className="mainpanel">
+    <SearchPanel
+      search={search}
+    />
     <div className="pt-card mainpanel_inner">
-      <SearchPanel
-        search={search}
-      />
       <ResultPanel
         dataflows={dataflows}
         displayShowPanel={displayShowPanel}
         searchValue={searchValue}
       />
-      <Pager />
+      {dataflows.length > 0 && <Pager />}
     </div>
   </div>);
 
