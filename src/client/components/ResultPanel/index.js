@@ -7,11 +7,12 @@
 
   import './ResultPanel.css';
 
-  const ResultPanel = ({ dataflows, searchValue }) => (
+  const ResultPanel = ({ dataflows, searchValue, numberOfResult }) => (
     <div className="resultpanel">
       <SearchInfo
         dataflows={dataflows}
         searchValue={searchValue}
+        numberOfResult={numberOfResult}
       />
       {dataflows.map((dataflow, i) => {
         if (i % 3 === 2) {
@@ -51,13 +52,14 @@
           </Media>
         );
       })}
-      {!dataflows.length && <EmptySearch />}
+      {numberOfResult === 0 && <EmptySearch />}
     </div>
     );
 
   ResultPanel.propTypes = {
     dataflows: PropTypes.array.isRequired,
     searchValue: PropTypes.string.isRequired,
+    numberOfResult: PropTypes.number.isRequired,
   };
 
   export default ResultPanel;

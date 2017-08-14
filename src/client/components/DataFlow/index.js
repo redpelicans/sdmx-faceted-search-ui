@@ -55,25 +55,27 @@ export const PopHoverElem = ({ data }) => (
 const DataFlow = ({ data, screenSize, popoverPosition }) => (
   <div
     className={screenSize ?
-      'pt-card pt-elevation-0 pt-interactive dataflowcontainer large' :
-      'pt-card pt-elevation-0 pt-interactive dataflowcontainer small'
+      'pt-card pt-elevation-0 dataflowcontainer large' :
+      'pt-card pt-elevation-0 dataflowcontainer small'
       }
   >
-    <Popover
-      content={
-        <PopHoverElem data={data} />
-      }
-      target={
-        <div className="info_container">
-          <i className="fa fa-info" aria-hidden="true" />
-        </div>
-      }
-      position={popoverPosition ? Position.BOTTOM_LEFT : Position.BOTTOM_RIGHT}
-      interactionKind={PopoverInteractionKind.HOVER}
-      hoverCloseDelay={500}
-      popoverClassName="popover"
-    />
-    <p className="name">{data.name}</p>
+    <div className="dataflows_title">
+      <Popover
+        content={
+          <PopHoverElem data={data} />
+        }
+        target={
+          <div className="info_container">
+            <i className="fa fa-info" aria-hidden="true" />
+          </div>
+        }
+        position={popoverPosition ? Position.BOTTOM_LEFT : Position.BOTTOM_RIGHT}
+        interactionKind={PopoverInteractionKind.HOVER}
+        hoverCloseDelay={500}
+        popoverClassName="popover"
+      />
+      <p className="name">{data.name}</p>
+    </div>
     <p className="id">{data.id}</p>
   </div>
 );

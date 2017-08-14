@@ -7,7 +7,7 @@ import Pager from '../Pager';
 import './MainPanel.css';
 
 
-const MainPanel = ({ displayShowPanel, dataflows, searchValue, search }) => (
+const MainPanel = ({ displayShowPanel, dataflows, searchValue, search, numberOfResult, changePage, page }) => (
   <div className="mainpanel">
     <SearchPanel
       search={search}
@@ -17,8 +17,16 @@ const MainPanel = ({ displayShowPanel, dataflows, searchValue, search }) => (
         dataflows={dataflows}
         displayShowPanel={displayShowPanel}
         searchValue={searchValue}
+        numberOfResult={numberOfResult}
       />
-      {dataflows.length > 0 && <Pager />}
+      {numberOfResult > 10 &&
+        <Pager
+          numberOfResult={numberOfResult}
+          changePage={changePage}
+          searchValue={searchValue}
+          page={page}
+        />
+      }
     </div>
   </div>);
 
@@ -27,6 +35,9 @@ MainPanel.propTypes = {
   dataflows: PropTypes.array.isRequired,
   searchValue: PropTypes.string.isRequired,
   search: PropTypes.func.isRequired,
+  numberOfResult: PropTypes.number.isRequired,
+  changePage: PropTypes.func.isRequired,
+  page: PropTypes.number.isRequired,
 };
 
 export default MainPanel;
