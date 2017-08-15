@@ -7,7 +7,7 @@ import FacetedBox from '../FacetedBox';
 import './SidePanel.css';
 
 
-const SidePanel = ({ facetedbox, showSidePanel, moveSidePanel }) => (
+const SidePanel = ({ facets, showSidePanel, moveSidePanel }) => (
   <Motion style={{ x: spring(showSidePanel ? -240 : 0), y: spring(showSidePanel ? 300 : 250) }}>
     {({ x, y }) =>
       (<div
@@ -23,9 +23,9 @@ const SidePanel = ({ facetedbox, showSidePanel, moveSidePanel }) => (
         {!showSidePanel && <div onClick={moveSidePanel} className="crosscontainer">
           <span className="pt-icon-large pt-icon-cross" />
         </div>}
-        {Object.entries(facetedbox).map(facets => (
+        {Object.entries(facets).map(facet => (
           <FacetedBox
-            name={facets[0]}
+            name={facet[0]}
           />
         ))}
       </div>)
@@ -36,7 +36,7 @@ const SidePanel = ({ facetedbox, showSidePanel, moveSidePanel }) => (
 SidePanel.propTypes = {
   showSidePanel: PropTypes.bool.isRequired,
   moveSidePanel: PropTypes.func.isRequired,
-  facetedbox: PropTypes.object.isRequired,
+  facets: PropTypes.object.isRequired,
 };
 
 export default SidePanel;

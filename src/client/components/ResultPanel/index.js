@@ -11,7 +11,6 @@
     <div className="resultpanel">
       <SearchInfo
         dataflows={dataflows}
-        searchsize={dataflows.length}
         searchValue={searchValue}
       />
       {dataflows.map(lis => (

@@ -14,4 +14,4 @@ FacetedBox.propTypes = {
   name: PropTypes.string.isRequired,
 };
 
-export default onlyUpdateForKeys(['name', 'facets'])(FacetedBox);
+export default onlyUpdateForKeys(['name'])(FacetedBox);

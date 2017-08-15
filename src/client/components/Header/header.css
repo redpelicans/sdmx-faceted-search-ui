@@ -1,9 +1,9 @@
-.header
-{
-  min-width:310px;
-}
 .logo
 {
   margin-right:10px;
-  color: rgb(193, 51, 41);
+  color:rgb(205, 68, 64)
+}
+.header
+{
+  min-width:310px;
 }

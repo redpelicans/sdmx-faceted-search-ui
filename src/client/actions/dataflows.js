@@ -2,6 +2,7 @@ import { propOr } from 'ramda';
 import { requestJson } from '../utils';
 
 export const DATAFLOWSLOADED = 'DATAFLOWSLOADED';
+export const SEARCH = 'SEARCH';
 
 const dataflowsLoaded = dataflows => ({
   type: DATAFLOWSLOADED,
