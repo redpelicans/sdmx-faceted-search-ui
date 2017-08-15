@@ -1,7 +1,6 @@
 .sidepanel
 {
   display: flex;
-  position: relative;
   z-index:100;
   padding-top: 15px;
   padding-left:20px;
@@ -9,8 +8,8 @@
   align-items: flex-start;
   flex-direction: column;
   min-height:100vh;
-  background-color:rgb(39,40,34);
-  border-right: 1px solid rgba(100, 100, 100, 0.1);
+  background-color:rgb(79, 119, 255);
+  /*background-color:rgb(39,40,34);*/
 }
 .crosscontainer
 {

@@ -2,4 +2,39 @@
 {
   display: flex;
   width:100%;
+  height:45px;
+  max-width:635px;
+  font-size: small;
+  font-family: arial,sans-serif;
+  background-color:white;
+  border: 1px solid #ccc;
+  border-top-color: #d9d9d9;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  -webkit-box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  cursor: default;
+  border-radius: 3px;
+}
+.searchbar_inner
+{
+  background-color:white;
+  height:100%;
+  width:100%;
+  border:none;
+  border-radius: 3px;
+}
+.searchbar_inner:focus
+{
+  outline:none;
+}
+.search_icon
+{
+  color: rgb(79, 119, 255);
+}
+.search_icon_container
+{
+  display: flex;
+  height:100%;
+  width:50px;
+  justify-content: center;
+  align-items: center;
 }

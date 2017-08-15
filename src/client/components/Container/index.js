@@ -4,7 +4,7 @@ import Header from '../Header';
 import MainPanel from '../MainPanel';
 import './Container.css';
 
-const Container = ({ dataflows, searchValue, showSidePanel, displayShowPanel, search }) => (
+const Container = ({ dataflows, searchValue, showSidePanel, displayShowPanel, search, numberOfResult, changePage, page }) => (
   <div className="container">
     <Header
       showSidePanel={showSidePanel}
@@ -15,6 +15,9 @@ const Container = ({ dataflows, searchValue, showSidePanel, displayShowPanel, se
       displayShowPanel={displayShowPanel}
       searchValue={searchValue}
       search={search}
+      numberOfResult={numberOfResult}
+      changePage={changePage}
+      page={page}
     />
   </div>
 );
@@ -25,6 +28,9 @@ Container.propTypes = {
   displayShowPanel: PropTypes.func.isRequired,
   searchValue: PropTypes.string.isRequired,
   search: PropTypes.func.isRequired,
+  numberOfResult: PropTypes.number.isRequired,
+  changePage: PropTypes.func.isRequired,
+  page: PropTypes.number.isRequired,
 };
 
 export default Container;
