@@ -1,39 +1,47 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import R from 'ramda';
 import './Pager.css';
 
-const Pager = ({ numberOfResult, changePage, searchValue, page }) => (
-  <div className="pager_container">
-    <div className="pager_container_inner">
-      <div className="first">First</div>
-      <div className="pager_elem prev">
-        <span className="pt-icon-standard pt-icon-double-chevron-left" />
-      </div>
-      {(Math.round(numberOfResult / 10)) < 10 &&
-        new Array(Math.round(numberOfResult / 10)).fill('').map(
-          (elem, i) => (
-            <div
-              className={(i + 1) === page ? 'pager_elem selected' : 'pager_elem'}
-              onClick={() => changePage(searchValue, i + 1)}
-            >
-              {i + 1}
-            </div>
-          ))
-      }
-      {(Math.round(numberOfResult / 10)) > 10 &&
-        new Array(Math.round(numberOfResult / 10)).fill('').map(
-          (elem, i) => (i < 10 && <div className="pager_elem">{i + 1}</div>
-          ))
-      }
-      {(Math.round(numberOfResult / 10)) > 10 && <div className="pager_elem">...</div>}
-      <div className="pager_elem next">
-        <span className="pt-icon-standard pt-icon-double-chevron-right" />
-      </div>
-      <div className="last">Last</div>
+const Pager = ({ numberOfResult, changePage, searchValue, page }) => {
+  const printPagerCells = R.map((tabelem) => (
+    tabelem !== false &&
+    <div
+      key={tabelem}
+      className={(tabelem + 1) === page ? 'pager_elem selected' : 'pager_elem'}
+      onClick={() => changePage(searchValue, tabelem + 1)}
+    >
+      {tabelem + 1}
     </div>
-  </div>
-);
+  ));
+
+  const getPagerCells = R.times((i) => ((i > page - 3 && i < page + 1) && i), Math.ceil(numberOfResult / 10));
+
+  const buildPagerCells = R.map((elem) => elem, printPagerCells(getPagerCells));
+  return (
+    <div className="pager_container">
+      <div className="pager_container_inner">
+        <div className="first" onClick={() => changePage(searchValue, 1)}>First</div>
+        <div className="pager_elem prev">
+          <span
+            className="pt-icon-standard pt-icon-double-chevron-left"
+            onClick={page > 1 ? () => changePage(searchValue, page - 1) : () => {}}
+          />
+        </div>
+        {page > 2 && <div className="pager_elem">...</div>}
+        {buildPagerCells}
+        {page < Math.ceil(numberOfResult / 10) - 1 && <div className="pager_elem more">...</div>}
+        <div className="pager_elem next">
+          <span
+            className="pt-icon-standard pt-icon-double-chevron-right"
+            onClick={page < Math.ceil(numberOfResult / 10) ? () => changePage(searchValue, page + 1) : () => {}}
+          />
+        </div>
+        <div className="last" onClick={() => changePage(searchValue, Math.ceil(numberOfResult / 10))}>Last</div>
+      </div>
+    </div>
+  );
+};
 
 Pager.propTypes = {
   numberOfResult: PropTypes.number.isRequired,

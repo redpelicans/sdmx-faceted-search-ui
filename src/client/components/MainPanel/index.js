@@ -12,7 +12,7 @@ const MainPanel = ({ displayShowPanel, dataflows, searchValue, search, numberOfR
     <SearchPanel
       search={search}
     />
-    <div className="pt-card mainpanel_inner">
+    <div className="pt-card mainpanel_inner" style={numberOfResult > 0 ? { minHeight: '1110px' } : {}}>
       <ResultPanel
         dataflows={dataflows}
         displayShowPanel={displayShowPanel}

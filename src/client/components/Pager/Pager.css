@@ -2,18 +2,32 @@
 {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
   width:100%;
+  flex:1;
   margin-top:35px;
-  margin-bottom: 10px;
+  margin-bottom: 0px;
+}
+.pager_container_inner
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height:35px;
+  border:solid 1px rgb(200, 200, 200);
+  border-radius: 3px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  -webkit-box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 .pager_elem
 {
   height:100%;
+  min-width:40px;
   display: flex;
   justify-content: center;
   align-items: center;
   border-right: solid 1px rgb(200, 200, 200);
+  background-color: white;
 }
 .pager_container_inner *
 {
@@ -23,7 +37,7 @@
 }
 .pager_container_inner *:hover
 {
-  background-color:rgb(230, 230, 230);
+  background-color:rgb(240, 240, 240);
   cursor:pointer;
 }
 .first
@@ -41,18 +55,18 @@
   justify-content: center;
   align-items: center;
 }
-.pager_container_inner
-{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height:35px;
-  border:solid 1px rgb(200, 200, 200);
-  border-radius: 3px;
-}
 .selected
 {
   background-color: rgb(79, 119, 255);
   color:white;
-  border-right: none;
+  height:calc(100% + 2px);
+}
+.selected:hover
+{
+  background-color: rgb(79, 119, 255);
+}
+.more:hover
+{
+  background-color: white;
+  cursor:auto;
 }

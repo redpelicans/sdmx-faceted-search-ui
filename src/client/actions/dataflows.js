@@ -24,7 +24,7 @@ const selectedPage = page => ({
 
 export const changePage = (value, page) => dispatch => {
   dispatch(selectedPage(page));
-  requestJson({ dispatch, method: 'post', url: '/api/search', body: { search: value, start: page } })
+  requestJson({ dispatch, method: 'post', url: '/api/search', body: { search: value, start: (page - 1) * 10 } })
     .then(data => dispatch(dataflowsLoaded(propOr([], 'dataflows', data))));
 };
 
@@ -33,6 +33,7 @@ export const search = value => dispatch => {
   if (!value) {
     dispatch(dataflowsLoaded([]));
     dispatch(NumberResultsLoaded(0));
+    dispatch(selectedPage(1));
   } else {
     requestJson({ dispatch, method: 'post', url: '/api/search', body: { search: value } })
       .then(data => dispatch(dataflowsLoaded(propOr([], 'dataflows', data))));

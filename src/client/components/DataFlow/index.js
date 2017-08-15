@@ -1,6 +1,7 @@
 import React from 'react';
 import { onlyUpdateForKeys } from 'recompose';
 import PropTypes from 'prop-types';
+import { Motion, spring } from 'react-motion';
 import { Popover, Position, PopoverInteractionKind } from '@blueprintjs/core';
 
 import './DataFlow.css';
@@ -53,31 +54,36 @@ export const PopHoverElem = ({ data }) => (
 );
 
 const DataFlow = ({ data, screenSize, popoverPosition }) => (
-  <div
-    className={screenSize ?
-      'pt-card pt-elevation-0 dataflowcontainer large' :
-      'pt-card pt-elevation-0 dataflowcontainer small'
-      }
-  >
-    <div className="dataflows_title">
-      <Popover
-        content={
-          <PopHoverElem data={data} />
-        }
-        target={
-          <div className="info_container">
-            <i className="fa fa-info" aria-hidden="true" />
-          </div>
-        }
-        position={popoverPosition ? Position.BOTTOM_LEFT : Position.BOTTOM_RIGHT}
-        interactionKind={PopoverInteractionKind.HOVER}
-        hoverCloseDelay={500}
-        popoverClassName="popover"
-      />
-      <p className="name">{data.name}</p>
-    </div>
-    <p className="id">{data.id}</p>
-  </div>
+  <Motion defaultStyle={{ x: 0 }} style={{ x: spring(80) }}>
+    {({ x }) =>
+      (<div
+        style={{ height: x }}
+        className={screenSize ?
+          'pt-card pt-elevation-0 dataflowcontainer large' :
+          'pt-card pt-elevation-0 dataflowcontainer small'
+          }
+      >
+        <div className="dataflows_title">
+          <Popover
+            content={
+              <PopHoverElem data={data} />
+            }
+            target={
+              <div className="info_container">
+                <i className="fa fa-info" aria-hidden="true" />
+              </div>
+            }
+            position={popoverPosition ? Position.BOTTOM_LEFT : Position.BOTTOM_RIGHT}
+            interactionKind={PopoverInteractionKind.HOVER}
+            hoverCloseDelay={500}
+            popoverClassName="popover"
+          />
+          <p className="name">{data.name}</p>
+        </div>
+        <p className="id">{data.id}</p>
+      </div>)
+    }
+  </Motion>
 );
 
 DataFlow.propTypes = {

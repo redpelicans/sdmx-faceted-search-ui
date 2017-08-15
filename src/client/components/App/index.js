@@ -9,7 +9,8 @@ import { search, changePage } from '../../actions/dataflows';
 import { alert } from '../../actions/message';
 import './App.css';
 
-const App = ({ facets, toggleSidePanel, showSidePanel, dataflows, searchValue, search: doSearch, numberOfResult, changePage: doChangePage, page }) => (
+const App = ({ facets, toggleSidePanel, showSidePanel, dataflows,
+searchValue, search: doSearch, numberOfResult, changePage: doChangePage, page }) => (
   <div className="App">
     <SidePanel
       facets={facets}
