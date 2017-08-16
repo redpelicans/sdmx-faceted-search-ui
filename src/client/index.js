@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { pathOr } from 'ramda';
+import { IntlProvider } from 'react-intl';
 import configureStore from './store';
 import params from '../params';
 import App from './components/App';
@@ -14,12 +15,13 @@ const initialState = {
     searchValue: '',
   },
 };
-
 const store = configureStore(initialState);
 
 const root = (
   <Provider store={store}>
-    <App />
+    <IntlProvider locale={(store.language || navigator.language)} >
+      <App />
+    </IntlProvider>
   </Provider>
 );
 

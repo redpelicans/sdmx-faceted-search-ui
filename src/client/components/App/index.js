@@ -3,15 +3,16 @@ import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { compose, withHandlers, withState } from 'recompose';
+import { search } from '../../actions/dataflows';
+import Alert from '../Alert';
 import Container from '../Container';
 import SidePanel from '../SidePanel';
-import { search } from '../../actions/dataflows';
-import { alert } from '../../actions/message';
 import './App.css';
 
 const App = ({ facets, toggleSidePanel, showSidePanel, dataflows,
-searchData, search: doSearch }) => (
+searchData, search: doSearch, message }) => (
   <div className="App">
+    <Alert message={message} />
     <SidePanel
       facets={facets}
       showSidePanel={showSidePanel}
@@ -34,13 +35,10 @@ App.propTypes = {
   dataflows: PropTypes.array.isRequired,
   searchData: PropTypes.object.isRequired,
   search: PropTypes.func.isRequired,
+  message: PropTypes.object,
 };
 
-App.defaultProps = {
-  showSidePanel: false,
-};
-
-const actions = { search, alert };
+const actions = { search };
 
 const mapStateToProps = state => ({
   message: state.message,
@@ -54,7 +52,7 @@ const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);
 const enhance = compose(
   connect(mapStateToProps, mapDispatchToProps),
   withState('showSidePanel', 'toggleshowSidePanel', true),
-  withHandlers({ toggleSidePanel: ({ toggleshowSidePanel }) => () => toggleshowSidePanel((showSidePanel) => !showSidePanel) }),
+  withHandlers({ toggleshowSidePanelHandler: ({ toggleshowSidePanel }) => () => toggleshowSidePanel((showSidePanel) => !showSidePanel) }),
 );
 
 export default enhance(App);

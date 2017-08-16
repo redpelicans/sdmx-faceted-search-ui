@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import alert from './message';
-import search from './search';
+import alert from './alert'; //eslint-disable-line
+import search from './search'; //eslint-disable-line
 
 const reducer = combineReducers({
   alert,
