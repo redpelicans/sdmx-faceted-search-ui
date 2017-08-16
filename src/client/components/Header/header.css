@@ -1,12 +1,9 @@
-.logo
-{
-  margin-right:10px;
-  color:rgb(205, 68, 64)
-}
 .header
 {
   min-width:310px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  -webkit-box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  border-bottom: 1px solid #ccc;
+}
+.logo
+{
+  margin-right:10px;
+  color: rgb(193, 51, 41);
 }
