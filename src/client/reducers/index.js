@@ -1,14 +1,12 @@
 import { combineReducers } from 'redux';
 import message from './message';
 import dataflows from './dataflows';
-import search from './search';
-import facets from './facets';
+import lang from './lang';
 
 const reducer = combineReducers({
-  facets,
-  search,
   message,
   dataflows,
+  lang,
 });
 
 export default reducer;

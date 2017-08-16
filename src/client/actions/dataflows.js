@@ -10,7 +10,14 @@ const dataflowsLoaded = dataflows => ({
 });
 
 export const search = value => dispatch => {
-  requestJson({ dispatch, method: 'post', url: '/api/search', body: { search: value } })
+  requestJson({
+    dispatch,
+    method: 'post',
+    url: '/api/search',
+    body: { search: value },
+    header: 'Runtime error',
+    message: 'Cannot search dataflows',
+    status: 'DANGER',
+  })
     .then(data => dispatch(dataflowsLoaded(propOr([], 'dataflows', data))));
 };
-
