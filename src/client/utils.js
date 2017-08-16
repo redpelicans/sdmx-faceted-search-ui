@@ -1,13 +1,17 @@
 import axios from 'axios';
 import params from '../params';
-import { alert, ERROR } from './actions/message';
+import { alert } from './actions/message';
 
 const { server: { host, port } } = params;
-const manageError = (dispatch, message) => err => {
+const manageError = (dispatch, header, message, status) => err => {
   console.error(err); // eslint-disable-line
-  dispatch(alert(message, ERROR));
+  dispatch(alert(header, message, status));
 };
 
-export const requestJson = ({ dispatch, method, url, body, message = 'Runtime Error' }) => axios[method](`http://${host}:${port}${url}`, body)
+export const requestJson = ({ dispatch, method, url, body, header, message = 'Runtime error', status }) => axios({
+  url: `http://${host}:${port}${url}`,
+  method,
+  data: body,
+})
   .then(({ data }) => data)
-  .catch(manageError(dispatch, message));
+  .catch(manageError(dispatch, header, message, status));

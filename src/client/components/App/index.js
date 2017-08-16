@@ -3,49 +3,27 @@ import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { compose, withHandlers, withState } from 'recompose';
-import Container from '../Container';
-import SidePanel from '../SidePanel';
-import { search } from '../../actions/dataflows';
-import { alert } from '../../actions/message';
+import Alert from '../Alert';
+import LanguageSelector from '../LanguageSelector';
+import { changeLang } from '../../actions/lang';
 import './App.css';
 
-const App = ({ facets, toggleSidePanel, showSidePanel, dataflows, searchValue, search: doSearch }) => (
+const App = ({ message, changeLang: doChangeLang }) => (
   <div className="App">
-    <SidePanel
-      facets={facets}
-      showSidePanel={showSidePanel}
-      moveSidePanel={toggleSidePanel}
-    />
-    <Container
-      dataflows={dataflows}
-      showSidePanel={showSidePanel}
-      displayShowPanel={toggleSidePanel}
-      searchValue={searchValue}
-      search={doSearch}
-    />
+    <LanguageSelector languages={['fr', 'en']} changeLang={doChangeLang} />
+    <Alert message={message} />
   </div>
 );
 
 App.propTypes = {
-  toggleSidePanel: PropTypes.func.isRequired,
-  showSidePanel: PropTypes.bool.isRequired,
-  facets: PropTypes.object.isRequired,
-  dataflows: PropTypes.array.isRequired,
-  searchValue: PropTypes.string.isRequired,
-  search: PropTypes.func.isRequired,
+  changeLang: PropTypes.func.isRequired,
+  message: PropTypes.object,
 };
 
-App.defaultProps = {
-  showSidePanel: false,
-};
-
-const actions = { search, alert };
+const actions = { changeLang };
 
 const mapStateToProps = state => ({
   message: state.message,
-  facets: state.facets,
-  dataflows: state.dataflows,
-  searchValue: state.search.searchValue,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);
@@ -53,7 +31,7 @@ const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);
 const enhance = compose(
   connect(mapStateToProps, mapDispatchToProps),
   withState('showSidePanel', 'toggleshowSidePanel', true),
-  withHandlers({ toggleSidePanel: ({ toggleshowSidePanel }) => () => toggleshowSidePanel((showSidePanel) => !showSidePanel) }),
+  withHandlers({ toggleshowSidePanelHandler: ({ toggleshowSidePanel }) => () => toggleshowSidePanel((showSidePanel) => !showSidePanel) }),
 );
 
 export default enhance(App);

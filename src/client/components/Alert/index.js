@@ -1,43 +1,36 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Intent, Position, Toaster } from '@blueprintjs/core';
+import { Position, Toaster, Intent } from '@blueprintjs/core';
+
+import './Alert.css';
 
 class Alert extends React.Component {
-  state = {
-    show: false,
-  }
-
   componentDidMount() {
     this.toaster = Toaster.create({
       position: Position.TOP_RIGHT,
     });
   }
 
-  componentWillReceiveProps() {
-    if (!this.state.show) {
-      this.setState({ show: true });
+  componentWillReceiveProps(nextProps) {
+    const { id } = this.props.message;
+    if (id !== nextProps.message.id) {
+      const { message: { header, label, status } } = nextProps;
+      const message = <div><h3 className="alert-header">{header}</h3><p>{label}</p></div>;
+      const iconName = this.getIcon(status);
+      const intent = Intent[status];
+      this.toaster.show({ iconName, message, intent });
     }
   }
 
-  componentDidUpdate() {
-    const { label, status } = this.props.message;
-    this.toaster.update(this.toaster.show({ label }), { label, intent: status === 'DANGER' ? Intent.DANGER : Intent.SUCCESS });
-  }
+  getIcon = (status) => status === 'DANGER' ? 'pt-icon-warning-sign' : 'pt-icon-tick';
 
   render() {
-    return (
-      <input onChange={event => {
-        event.preventDefault();
-        this.props.alert('SUCCESS', event.target.value);
-      }}
-      />
-    );
+    return null;
   }
 }
 
 Alert.propTypes = {
   message: PropTypes.object,
-  alert: PropTypes.func.isRequired,
 };
 
 export default Alert;
