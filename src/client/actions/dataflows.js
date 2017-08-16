@@ -15,9 +15,7 @@ export const search = value => dispatch => {
     method: 'post',
     url: '/api/search',
     body: { search: value },
-    header: 'Runtime error',
     message: 'Cannot search dataflows',
-    status: 'DANGER',
   })
     .then(data => dispatch(dataflowsLoaded(propOr([], 'dataflows', data))));
 };
