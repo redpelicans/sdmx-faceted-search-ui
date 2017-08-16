@@ -1,6 +1,5 @@
 import React from 'react';
 import { onlyUpdateForKeys } from 'recompose';
-import LanguageSelector from '../LanguageSelector';
 import { title } from '../../../params';
 import './Header.css';
 
@@ -13,9 +12,7 @@ const Header = () => (
       </div>
       <div className="pt-navbar-heading">{ title }</div>
     </div>
-    <div className="pt-navbar-group pt-align-right">
-      <LanguageSelector />
-    </div>
+    <div className="pt-navbar-group pt-align-right" />
   </nav>
 );
 

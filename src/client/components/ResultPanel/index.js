@@ -7,28 +7,58 @@
 
   import './ResultPanel.css';
 
-  const ResultPanel = ({ dataflows, searchValue }) => (
+  const ResultPanel = ({ dataflows, searchValue, searchData = {} }) => (
     <div className="resultpanel">
       <SearchInfo
-        dataflows={dataflows}
         searchValue={searchValue}
+        numFound={searchData.numFound}
       />
-      {dataflows.map(lis => (
-        <Media key={lis.id} query={{ maxWidth: 599 }}>
-          {matches => matches ? (
-            <DataFlow data={lis} direction="column" />
-          ) : (
-            <DataFlow data={lis} direction="row" />
-          )}
-        </Media>
-    )) }
-      {!dataflows.length && <EmptySearch />}
+      {dataflows.map((dataflow, i) => {
+        if (i % 3 === 2) {
+          return (
+            <Media key={dataflow.id} query={{ maxWidth: 1100 }}>
+              {matches => matches ? (
+                <DataFlow
+                  data={dataflow}
+                  screenSize
+                  popoverPosition
+                />
+              ) : (
+                <DataFlow
+                  data={dataflow}
+                  screenSize={false}
+                  popoverPosition={false}
+                />
+              )}
+            </Media>
+          );
+        }
+        return (
+          <Media key={dataflow.id} query={{ maxWidth: 1100 }}>
+            {matches => matches ? (
+              <DataFlow
+                data={dataflow}
+                screenSize
+                popoverPosition
+              />
+            ) : (
+              <DataFlow
+                data={dataflow}
+                screenSize={false}
+                popoverPosition
+              />
+            )}
+          </Media>
+        );
+      })}
+      {(searchData.numFound === 0 || !searchData.numFound) && <EmptySearch />}
     </div>
     );
 
   ResultPanel.propTypes = {
     dataflows: PropTypes.array.isRequired,
-    searchValue: PropTypes.string.isRequired,
+    searchValue: PropTypes.string,
+    searchData: PropTypes.object,
   };
 
   export default ResultPanel;

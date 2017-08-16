@@ -17,4 +17,3 @@ export const loadConfig = () => dispatch => {
   })
   .then(data => dispatch(configLoaded(data)));
 };
-

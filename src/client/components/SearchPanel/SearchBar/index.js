@@ -6,12 +6,15 @@ import './SearchBar.css';
 
 const SearchBar = ({ search }) => (
   <div className="searchbarcontainer">
+    <div className="search_icon_container">
+      <span className="pt-icon-large pt-icon-search search_icon" />
+    </div>
     <input
       onChange={(event) => {
         event.preventDefault();
-        search(event.target.value);
+        search(event.target.value, 0);
       }}
-      className="pt-input pt-fill"
+      className="searchbar_inner"
       placeholder="Search"
       type="text"
     />

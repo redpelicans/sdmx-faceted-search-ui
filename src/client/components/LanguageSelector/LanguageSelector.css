@@ -1,4 +1,8 @@
-.languageselector
+select:focus
 {
-
+  outline:none;
+}
+select
+{
+  background-color: red;
 }

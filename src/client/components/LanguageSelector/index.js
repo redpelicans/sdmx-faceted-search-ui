@@ -21,7 +21,7 @@ const LanguageSelector = ({ langs = [], setLang }) => (
 
 LanguageSelector.propTypes = {
   langs: PropTypes.array,
-  setLang: PropTypes.func.isRequired,
+  setLang: PropTypes.func,
 };
 
 export default LanguageSelector;
