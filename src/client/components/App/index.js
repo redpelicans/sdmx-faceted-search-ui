@@ -3,27 +3,48 @@ import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { compose, withHandlers, withState } from 'recompose';
+import { search } from '../../actions/dataflows';
 import Alert from '../Alert';
-import LanguageSelector from '../LanguageSelector';
-import { changeLang } from '../../actions/lang';
+import Container from '../Container';
+import SidePanel from '../SidePanel';
 import './App.css';
 
-const App = ({ message, changeLang: doChangeLang }) => (
+const App = ({ facets, toggleSidePanel, showSidePanel, dataflows,
+searchData, search: doSearch, message }) => (
   <div className="App">
-    <LanguageSelector languages={['fr', 'en']} changeLang={doChangeLang} />
     <Alert message={message} />
+    <SidePanel
+      facets={facets}
+      showSidePanel={showSidePanel}
+      moveSidePanel={toggleSidePanel}
+    />
+    <Container
+      dataflows={dataflows}
+      showSidePanel={showSidePanel}
+      displayShowPanel={toggleSidePanel}
+      searchData={searchData}
+      search={doSearch}
+    />
   </div>
 );
 
 App.propTypes = {
-  changeLang: PropTypes.func.isRequired,
+  toggleSidePanel: PropTypes.func.isRequired,
+  showSidePanel: PropTypes.bool.isRequired,
+  facets: PropTypes.object.isRequired,
+  dataflows: PropTypes.array.isRequired,
+  searchData: PropTypes.object.isRequired,
+  search: PropTypes.func.isRequired,
   message: PropTypes.object,
 };
 
-const actions = { changeLang };
+const actions = { search };
 
 const mapStateToProps = state => ({
   message: state.message,
+  facets: state.facets,
+  dataflows: state.dataflows,
+  searchData: state.search,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);
