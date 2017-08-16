@@ -9,7 +9,8 @@ import { search } from '../../actions/dataflows';
 import { alert } from '../../actions/message';
 import './App.css';
 
-const App = ({ facets, toggleSidePanel, showSidePanel, dataflows, searchValue, search: doSearch }) => (
+const App = ({ facets, toggleSidePanel, showSidePanel, dataflows,
+searchData, search: doSearch }) => (
   <div className="App">
     <SidePanel
       facets={facets}
@@ -20,7 +21,7 @@ const App = ({ facets, toggleSidePanel, showSidePanel, dataflows, searchValue, s
       dataflows={dataflows}
       showSidePanel={showSidePanel}
       displayShowPanel={toggleSidePanel}
-      searchValue={searchValue}
+      searchData={searchData}
       search={doSearch}
     />
   </div>
@@ -31,7 +32,7 @@ App.propTypes = {
   showSidePanel: PropTypes.bool.isRequired,
   facets: PropTypes.object.isRequired,
   dataflows: PropTypes.array.isRequired,
-  searchValue: PropTypes.string.isRequired,
+  searchData: PropTypes.object.isRequired,
   search: PropTypes.func.isRequired,
 };
 
@@ -45,7 +46,7 @@ const mapStateToProps = state => ({
   message: state.message,
   facets: state.facets,
   dataflows: state.dataflows,
-  searchValue: state.search.searchValue,
+  searchData: state.search,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);
