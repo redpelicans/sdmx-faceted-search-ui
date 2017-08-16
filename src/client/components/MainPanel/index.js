@@ -7,26 +7,31 @@ import Pager from '../Pager';
 import './MainPanel.css';
 
 
-const MainPanel = ({ displayShowPanel, dataflows, handleSearch, searchValue }) => (
+const MainPanel = ({ dataflows = [], searchData = {}, search }) => (
   <div className="mainpanel">
-    <div className="pt-card mainpanel_inner">
-      <SearchPanel
-        handleSearch={handleSearch}
-      />
+    <SearchPanel
+      search={search}
+    />
+    <div className="pt-card mainpanel_inner" style={{ minHeight: 100 * (dataflows.length + 1) }}>
       <ResultPanel
         dataflows={dataflows}
-        displayShowPanel={displayShowPanel}
-        searchValue={searchValue}
+        searchValue={searchData.searchValue}
+        searchData={searchData}
       />
-      <Pager />
+      {searchData.numFound > searchData.count && <Pager
+        numFound={searchData.numFound}
+        start={searchData.start}
+        count={searchData.count}
+        searchValue={searchData.searchValue}
+        search={search}
+      />}
     </div>
   </div>);
 
 MainPanel.propTypes = {
-  displayShowPanel: PropTypes.func.isRequired,
-  handleSearch: PropTypes.func.isRequired,
   dataflows: PropTypes.array.isRequired,
-  searchValue: PropTypes.string.isRequired,
+  searchData: PropTypes.object.isRequired,
+  search: PropTypes.func.isRequired,
 };
 
 export default MainPanel;

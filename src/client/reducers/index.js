@@ -1,47 +1,16 @@
-import { FILTER, FACETEDSEARCH, MOVESIDEPANEL,
-  GETFACETEDBOXS, GETDATAFLOW, RESETDATAFLOW, SEARCH } from '../actions';
+import { combineReducers } from 'redux';
+import message from './message';
+import dataflows from './dataflows';
+import config from './config';
+import search from './search';
+import facets from './facets';
 
-
-const reducer = (state, action) => {
-  switch (action.type) {
-    case SEARCH:
-      return {
-        ...state,
-        searchValue: action.value,
-      };
-    case RESETDATAFLOW:
-      return {
-        ...state,
-        dataflows: [],
-      };
-    case GETDATAFLOW:
-      return {
-        ...state,
-        dataflows: action.data.data.dataflows,
-      };
-    case GETFACETEDBOXS:
-      return {
-        ...state,
-        facetedbox: action.data.data.facets,
-      };
-    case FILTER:
-      return {
-        ...state,
-        filterValue: action.value,
-      };
-    case FACETEDSEARCH:
-      return {
-        ...state,
-        facetedValue: action.value,
-      };
-    case MOVESIDEPANEL:
-      return {
-        ...state,
-        showSidePanel: !state.showSidePanel,
-      };
-    default:
-      return (state);
-  }
-};
+const reducer = combineReducers({
+  message,
+  dataflows,
+  config,
+  search,
+  facets,
+});
 
 export default reducer;

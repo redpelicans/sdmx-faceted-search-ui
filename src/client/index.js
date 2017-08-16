@@ -1,42 +1,30 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { pathOr } from 'ramda';
 import { Provider } from 'react-redux';
+import { IntlProvider } from 'react-intl';
 import configureStore from './store';
+import params from '../params';
 import App from './components/App';
-import { getFacetedBoxs } from './actions';
 
 const initialState = {
-  showSidePanel: false,
-  searchValue: '',
-  facetedValue: '',
-  filterValue: '',
-  title: 'SDMX Faceted Search',
-  languages: [
-    {
-      id: 0,
-      name: 'En',
-    },
-    {
-      id: 1,
-      name: 'Cz',
-    },
-    {
-      id: 2,
-      name: 'Fr',
-    },
-  ],
   dataflows: [],
-  facetedbox: {},
-  filterbox: [],
+  facets: {},
+  search: {
+    start: 0,
+    count: pathOr(10, ['search', 'count'], params),
+    searchValue: '',
+  },
 };
 
 const store = configureStore(initialState);
-
-store.dispatch(getFacetedBoxs());
+const { navigator: { language = 'en' } } = global;
 
 const root = (
   <Provider store={store}>
-    <App />
+    <IntlProvider locale={store.language || language} >
+      <App />
+    </IntlProvider>
   </Provider>
 );
 

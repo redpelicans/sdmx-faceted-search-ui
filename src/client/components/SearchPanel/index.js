@@ -4,16 +4,16 @@ import SearchBar from './SearchBar';
 
 import './SearchPanel.css';
 
-const SearchPanel = ({ handleSearch }) => (
+const SearchPanel = ({ search }) => (
   <div className="searchpanel">
     <SearchBar
-      handleSearch={handleSearch}
+      search={search}
     />
   </div>
 );
 
 SearchPanel.propTypes = {
-  handleSearch: PropTypes.func.isRequired,
+  search: PropTypes.func.isRequired,
 };
 
 export default SearchPanel;

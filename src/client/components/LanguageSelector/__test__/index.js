@@ -7,7 +7,7 @@ import LanguageSelector from '..';
 const { describe, it } = global;
 const language = ['Fr', 'En'];
 
-describe('<LanguageSelector />', function () {
+describe ('<LanguageSelector />', function () {
   it('LanguageSelector should render a languageselector div', function () {
     const wrapper = shallow(<LanguageSelector
       language={language}

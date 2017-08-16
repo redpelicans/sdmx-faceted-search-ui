@@ -4,31 +4,27 @@ import Header from '../Header';
 import MainPanel from '../MainPanel';
 import './Container.css';
 
-const Container = ({ title, dataflows, searchValue, languages, showSidePanel, displayShowPanel, handleSearch }) => (
+const Container = ({ dataflows, searchData, sidePanelIsVisible, displayShowPanel, search }) => (
   <div className="container">
     <Header
-      title={title}
-      languages={languages}
-      showSidePanel={showSidePanel}
+      sidePanelIsVisible={sidePanelIsVisible}
       displayShowPanel={displayShowPanel}
     />
     <MainPanel
       dataflows={dataflows}
       displayShowPanel={displayShowPanel}
-      handleSearch={handleSearch}
-      searchValue={searchValue}
+      searchData={searchData}
+      search={search}
     />
   </div>
 );
 
 Container.propTypes = {
-  title: PropTypes.string.isRequired,
   dataflows: PropTypes.array.isRequired,
-  languages: PropTypes.array.isRequired,
-  showSidePanel: PropTypes.bool.isRequired,
+  sidePanelIsVisible: PropTypes.bool.isRequired,
   displayShowPanel: PropTypes.func.isRequired,
-  handleSearch: PropTypes.func.isRequired,
-  searchValue: PropTypes.string.isRequired,
+  searchData: PropTypes.object.isRequired,
+  search: PropTypes.func.isRequired,
 };
 
 export default Container;

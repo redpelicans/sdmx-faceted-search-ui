@@ -6,7 +6,7 @@ import LanguageSelector from '../../LanguageSelector';
 
 const { describe, it } = global;
 
-describe('<Header />', function () {
+describe ('<Header />', function () {
   const wrapper = shallow(<Header
     title="SDMX"
     language={[
