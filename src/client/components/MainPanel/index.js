@@ -7,37 +7,31 @@ import Pager from '../Pager';
 import './MainPanel.css';
 
 
-const MainPanel = ({ displayShowPanel, dataflows, searchValue, search, numberOfResult, changePage, page }) => (
+const MainPanel = ({ dataflows, searchData, search }) => (
   <div className="mainpanel">
     <SearchPanel
       search={search}
     />
-    <div className="pt-card mainpanel_inner" style={numberOfResult > 0 ? { minHeight: '1110px' } : {}}>
+    <div className="pt-card mainpanel_inner" style={{ minHeight: 100 * (dataflows.length + 1) }}>
       <ResultPanel
         dataflows={dataflows}
-        displayShowPanel={displayShowPanel}
-        searchValue={searchValue}
-        numberOfResult={numberOfResult}
+        searchValue={searchData.searchValue}
+        searchData={searchData}
       />
-      {numberOfResult > 10 &&
-        <Pager
-          numberOfResult={numberOfResult}
-          changePage={changePage}
-          searchValue={searchValue}
-          page={page}
-        />
-      }
+      {searchData.numFound > searchData.count && <Pager
+        numFound={searchData.numFound}
+        start={searchData.start}
+        count={searchData.count}
+        searchValue={searchData.searchValue}
+        search={search}
+      />}
     </div>
   </div>);
 
 MainPanel.propTypes = {
-  displayShowPanel: PropTypes.func.isRequired,
   dataflows: PropTypes.array.isRequired,
-  searchValue: PropTypes.string.isRequired,
+  searchData: PropTypes.object.isRequired,
   search: PropTypes.func.isRequired,
-  numberOfResult: PropTypes.number.isRequired,
-  changePage: PropTypes.func.isRequired,
-  page: PropTypes.number.isRequired,
 };
 
 export default MainPanel;

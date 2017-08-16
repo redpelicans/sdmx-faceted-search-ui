@@ -12,7 +12,7 @@ const SearchBar = ({ search }) => (
     <input
       onChange={(event) => {
         event.preventDefault();
-        search(event.target.value);
+        search(event.target.value, 0);
       }}
       className="searchbar_inner"
       placeholder="Search"

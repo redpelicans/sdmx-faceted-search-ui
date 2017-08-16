@@ -1,44 +1,20 @@
-import { propOr } from 'ramda';
 import { requestJson } from '../utils';
 
 export const DATAFLOWSLOADED = 'DATAFLOWSLOADED';
 export const SEARCH = 'SEARCH';
-export const CHANGEPAGE = 'CHANGEPAGE';
-export const NUMBERRESULTSLOADED = 'NUMBERRESULTSLOADED';
-export const SELECTEDPAGE = 'SELECTEDPAGE';
 
-const dataflowsLoaded = dataflows => ({
+const COUNT = 10;
+
+const dataflowsLoaded = ({ dataflows, numFound, start }) => ({
   type: DATAFLOWSLOADED,
   dataflows,
+  numFound,
+  start,
 });
 
-const NumberResultsLoaded = nb => ({
-  type: NUMBERRESULTSLOADED,
-  numberOfResult: nb,
-});
-
-const selectedPage = page => ({
-  type: SELECTEDPAGE,
-  page,
-});
-
-export const changePage = (value, page) => dispatch => {
-  dispatch(selectedPage(page));
-  requestJson({ dispatch, method: 'post', url: '/api/search', body: { search: value, start: (page - 1) * 10 } })
-    .then(data => dispatch(dataflowsLoaded(propOr([], 'dataflows', data))));
-};
-
-export const search = value => dispatch => {
-  dispatch({ type: SEARCH, value });
-  if (!value) {
-    dispatch(dataflowsLoaded([]));
-    dispatch(NumberResultsLoaded(0));
-    dispatch(selectedPage(1));
-  } else {
-    requestJson({ dispatch, method: 'post', url: '/api/search', body: { search: value } })
-      .then(data => dispatch(dataflowsLoaded(propOr([], 'dataflows', data))));
-    requestJson({ dispatch, method: 'post', url: '/api/search', body: { search: value } })
-      .then(data => dispatch(NumberResultsLoaded(data.numFound)));
-  }
+export const search = (value, start) => dispatch => {
+  dispatch({ type: SEARCH, value, COUNT });
+  requestJson({ dispatch, method: 'post', url: '/api/search', body: { search: value, start, COUNT } })
+   .then(data => dispatch(dataflowsLoaded(data)));
 };
 

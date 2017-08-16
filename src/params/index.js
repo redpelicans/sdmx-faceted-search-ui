@@ -1,5 +1,8 @@
 module.exports = {
   title: 'SDMX Faceted Search',
+  search: {
+    count: 10,
+  },
   languages: [
     {
       id: 0,

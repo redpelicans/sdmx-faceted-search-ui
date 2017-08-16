@@ -1,21 +1,18 @@
-import { SEARCH, NUMBERRESULTSLOADED, SELECTEDPAGE } from '../actions/dataflows';
+import { SEARCH, DATAFLOWSLOADED } from '../actions/dataflows';
 
-const reducer = (state = { searchValue: '', numberOfResult: 0, page: 1 }, action) => {
+const reducer = (state = {}, action) => {
   switch (action.type) {
-    case SELECTEDPAGE:
+    case DATAFLOWSLOADED:
       return {
         ...state,
-        page: action.page,
-      };
-    case NUMBERRESULTSLOADED:
-      return {
-        ...state,
-        numberOfResult: action.numberOfResult,
+        start: action.start,
+        numFound: action.numFound,
       };
     case SEARCH:
       return {
         ...state,
         searchValue: action.value,
+        count: action.COUNT,
       };
     default:
       return state;
