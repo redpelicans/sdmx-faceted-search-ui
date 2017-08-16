@@ -8,9 +8,6 @@ const reducer = (state = {}, action) => {
         header: action.header,
         label: action.label,
         status: action.status,
-        iconName: action.status === 'DANGER' ?
-          'pt-icon-warning-sign' :
-          'pt-icon-tick',
       };
     default:
       return (state);

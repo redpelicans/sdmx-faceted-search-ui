@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import ReduxToastr from 'react-redux-toastr';
 import { compose, withHandlers, withState } from 'recompose';
 import Alert from '../Alert';
 import LanguageSelector from '../LanguageSelector';
@@ -11,7 +10,6 @@ import './App.css';
 
 const App = ({ message, changeLang: doChangeLang }) => (
   <div className="App">
-    <ReduxToastr timeOut={5000} newestOnTop={false} position="top-right" transitionIn="fadeIn" transitionOut="fadeOut" />
     <LanguageSelector languages={['fr', 'en']} changeLang={doChangeLang} />
     <Alert message={message} />
   </div>
@@ -35,6 +33,5 @@ const enhance = compose(
   withState('showSidePanel', 'toggleshowSidePanel', true),
   withHandlers({ toggleshowSidePanelHandler: ({ toggleshowSidePanel }) => () => toggleshowSidePanel((showSidePanel) => !showSidePanel) }),
 );
-
 
 export default enhance(App);
