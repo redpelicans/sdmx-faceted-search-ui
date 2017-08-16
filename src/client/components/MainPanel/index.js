@@ -18,13 +18,13 @@ const MainPanel = ({ dataflows = [], searchData = {}, search }) => (
         searchValue={searchData.searchValue}
         searchData={searchData}
       />
-      {searchData.numFound > searchData.count && <Pager
+      <Pager
         numFound={searchData.numFound}
         start={searchData.start}
         count={searchData.count}
         searchValue={searchData.searchValue}
         search={search}
-      />}
+      />
     </div>
   </div>);
 
