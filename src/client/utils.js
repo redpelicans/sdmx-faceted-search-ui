@@ -3,7 +3,7 @@ import params from '../params';
 import { alert, ERROR } from './actions/message';
 
 const { server: { host, port } } = params;
-const manageError = (dispatch, header, message = 'Runtime Error', status = ERROR) => err => {
+const manageError = (dispatch, header = 'Runtime Error', message = '', status = ERROR) => err => {
   console.error(err); // eslint-disable-line
   dispatch(alert(header, message, status));
 };

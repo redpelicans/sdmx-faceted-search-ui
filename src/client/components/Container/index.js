@@ -4,16 +4,16 @@ import Header from '../Header';
 import MainPanel from '../MainPanel';
 import './Container.css';
 
-const Container = ({ dataflows, searchValue, showSidePanel, displayShowPanel, search }) => (
+const Container = ({ dataflows, searchData, sidePanelIsVisible, displayShowPanel, search }) => (
   <div className="container">
     <Header
-      showSidePanel={showSidePanel}
+      sidePanelIsVisible={sidePanelIsVisible}
       displayShowPanel={displayShowPanel}
     />
     <MainPanel
       dataflows={dataflows}
       displayShowPanel={displayShowPanel}
-      searchValue={searchValue}
+      searchData={searchData}
       search={search}
     />
   </div>
@@ -21,9 +21,9 @@ const Container = ({ dataflows, searchValue, showSidePanel, displayShowPanel, se
 
 Container.propTypes = {
   dataflows: PropTypes.array.isRequired,
-  showSidePanel: PropTypes.bool.isRequired,
+  sidePanelIsVisible: PropTypes.bool.isRequired,
   displayShowPanel: PropTypes.func.isRequired,
-  searchValue: PropTypes.string.isRequired,
+  searchData: PropTypes.object.isRequired,
   search: PropTypes.func.isRequired,
 };
 

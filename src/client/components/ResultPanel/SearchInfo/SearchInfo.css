@@ -1,9 +1,17 @@
 .searchinfo
 {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
   text-align: left;
   width:100%;
   color:rgb(45,45,45);
 }
 .searchinfo p {
   margin:0;
+  margin-left:10px;
+}
+.icon_search_result
+{
+  color:rgb(79, 119, 255);
 }
