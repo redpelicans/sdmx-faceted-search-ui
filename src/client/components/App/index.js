@@ -5,25 +5,27 @@ import { connect } from 'react-redux';
 import { compose, withHandlers, withState } from 'recompose';
 import Alert from '../Alert';
 import LanguageSelector from '../LanguageSelector';
-import { changeLang } from '../../actions/lang';
+import { setLang } from '../../actions/config';
 import './App.css';
 
-const App = ({ message, changeLang: doChangeLang }) => (
+const App = ({ message, setLang: doSetLang, config = {} }) => (
   <div className="App">
-    <LanguageSelector languages={['fr', 'en']} changeLang={doChangeLang} />
+    <LanguageSelector langs={config.langs} setLang={doSetLang} />
     <Alert message={message} />
   </div>
 );
 
 App.propTypes = {
-  changeLang: PropTypes.func.isRequired,
+  setLang: PropTypes.func.isRequired,
   message: PropTypes.object,
+  config: PropTypes.object,
 };
 
-const actions = { changeLang };
+const actions = { setLang };
 
 const mapStateToProps = state => ({
   message: state.message,
+  config: state.config,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);
