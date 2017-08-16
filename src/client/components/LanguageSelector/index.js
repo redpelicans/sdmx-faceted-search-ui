@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import './LanguageSelector.css';
 
-const LanguageSelector = ({ languages, changeLang }) => (
+const LanguageSelector = ({ languages = [], changeLang }) => (
   <div className="languageselector">
     <div className="pt-select">
       <select onChange={e => {

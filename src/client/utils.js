@@ -8,10 +8,9 @@ const manageError = (dispatch, header = 'Runtime Error', message = '', status = 
   dispatch(alert(header, message, status));
 };
 
-export const requestJson = ({ dispatch, method, url, body, header, message }) => axios({
-  url: `http://${host}:${port}${url}`,
-  method,
-  data: body,
-})
+export const requestJson = ({ dispatch, method, url, body, header, message }) => {
+  const path = `http://${host}:${port}${url}`;
+  return axios[method](path, body)
   .then(({ data }) => data)
-  .catch(manageError(dispatch, header, message));
+    .catch(manageError(dispatch, header, message));
+};

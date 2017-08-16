@@ -1,8 +1,8 @@
-import { CHANGELANG } from '../actions/lang';
+import { SETLANG } from '../actions/config';
 
-const reducer = (state = { language: navigator.language }, action) => {
+const reducer = (state = {}, action) => {
   switch (action.type) {
-    case CHANGELANG:
+    case SETLANG:
       return {
         ...state,
         language: action.lang,

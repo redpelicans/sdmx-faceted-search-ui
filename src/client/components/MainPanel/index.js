@@ -7,7 +7,7 @@ import Pager from '../Pager';
 import './MainPanel.css';
 
 
-const MainPanel = ({ dataflows, searchData, search }) => (
+const MainPanel = ({ dataflows = [], searchData = {}, search }) => (
   <div className="mainpanel">
     <SearchPanel
       search={search}

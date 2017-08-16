@@ -9,17 +9,18 @@ const { describe, it } = global;
 
 describe('Action:message', () => {
   it('ALERT Once', function(done) {
-    const [LABEL, STATUS] = ['label', 'status'];
+    const [HEADER, LABEL, STATUS] = ['header', 'label', 'status'];
     const hook = {
       ALERT: getState =>  {
         const { message } = getState();
         should(message.label).eql(LABEL);
         should(message.status).eql(STATUS);
+        should(message.header).eql(HEADER);
         done();
       }
     };
     const store = configureStore(reducer, {}, hook);
-    store.dispatch(alert(LABEL, STATUS));
+    store.dispatch(alert(HEADER, LABEL, STATUS));
   });
   // it('ALERT Many', function(done) {
   //   const [LABEL1, LABEL2, STATUS] = ['label1', 'label2', 'status'];

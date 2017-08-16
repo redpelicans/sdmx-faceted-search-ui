@@ -7,7 +7,7 @@
 
   import './ResultPanel.css';
 
-  const ResultPanel = ({ dataflows, searchValue, searchData }) => (
+  const ResultPanel = ({ dataflows, searchValue, searchData = {} }) => (
     <div className="resultpanel">
       <SearchInfo
         searchValue={searchValue}
