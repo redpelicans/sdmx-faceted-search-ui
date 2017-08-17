@@ -5,15 +5,14 @@ import { connect } from 'react-redux';
 import { compose, withHandlers, withState } from 'recompose';
 import { search } from '../../actions/dataflows';
 import Alert from '../Alert';
-import LanguageSelector from '../LanguageSelector';
 import { setLocale } from '../../actions/intl';
 import Container from '../Container';
 import SidePanel from '../SidePanel';
 import './App.css';
 
-const App = ({ facets, toggleSidePanel, sidePanelIsVisible, dataflows, searchData, search: doSearch, message, setLocale: doSetLocale, config = {} }) => (
+const App = ({ facets, toggleSidePanel, sidePanelIsVisible, dataflows,
+searchData, search: doSearch, message, setLocale: doSetLocale, config = {} }) => (
   <div className="App">
-    <LanguageSelector langs={config.langs} setLocale={doSetLocale} />
     <Alert message={message} />
     <SidePanel
       facets={facets}
@@ -21,6 +20,8 @@ const App = ({ facets, toggleSidePanel, sidePanelIsVisible, dataflows, searchDat
       moveSidePanel={toggleSidePanel}
     />
     <Container
+      langs={config.langs}
+      setLocale={doSetLocale}
       dataflows={dataflows}
       sidePanelIsVisible={sidePanelIsVisible}
       displayShowPanel={toggleSidePanel}
