@@ -1,5 +1,4 @@
 import React from 'react';
-import should from 'should';
 import { shallow } from 'enzyme';
 import MainPanel from '..';
 import SearchPanel from '../../SearchPanel';
@@ -15,23 +14,23 @@ const search = () => {
   console.log("fonction");
 }
 
-describe ('<MainPanel />', function () {
+describe ('<MainPanel />', () => {
     const wrapper = shallow(<MainPanel
       displayShowPanel={displayShowPanel}
       dataflows={[]}
       searchValue=''
       search={search}
     />);
-  it('MainPanel should render a mainpanel div', function () {
-    should(wrapper.find('.mainpanel')).length(1);
+  it('MainPanel should render a mainpanel div', () => {
+    expect(wrapper.find('.mainpanel')).toHaveLength(1);
   })
-  it('MainPanel should render a mainpanel_inner div', function () {
-    should(wrapper.find('.mainpanel_inner')).length(1);
+  it('MainPanel should render a mainpanel_inner div', () => {
+    expect(wrapper.find('.mainpanel_inner')).toHaveLength(1);
   })
-  it('MainPanel should render a SearchPanel component', function () {
-    should(wrapper.find(SearchPanel)).length(1);
+  it('MainPanel should render a SearchPanel component', () => {
+    expect(wrapper.find(SearchPanel)).toHaveLength(1);
   })
-  it('MainPanel should render a ResultPanel component', function () {
-    should(wrapper.find(ResultPanel)).length(1);
+  it('MainPanel should render a ResultPanel component', () => {
+    expect(wrapper.find(ResultPanel)).toHaveLength(1);
   })
 })
