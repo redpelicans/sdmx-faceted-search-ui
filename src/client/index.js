@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { pathOr } from 'ramda';
 import { Provider } from 'react-redux';
 import { IntlProvider } from 'react-intl';
 import configureStore from './store';
@@ -8,7 +7,8 @@ import params from '../params';
 import App from './components/App';
 import { loadConfig } from './actions/config';
 
-const { navigator: { language = 'en' } } = global;
+const { search: { count = 10 } } = params;
+const { navigator: { language } } = global;
 
 const initialState = {
   config: {
@@ -18,7 +18,7 @@ const initialState = {
   facets: {},
   search: {
     start: 0,
-    count: pathOr(10, ['search', 'count'], params),
+    count,
     searchValue: '',
   },
 };
