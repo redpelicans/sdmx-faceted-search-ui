@@ -75,9 +75,9 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "NODE_ENV=test mocha --require ignore-styles --require babel-core/register --reporter spec \"./**/__test__/*.js\" ",
+    "test": "NODE_ENV=test jest",
     "lint": "eslint src --color --fix",
-    "test:coverage": "NODE_ENV=test nyc yarn test",
+    "test:coverage": "NODE_ENV=test jest --coverage",
     "build:stats": "NODE_ENV=production webpack --config config/webpack.config.prod.js --profile --json > ./stats.json",
     "build:analyse": "webpack-bundle-analyzer ./stats.json ./build --report --mode=static"
   },
@@ -106,11 +106,14 @@
     "collectCoverageFrom": [
       "src/**/*.{js,jsx}"
     ],
+    "testPathIgnorePatterns": [
+      "<rootDir>/src/client/actions/__test__/utils.js" 
+    ],
     "setupFiles": [
       "<rootDir>/config/polyfills.js"
     ],
     "testMatch": [
-      "<rootDir>/src/**/__tests__/**/*.js?(x)",
+      "<rootDir>/src/**/__test__/**/*.js?(x)",
       "<rootDir>/src/**/?(*.)(spec|test).js?(x)"
     ],
     "testEnvironment": "node",
