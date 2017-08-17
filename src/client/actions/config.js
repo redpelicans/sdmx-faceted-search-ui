@@ -1,5 +1,14 @@
-export const DEFAULTLANG = 'DEFAULTLANG';
-export const CURRENTLANG = 'CURRENTLANG';
-export const SETLANG = 'SETLANG';
+import { requestJson } from '../utils';
 
-export const changeLang = lang => dispatch => dispatch(({ type: SETLANG, lang }));
+export const CONFIGLOADED = 'CONFIGLOADED';
+export const configLoaded = ({ langs, defaultLang }) => ({ type: CONFIGLOADED, langs, defaultLang });
+
+export const loadConfig = () => dispatch => {
+  requestJson({
+    dispatch,
+    method: 'get',
+    url: '/api/config',
+    message: 'Cannot load config',
+  })
+  .then(data => dispatch(configLoaded(data)));
+};

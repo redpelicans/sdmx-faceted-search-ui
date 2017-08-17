@@ -5,13 +5,15 @@ import { connect } from 'react-redux';
 import { compose, withHandlers, withState } from 'recompose';
 import { search } from '../../actions/dataflows';
 import Alert from '../Alert';
+import LanguageSelector from '../LanguageSelector';
+import { setLocale } from '../../actions/intl';
 import Container from '../Container';
 import SidePanel from '../SidePanel';
 import './App.css';
 
-const App = ({ facets, toggleSidePanel, sidePanelIsVisible, dataflows,
-searchData, search: doSearch, message }) => (
+const App = ({ facets, toggleSidePanel, sidePanelIsVisible, dataflows, searchData, search: doSearch, message, setLocale: doSetLocale, config = {} }) => (
   <div className="App">
+    <LanguageSelector langs={config.langs} setLocale={doSetLocale} />
     <Alert message={message} />
     <SidePanel
       facets={facets}
@@ -29,6 +31,7 @@ searchData, search: doSearch, message }) => (
 );
 
 App.propTypes = {
+  setLocale: PropTypes.func.isRequired,
   toggleSidePanel: PropTypes.func.isRequired,
   sidePanelIsVisible: PropTypes.bool.isRequired,
   facets: PropTypes.object.isRequired,
@@ -36,12 +39,14 @@ App.propTypes = {
   searchData: PropTypes.object.isRequired,
   search: PropTypes.func.isRequired,
   message: PropTypes.object,
+  config: PropTypes.object,
 };
 
-const actions = { search };
+const actions = { search, setLocale };
 
 const mapStateToProps = state => ({
   message: state.message,
+  config: state.config,
   facets: state.facets,
   dataflows: state.dataflows,
   searchData: state.search,

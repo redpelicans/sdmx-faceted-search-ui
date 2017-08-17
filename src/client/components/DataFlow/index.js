@@ -88,8 +88,8 @@ const DataFlow = ({ data, screenSize, popoverPosition }) => (
 
 DataFlow.propTypes = {
   data: PropTypes.object.isRequired,
-  screenSize: PropTypes.bool.isRequired,
-  popoverPosition: PropTypes.bool.isRequired,
+  screenSize: PropTypes.bool,
+  popoverPosition: PropTypes.bool,
 };
 
 PopHoverElem.propTypes = {
