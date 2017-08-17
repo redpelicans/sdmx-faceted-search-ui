@@ -64,6 +64,7 @@ const DataFlow = ({ data, screenSize, popoverPosition }) => (
           }
       >
         <div className="dataflows_title">
+          <p className="name">{data.name}</p>
           <Popover
             content={
               <PopHoverElem data={data} />
@@ -73,12 +74,11 @@ const DataFlow = ({ data, screenSize, popoverPosition }) => (
                 <i className="fa fa-info" aria-hidden="true" />
               </div>
             }
-            position={popoverPosition ? Position.BOTTOM_LEFT : Position.BOTTOM_RIGHT}
-            interactionKind={PopoverInteractionKind.HOVER}
+            position={popoverPosition ? Position.LEFT : Position.LEFT}
+            interactionKind={PopoverInteractionKind.CLICK}
             hoverCloseDelay={500}
             popoverClassName="popover"
           />
-          <p className="name">{data.name}</p>
         </div>
         <p className="id">{data.id}</p>
       </div>)

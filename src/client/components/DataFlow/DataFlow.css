@@ -21,6 +21,7 @@
 .dataflows_title
 {
   display: flex;
+  justify-content: space-between;
   align-items: center;
   padding:7px;
   padding-left:15px;
