@@ -6,7 +6,7 @@ import LanguageSelector from '../LanguageSelector';
 
 import './Header.css';
 
-const Header = ({ langs, setLocale }) => (
+const Header = ({ langs, setLocale, currentLanguage }) => (
   <nav className="pt-navbar pt-intent-success header">
     <div className="pt-navbar-group pt-align-left">
       <div className="logo">
@@ -15,7 +15,7 @@ const Header = ({ langs, setLocale }) => (
       <div className="pt-navbar-heading">{ title }</div>
     </div>
     <div className="pt-navbar-group pt-align-right">
-      <LanguageSelector langs={langs} setLocale={setLocale} />
+      <LanguageSelector langs={langs} currentLanguage={currentLanguage} setLocale={setLocale} />
     </div>
   </nav>
 );
@@ -23,6 +23,7 @@ const Header = ({ langs, setLocale }) => (
 Header.propTypes = {
   langs: PropTypes.array,
   setLocale: PropTypes.func,
+  currentLanguage: PropTypes.string,
 };
 
 export default pure(Header);
