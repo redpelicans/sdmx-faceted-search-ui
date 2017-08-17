@@ -3,14 +3,14 @@ import params from '../params';
 import { alert, ERROR } from './actions/message';
 
 const { server: { host, port } } = params;
-const manageError = (dispatch, header = 'Runtime Error', message = '', status = ERROR) => err => {
+const manageError = (dispatch, { title = 'Runtime Error', label = '' }) => err => {
   console.error(err); // eslint-disable-line
-  dispatch(alert(header, message, status));
+  dispatch(alert(title, label, ERROR));
 };
 
-export const requestJson = ({ dispatch, method, url, body, header, message }) => {
+export const requestJson = ({ dispatch, method, url, body, headers, message }) => {
   const path = `http://${host}:${port}${url}`;
-  return axios[method](path, body)
+  return axios[method](path, body, { headers })
   .then(({ data }) => data)
-    .catch(manageError(dispatch, header, message));
+    .catch(manageError(dispatch, message));
 };

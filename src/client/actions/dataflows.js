@@ -12,6 +12,8 @@ const dataflowsLoaded = ({ dataflows = [], numFound, start } = {}) => ({
 
 export const search = (value, start) => dispatch => {
   dispatch({ type: SEARCH, value });
-  requestJson({ dispatch, method: 'post', url: '/api/search', body: { search: value, start, count: 15 }, message: 'Cannot search dataflows' })
+  const body = { search: value, start };
+  const message = { label: 'Cannot search dataflows' };
+  requestJson({ dispatch, method: 'post', url: '/api/search', body, message })
    .then(data => dispatch(dataflowsLoaded(data)));
 };
