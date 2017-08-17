@@ -8,7 +8,7 @@ import { alert,  ALERT } from '../message';
 const { describe, it } = global;
 
 describe('Action:message', () => {
-  it('ALERT Once', function(done) {
+  it('ALERT Once', done => {
     const [HEADER, LABEL, STATUS] = ['header', 'label', 'status'];
     const hook = {
       ALERT: getState =>  {
