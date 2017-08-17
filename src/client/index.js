@@ -8,7 +8,12 @@ import params from '../params';
 import App from './components/App';
 import { loadConfig } from './actions/config';
 
+const { navigator: { language = 'en' } } = global;
+
 const initialState = {
+  config: {
+    currentLang: language,
+  },
   dataflows: [],
   facets: {},
   search: {
@@ -19,10 +24,8 @@ const initialState = {
 };
 
 const store = configureStore(initialState);
-const { navigator: { language = 'en' } } = global;
 
-const load = () => store.dispatch(loadConfig());
-load();
+store.dispatch(loadConfig());
 
 const root = (
   <Provider store={store}>

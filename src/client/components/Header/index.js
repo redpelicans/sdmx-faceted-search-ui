@@ -1,10 +1,12 @@
 import React from 'react';
-import { onlyUpdateForKeys } from 'recompose';
+import PropTypes from 'prop-types';
+import { pure } from 'recompose';
 import { title } from '../../../params';
+import LanguageSelector from '../LanguageSelector';
+
 import './Header.css';
 
-
-const Header = () => (
+const Header = ({ langs, setLocale }) => (
   <nav className="pt-navbar pt-intent-success header">
     <div className="pt-navbar-group pt-align-left">
       <div className="logo">
@@ -12,8 +14,15 @@ const Header = () => (
       </div>
       <div className="pt-navbar-heading">{ title }</div>
     </div>
-    <div className="pt-navbar-group pt-align-right" />
+    <div className="pt-navbar-group pt-align-right">
+      <LanguageSelector langs={langs} setLocale={setLocale} />
+    </div>
   </nav>
 );
 
-export default onlyUpdateForKeys(['language'])(Header);
+Header.propTypes = {
+  langs: PropTypes.array,
+  setLocale: PropTypes.func,
+};
+
+export default pure(Header);
