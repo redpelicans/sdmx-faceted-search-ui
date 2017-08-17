@@ -1,12 +1,11 @@
-import { CONFIGLOADED } from '../actions/config';
+import { SETLOCALE } from '../actions/intl';
 
 const reducer = (state = {}, action) => {
   switch (action.type) {
-    case CONFIGLOADED:
+    case SETLOCALE:
       return {
         ...state,
-        langs: action.langs,
-        defaultLang: action.defaultLang,
+        locale: action.locale,
       };
     default:
       return state;

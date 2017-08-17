@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 
 import './LanguageSelector.css';
 
-const LanguageSelector = ({ langs = [], setLang }) => (
+const LanguageSelector = ({ langs = [], setLocale }) => (
   <div className="languageselector">
     <div className="pt-select">
       <select onChange={e => {
         e.preventDefault();
-        setLang(e.target.value);
+        setLocale(e.target.value);
       }}
       >
         {langs.map(lang => (
@@ -21,7 +21,7 @@ const LanguageSelector = ({ langs = [], setLang }) => (
 
 LanguageSelector.propTypes = {
   langs: PropTypes.array,
-  setLang: PropTypes.func,
+  setLocale: PropTypes.func,
 };
 
 export default LanguageSelector;
