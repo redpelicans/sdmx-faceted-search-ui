@@ -9,11 +9,11 @@ const displayShowPanel = () => {
   console.log('function');
 };
 
-describe('<BurgerButton />', function () {
+describe('<BurgerButton />', () => {
   const wrapper = shallow(<BurgerButton
     displayShowPanel={displayShowPanel}
   />);
-  it('BurgerButton should render a button', function () {
+  it('BurgerButton should render a button', () => {
     should(wrapper.matchesElement(<div />));
   })
 })

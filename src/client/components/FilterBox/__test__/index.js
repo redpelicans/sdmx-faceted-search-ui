@@ -6,7 +6,7 @@ import { shallow } from 'enzyme';
 
 const { describe, it } = global;
 
-describe ('<FilterBox />', function () {
+describe ('<FilterBox />', () => {
   const wrapper = shallow(<FilterBox
     name="test"
     filters={[
@@ -37,16 +37,16 @@ describe ('<FilterBox />', function () {
     ]}
     filter={() => {}}
   />)
-  it('FilterBox should render a filterbox div', function () {
+  it('FilterBox should render a filterbox div', () => {
     should(wrapper.find('.filterbox')).length(1);
   })
-  it('FilterBox should render a filterboxname div', function () {
+  it('FilterBox should render a filterboxname div', () => {
     should(wrapper.find('.filterboxname')).length(1);
   })
-  it('FilterBox should render 6 Filter', function () {
+  it('FilterBox should render 6 Filter', () => {
     should(wrapper.find(Filtre)).length(6);
   })
-  it('FilterBox should render 3 Filter', function () {
+  it('FilterBox should render 3 Filter', () => {
     const wrapper = shallow(<FilterBox
       name="test"
       filters={[

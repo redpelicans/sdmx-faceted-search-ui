@@ -4,9 +4,11 @@ import Header from '../Header';
 import MainPanel from '../MainPanel';
 import './Container.css';
 
-const Container = ({ dataflows, searchData, sidePanelIsVisible, displayShowPanel, search }) => (
+const Container = ({ dataflows, searchData, sidePanelIsVisible, displayShowPanel, search, langs, setLocale }) => (
   <div className="container">
     <Header
+      langs={langs}
+      setLocale={setLocale}
       sidePanelIsVisible={sidePanelIsVisible}
       displayShowPanel={displayShowPanel}
     />
@@ -20,6 +22,8 @@ const Container = ({ dataflows, searchData, sidePanelIsVisible, displayShowPanel
 );
 
 Container.propTypes = {
+  langs: PropTypes.array,
+  setLocale: PropTypes.func,
   dataflows: PropTypes.array.isRequired,
   sidePanelIsVisible: PropTypes.bool,
   displayShowPanel: PropTypes.func.isRequired,

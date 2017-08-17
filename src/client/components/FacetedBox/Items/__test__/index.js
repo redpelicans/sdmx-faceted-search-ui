@@ -5,14 +5,14 @@ import Items from '..';
 
 const { describe, it} = global;
 
-describe ('<Items />', function () {
-  it('Items should render an items div', function () {
+describe ('<Items />', () => {
+  it('Items should render an items div', () => {
     const wrapper = shallow(<Items
       name="test"
     />);
     should(wrapper.find('.items')).length(1);
   })
-  it('Items should render an itemsname div', function () {
+  it('Items should render an itemsname div', () => {
     const wrapper = shallow(<Items
       name="test"
     />);

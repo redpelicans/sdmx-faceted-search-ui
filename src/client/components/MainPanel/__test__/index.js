@@ -15,23 +15,23 @@ const search = () => {
   console.log("fonction");
 }
 
-describe ('<MainPanel />', function () {
+describe ('<MainPanel />', () => {
     const wrapper = shallow(<MainPanel
       displayShowPanel={displayShowPanel}
       dataflows={[]}
       searchValue=''
       search={search}
     />);
-  it('MainPanel should render a mainpanel div', function () {
+  it('MainPanel should render a mainpanel div', () => {
     should(wrapper.find('.mainpanel')).length(1);
   })
-  it('MainPanel should render a mainpanel_inner div', function () {
+  it('MainPanel should render a mainpanel_inner div', () => {
     should(wrapper.find('.mainpanel_inner')).length(1);
   })
-  it('MainPanel should render a SearchPanel component', function () {
+  it('MainPanel should render a SearchPanel component', () => {
     should(wrapper.find(SearchPanel)).length(1);
   })
-  it('MainPanel should render a ResultPanel component', function () {
+  it('MainPanel should render a ResultPanel component', () => {
     should(wrapper.find(ResultPanel)).length(1);
   })
 })

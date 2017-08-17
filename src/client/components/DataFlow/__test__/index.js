@@ -6,7 +6,7 @@ import PopHoverElem from '..';
 
 const { describe, it } = global;
 
-describe ('<Container />', function () {
+describe ('<Container />', () => {
   const data =
     {
       id: "ERGONOMIC COTTON COMPUTER-195",
@@ -36,7 +36,7 @@ describe ('<Container />', function () {
   const wrapper = shallow(<DataFlow
     data={data}
   />);
-  it('DataFlow should render a PopHoverElem', function () {
+  it('DataFlow should render a PopHoverElem', () => {
     should(wrapper.find(<PopHoverElem />));
   })
 })
