@@ -30,7 +30,7 @@ const MainPanel = ({ dataflows = [], searchData = {}, search }) => (
 
 MainPanel.propTypes = {
   dataflows: PropTypes.array.isRequired,
-  searchData: PropTypes.object.isRequired,
+  searchData: PropTypes.object,
   search: PropTypes.func.isRequired,
 };
 

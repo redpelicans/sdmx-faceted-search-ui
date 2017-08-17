@@ -1,19 +1,18 @@
 import React from 'react';
-import { pure } from 'recompose';
 import PropTypes from 'prop-types';
 
 import './LanguageSelector.css';
 
-const LanguageSelector = ({ languages = [], changeLang }) => (
+const LanguageSelector = ({ langs = [], setLang }) => (
   <div className="languageselector">
     <div className="pt-select">
       <select onChange={e => {
         e.preventDefault();
-        changeLang(e.target.value);
+        setLang(e.target.value);
       }}
       >
-        {languages.map((language) => (
-          <option key={language} value={language}>{language}</option>
+        {langs.map(lang => (
+          <option key={lang} value={lang}>{lang}</option>
         ))}
       </select>
     </div>
@@ -21,8 +20,8 @@ const LanguageSelector = ({ languages = [], changeLang }) => (
 );
 
 LanguageSelector.propTypes = {
-  languages: PropTypes.array.isRequired,
-  changeLang: PropTypes.func.isRequired,
+  langs: PropTypes.array,
+  setLang: PropTypes.func,
 };
 
-export default pure(LanguageSelector);
+export default LanguageSelector;

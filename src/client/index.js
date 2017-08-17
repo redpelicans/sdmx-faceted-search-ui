@@ -6,6 +6,7 @@ import { IntlProvider } from 'react-intl';
 import configureStore from './store';
 import params from '../params';
 import App from './components/App';
+import { loadConfig } from './actions/config';
 
 const initialState = {
   dataflows: [],
@@ -19,6 +20,9 @@ const initialState = {
 
 const store = configureStore(initialState);
 const { navigator: { language = 'en' } } = global;
+
+const load = () => store.dispatch(loadConfig());
+load();
 
 const root = (
   <Provider store={store}>

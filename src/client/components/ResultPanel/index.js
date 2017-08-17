@@ -57,8 +57,8 @@
 
   ResultPanel.propTypes = {
     dataflows: PropTypes.array.isRequired,
-    searchValue: PropTypes.string.isRequired,
-    searchData: PropTypes.object.isRequired,
+    searchValue: PropTypes.string,
+    searchData: PropTypes.object,
   };
 
   export default ResultPanel;

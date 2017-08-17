@@ -1,11 +1,17 @@
-import { SETLANG } from '../actions/config';
+import { SETLANG, CONFIGLOADED } from '../actions/config';
 
 const reducer = (state = {}, action) => {
   switch (action.type) {
     case SETLANG:
       return {
         ...state,
-        language: action.lang,
+        currentLang: action.lang,
+      };
+    case CONFIGLOADED:
+      return {
+        ...state,
+        langs: action.langs,
+        defaultLang: action.defaultLang,
       };
     default:
       return state;
@@ -13,3 +19,4 @@ const reducer = (state = {}, action) => {
 };
 
 export default reducer;
+

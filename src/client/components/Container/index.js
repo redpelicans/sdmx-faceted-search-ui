@@ -21,9 +21,9 @@ const Container = ({ dataflows, searchData, sidePanelIsVisible, displayShowPanel
 
 Container.propTypes = {
   dataflows: PropTypes.array.isRequired,
-  sidePanelIsVisible: PropTypes.bool.isRequired,
+  sidePanelIsVisible: PropTypes.bool,
   displayShowPanel: PropTypes.func.isRequired,
-  searchData: PropTypes.object.isRequired,
+  searchData: PropTypes.object,
   search: PropTypes.func.isRequired,
 };
 
