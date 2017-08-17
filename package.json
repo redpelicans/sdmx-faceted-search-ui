@@ -90,8 +90,6 @@
     "eslint-plugin-import": "2.7.0",
     "eslint-plugin-jsx-a11y": "5.1.1",
     "ignore-styles": "^5.0.1",
-    "mocha": "^3.4.2",
-    "nyc": "^11.1.0",
     "react-test-renderer": "^15.6.1",
     "should": "^11.2.1",
     "sinon": "^3.2.0",
