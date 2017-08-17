@@ -1,16 +1,17 @@
 import React from 'react';
+import should from 'should';
 import { shallow } from 'enzyme';
 import ResultPanel from '..';
 
 const { describe, it } = global;
 
-describe ('<ResultPanel />', () => {
-  it('ResultPanel should render a resultpanel div', () => {
+describe ('<ResultPanel />', function () {
+  it('ResultPanel should render a resultpanel div', function () {
     const wrapper = shallow(<ResultPanel
       displayShowPanel={() => {}}
       searchValue=""
       dataflows={ [] }
     />);
-    expect(wrapper.find('.resultpanel')).toHaveLength(1);
+    should(wrapper.find('.resultpanel')).length(1);
   })
 })

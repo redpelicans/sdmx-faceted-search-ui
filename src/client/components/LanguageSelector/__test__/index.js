@@ -7,20 +7,20 @@ import LanguageSelector from '..';
 const { describe, it } = global;
 const language = ['Fr', 'En'];
 
-describe ('<LanguageSelector />', () => {
-  it('LanguageSelector should render a languageselector div', () => {
+describe ('<LanguageSelector />', function () {
+  it('LanguageSelector should render a languageselector div', function () {
     const wrapper = shallow(<LanguageSelector
       language={language}
     />);
     should(wrapper.find('.languageselector'));
   })
-  it('LanguageSelector should render a Button Component', () => {
+  it('LanguageSelector should render a Button Component', function () {
     const wrapper = shallow(<LanguageSelector
       language={language}
     />);
     should(wrapper.find(Button));
   })
-  it('LanguageSelector should render a Collapse Component', () => {
+  it('LanguageSelector should render a Collapse Component', function () {
     const wrapper = shallow(<LanguageSelector
       language={language}
     />);

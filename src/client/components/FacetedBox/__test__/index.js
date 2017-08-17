@@ -6,7 +6,7 @@ import Items from '../Items';
 
 const { describe, it } = global;
 
-describe ('<FacetedBox />', () => {
+describe ('<FacetedBox />', function () {
   const wrapper = shallow(<FacetedBox
     name="test"
     facets={[
@@ -29,16 +29,16 @@ describe ('<FacetedBox />', () => {
     ]}
     facetedSearch={() => {}}
   />);
-  it('FacetedBox should render a facetedbox div', () => {
+  it('FacetedBox should render a facetedbox div', function () {
     should(wrapper.find('.facetedbox'));
   })
-  it('FacetedBox should render a facetedboxname div', () => {
+  it('FacetedBox should render a facetedboxname div', function () {
     should(wrapper.find('.facetedboxname'));
   })
-  it('FacetedBox should render a 4 Items', () => {
+  it('FacetedBox should render a 4 Items', function () {
     should(wrapper.find(Items));
   })
-  it('FacetedBox should render a 2 Items', () => {
+  it('FacetedBox should render a 2 Items', function () {
     const wrapper = shallow(<FacetedBox
       name="test"
       facets={['Tout', 'Sports, vacances']}

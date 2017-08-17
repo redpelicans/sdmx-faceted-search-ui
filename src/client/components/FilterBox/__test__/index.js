@@ -1,11 +1,12 @@
 import React from 'react';
+import should from 'should';
 import FilterBox from '..';
 import Filtre from '../Filtre';
 import { shallow } from 'enzyme';
 
 const { describe, it } = global;
 
-describe ('<FilterBox />', () => {
+describe ('<FilterBox />', function () {
   const wrapper = shallow(<FilterBox
     name="test"
     filters={[
@@ -36,16 +37,16 @@ describe ('<FilterBox />', () => {
     ]}
     filter={() => {}}
   />)
-  it('FilterBox should render a filterbox div', () => {
-    expect(wrapper.find('.filterbox')).toHaveLength(1);
+  it('FilterBox should render a filterbox div', function () {
+    should(wrapper.find('.filterbox')).length(1);
   })
-  it('FilterBox should render a filterboxname div', () => {
-    expect(wrapper.find('.filterboxname')).toHaveLength(1);
+  it('FilterBox should render a filterboxname div', function () {
+    should(wrapper.find('.filterboxname')).length(1);
   })
-  it('FilterBox should render 6 Filter', () => {
-    expect(wrapper.find(Filtre)).toHaveLength(6);
+  it('FilterBox should render 6 Filter', function () {
+    should(wrapper.find(Filtre)).length(6);
   })
-  it('FilterBox should render 3 Filter', () => {
+  it('FilterBox should render 3 Filter', function () {
     const wrapper = shallow(<FilterBox
       name="test"
       filters={[
@@ -63,6 +64,6 @@ describe ('<FilterBox />', () => {
         }
       ]}
     />)
-    expect(wrapper.find(Filtre)).toHaveLength(3);
+    should(wrapper.find(Filtre)).length(3);
   })
 })

@@ -1,3 +1,4 @@
+import should from 'should';
 import axios from 'axios';
 import sinon from 'sinon';
 import reducer from '../../reducers';
@@ -7,14 +8,14 @@ import { alert,  ALERT } from '../message';
 const { describe, it } = global;
 
 describe('Action:message', () => {
-  it('ALERT Once', done => {
+  it('ALERT Once', function(done) {
     const [HEADER, LABEL, STATUS] = ['header', 'label', 'status'];
     const hook = {
       ALERT: getState =>  {
         const { message } = getState();
-        expect(message.label).toEqual(LABEL);
-        expect(message.status).toEqual(STATUS);
-        expect(message.header).toEqual(HEADER);
+        should(message.label).eql(LABEL);
+        should(message.status).eql(STATUS);
+        should(message.header).eql(HEADER);
         done();
       }
     };

@@ -1,3 +1,4 @@
+import should from 'should';
 import axios from 'axios';
 import sinon from 'sinon';
 import reducer from '../../reducers';
@@ -7,7 +8,7 @@ import { search, DATAFLOWSLOADED } from '../dataflows';
 const { describe, it } = global;
 
 describe('Action:dataflows', () => {
-  it('SEARCH', done => {
+  it('SEARCH', function(done) {
     const DF = [{}];
     const START = -1;
     const NUMFOUND = 1000;
@@ -16,8 +17,8 @@ describe('Action:dataflows', () => {
       DATAFLOWSLOADED: getState =>  {
         const { dataflows, search: { start, numFound } } = getState();
         //should(dataflows).eql(DF);
-        expect(start).toEqual(START);
-        expect(numFound).toEqual(NUMFOUND);
+        should(start).eql(START);
+        should(numFound).eql(NUMFOUND);
         stub.restore();
         done();
       }

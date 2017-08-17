@@ -6,7 +6,7 @@ import LanguageSelector from '../../LanguageSelector';
 
 const { describe, it } = global;
 
-describe ('<Header />', () => {
+describe ('<Header />', function () {
   const wrapper = shallow(<Header
     title="SDMX"
     language={[
@@ -20,13 +20,13 @@ describe ('<Header />', () => {
       }
     ]}
   />);
-  it('Header should render a navbar', () => {
+  it('Header should render a navbar', function () {
     should(wrapper.matchesElement(<nav />));
   })
-  it('Header should render a LanguageSelector Component', () => {
+  it('Header should render a LanguageSelector Component', function () {
     should(wrapper.find(LanguageSelector));
   })
-  it('Header should render two navbargroup divs', () => {
+  it('Header should render two navbargroup divs', function () {
     should(wrapper.find('.pt-navbar-group'));
   })
 })
