@@ -5,8 +5,8 @@ import ResultPanel from '..';
 
 const { describe, it } = global;
 
-describe ('<ResultPanel />', function () {
-  it('ResultPanel should render a resultpanel div', function () {
+describe ('<ResultPanel />', () => {
+  it('ResultPanel should render a resultpanel div', () => {
     const wrapper = shallow(<ResultPanel
       displayShowPanel={() => {}}
       searchValue=""

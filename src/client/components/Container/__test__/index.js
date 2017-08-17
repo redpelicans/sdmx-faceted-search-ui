@@ -11,7 +11,7 @@ const displayShowPanel = () => {
   console.log('function');
 };
 
-describe ('<Container />', function () {
+describe ('<Container />', () => {
   const wrapper = shallow(<Container
     title="title"
     dataflows={[]}
@@ -21,10 +21,10 @@ describe ('<Container />', function () {
     search={() => {}}
     searchValue=""
   />);
-  it('Container should render a container div', function () {
+  it('Container should render a container div', () => {
     should(wrapper.find('.container')).length(1);
   })
-  it('Container should render a Header Component', function () {
+  it('Container should render a Header Component', () => {
     should(wrapper.find(Header)).length(1);
   })
 })

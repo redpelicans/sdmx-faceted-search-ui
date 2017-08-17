@@ -8,7 +8,7 @@ import { search, DATAFLOWSLOADED } from '../dataflows';
 const { describe, it } = global;
 
 describe('Action:dataflows', () => {
-  it('SEARCH', function(done) {
+  it('SEARCH', done => {
     const DF = [{}];
     const START = -1;
     const NUMFOUND = 1000;
