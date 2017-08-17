@@ -5,12 +5,11 @@ import CategoryFacet from './CategoryFacet';
 
 const CATEGORY = 'category';
 
-const getFacetComponent = onClick => ({ type, buckets, name, value }) => {
-  switch(type) {
+const getFacetComponent = onClick => ({ type, buckets, name, value }) => { //eslint-disable-line
+  switch (type) {
     case CATEGORY:
       return <CategoryFacet key={name} name={name} value={value} domain={buckets} onClick={onClick} />;
     default:
-      return;
   }
 };
 
@@ -20,12 +19,19 @@ const Facets = ({ facets, selectFacet }) => {
     <div>
       { facetBoxes }
     </div>
-  )
+  );
 };
 
 Facets.propTypes = {
   facets: PropTypes.array.isRequired,
   selectFacet: PropTypes.func,
+};
+
+getFacetComponent.propTypes = {
+  type: PropTypes.string.isRequired,
+  buckets: PropTypes.object.isRequired,
+  name: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
 };
 
 export default Facets;

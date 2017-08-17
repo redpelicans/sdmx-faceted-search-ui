@@ -35,12 +35,12 @@ App.propTypes = {
   setLocale: PropTypes.func.isRequired,
   toggleSidePanel: PropTypes.func.isRequired,
   sidePanelIsVisible: PropTypes.bool.isRequired,
-  facets: PropTypes.object.isRequired,
   dataflows: PropTypes.array.isRequired,
   searchData: PropTypes.object.isRequired,
   search: PropTypes.func.isRequired,
   message: PropTypes.object,
   config: PropTypes.object,
+  facets: PropTypes.object,
 };
 
 const actions = { search, setLocale };

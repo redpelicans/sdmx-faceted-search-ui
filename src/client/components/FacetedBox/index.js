@@ -4,14 +4,14 @@ import PropTypes from 'prop-types';
 
 import './FacetedBox.css';
 
-const FacetedBox = ({ name }) => (
+const FacetedBox = ({ facet }) => (
   <div className="pt-card pt-elevation-0 facetedbox">
-    <p className="facetedboxname">{name}</p>
+    <p className="facetedboxname">{typeof (facet)}</p>
   </div>
 );
 
 FacetedBox.propTypes = {
-  name: PropTypes.string.isRequired,
+  facet: PropTypes.array.isRequired,
 };
 
 export default onlyUpdateForKeys(['name'])(FacetedBox);
