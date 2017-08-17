@@ -1,29 +1,34 @@
 import React from 'react';
+import Media from 'react-media';
 import PropTypes from 'prop-types';
 import SearchPanel from '../SearchPanel';
 import ResultPanel from '../ResultPanel';
-import Pager from '../Pager';
 
 import './MainPanel.css';
 
 
 const MainPanel = ({ dataflows = [], searchData = {}, search }) => (
   <div className="mainpanel">
-    <SearchPanel
-      search={search}
-    />
-    <div className="pt-card mainpanel_inner" style={{ minHeight: 100 * (dataflows.length + 1) }}>
+    <Media query={{ maxWidth: 800 }}>
+      {matches => matches ? (
+        <SearchPanel
+          search={search}
+          searchData={searchData}
+          columnsDisplay
+        />
+      ) : (
+        <SearchPanel
+          search={search}
+          searchData={searchData}
+          columnsDisplay={false}
+        />
+      )}
+    </Media>
+    <div className="pt-card mainpanel_inner">
       <ResultPanel
         dataflows={dataflows}
         searchValue={searchData.searchValue}
         searchData={searchData}
-      />
-      <Pager
-        numFound={searchData.numFound}
-        start={searchData.start}
-        count={searchData.count}
-        searchValue={searchData.searchValue}
-        search={search}
       />
     </div>
   </div>);

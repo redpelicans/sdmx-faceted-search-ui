@@ -11,7 +11,8 @@ import Container from '../Container';
 import SidePanel from '../SidePanel';
 import './App.css';
 
-const App = ({ facets, toggleSidePanel, sidePanelIsVisible, dataflows, searchData, search: doSearch, message, setLocale: doSetLocale, config = {} }) => (
+const App = ({ facets, toggleSidePanel, sidePanelIsVisible, dataflows,
+searchData, search: doSearch, message, setLocale: doSetLocale, config = {} }) => (
   <div className="App">
     <LanguageSelector langs={config.langs} setLocale={doSetLocale} />
     <Alert message={message} />

@@ -68,4 +68,8 @@ Pager.propTypes = {
   search: PropTypes.func.isRequired,
 };
 
+Pager.defaultProps = {
+  numFound: 0,
+};
+
 export default Pager;
