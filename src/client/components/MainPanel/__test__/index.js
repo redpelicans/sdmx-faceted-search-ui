@@ -28,9 +28,6 @@ describe ('<MainPanel />', () => {
   it('MainPanel should render a mainpanel_inner div', () => {
     should(wrapper.find('.mainpanel_inner')).length(1);
   })
-  it('MainPanel should render a SearchPanel component', () => {
-    should(wrapper.find(SearchPanel)).length(1);
-  })
   it('MainPanel should render a ResultPanel component', () => {
     should(wrapper.find(ResultPanel)).length(1);
   })
