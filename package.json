@@ -27,6 +27,7 @@
     "babel-core": "6.25.0",
     "babel-jest": "20.0.3",
     "babel-loader": "7.0.0",
+    "babel-plugin-react-intl": "^2.3.1",
     "babel-preset-react-app": "^3.0.1",
     "babel-runtime": "6.23.0",
     "case-sensitive-paths-webpack-plugin": "2.1.1",
@@ -105,7 +106,7 @@
       "src/**/*.{js,jsx}"
     ],
     "testPathIgnorePatterns": [
-      "<rootDir>/src/client/actions/__test__/utils.js" 
+      "<rootDir>/src/client/actions/__test__/utils.js"
     ],
     "setupFiles": [
       "<rootDir>/config/polyfills.js"

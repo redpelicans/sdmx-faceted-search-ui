@@ -1,13 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { FormattedMessage } from 'react-intl';
 
 import './SearchInfo.css';
 
-const SearchInfo = ({ searchValue, numFound }) => (
+const SearchInfo = ({ searchValue = '\'\'', numFound = 0 }) => (
   <div className="searchinfo">
     <span className="pt-icon-large pt-icon-geosearch icon_search_result" />
-    {searchValue && <p>{numFound} results for &apos;{searchValue}&apos;</p>}
-    {!searchValue && <p>{numFound} products available</p>}
+    <FormattedMessage
+      id="search.infos"
+      defaultMessage="{numFound} results for '{searchValue}'"
+      values={{
+        searchValue,
+        numFound: numFound.toString(),
+      }}
+    />
   </div>
 );
 
