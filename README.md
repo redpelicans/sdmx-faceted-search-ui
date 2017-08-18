@@ -11,6 +11,7 @@
 
 
 ```
+$ npm install -g yarn codecov
 $ yarn
 $ yarn start // dev mode
 $ yarn build // and follow instructions ...

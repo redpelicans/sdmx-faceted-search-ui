@@ -5,7 +5,7 @@ import './LanguageSelector.css';
 
 const toggleLangSelector = () => document.getElementById('myDropdown').classList.toggle('show');
 
-const LanguageSelector = ({ langs = [], currentLanguage = '', setLocale }) => (
+const LanguageSelector = ({ langs = [], currentLanguage, setLocale }) => (
   <div className="languageselector">
     <div className="dropdown">
       <button

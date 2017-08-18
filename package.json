@@ -78,7 +78,7 @@
     "build": "node scripts/build.js",
     "test": "NODE_ENV=test jest",
     "lint": "eslint src --color --fix",
-    "test:coverage": "NODE_ENV=test jest --coverage",
+    "test:coverage": "NODE_ENV=test jest --coverage && codecov",
     "build:stats": "NODE_ENV=production webpack --config config/webpack.config.prod.js --profile --json > ./stats.json",
     "build:analyse": "webpack-bundle-analyzer ./stats.json ./build --report --mode=static"
   },
@@ -102,6 +102,8 @@
     ]
   },
   "jest": {
+    "coverageDirectory": "./coverage/",
+    "collectCoverage": true,
     "collectCoverageFrom": [
       "src/**/*.{js,jsx}"
     ],
