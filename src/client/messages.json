@@ -1,8 +1,8 @@
 {
     "en": {
-        "search.infos": "Results found for"
+        "search.infos": " dataflows found"
     },
     "fr": {
-        "search.infos": "Resultats trouvés pour"
+        "search.infos": " dataflows trouves"
     }
 }

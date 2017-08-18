@@ -29,7 +29,11 @@ const CatTreeNode = (id, label, defaultValue) => ({
 
   setCount(count) {
     this.count = count;
-    if (count) this.spreadBottomUp(node => node.totalCount = (node.totalCount || 0) + count);
+    if (count) {
+      this.spreadBottomUp(node => {
+        node.totalCount = (node.totalCount || 0) + count;
+      });
+    }
   },
 
   addChild(child) {
@@ -61,7 +65,7 @@ const CatTree = (domain, value) => {
       path,
       level: idx,
       label,
-    }
+    };
   };
   const getPath = val => {
     const [level, ...names] = init(val.split('/')); // eslint-disable-line no-unused-vars
@@ -76,8 +80,8 @@ const CatTree = (domain, value) => {
   const sort = nodes => {
     if (!nodes) return;
     const newNodes = sortByLabel(nodes);
-    for(const node of newNodes) {
-      node.childNodes = sort(node.childNodes)
+    for (const node of newNodes) {
+      node.childNodes = sort(node.childNodes);
     }
     return newNodes;
   };
@@ -87,7 +91,7 @@ const CatTree = (domain, value) => {
       const cats = getPath(val);
       let parent;
       cats.forEach(cat => {
-        parent = addNode(parent, cat)
+        parent = addNode(parent, cat);
       });
       setCount(val, count);
     });
@@ -118,8 +122,8 @@ class TreeFacet extends React.Component {
   }
 
   forEachNode = (cb, nodes) => {
-    if (!nodes) return
-    for(const node of nodes) {
+    if (!nodes) return;
+    for (const node of nodes) {
       cb(node);
       this.forEachNode(cb, node.childNodes);
     }
@@ -140,8 +144,8 @@ class TreeFacet extends React.Component {
   render() {
     const { nodes } = this.state;
     return (
-      <Tree 
-        contents={ nodes }
+      <Tree
+        contents={nodes}
         onNodeCollapse={this.handleNodeCollapse}
         onNodeExpand={this.handleNodeExpand}
         onNodeClick={this.handleNodeClick}
@@ -149,7 +153,7 @@ class TreeFacet extends React.Component {
       />
     );
   }
-};
+}
 
 TreeFacet.propTypes = {
   domain: PropTypes.array.isRequired,
@@ -158,14 +162,12 @@ TreeFacet.propTypes = {
   onClick: PropTypes.func,
 };
 
-const CategoryFacet = ({ name, domain, value, onClick }) => {
-  return (
-    <div>
-      <span>{name}</span>
-      <TreeFacet name={name} domain={domain} value={value} onClick={onClick} />
-    </div>
+const CategoryFacet = ({ name, domain, value, onClick }) => (
+  <div>
+    <span>{name}</span>
+    <TreeFacet name={name} domain={domain} value={value} onClick={onClick} />
+  </div>
   );
-};
 
 CategoryFacet.propTypes = {
   domain: PropTypes.array.isRequired,
@@ -174,6 +176,6 @@ CategoryFacet.propTypes = {
   onClick: PropTypes.func,
 };
 
-const enhance = onlyUpdateForKeys(['domain', 'value', 'name'])
+const enhance = onlyUpdateForKeys(['domain', 'value', 'name']);
 export default enhance(CategoryFacet);
 
