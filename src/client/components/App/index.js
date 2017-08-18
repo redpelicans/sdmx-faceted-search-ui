@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import Media from 'react-media';
 import { compose, withHandlers, withState } from 'recompose';
 import { search } from '../../actions/dataflows';
 import Alert from '../Alert';
@@ -14,20 +15,50 @@ const App = ({ facets, toggleSidePanel, sidePanelIsVisible, dataflows,
 searchData, search: doSearch, message, setLocale: doSetLocale, config = {} }) => (
   <div className="App">
     <Alert message={message} />
-    <SidePanel
-      facets={facets}
-      sidePanelIsVisible={sidePanelIsVisible}
-      moveSidePanel={toggleSidePanel}
-    />
-    <Container
-      langs={config.langs}
-      setLocale={doSetLocale}
-      dataflows={dataflows}
-      sidePanelIsVisible={sidePanelIsVisible}
-      displayShowPanel={toggleSidePanel}
-      searchData={searchData}
-      search={doSearch}
-    />
+    <Media query={{ maxWidth: 599 }}>
+      {matches => matches ? (
+        <SidePanel
+          facets={facets}
+          sidePanelIsVisible={sidePanelIsVisible}
+          moveSidePanel={toggleSidePanel}
+          overlay
+        />
+      ) : (
+        <SidePanel
+          facets={facets}
+          sidePanelIsVisible={sidePanelIsVisible}
+          moveSidePanel={toggleSidePanel}
+          overlay={false}
+        />
+      )}
+    </Media>
+    <Media query={{ maxWidth: 599 }}>
+      {matches => matches ? (
+        <Container
+          langs={config.langs}
+          setLocale={doSetLocale}
+          dataflows={dataflows}
+          sidePanelIsVisible={sidePanelIsVisible}
+          displayShowPanel={toggleSidePanel}
+          searchData={searchData}
+          search={doSearch}
+          facets={facets}
+          overlay
+        />
+      ) : (
+        <Container
+          langs={config.langs}
+          setLocale={doSetLocale}
+          dataflows={dataflows}
+          sidePanelIsVisible={sidePanelIsVisible}
+          displayShowPanel={toggleSidePanel}
+          searchData={searchData}
+          search={doSearch}
+          facets={facets}
+          overlay={false}
+        />
+      )}
+    </Media>
   </div>
 );
 

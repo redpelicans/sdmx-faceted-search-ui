@@ -11,7 +11,7 @@ const reducer = (state = {}, action) => {
     case SEARCH:
       return {
         ...state,
-        searchValue: action.value,
+        searchValue: action.search,
       };
     default:
       return state;

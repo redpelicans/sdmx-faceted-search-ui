@@ -7,7 +7,7 @@ import params from '../params';
 import App from './components/App';
 import { loadConfig } from './actions/config';
 
-const { search: { count = 12 } } = params;
+const { search: { rows = 10 } } = params;
 const { navigator: { language } } = global;
 
 const initialState = {
@@ -18,7 +18,7 @@ const initialState = {
   facets: {},
   search: {
     start: 0,
-    count,
+    rows,
     searchValue: '',
   },
 };

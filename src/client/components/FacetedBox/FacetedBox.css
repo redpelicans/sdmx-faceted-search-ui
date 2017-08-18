@@ -1,15 +1,22 @@
 .facetedbox
 {
-  width:210px;
+  width:100%;
   border-radius: 2px;
   overflow: hidden;
   color:rgb(45,45,45);
   margin-top:20px;
   padding-bottom: 30px;
+  background-color: white;
 }
 .facetedboxname
 {
   text-align: left;
-  padding-bottom: 10px;
-  color:rgb(6,84,186);
+  font-size:1.1em;
+  padding-top:5px;
+  padding-left:10px;
+  color:rgb(79, 119, 255);
+}
+.icon
+{
+  color:rgb(79, 119, 255);
 }

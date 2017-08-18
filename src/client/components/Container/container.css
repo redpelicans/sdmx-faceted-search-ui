@@ -5,3 +5,7 @@
   min-width:calc(100% - 60px);
   height:100vh;
 }
+.overlay
+{
+  margin-left:60px;
+}
