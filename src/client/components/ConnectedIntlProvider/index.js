@@ -6,7 +6,14 @@ import PropTypes from 'prop-types';
 
 const ConnectedIntlProvider = ({ children, locale, messages }) => {
   if (!locale) return null;
-  return <IntlProvider locale={locale} message={messages}>{children}</IntlProvider>;
+  return (
+    <IntlProvider
+      locale={locale}
+      messages={messages}
+    >
+      {children}
+    </IntlProvider>
+  );
 };
 
 const mapStateToProps = state => ({

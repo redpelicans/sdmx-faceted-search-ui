@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { compose, withHandlers, withState } from 'recompose';
-import { FormattedMessage } from 'react-intl';
 import { search } from '../../actions/dataflows';
 import Alert from '../Alert';
 import { setLocale } from '../../actions/intl';
@@ -15,10 +14,6 @@ const App = ({ facets, toggleSidePanel, sidePanelIsVisible, dataflows,
 searchData, search: doSearch, message, setLocale: doSetLocale, config = {}, intl = {} }) => (
   <div className="App">
     <Alert message={message} />
-    <FormattedMessage
-      id="search.infos"
-      defaultMessage="I am the default value"
-    />
     <SidePanel
       facets={facets}
       sidePanelIsVisible={sidePanelIsVisible}

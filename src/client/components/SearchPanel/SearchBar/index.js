@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 
 import './SearchBar.css';
 
-
 const SearchBar = ({ search }) => (
   <div className="searchbarcontainer">
     <div className="search_icon_container">

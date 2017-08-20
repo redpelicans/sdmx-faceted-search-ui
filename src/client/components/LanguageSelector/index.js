@@ -1,4 +1,5 @@
 import React from 'react';
+import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import { Popover2 } from '@blueprintjs/labs';
 import {
@@ -11,9 +12,9 @@ import {
 
 import './LanguageSelector.css';
 
-const SettingsMenu = ({ langs = [], currentLanguage = '', setLocale }) => (
+export const SettingsMenu = ({ langs = [], currentLanguage = '', setLocale }) => (
   <Menu>
-    <MenuItem className="menu-item" text="Language">
+    <MenuItem className="menu-item" text={<FormattedMessage id="params.language" defaultMessage="language" />}>
       {langs.map(lang =>
         currentLanguage === lang ?
           <MenuItem
@@ -35,9 +36,6 @@ const SettingsMenu = ({ langs = [], currentLanguage = '', setLocale }) => (
     </MenuItem>
   </Menu>
 );
-
-// X dataflows found
-// X dataflows trouves
 
 const LanguageSelector = ({ langs = [], currentLanguage = '', setLocale }) => (
   <div>
