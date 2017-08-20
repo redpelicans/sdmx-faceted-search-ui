@@ -12,7 +12,7 @@ import SidePanel from '../SidePanel';
 import './App.css';
 
 const App = ({ facets, toggleSidePanel, sidePanelIsVisible, dataflows,
-searchData, search: doSearch, message, setLocale: doSetLocale, config = {} }) => (
+searchData, search: doSearch, message, setLocale: doSetLocale, config = {}, intl = {} }) => (
   <div className="App">
     <Alert message={message} />
     <Media query={{ maxWidth: 599 }}>
@@ -36,6 +36,7 @@ searchData, search: doSearch, message, setLocale: doSetLocale, config = {} }) =>
       {matches => matches ? (
         <Container
           langs={config.langs}
+          currentLanguage={intl.locale}
           setLocale={doSetLocale}
           dataflows={dataflows}
           sidePanelIsVisible={sidePanelIsVisible}
@@ -48,6 +49,7 @@ searchData, search: doSearch, message, setLocale: doSetLocale, config = {} }) =>
       ) : (
         <Container
           langs={config.langs}
+          currentLanguage={intl.locale}
           setLocale={doSetLocale}
           dataflows={dataflows}
           sidePanelIsVisible={sidePanelIsVisible}
@@ -63,6 +65,7 @@ searchData, search: doSearch, message, setLocale: doSetLocale, config = {} }) =>
 );
 
 App.propTypes = {
+  intl: PropTypes.object,
   setLocale: PropTypes.func.isRequired,
   toggleSidePanel: PropTypes.func.isRequired,
   sidePanelIsVisible: PropTypes.bool.isRequired,
@@ -82,6 +85,7 @@ const mapStateToProps = state => ({
   facets: state.facets,
   dataflows: state.dataflows,
   searchData: state.search,
+  intl: state.intl,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);

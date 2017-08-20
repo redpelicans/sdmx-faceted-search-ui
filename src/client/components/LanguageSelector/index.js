@@ -5,7 +5,7 @@ import './LanguageSelector.css';
 
 const toggleLangSelector = () => document.getElementById('myDropdown').classList.toggle('show');
 
-const LanguageSelector = ({ langs = [], setLocale }) => (
+const LanguageSelector = ({ langs = [], currentLanguage, setLocale }) => (
   <div className="languageselector">
     <div className="dropdown">
       <button
@@ -17,17 +17,21 @@ const LanguageSelector = ({ langs = [], setLocale }) => (
       />
       <div className="dropdown-content" id="myDropdown">
         { langs.map(lang => (
-          <a
-            key={lang}
-            value={lang}
-            onClick={event => {
-              event.preventDefault();
-              setLocale(lang);
-              toggleLangSelector();
-            }}
-          >
-            {lang}
-          </a>))
+          <div key={lang} className="lang">
+            <a
+              style={{ backgroundColor: currentLanguage === lang ? '#00BFFF' : '', fontWeight: 'bold' }}
+              value={lang}
+              onClick={event => {
+                event.preventDefault();
+                setLocale(lang);
+                toggleLangSelector();
+              }}
+            >
+              <i className={currentLanguage === lang ? 'pt-icon-tick' : ''} />
+              {`  ${lang}`}
+            </a>
+          </div>
+          ))
         }
       </div>
     </div>
@@ -37,6 +41,7 @@ const LanguageSelector = ({ langs = [], setLocale }) => (
 LanguageSelector.propTypes = {
   langs: PropTypes.array,
   setLocale: PropTypes.func,
+  currentLanguage: PropTypes.string,
 };
 
 export default LanguageSelector;
