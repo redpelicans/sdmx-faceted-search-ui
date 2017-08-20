@@ -5,18 +5,49 @@
   overflow: hidden;
   color:rgb(45,45,45);
   margin-top:20px;
-  padding-bottom: 30px;
+  padding-bottom: 10px;
   background-color: white;
+  padding-right:10px;
 }
 .facetedboxname
 {
   text-align: left;
   font-size:1.1em;
-  padding-top:5px;
-  padding-left:10px;
+  padding-top:10px;
+  padding-left:20px;
   color:rgb(79, 119, 255);
+  text-decoration: underline;
+}
+.dimensionboxname
+{
+  text-align: left;
+  font-size:1.1em;
+  padding-top:10px;
+  padding-left:0px;
+  color:rgb(79, 119, 255);
+  text-decoration: underline;
 }
 .icon
 {
   color:rgb(79, 119, 255);
+}
+.dimension
+{
+  padding-left:25px;
+}
+.dimension_checkbox
+{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+.dimensionbox_name_container
+{
+  display: flex;
+  align-items: center;
+}
+.icon_filter
+{
+  color:rgb(79, 119, 255);
+  margin-right:10px;
 }

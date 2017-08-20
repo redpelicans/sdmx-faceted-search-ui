@@ -32,8 +32,13 @@ Container.propTypes = {
   displayShowPanel: PropTypes.func.isRequired,
   searchData: PropTypes.object,
   search: PropTypes.func.isRequired,
-  overlay: PropTypes.bool.isRequired,
-  facets: PropTypes.object.isRequired,
+  overlay: PropTypes.bool,
+  facets: PropTypes.object,
+};
+
+Container.defaultProps = {
+  overlay: false,
+  facets: {},
 };
 
 export default Container;

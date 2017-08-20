@@ -13,7 +13,7 @@ const SidePanel = ({ facets, sidePanelIsVisible, moveSidePanel, overlay }) => {
   // const getId = ({ buckets }) => buckets[random(0, buckets.length - 1)].val;
   const getFacets = reduce((acc, [name, facet]) => [...acc, { ...facet, name }], [], toPairs(facets));
   return (
-    <Motion style={{ x: spring(sidePanelIsVisible ? -390 : 0), y: spring(sidePanelIsVisible ? 450 : 450) }}>
+    <Motion style={{ x: spring(sidePanelIsVisible ? -590 : 0), y: spring(sidePanelIsVisible ? 650 : 450) }}>
       {({ x, y }) =>
         (<div
           style={{

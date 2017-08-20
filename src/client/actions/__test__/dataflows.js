@@ -12,7 +12,7 @@ describe('Action:dataflows', () => {
     const DF = [{}];
     const START = -1;
     const NUMFOUND = 1000;
-    const stub = sinon.stub(axios, 'post').callsFake(() => Promise.resolve({ data: { dataflows: DF, numFound: NUMFOUND, start: START } }));
+    const stub = sinon.stub(axios, 'post').callsFake(() => Promise.resolve({ data: { dataflows: DF, numFound: NUMFOUND, start: START, facets: {} } }));
     const hook = {
       DATAFLOWSLOADED: getState =>  {
         const { dataflows, search: { start, numFound } } = getState();

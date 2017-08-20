@@ -6,7 +6,6 @@ const reducer = (state = {}, action) => {
     case CONFIGLOADED:
       return action.facets;
     case DATAFLOWSLOADED:
-      console.log(action.facets);
       return action.facets;
     case SEARCH:
       if (action.facets) {
