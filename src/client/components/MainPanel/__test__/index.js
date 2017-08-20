@@ -21,6 +21,7 @@ describe ('<MainPanel />', () => {
       dataflows={[]}
       searchValue=''
       search={search}
+      facets={{}}
     />);
   it('MainPanel should render a mainpanel div', () => {
     should(wrapper.find('.mainpanel')).length(1);

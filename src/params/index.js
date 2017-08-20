@@ -1,7 +1,7 @@
 module.exports = {
   title: 'SDMX Faceted Search',
   search: {
-    count: 10,
+    rows: 12,
   },
   server: {
     host: 'rp3.redpelicans.com',

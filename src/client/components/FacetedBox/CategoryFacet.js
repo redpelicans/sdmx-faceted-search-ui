@@ -3,6 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Classes, Tree } from '@blueprintjs/core';
 import { onlyUpdateForKeys } from 'recompose';
+import './FacetedBox.css';
 
 const reduceIndexed = addIndex(reduce);
 
@@ -13,7 +14,7 @@ const CatTreeNode = (id, label, defaultValue) => ({
   isSelected: defaultValue === id,
   hasChildNodes() { return this.childNodes.length; },
   get hasCaret() { return this.hasChildNodes(); },
-  get iconName() { return this.hasChildNodes() ? 'folder-close' : 'pt-icon-tag'; },
+  get iconName() { return this.hasChildNodes() ? 'folder-close icon' : 'pt-icon-tag icon'; },
   get secondaryLabel() { return `(${this.totalCount} / ${this.count})`; },
 
   spreadExpanded() {
@@ -29,13 +30,13 @@ const CatTreeNode = (id, label, defaultValue) => ({
 
   setCount(count) {
     this.count = count;
-    if (count) this.spreadBottomUp(node => node.totalCount = (node.totalCount || 0) + count);
+    if (count) this.spreadBottomUp(node => node.totalCount = (node.totalCount || 0) + count); //eslint-disable-line
   },
 
   addChild(child) {
     this.childNodes.push(child);
-    child.parent = this;
-    if (child.isSelected) this.spreadBottomUp(node => node.isExpanded = true);
+    child.parent = this; //eslint-disable-line
+    if (child.isSelected) this.spreadBottomUp(node => node.isExpanded = true); //eslint-disable-line
     return child;
   },
 });
@@ -61,7 +62,7 @@ const CatTree = (domain, value) => {
       path,
       level: idx,
       label,
-    }
+    };
   };
   const getPath = val => {
     const [level, ...names] = init(val.split('/')); // eslint-disable-line no-unused-vars
@@ -73,11 +74,11 @@ const CatTree = (domain, value) => {
     node.setCount(count);
   };
   const sortByLabel = sortBy(compose(toLower, prop('label')));
-  const sort = nodes => {
+  const sort = nodes => { //eslint-disable-line
     if (!nodes) return;
     const newNodes = sortByLabel(nodes);
-    for(const node of newNodes) {
-      node.childNodes = sort(node.childNodes)
+    for(const node of newNodes) { //eslint-disable-line
+      node.childNodes = sort(node.childNodes);
     }
     return newNodes;
   };
@@ -87,7 +88,7 @@ const CatTree = (domain, value) => {
       const cats = getPath(val);
       let parent;
       cats.forEach(cat => {
-        parent = addNode(parent, cat)
+        parent = addNode(parent, cat);
       });
       setCount(val, count);
     });
@@ -97,13 +98,13 @@ const CatTree = (domain, value) => {
 };
 
 class TreeFacet extends React.Component {
-  handleNodeCollapse = nodeData => {
-    nodeData.isExpanded = false;
+  handleNodeCollapse = nodeData => { //eslint-disable-line
+    nodeData.isExpanded = false; //eslint-disable-line
     this.forceUpdate();
   };
 
   handleNodeExpand = nodeData => {
-    nodeData.isExpanded = true;
+    nodeData.isExpanded = true; //eslint-disable-line
     this.forceUpdate();
   };
 
@@ -111,15 +112,15 @@ class TreeFacet extends React.Component {
     const { nodes } = this.state;
     const { onClick, name } = this.props;
     if (nodeData.isSelected) return;
-    this.forEachNode(n => n.isSelected = false, nodes);
-    nodeData.isSelected = true;
+    this.forEachNode(n => n.isSelected = false, nodes); //eslint-disable-line
+    nodeData.isSelected = true; //eslint-disable-line
     this.forceUpdate();
-    onClick && onClick({ facets: { [name]: nodeData.id } });
+    onClick && onClick({ facets: { [name]: nodeData.id } }); //eslint-disable-line
   }
 
   forEachNode = (cb, nodes) => {
-    if (!nodes) return
-    for(const node of nodes) {
+    if (!nodes) return //eslint-disable-line
+    for (const node of nodes) { //eslint-disable-line
       cb(node);
       this.forEachNode(cb, node.childNodes);
     }
@@ -131,7 +132,7 @@ class TreeFacet extends React.Component {
     this.setState({ nodes });
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps) { //eslint-disable-line
     const { domain, value } = this.props;
     const nodes = CatTree(domain, value).getUINodes();
     this.setState({ nodes });
@@ -140,8 +141,8 @@ class TreeFacet extends React.Component {
   render() {
     const { nodes } = this.state;
     return (
-      <Tree 
-        contents={ nodes }
+      <Tree //eslint-disable-line
+        contents={ nodes } //eslint-disable-line
         onNodeCollapse={this.handleNodeCollapse}
         onNodeExpand={this.handleNodeExpand}
         onNodeClick={this.handleNodeClick}
@@ -149,7 +150,7 @@ class TreeFacet extends React.Component {
       />
     );
   }
-};
+}; //eslint-disable-line
 
 TreeFacet.propTypes = {
   domain: PropTypes.array.isRequired,
@@ -158,10 +159,10 @@ TreeFacet.propTypes = {
   onClick: PropTypes.func,
 };
 
-const CategoryFacet = ({ name, domain, value, onClick }) => {
+const CategoryFacet = ({ name, domain, value, onClick }) => { //eslint-disable-line
   return (
-    <div>
-      <span>{name}</span>
+    <div className="facetedbox">
+      <p className="facetedboxname">{name}</p>
       <TreeFacet name={name} domain={domain} value={value} onClick={onClick} />
     </div>
   );
@@ -174,6 +175,6 @@ CategoryFacet.propTypes = {
   onClick: PropTypes.func,
 };
 
-const enhance = onlyUpdateForKeys(['domain', 'value', 'name'])
+const enhance = onlyUpdateForKeys(['domain', 'value', 'name']) //eslint-disable-line
 export default enhance(CategoryFacet);
 

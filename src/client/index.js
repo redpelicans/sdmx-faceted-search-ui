@@ -12,7 +12,7 @@ import messages from './messages.json';
 
 addLocaleData([...fr, ...en]);
 
-const { search: { count = 10 } } = params;
+const { search: { rows = 10 } } = params;
 const { navigator: { language } } = global;
 
 window.onclick = (event) => {
@@ -37,7 +37,7 @@ const initialState = {
   facets: {},
   search: {
     start: 0,
-    count,
+    rows,
     searchValue: '',
   },
 };

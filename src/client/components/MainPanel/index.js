@@ -7,7 +7,7 @@ import ResultPanel from '../ResultPanel';
 import './MainPanel.css';
 
 
-const MainPanel = ({ dataflows = [], searchData = {}, search }) => (
+const MainPanel = ({ dataflows = [], searchData = {}, search, facets }) => (
   <div className="mainpanel">
     <Media query={{ maxWidth: 800 }}>
       {matches => matches ? (
@@ -15,12 +15,14 @@ const MainPanel = ({ dataflows = [], searchData = {}, search }) => (
           search={search}
           searchData={searchData}
           columnsDisplay
+          facets={facets}
         />
       ) : (
         <SearchPanel
           search={search}
           searchData={searchData}
           columnsDisplay={false}
+          facets={facets}
         />
       )}
     </Media>
@@ -37,6 +39,7 @@ MainPanel.propTypes = {
   dataflows: PropTypes.array.isRequired,
   searchData: PropTypes.object,
   search: PropTypes.func.isRequired,
+  facets: PropTypes.object.isRequired,
 };
 
 export default MainPanel;

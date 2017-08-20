@@ -1,18 +1,23 @@
+import { map, prop, merge } from 'ramda';
 import { requestJson } from '../utils';
 
 export const DATAFLOWSLOADED = 'DATAFLOWSLOADED';
 export const SEARCH = 'SEARCH';
 
-const dataflowsLoaded = ({ dataflows = [], numFound, start } = {}) => ({
+const dataflowsLoaded = ({ dataflows = [], numFound, start, facets } = {}) => ({
   type: DATAFLOWSLOADED,
   dataflows,
   numFound,
   start,
+  facets,
 });
 
-export const search = (value, start) => dispatch => {
-  dispatch({ type: SEARCH, value });
-  const body = { search: value, start };
+export const search = (params, start = 0) => (dispatch, getState) => {
+  dispatch({ type: SEARCH, ...params });
+  const { search: { rows, searchValue } = '', facets } = getState();
+  const baseQuery = { search: searchValue, facets: map(prop('value'), facets) };
+  const query = merge(baseQuery, params);
+  const body = { ...query, start, rows };
   const message = { label: 'Cannot search dataflows' };
   requestJson({ dispatch, method: 'post', url: '/api/search', body, message })
    .then(data => dispatch(dataflowsLoaded(data)));
