@@ -16,6 +16,7 @@
   ],
   "dependencies": {
     "@blueprintjs/core": "^1.23.1",
+    "@blueprintjs/labs": "^0.6.0",
     "@types/es6-shim": "^0.31.34",
     "@types/moment": "^2.13.0",
     "@types/pure-render-decorator": "^0.2.27",
