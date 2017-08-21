@@ -1,8 +1,20 @@
 {
     "en": {
-        "search.infos": "Results found for"
+        "search.infos": "dataflows found",
+        "params.language": "language",
+        "searchbar.placeholder": "Search",
+        "search.tips.header": "Search tips",
+        "search.tip.spelling": "Check that the spelling of keywords is correct",
+        "search.tip.keywords": "Use different keywords",
+        "search.tip.filters": "Remove filters to broaden your search"
     },
     "fr": {
-        "search.infos": "Resultats trouvés pour"
+        "search.infos": "dataflows trouvés",
+        "params.language": "langue",
+        "searchbar.placeholder": "Recherche",
+        "search.tips.header": "Astuces de recherche",
+        "search.tip.spelling": "Vérifiez que l orthographe des mots-clés est correcte",
+        "search.tip.keywords": "Utilisez des mots-clés différents",
+        "search.tip.filters": "Supprimez les filtres pour élargir votre recherche"
     }
 }

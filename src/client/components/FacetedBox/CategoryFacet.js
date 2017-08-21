@@ -166,7 +166,7 @@ const CategoryFacet = ({ name, domain, value, onClick }) => { //eslint-disable-l
       <TreeFacet name={name} domain={domain} value={value} onClick={onClick} />
     </div>
   );
-};
+}
 
 CategoryFacet.propTypes = {
   domain: PropTypes.array.isRequired,
