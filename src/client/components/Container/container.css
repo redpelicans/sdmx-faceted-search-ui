@@ -1,5 +1,11 @@
-.container-container {
+.container
+{
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width:calc(100% - 60px);
+  height:100vh;
+}
+.overlay
+{
+  margin-left:60px;
 }

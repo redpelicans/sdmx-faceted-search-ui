@@ -1,20 +1,46 @@
 import React from 'react';
+import { Motion, spring } from 'react-motion';
 import PropTypes from 'prop-types';
+import { reduce, toPairs } from 'ramda';
+import BurgerButton from './BurgerButton';
+import Facets from '../FacetedBox';
 
-import './side_panel.css';
-import FacetedBox from '../FacetedBox';
+import './SidePanel.css';
 
-const SidePanel = ({ isHidden }) => (
-  <div className="side-panel-container" style={{ display: isHidden ? 'none' : 'flex' }}>
-    <FacetedBox titleName="premier" />
-    <FacetedBox titleName="deuxieme" />
-    <FacetedBox titleName="troisieme" />
-    <FacetedBox titleName="quatrieme" />
-  </div>
-);
+
+const SidePanel = ({ facets, sidePanelIsVisible, moveSidePanel, overlay }) => {
+  // const random = (min, max) => Math.floor(Math.random() * ((max - min) + 1)) + min;
+  // const getId = ({ buckets }) => buckets[random(0, buckets.length - 1)].val;
+  const getFacets = reduce((acc, [name, facet]) => [...acc, { ...facet, name }], [], toPairs(facets));
+  return (
+    <Motion style={{ x: spring(sidePanelIsVisible ? -590 : 0), y: spring(sidePanelIsVisible ? 650 : 450) }}>
+      {({ x, y }) =>
+        (<div
+          style={{
+            marginLeft: `${x}px`,
+            minWidth: `${y}px`,
+            position: overlay ? 'absolute' : 'relative',
+          }}
+          className="sidepanel"
+        >
+          {sidePanelIsVisible && <BurgerButton
+            displayShowPanel={moveSidePanel}
+          />}
+          {!sidePanelIsVisible && <div onClick={moveSidePanel} className="crosscontainer">
+            <span className="pt-icon-large pt-icon-cross" />
+          </div>}
+          <Facets facets={getFacets} />
+        </div>)
+    }
+    </Motion>
+  );
+};
 
 SidePanel.propTypes = {
-  isHidden: PropTypes.bool.isRequired,
+  facets: PropTypes.object,
+  sidePanelIsVisible: PropTypes.bool.isRequired,
+  moveSidePanel: PropTypes.func.isRequired,
+  overlay: PropTypes.bool.isRequired,
 };
 
 export default SidePanel;

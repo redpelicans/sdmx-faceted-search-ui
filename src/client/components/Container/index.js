@@ -1,25 +1,44 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
-import './container.css';
 import Header from '../Header';
 import MainPanel from '../MainPanel';
+import './Container.css';
 
-const Container = ({ title, langs, resultItems, showOverlayPanel, isHidden, searchHandler, searchValue }) => (
-  <div className="container-container">
-    <Header title={title} langs={langs} showOverlayPanel={showOverlayPanel} isHidden={isHidden} />
-    <MainPanel searchValue={searchValue} resultItems={resultItems} searchHandler={searchHandler} />
+const Container = ({ dataflows, currentLanguage, searchData, sidePanelIsVisible, displayShowPanel, search, langs, setLocale, overlay, facets }) => (
+  <div className={overlay ? 'container overlay' : 'container'}>
+    <Header
+      langs={langs}
+      setLocale={setLocale}
+      currentLanguage={currentLanguage}
+      sidePanelIsVisible={sidePanelIsVisible}
+      displayShowPanel={displayShowPanel}
+    />
+    <MainPanel
+      dataflows={dataflows}
+      displayShowPanel={displayShowPanel}
+      searchData={searchData}
+      search={search}
+      facets={facets}
+    />
   </div>
 );
 
 Container.propTypes = {
-  title: PropTypes.string.isRequired,
-  langs: PropTypes.array.isRequired,
-  resultItems: PropTypes.array.isRequired,
-  showOverlayPanel: PropTypes.func.isRequired,
-  isHidden: PropTypes.bool.isRequired,
-  searchHandler: PropTypes.func.isRequired,
-  searchValue: PropTypes.string.isRequired,
+  langs: PropTypes.array,
+  setLocale: PropTypes.func,
+  currentLanguage: PropTypes.string,
+  dataflows: PropTypes.array.isRequired,
+  sidePanelIsVisible: PropTypes.bool,
+  displayShowPanel: PropTypes.func.isRequired,
+  searchData: PropTypes.object,
+  search: PropTypes.func.isRequired,
+  overlay: PropTypes.bool,
+  facets: PropTypes.object,
+};
+
+Container.defaultProps = {
+  overlay: false,
+  facets: {},
 };
 
 export default Container;

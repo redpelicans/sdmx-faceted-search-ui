@@ -1,68 +1,99 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { getSearchBarInput } from '../../actions';
-
-import connect from '../connect';
-
-import './App.css';
-import SidePanel from '../SidePanel';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import Media from 'react-media';
+import { compose, withHandlers, withState } from 'recompose';
+import { search } from '../../actions/dataflows';
+import Alert from '../Alert';
+import { setLocale } from '../../actions/intl';
 import Container from '../Container';
+import SidePanel from '../SidePanel';
+import './App.css';
 
-const resultsFilter = (resultList, keyWord) =>
-  resultList.filter(item => item.value.match(keyWord.toLowerCase()) !== null);
-
-class App extends Component {
-  state = {
-    isHidden: true,
-  }
-
-  showOverlayPanel = () => {
-    this.setState(({ isHidden }) => ({ isHidden: !isHidden }));
-  };
-
-  searchHandler = ({ target: { value } }) => {
-    const { getSearchBarInput: get_search_bar_input } = this.props;
-    get_search_bar_input(value);
-  };
-
-  render() {
-    const { isHidden } = this.state;
-    const { title, langs, resultItems, searchValue } = this.props;
-    return (
-      <div className="app-container">
-        <div>
-          <SidePanel isHidden={isHidden} />
-          <Container
-            title={title}
-            langs={langs}
-            resultItems={resultItems}
-            showOverlayPanel={this.showOverlayPanel}
-            isHidden={isHidden}
-            searchHandler={this.searchHandler}
-            searchValue={searchValue}
-          />
-        </div>
-      </div>
-    );
-  }
-}
-
-const mapStateToProps = state => ({
-  title: state.title,
-  langs: state.langs,
-  resultItems: resultsFilter(state.resultItems, state.searchValue),
-  getSearchBarInput: state.getSearchBarInput,
-  searchValue: state.searchValue,
-});
-
-const mapDispatchToProps = dispatch => ({ getSearchBarInput: (value) => dispatch(getSearchBarInput(value)) });
+const App = ({ facets, toggleSidePanel, sidePanelIsVisible, dataflows,
+searchData, search: doSearch, message, setLocale: doSetLocale, config = {}, intl = {} }) => (
+  <div className="App">
+    <Alert message={message} />
+    <Media query={{ maxWidth: 599 }}>
+      {matches => matches ? (
+        <SidePanel
+          facets={facets}
+          sidePanelIsVisible={sidePanelIsVisible}
+          moveSidePanel={toggleSidePanel}
+          overlay
+        />
+      ) : (
+        <SidePanel
+          facets={facets}
+          sidePanelIsVisible={sidePanelIsVisible}
+          moveSidePanel={toggleSidePanel}
+          overlay={false}
+        />
+      )}
+    </Media>
+    <Media query={{ maxWidth: 599 }}>
+      {matches => matches ? (
+        <Container
+          langs={config.langs}
+          currentLanguage={intl.locale}
+          setLocale={doSetLocale}
+          dataflows={dataflows}
+          sidePanelIsVisible={sidePanelIsVisible}
+          displayShowPanel={toggleSidePanel}
+          searchData={searchData}
+          search={doSearch}
+          facets={facets}
+          overlay
+        />
+      ) : (
+        <Container
+          langs={config.langs}
+          currentLanguage={intl.locale}
+          setLocale={doSetLocale}
+          dataflows={dataflows}
+          sidePanelIsVisible={sidePanelIsVisible}
+          displayShowPanel={toggleSidePanel}
+          searchData={searchData}
+          search={doSearch}
+          facets={facets}
+          overlay={false}
+        />
+      )}
+    </Media>
+  </div>
+);
 
 App.propTypes = {
-  title: PropTypes.string.isRequired,
-  langs: PropTypes.array.isRequired,
-  resultItems: PropTypes.array.isRequired,
-  getSearchBarInput: PropTypes.func.isRequired,
-  searchValue: PropTypes.string.isRequired,
+  intl: PropTypes.object,
+  setLocale: PropTypes.func.isRequired,
+  toggleSidePanel: PropTypes.func.isRequired,
+  sidePanelIsVisible: PropTypes.bool.isRequired,
+  dataflows: PropTypes.array.isRequired,
+  searchData: PropTypes.object.isRequired,
+  search: PropTypes.func.isRequired,
+  message: PropTypes.object,
+  config: PropTypes.object,
+  facets: PropTypes.object,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+const actions = { search, setLocale };
+
+const mapStateToProps = state => ({
+  message: state.message,
+  config: state.config,
+  facets: state.facets,
+  dataflows: state.dataflows,
+  searchData: state.search,
+  intl: state.intl,
+});
+
+const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);
+
+const enhance = compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  withState('sidePanelIsVisible', 'showSidePanel', true),
+  withHandlers({ toggleSidePanel: ({ showSidePanel }) => () => showSidePanel(sidePanelIsVisible => !sidePanelIsVisible) }),
+);
+
+export default enhance(App);
