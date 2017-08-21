@@ -1,7 +1,6 @@
 import React from 'react';
 import { onlyUpdateForKeys } from 'recompose';
 import PropTypes from 'prop-types';
-import { Motion, spring } from 'react-motion';
 import { PopoverInteractionKind } from '@blueprintjs/core';
 import { Popover2 } from '@blueprintjs/labs';
 
@@ -55,35 +54,30 @@ export const PopHoverElem = ({ data }) => (
 );
 
 const DataFlow = ({ data, screenSize }) => (
-  <Motion defaultStyle={{ x: 0 }} style={{ x: spring(80) }}>
-    {({ x }) =>
-      (<div
-        style={{ height: x }}
-        className={screenSize ?
-          'pt-card pt-elevation-0 dataflowcontainer large' :
-          'pt-card pt-elevation-0 dataflowcontainer small'
-          }
-      >
-        <div className="dataflows_title">
-          <p className="name">{data.name}</p>
-          <Popover2
-            content={
-              <PopHoverElem data={data} />
-            }
-            target={
-              <div className="info_container">
-                <i className="fa fa-info" aria-hidden="true" />
-              </div>
-            }
-            interactionKind={PopoverInteractionKind.CLICK}
-            hoverCloseDelay={500}
-            popoverClassName="popover"
-          />
-        </div>
-        <p className="id">{data.id}</p>
-      </div>)
-    }
-  </Motion>
+  <div
+    className={screenSize ?
+      'pt-card pt-elevation-0 dataflowcontainer large' :
+      'pt-card pt-elevation-0 dataflowcontainer small'
+      }
+  >
+    <div className="dataflows_title">
+      <p className="name">{data.name}</p>
+      <Popover2
+        content={
+          <PopHoverElem data={data} />
+        }
+        target={
+          <div className="info_container">
+            <i className="fa fa-info" aria-hidden="true" />
+          </div>
+        }
+        interactionKind={PopoverInteractionKind.CLICK}
+        hoverCloseDelay={500}
+        popoverClassName="popover"
+      />
+    </div>
+    <p className="id">{data.id}</p>
+  </div>
 );
 
 DataFlow.propTypes = {

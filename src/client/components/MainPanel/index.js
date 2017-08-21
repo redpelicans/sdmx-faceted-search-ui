@@ -1,5 +1,4 @@
 import React from 'react';
-import Media from 'react-media';
 import PropTypes from 'prop-types';
 import SearchPanel from '../SearchPanel';
 import ResultPanel from '../ResultPanel';
@@ -9,23 +8,11 @@ import './MainPanel.css';
 
 const MainPanel = ({ dataflows = [], searchData = {}, search, facets }) => (
   <div className="mainpanel">
-    <Media query={{ maxWidth: 800 }}>
-      {matches => matches ? (
-        <SearchPanel
-          search={search}
-          searchData={searchData}
-          columnsDisplay
-          facets={facets}
-        />
-      ) : (
-        <SearchPanel
-          search={search}
-          searchData={searchData}
-          columnsDisplay={false}
-          facets={facets}
-        />
-      )}
-    </Media>
+    <SearchPanel
+      search={search}
+      searchData={searchData}
+      facets={facets}
+    />
     <div className="pt-card mainpanel_inner">
       <ResultPanel
         dataflows={dataflows}

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
+import { reduce, toPairs } from 'ramda';
 import { connect } from 'react-redux';
 import Media from 'react-media';
 import { compose, withHandlers, withState } from 'recompose';
@@ -79,10 +80,12 @@ App.propTypes = {
 
 const actions = { search, setLocale };
 
+const getFacets = facets => reduce((acc, [name, facet]) => [...acc, { ...facet, name }], [], toPairs(facets));
+
 const mapStateToProps = state => ({
   message: state.message,
   config: state.config,
-  facets: state.facets,
+  facets: getFacets(state.facets),
   dataflows: state.dataflows,
   searchData: state.search,
   intl: state.intl,

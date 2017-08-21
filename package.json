@@ -139,9 +139,6 @@
       "jsx"
     ]
   },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
   "nyc": {
     "exclude": [
       "build"

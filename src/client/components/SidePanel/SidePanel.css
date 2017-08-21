@@ -1,16 +1,23 @@
 .sidepanel
 {
+  overflow: auto;
+  overflow-y: overlay;
+  direction:rtl;
+  height:100vh;
+}
+.sidepanel_inner
+{
   display: flex;
-  z-index:100;
+  z-index:1;
   padding-top: 15px;
   padding-left:20px;
   padding-right:20px;
   padding-bottom:20px;
   align-items: flex-start;
   flex-direction: column;
-  min-height:100vh;
+  min-height:100%;
   background-color:rgb(79, 119, 255);
-  /*background-color:rgb(39,40,34);*/
+  direction:ltr;
 }
 .crosscontainer
 {

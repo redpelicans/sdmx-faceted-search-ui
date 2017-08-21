@@ -15,7 +15,7 @@ const CatTreeNode = (id, label, defaultValue) => ({
   hasChildNodes() { return this.childNodes.length; },
   get hasCaret() { return this.hasChildNodes(); },
   get iconName() { return this.hasChildNodes() ? 'folder-close icon' : 'pt-icon-tag icon'; },
-  get secondaryLabel() { return `(${this.totalCount} / ${this.count})`; },
+  get secondaryLabel() { return `(${this.totalCount})`; },
 
   spreadExpanded() {
     this.isExpanded = true;
@@ -159,7 +159,7 @@ TreeFacet.propTypes = {
   onClick: PropTypes.func,
 };
 
-const CategoryFacet = ({ name, domain, value, onClick }) => { //eslint-disable-line
+const CategoryFacet = ({ name, domain, value, onClick }) => { // eslint-disable-line arrow-body-style
   return (
     <div className="facetedbox">
       <p className="facetedboxname">{name}</p>
