@@ -7,14 +7,16 @@ import './SearchInfo.css';
 const SearchInfo = ({ searchValue = '\'\'', numFound = 0 }) => (
   <div className="searchinfo">
     <span className="pt-icon-large pt-icon-geosearch icon_search_result" />
-    <FormattedNumber value={numFound} />
-    <FormattedMessage
-      id={'search.infos'}
-      defaultMessage={'results for {searchValue}'}
-      values={{
-        searchValue,
-      }}
-    />
+    <p>
+      <FormattedNumber value={numFound} />
+    </p>
+    <p>
+      <FormattedMessage
+        id={'search.infos'}
+        defaultMessage={'results for {searchValue}'}
+        values={{ searchValue }}
+      />
+    </p>
   </div>
 );
 

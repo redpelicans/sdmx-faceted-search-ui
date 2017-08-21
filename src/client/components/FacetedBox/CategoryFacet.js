@@ -155,7 +155,7 @@ class TreeFacet extends React.Component {
 TreeFacet.propTypes = {
   domain: PropTypes.array.isRequired,
   value: PropTypes.string,
-  name: PropTypes.string.isRequired,
+  name: PropTypes.object.isRequired,
   onClick: PropTypes.func,
 };
 
@@ -171,10 +171,9 @@ const CategoryFacet = ({ name, domain, value, onClick }) => { //eslint-disable-l
 CategoryFacet.propTypes = {
   domain: PropTypes.array.isRequired,
   value: PropTypes.string,
-  name: PropTypes.string.isRequired,
+  name: PropTypes.object.isRequired,
   onClick: PropTypes.func,
 };
 
 const enhance = onlyUpdateForKeys(['domain', 'value', 'name']) //eslint-disable-line
 export default enhance(CategoryFacet);
-
