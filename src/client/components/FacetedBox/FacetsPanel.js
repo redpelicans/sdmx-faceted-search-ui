@@ -5,7 +5,7 @@ import CategoryFacet from './CategoryFacet';
 
 const CATEGORY = 'category';
 
-const getFacetComponent = onClick => ({ type, buckets, name, value }) => {
+const getFacetComponent = onClick => ({ type, buckets, name, value }) => { //eslint-disable-line
   switch (type) {
     case CATEGORY:
       return <CategoryFacet key={name} name={name} value={value} domain={buckets} onClick={onClick} />;

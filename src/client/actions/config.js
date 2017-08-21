@@ -3,7 +3,7 @@ import { requestJson } from '../utils';
 import { setLocale } from './intl';
 
 export const CONFIGLOADED = 'CONFIGLOADED';
-export const configLoaded = ({ langs, defaultLang }) => ({ type: CONFIGLOADED, langs, defaultLang });
+export const configLoaded = ({ langs, defaultLang, facets }) => ({ type: CONFIGLOADED, langs, defaultLang, facets });
 
 export const loadConfig = () => (dispatch, getState) => requestJson({
   dispatch,

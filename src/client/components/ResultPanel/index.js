@@ -13,44 +13,21 @@
         searchValue={searchValue}
         numFound={searchData.numFound}
       />
-      {dataflows.map((dataflow, i) => {
-        if (i % 3 === 2) {
-          return (
-            <Media key={dataflow.id} query={{ maxWidth: 1100 }}>
-              {matches => matches ? (
-                <DataFlow
-                  data={dataflow}
-                  screenSize
-                  popoverPosition
-                />
-              ) : (
-                <DataFlow
-                  data={dataflow}
-                  screenSize={false}
-                  popoverPosition={false}
-                />
-              )}
-            </Media>
-          );
-        }
-        return (
-          <Media key={dataflow.id} query={{ maxWidth: 1100 }}>
-            {matches => matches ? (
-              <DataFlow
-                data={dataflow}
-                screenSize
-                popoverPosition
-              />
-            ) : (
-              <DataFlow
-                data={dataflow}
-                screenSize={false}
-                popoverPosition
-              />
-            )}
-          </Media>
-        );
-      })}
+      {dataflows.map(dataflow => (
+        <Media key={dataflow.id} query={{ maxWidth: 1100 }}>
+          {matches => matches ? (
+            <DataFlow
+              data={dataflow}
+              screenSize
+            />
+          ) : (
+            <DataFlow
+              data={dataflow}
+              screenSize={false}
+            />
+          )}
+        </Media>
+      ))}
       {(searchData.numFound === 0 || !searchData.numFound) && <EmptySearch />}
     </div>
     );

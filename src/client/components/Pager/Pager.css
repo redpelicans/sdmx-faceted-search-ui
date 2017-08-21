@@ -2,7 +2,6 @@
 {
   display: flex;
   justify-content: center;
-  padding-left:50px;
   align-items: flex-end;
   flex:1;
 }

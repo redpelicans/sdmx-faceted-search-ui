@@ -2,22 +2,22 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './MiniPager.css';
 
-const MiniPager = ({ searchValue, start, count, numFound, search }) => {
-  if (numFound <= count) {
+const MiniPager = ({ searchValue, start, rows, numFound, search }) => {
+  if (numFound <= rows) {
     return <div />;
   }
-  const actualPage = (Math.ceil((start + 1) / count));
-  const lastPage = (Math.ceil(numFound / count));
+  const actualPage = (Math.ceil((start + 1) / rows));
+  const lastPage = (Math.ceil(numFound / rows));
   return (
     <div className="minipager_container">
       <div className="minipager_container_inner">
-        <div className="minipager_elem" onClick={() => search(searchValue, 0, count)}>
+        <div className="minipager_elem" onClick={() => search(searchValue, 0, rows)}>
           <span
             className="pt-icon-standard pt-icon-double-chevron-left"
           />
         </div>
         {actualPage !== 1 &&
-          <div className="minipager_elem" onClick={start === 0 ? () => {} : () => search(searchValue, start - count, count)}>
+          <div className="minipager_elem" onClick={start === 0 ? () => {} : () => search(searchValue, start - rows, rows)}>
             <span className="pt-icon-standard pt-icon-chevron-left" />
           </div>
         }
@@ -25,14 +25,14 @@ const MiniPager = ({ searchValue, start, count, numFound, search }) => {
         {actualPage !== lastPage &&
           <div
             className="minipager_elem"
-            onClick={start + count >= numFound ? () => {} : () => search(searchValue, start + count, count)}
+            onClick={start + rows >= numFound ? () => {} : () => search(searchValue, start + rows, rows)}
           >
             <span
               className="pt-icon-standard pt-icon-chevron-right"
             />
           </div>
           }
-        <div className="minipager_elem" onClick={() => search(searchValue, (lastPage * 10) - count, count)}>
+        <div className="minipager_elem" onClick={() => search(searchValue, (lastPage * rows) - rows, rows)}>
           <span
             className="pt-icon-standard pt-icon-double-chevron-right"
           />
@@ -45,7 +45,7 @@ const MiniPager = ({ searchValue, start, count, numFound, search }) => {
 MiniPager.propTypes = {
   searchValue: PropTypes.string.isRequired,
   start: PropTypes.number.isRequired,
-  count: PropTypes.number.isRequired,
+  rows: PropTypes.number.isRequired,
   numFound: PropTypes.number.isRequired,
   search: PropTypes.func.isRequired,
 };

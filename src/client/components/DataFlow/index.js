@@ -2,7 +2,8 @@ import React from 'react';
 import { onlyUpdateForKeys } from 'recompose';
 import PropTypes from 'prop-types';
 import { Motion, spring } from 'react-motion';
-import { Popover, Position, PopoverInteractionKind } from '@blueprintjs/core';
+import { PopoverInteractionKind } from '@blueprintjs/core';
+import { Popover2 } from '@blueprintjs/labs';
 
 import './DataFlow.css';
 
@@ -53,7 +54,7 @@ export const PopHoverElem = ({ data }) => (
   </div>
 );
 
-const DataFlow = ({ data, screenSize, popoverPosition }) => (
+const DataFlow = ({ data, screenSize }) => (
   <Motion defaultStyle={{ x: 0 }} style={{ x: spring(80) }}>
     {({ x }) =>
       (<div
@@ -65,7 +66,7 @@ const DataFlow = ({ data, screenSize, popoverPosition }) => (
       >
         <div className="dataflows_title">
           <p className="name">{data.name}</p>
-          <Popover
+          <Popover2
             content={
               <PopHoverElem data={data} />
             }
@@ -74,7 +75,6 @@ const DataFlow = ({ data, screenSize, popoverPosition }) => (
                 <i className="fa fa-info" aria-hidden="true" />
               </div>
             }
-            position={popoverPosition ? Position.LEFT : Position.LEFT}
             interactionKind={PopoverInteractionKind.CLICK}
             hoverCloseDelay={500}
             popoverClassName="popover"
@@ -89,7 +89,6 @@ const DataFlow = ({ data, screenSize, popoverPosition }) => (
 DataFlow.propTypes = {
   data: PropTypes.object.isRequired,
   screenSize: PropTypes.bool,
-  popoverPosition: PropTypes.bool,
 };
 
 PopHoverElem.propTypes = {
