@@ -47,6 +47,7 @@ searchData, search: doSearch, message, setLocale: doSetLocale, config = {}, intl
           displayShowPanel={toggleSidePanel}
           searchData={searchData}
           search={doSearch}
+          searchFields={config.searchFields}
           overlay
         />
       ) : (
@@ -59,6 +60,7 @@ searchData, search: doSearch, message, setLocale: doSetLocale, config = {}, intl
           displayShowPanel={toggleSidePanel}
           searchData={searchData}
           search={doSearch}
+          searchFields={config.searchFields}
           overlay={false}
         />
       )}
@@ -93,6 +95,7 @@ const mapStateToProps = state => ({
   facets: getFacets(state),
   dataflows: state.dataflows,
   searchData: state.search,
+  searchFields: state.searchFields,
   intl: state.intl,
 });
 
