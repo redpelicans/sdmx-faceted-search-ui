@@ -44,6 +44,7 @@
   align-items: center;
   margin:10px;
   margin-left:20px;
+  justify-content: space-between;
 }
 .dimension_checkbox:hover
 {
