@@ -1,6 +1,7 @@
 .facetedbox
 {
   width:100%;
+  min-width:410px;
   border-radius: 2px;
   overflow: hidden;
   color:rgb(45,45,45);
@@ -51,11 +52,11 @@
   color:rgb(79, 119, 255);
   margin-right:10px;
 }
-
-.facet
+.pt-elevation-0
 {
   text-align: left;
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
+}
+.pt-tree-node.pt-tree-node-selected > .pt-tree-node-content
+{
+  background-color: rgb(79, 119, 255);
 }

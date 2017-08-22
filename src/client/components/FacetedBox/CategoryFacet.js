@@ -1,7 +1,6 @@
 import { compose, toLower, prop, sortBy, init, join, reduce, addIndex, last } from 'ramda';
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Classes, Tree } from '@blueprintjs/core';
 // import { onlyUpdateForKeys } from 'recompose';
 import { FormattedMessage } from 'react-intl';
 import './FacetedBox.css';
@@ -16,7 +15,7 @@ const CatTreeNode = (id, label, defaultValue) => ({
   hasChildNodes() { return this.childNodes.length; },
   get hasCaret() { return this.hasChildNodes(); },
   get iconName() { return this.hasChildNodes() ? 'folder-close icon' : 'pt-icon-tag icon'; },
-  get secondaryLabel() { return `(${this.totalCount} / ${this.count})`; },
+  get secondaryLabel() { return `(${this.count})`; },
 
   spreadExpanded() {
     this.isExpanded = true;
@@ -31,7 +30,7 @@ const CatTreeNode = (id, label, defaultValue) => ({
 
   setCount(count) {
     this.count = count;
-    if (count) this.spreadBottomUp(node => node.totalCount = (node.totalCount || 0) + count); //eslint-disable-line
+    // if (count) this.spreadBottomUp(node => node.totalCount = (node.totalCount || 0) + count); //eslint-disable-line
   },
 
   addChild(child) {
@@ -111,12 +110,12 @@ class TreeFacet extends React.Component {
 
   handleNodeClick = nodeData => {
     const { nodes } = this.state;
-    const { onClick, name } = this.props;
+    const { onClick } = this.props;
     if (nodeData.isSelected) return;
-    this.forEachNode(n => n.isSelected = false, nodes); //eslint-disable-line
+    this.forEachNode(n => n.isSelected = false, nodes); // eslint-disable-line
     nodeData.isSelected = true; //eslint-disable-line
     this.forceUpdate();
-    onClick && onClick({ facets: { [name]: nodeData.id } }); //eslint-disable-line
+    onClick && onClick([nodeData.id]); // eslint-disable-line no-unused-expressions
   }
 
   forEachNode = (cb, nodes) => {
@@ -156,17 +155,16 @@ class TreeFacet extends React.Component {
 TreeFacet.propTypes = {
   domain: PropTypes.array.isRequired,
   value: PropTypes.string,
-  name: PropTypes.string.isRequired,
   onClick: PropTypes.func,
 };
 
-const CategoryFacet = ({ name, domain, value, onClick }) => { //eslint-disable-line
+const CategoryFacet = ({ name, domain, value, onClick }) => { // eslint-disable-line arrow-body-style
   return (
     <div className="facetedbox">
       <p className="facetedboxname">
         {<FormattedMessage id={`${name}.header`} defaultMessage="{name}" values={{ name }} />}
       </p>
-      <TreeFacet name={name} domain={domain} value={value} onClick={onClick} />
+      <TreeFacet domain={domain} value={value} onClick={onClick} />
     </div>
   );
 };

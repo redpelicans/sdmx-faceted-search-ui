@@ -4,7 +4,7 @@ import { intlShape, injectIntl } from 'react-intl';
 
 import './SearchBar.css';
 
-const SearchBar = ({ search, facets, intl }) => (
+const SearchBar = ({ search, intl }) => (
   <div className="searchbarcontainer">
     <div className="search_icon_container">
       <span className="pt-icon-large pt-icon-search search_icon" />
@@ -12,7 +12,7 @@ const SearchBar = ({ search, facets, intl }) => (
     <input
       onChange={event => {
         event.preventDefault();
-        search({ search: event.target.value, facets });
+        search({ search: event.target.value });
       }}
       className="searchbar_inner"
       placeholder={intl.formatMessage({ id: 'searchbar.placeholder' })}
@@ -23,7 +23,6 @@ const SearchBar = ({ search, facets, intl }) => (
 
 SearchBar.propTypes = {
   search: PropTypes.func.isRequired,
-  facets: PropTypes.object.isRequired,
   intl: intlShape.isRequired,
 };
 export default injectIntl(SearchBar);

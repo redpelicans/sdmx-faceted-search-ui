@@ -7,9 +7,9 @@
 .searchpanel
 {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   width:100%;
-  min-height:120px;
   align-items: center;
   margin-bottom:25px;
 }
@@ -21,9 +21,4 @@
 .columns > div
 {
   margin-top:25px;
-}
-.inline
-{
-  display: flex;
-  flex-direction: row;
 }
