@@ -47,6 +47,7 @@ searchData, search: doSearch, message, setLocale: doSetLocale, config = {}, intl
           displayShowPanel={toggleSidePanel}
           searchData={searchData}
           search={doSearch}
+          searchFields={config.searchFields}
           overlay
         />
       ) : (
@@ -59,6 +60,7 @@ searchData, search: doSearch, message, setLocale: doSetLocale, config = {}, intl
           displayShowPanel={toggleSidePanel}
           searchData={searchData}
           search={doSearch}
+          searchFields={config.searchFields}
           overlay={false}
         />
       )}
@@ -84,7 +86,7 @@ const getStateFacets = state => state.facets;
 
 export const getFacets = createSelector(
   [getStateFacets],
-  facets => (reduce((acc, [name, facet]) => [...acc, { ...facet, name }], [], toPairs(facets))),
+  facets => reduce((acc, [name, facet]) => [...acc, { ...facet, name }], [], toPairs(facets)),
 );
 
 const mapStateToProps = state => ({
@@ -93,6 +95,7 @@ const mapStateToProps = state => ({
   facets: getFacets(state),
   dataflows: state.dataflows,
   searchData: state.search,
+  searchFields: state.searchFields,
   intl: state.intl,
 });
 

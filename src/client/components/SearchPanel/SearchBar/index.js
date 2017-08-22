@@ -4,7 +4,7 @@ import { intlShape, injectIntl } from 'react-intl';
 
 import './SearchBar.css';
 
-const SearchBar = ({ search, intl }) => (
+const SearchBar = ({ search, searchFields = [], intl }) => (
   <div className="searchbarcontainer">
     <div className="search_icon_container">
       <span className="pt-icon-large pt-icon-search search_icon" />
@@ -15,7 +15,12 @@ const SearchBar = ({ search, intl }) => (
         search({ search: event.target.value });
       }}
       className="searchbar_inner"
-      placeholder={intl.formatMessage({ id: 'searchbar.placeholder' })}
+      placeholder={
+        intl.formatMessage({
+          id: 'searchbar.placeholder',
+          defaultMessage: 'Search in {searchFields} fields...',
+        }, { searchFields: searchFields.join(', ') })
+      }
       type="text"
     />
   </div>
@@ -23,6 +28,7 @@ const SearchBar = ({ search, intl }) => (
 
 SearchBar.propTypes = {
   search: PropTypes.func.isRequired,
+  searchFields: PropTypes.array,
   intl: intlShape.isRequired,
 };
 export default injectIntl(SearchBar);

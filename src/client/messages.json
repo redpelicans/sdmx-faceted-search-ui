@@ -2,7 +2,7 @@
     "en": {
         "search.infos": "Dataflows found",
         "params.language": "Language",
-        "searchbar.placeholder": "Search",
+        "searchbar.placeholder": "Search in {searchFields} fields...",
         "search.tips.header": "Search tips",
         "search.tip.spelling": "Check that the spelling of keywords is correct",
         "search.tip.keywords": "Use different keywords",
@@ -15,7 +15,7 @@
     "fr": {
         "search.infos": "Dataflows trouvés",
         "params.language": "Langue",
-        "searchbar.placeholder": "Recherche",
+        "searchbar.placeholder": "Recherche sur les champs {searchFields}...",
         "search.tips.header": "Astuces de recherche",
         "search.tip.spelling": "Vérifiez que l orthographe des mots-clés est correcte",
         "search.tip.keywords": "Utilisez des mots-clés différents",
