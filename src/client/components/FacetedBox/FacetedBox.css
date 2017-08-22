@@ -56,7 +56,7 @@
   align-items: center;
   padding-left:20px;
 }
-.icon_filter
+.icon_filter, .icon_category
 {
   color:rgb(79, 119, 255);
   margin-right:10px;

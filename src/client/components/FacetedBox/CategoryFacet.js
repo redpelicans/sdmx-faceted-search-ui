@@ -161,7 +161,7 @@ TreeFacet.propTypes = {
 const CategoryFacet = ({ name, domain, value, onClick }) => (
   <div className="facetedbox">
     <div className="dimensionbox_name_container">
-      <Icon iconName="pt-icon-duplicate" className="icon_filter" />
+      <Icon iconName="pt-icon-duplicate" className="icon_category" />
       <p className="facetedboxname">{name}</p>
     </div>
     <TreeFacet domain={domain} value={value} onClick={onClick} />
