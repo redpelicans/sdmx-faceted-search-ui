@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './Pager.css';
 
-const Pager = ({ searchValue, start, rows, numFound, search }) => {
+const Pager = ({ start, rows, numFound, search }) => {
   if (numFound <= rows) {
     return <div />;
   }
@@ -13,19 +13,19 @@ const Pager = ({ searchValue, start, rows, numFound, search }) => {
       <div className="pager_container_inner">
         <div
           className="first"
-          onClick={() => search({ search: searchValue }, 0)}
+          onClick={() => search({}, 0)}
         >
           First
         </div>
         {actualPage !== 1 &&
-          <div className="pager_elem prev" onClick={start === 0 ? () => {} : () => search({ search: searchValue }, start - rows)}>
+          <div className="pager_elem prev" onClick={start === 0 ? () => {} : () => search({}, start - rows)}>
             <span className="pt-icon-standard pt-icon-double-chevron-left" />
           </div>
         }
         {actualPage > 1 &&
           <div
             className="pager_elem"
-            onClick={() => search({ search: searchValue }, (actualPage - 2) * rows)}
+            onClick={() => search({}, (actualPage - 2) * rows)}
           >
             {actualPage - 1}
           </div>
@@ -34,7 +34,7 @@ const Pager = ({ searchValue, start, rows, numFound, search }) => {
         {actualPage !== lastPage &&
           <div
             className="pager_elem"
-            onClick={() => search({ search: searchValue }, (actualPage) * rows)}
+            onClick={() => search({}, (actualPage) * rows)}
           >
             {actualPage + 1}
           </div>
@@ -42,7 +42,7 @@ const Pager = ({ searchValue, start, rows, numFound, search }) => {
         {actualPage !== lastPage &&
           <div
             className="pager_elem next"
-            onClick={start + rows >= numFound ? () => {} : () => search({ search: searchValue }, start + rows)}
+            onClick={start + rows >= numFound ? () => {} : () => search({}, start + rows)}
           >
             <span
               className="pt-icon-standard pt-icon-double-chevron-right"
@@ -51,7 +51,7 @@ const Pager = ({ searchValue, start, rows, numFound, search }) => {
         }
         <div
           className="last"
-          onClick={() => search({ search: searchValue }, (lastPage * rows) - rows)}
+          onClick={() => search({}, (lastPage * rows) - rows)}
         >
           Last
         </div>
@@ -61,7 +61,6 @@ const Pager = ({ searchValue, start, rows, numFound, search }) => {
 };
 
 Pager.propTypes = {
-  searchValue: PropTypes.string.isRequired,
   start: PropTypes.number.isRequired,
   rows: PropTypes.number.isRequired,
   numFound: PropTypes.number.isRequired,

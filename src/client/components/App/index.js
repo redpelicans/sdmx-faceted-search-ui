@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
+import { reduce, toPairs } from 'ramda';
 import { connect } from 'react-redux';
 import Media from 'react-media';
 import { compose, withHandlers, withState } from 'recompose';
+import { createSelector } from 'reselect';
 import { search } from '../../actions/dataflows';
 import Alert from '../Alert';
 import { setLocale } from '../../actions/intl';
@@ -22,6 +24,7 @@ searchData, search: doSearch, message, setLocale: doSetLocale, config = {}, intl
           sidePanelIsVisible={sidePanelIsVisible}
           moveSidePanel={toggleSidePanel}
           overlay
+          search={doSearch}
         />
       ) : (
         <SidePanel
@@ -29,6 +32,7 @@ searchData, search: doSearch, message, setLocale: doSetLocale, config = {}, intl
           sidePanelIsVisible={sidePanelIsVisible}
           moveSidePanel={toggleSidePanel}
           overlay={false}
+          search={doSearch}
         />
       )}
     </Media>
@@ -43,7 +47,6 @@ searchData, search: doSearch, message, setLocale: doSetLocale, config = {}, intl
           displayShowPanel={toggleSidePanel}
           searchData={searchData}
           search={doSearch}
-          facets={facets}
           overlay
         />
       ) : (
@@ -56,7 +59,6 @@ searchData, search: doSearch, message, setLocale: doSetLocale, config = {}, intl
           displayShowPanel={toggleSidePanel}
           searchData={searchData}
           search={doSearch}
-          facets={facets}
           overlay={false}
         />
       )}
@@ -74,15 +76,21 @@ App.propTypes = {
   search: PropTypes.func.isRequired,
   message: PropTypes.object,
   config: PropTypes.object,
-  facets: PropTypes.object,
+  facets: PropTypes.array,
 };
 
 const actions = { search, setLocale };
+const getStateFacets = state => state.facets;
+
+export const getFacets = createSelector(
+  [getStateFacets],
+  facets => (reduce((acc, [name, facet]) => [...acc, { ...facet, name }], [], toPairs(facets))),
+);
 
 const mapStateToProps = state => ({
   message: state.message,
   config: state.config,
-  facets: state.facets,
+  facets: getFacets(state),
   dataflows: state.dataflows,
   searchData: state.search,
   intl: state.intl,
