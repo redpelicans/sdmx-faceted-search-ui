@@ -51,3 +51,11 @@
   color:rgb(79, 119, 255);
   margin-right:10px;
 }
+
+.facet
+{
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
