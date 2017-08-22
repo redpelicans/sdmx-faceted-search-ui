@@ -114,7 +114,7 @@ class TreeFacet extends React.Component {
     if (nodeData.isSelected) return;
     this.forEachNode(n => n.isSelected = false, nodes); // eslint-disable-line
     nodeData.isSelected = true; //eslint-disable-line
-    this.forceUpdate();
+    // this.forceUpdate();
     onClick && onClick([nodeData.id]); // eslint-disable-line no-unused-expressions
   }
 
@@ -133,7 +133,7 @@ class TreeFacet extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) { //eslint-disable-line
-    const { domain, value } = this.props;
+    const { domain, value } = nextProps;
     const nodes = CatTree(domain, value).getUINodes();
     this.setState({ nodes });
   }
@@ -158,14 +158,12 @@ TreeFacet.propTypes = {
   onClick: PropTypes.func,
 };
 
-const CategoryFacet = ({ name, domain, value, onClick }) => { // eslint-disable-line arrow-body-style
-  return (
-    <div className="facetedbox">
-      <p className="facetedboxname">{name}</p>
-      <TreeFacet domain={domain} value={value} onClick={onClick} />
-    </div>
-  );
-};
+const CategoryFacet = ({ name, domain, value, onClick }) => (
+  <div className="facetedbox">
+    <p className="facetedboxname">{name}</p>
+    <TreeFacet domain={domain} value={value} onClick={onClick} />
+  </div>
+);
 
 CategoryFacet.propTypes = {
   domain: PropTypes.array.isRequired,
