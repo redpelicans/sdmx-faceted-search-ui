@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Checkbox, Icon } from '@blueprintjs/core';
 
-const DimensionFacet = ({ name, buckets, handleClick }) => (
+const DimensionFacet = ({ name, buckets, onClick }) => (
   <div className="facetedbox dimension">
     <div className="dimensionbox_name_container">
       <Icon iconName="pt-icon-filter-list" className="icon_filter" />
@@ -10,7 +10,7 @@ const DimensionFacet = ({ name, buckets, handleClick }) => (
     </div>
     {buckets.map(bucket => (
       <Checkbox
-        onChange={handleClick(bucket.val)}
+        onChange={() => onClick(bucket.val)}
         key={bucket.val}
         className="dimension_checkbox"
       >
@@ -24,7 +24,7 @@ const DimensionFacet = ({ name, buckets, handleClick }) => (
 DimensionFacet.propTypes = {
   name: PropTypes.string.isRequired,
   buckets: PropTypes.array.isRequired,
-  handleClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default DimensionFacet;

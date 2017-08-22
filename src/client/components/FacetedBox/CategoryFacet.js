@@ -110,12 +110,12 @@ class TreeFacet extends React.Component {
 
   handleNodeClick = nodeData => {
     const { nodes } = this.state;
-    const { onClick, name } = this.props;
+    const { onClick } = this.props;
     if (nodeData.isSelected) return;
-    this.forEachNode(n => n.isSelected = false, nodes); //eslint-disable-line
+    this.forEachNode(n => n.isSelected = false, nodes); // eslint-disable-line
     nodeData.isSelected = true; //eslint-disable-line
     this.forceUpdate();
-    onClick && onClick({ facets: { [name]: nodeData.id } }); //eslint-disable-line
+    onClick && onClick([nodeData.id]); // eslint-disable-line no-unused-expressions
   }
 
   forEachNode = (cb, nodes) => {
@@ -155,7 +155,6 @@ class TreeFacet extends React.Component {
 TreeFacet.propTypes = {
   domain: PropTypes.array.isRequired,
   value: PropTypes.string,
-  name: PropTypes.string.isRequired,
   onClick: PropTypes.func,
 };
 
@@ -163,7 +162,7 @@ const CategoryFacet = ({ name, domain, value, onClick }) => { // eslint-disable-
   return (
     <div className="facetedbox">
       <p className="facetedboxname">{name}</p>
-      <TreeFacet name={name} domain={domain} value={value} onClick={onClick} />
+      <TreeFacet domain={domain} value={value} onClick={onClick} />
     </div>
   );
 };
