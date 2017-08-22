@@ -15,7 +15,7 @@ const CatTreeNode = (id, label, defaultValue) => ({
   hasChildNodes() { return this.childNodes.length; },
   get hasCaret() { return this.hasChildNodes(); },
   get iconName() { return this.hasChildNodes() ? 'folder-close icon' : 'pt-icon-tag icon'; },
-  get secondaryLabel() { return `(${this.totalCount})`; },
+  get secondaryLabel() { return `(${this.count})`; },
 
   spreadExpanded() {
     this.isExpanded = true;
@@ -30,7 +30,7 @@ const CatTreeNode = (id, label, defaultValue) => ({
 
   setCount(count) {
     this.count = count;
-    if (count) this.spreadBottomUp(node => node.totalCount = (node.totalCount || 0) + count); //eslint-disable-line
+    // if (count) this.spreadBottomUp(node => node.totalCount = (node.totalCount || 0) + count); //eslint-disable-line
   },
 
   addChild(child) {
