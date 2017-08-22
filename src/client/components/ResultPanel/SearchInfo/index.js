@@ -4,7 +4,7 @@ import { FormattedMessage, FormattedNumber } from 'react-intl';
 
 import './SearchInfo.css';
 
-const SearchInfo = ({ searchValue = '\'\'', numFound = 0 }) => (
+const SearchInfo = ({ searchValue, numFound = 0 }) => (
   <div className="searchinfo">
     <span className="pt-icon-large pt-icon-geosearch icon_search_result" />
     <p>
@@ -21,7 +21,7 @@ const SearchInfo = ({ searchValue = '\'\'', numFound = 0 }) => (
 );
 
 SearchInfo.propTypes = {
-  searchValue: PropTypes.string.isRequired,
+  searchValue: PropTypes.string,
   numFound: PropTypes.number.isRequired,
 };
 

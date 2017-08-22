@@ -2,7 +2,8 @@ import { compose, toLower, prop, sortBy, init, join, reduce, addIndex, last } fr
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Classes, Tree } from '@blueprintjs/core';
-import { onlyUpdateForKeys } from 'recompose';
+// import { onlyUpdateForKeys } from 'recompose';
+import { FormattedMessage } from 'react-intl';
 import './FacetedBox.css';
 
 const reduceIndexed = addIndex(reduce);
@@ -155,14 +156,16 @@ class TreeFacet extends React.Component {
 TreeFacet.propTypes = {
   domain: PropTypes.array.isRequired,
   value: PropTypes.string,
-  name: PropTypes.object.isRequired,
+  name: PropTypes.string.isRequired,
   onClick: PropTypes.func,
 };
 
 const CategoryFacet = ({ name, domain, value, onClick }) => { //eslint-disable-line
   return (
     <div className="facetedbox">
-      <p className="facetedboxname">{name}</p>
+      <p className="facetedboxname">
+        {<FormattedMessage id={`${name}.header`} defaultMessage="{name}" values={{ name }} />}
+      </p>
       <TreeFacet name={name} domain={domain} value={value} onClick={onClick} />
     </div>
   );
@@ -171,9 +174,8 @@ const CategoryFacet = ({ name, domain, value, onClick }) => { //eslint-disable-l
 CategoryFacet.propTypes = {
   domain: PropTypes.array.isRequired,
   value: PropTypes.string,
-  name: PropTypes.object.isRequired,
+  name: PropTypes.string.isRequired,
   onClick: PropTypes.func,
 };
 
-const enhance = onlyUpdateForKeys(['domain', 'value', 'name']) //eslint-disable-line
-export default enhance(CategoryFacet);
+export default CategoryFacet;

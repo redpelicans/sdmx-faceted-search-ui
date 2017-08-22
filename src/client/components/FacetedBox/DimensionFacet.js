@@ -1,13 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Checkbox, Icon } from '@blueprintjs/core';
-import { FormattedNumber, defineMessages, intlShape, injectIntl } from 'react-intl';
+import { FormattedMessage, FormattedNumber } from 'react-intl';
 
-const DimensionFacet = ({ name, buckets, intl }) => (
+const DimensionFacet = ({ name, buckets }) => (
   <div className="facetedbox dimension">
     <div className="dimensionbox_name_container">
       <Icon iconName="pt-icon-filter-list" className="icon_filter" />
-      <p className="dimensionboxname">{name}:</p>
+      <p className="dimensionboxname">
+        {<FormattedMessage id={`${name}.header`} defaultMessage="{name}" values={{ name }} />}:
+      </p>
     </div>
     {buckets.map(bucket => (
       <Checkbox
@@ -15,10 +17,7 @@ const DimensionFacet = ({ name, buckets, intl }) => (
         className="dimension_checkbox"
       >
         <div className="facet">
-          {intl.formatMessage(defineMessages({
-            id: `${bucket.val.split(' ')[0]}.bucket`,
-            defaultMessage: '{value}',
-          }), { value: bucket.val })}
+          {bucket.val}
           <FormattedNumber value={bucket.count} />
         </div>
       </Checkbox>))}
@@ -26,9 +25,8 @@ const DimensionFacet = ({ name, buckets, intl }) => (
 );
 
 DimensionFacet.propTypes = {
-  name: PropTypes.object,
+  name: PropTypes.string.isRequired,
   buckets: PropTypes.array.isRequired,
-  intl: intlShape.isRequired,
 };
 
-export default injectIntl(DimensionFacet);
+export default DimensionFacet;

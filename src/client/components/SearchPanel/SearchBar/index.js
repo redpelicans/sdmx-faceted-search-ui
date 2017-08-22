@@ -1,15 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { defineMessages, intlShape, injectIntl } from 'react-intl';
+import { intlShape, injectIntl } from 'react-intl';
 
 import './SearchBar.css';
-
-const placeholder = defineMessages({
-  message: {
-    id: 'searchbar.placeholder',
-    defaultMessage: 'Search',
-  },
-});
 
 const SearchBar = ({ search, facets, intl }) => (
   <div className="searchbarcontainer">
@@ -22,7 +15,7 @@ const SearchBar = ({ search, facets, intl }) => (
         search({ search: event.target.value, facets });
       }}
       className="searchbar_inner"
-      placeholder={intl.formatMessage(placeholder.message)}
+      placeholder={intl.formatMessage({ id: 'searchbar.placeholder' })}
       type="text"
     />
   </div>
