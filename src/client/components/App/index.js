@@ -80,6 +80,7 @@ App.propTypes = {
 };
 
 const actions = { search, setLocale };
+
 const getStateFacets = state => state.facets;
 
 export const getFacets = createSelector(

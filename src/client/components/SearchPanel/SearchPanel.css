@@ -10,15 +10,7 @@
   flex-wrap: wrap;
   justify-content: space-between;
   width:100%;
-  align-items: center;
-  margin-bottom:25px;
-}
-.columns
-{
-  display: flex;
-  flex-direction: column;
-}
-.columns > div
-{
-  margin-top:25px;
+  align-items: flex-start;
+  min-height:100px;
+  margin-bottom:10px;
 }

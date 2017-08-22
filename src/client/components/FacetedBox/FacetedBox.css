@@ -15,7 +15,7 @@
   text-align: left;
   font-size:1.1em;
   padding-top:10px;
-  padding-left:20px;
+  padding-left:0px;
   color:rgb(79, 119, 255);
   text-decoration: underline;
 }
@@ -34,18 +34,26 @@
 }
 .dimension
 {
-  padding-left:25px;
+  padding:5px;
 }
 .dimension_checkbox
 {
   display: flex;
-  flex-wrap: wrap;
   justify-content: flex-start;
+  text-align: left;
+  align-items: center;
+  margin:10px;
+  margin-left:20px;
+}
+.dimension_checkbox:hover
+{
+  background-color:rgb(229,235,239);
 }
 .dimensionbox_name_container
 {
   display: flex;
   align-items: center;
+  padding-left:20px;
 }
 .icon_filter
 {
