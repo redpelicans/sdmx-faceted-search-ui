@@ -1,9 +1,12 @@
 import { reduce, toPairs, omit } from 'ramda';
 import { CONFIGLOADED } from '../actions/config';
-import { DATAFLOWSLOADED } from '../actions/dataflows';
+import { DATAFLOWSLOADED, SEARCH } from '../actions/dataflows';
 
 const reducer = (state = {}, action) => {
   switch (action.type) {
+    case SEARCH:
+      if (!action.facets) return state;
+      return reduce((acc, [name, value]) => ({ ...acc, [name]: { ...state[name], value } }), state, toPairs(action.facets));
     case CONFIGLOADED:
       return action.facets;
     case DATAFLOWSLOADED:
