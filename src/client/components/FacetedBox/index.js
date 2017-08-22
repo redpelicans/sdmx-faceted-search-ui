@@ -7,19 +7,21 @@ import DimensionFacet from './DimensionFacet';
 const CATEGORY = 'category';
 const DIMENSION = 'dimension';
 
-const getFacetComponent = onClick => ({ type, buckets, name, value }) => { //eslint-disable-line
+
+const getFacetComponent = search => ({ type, buckets, name, value }) => { //eslint-disable-line
+  const handleClick = newName => facetValue => () => search({ facets: { [newName]: [facetValue] } });
   switch (type) {
     case CATEGORY:
-      return <CategoryFacet key={name} name={name} value={value} domain={buckets} onClick={onClick} />;
+      return <CategoryFacet key={name} name={name} value={value} domain={buckets} onClick={handleClick(name)} />;
     case DIMENSION:
-      return <DimensionFacet key={name} name={name} value={value} buckets={buckets} />;
+      return <DimensionFacet key={name} name={name} value={value} buckets={buckets} handleClick={handleClick(name)} />;
     default:
       return <div className="facetedbox" key={name} />;
   }
 };
 
-const Facets = ({ facets, selectFacet }) => {
-  const facetBoxes = compose(filter(x => x), map(getFacetComponent(selectFacet)))(facets);
+const Facets = ({ facets, search }) => {
+  const facetBoxes = compose(filter(x => x), map(getFacetComponent(search)))(facets);
   return (
     <div>{facetBoxes}</div>
   );
@@ -27,7 +29,7 @@ const Facets = ({ facets, selectFacet }) => {
 
 Facets.propTypes = {
   facets: PropTypes.array.isRequired,
-  selectFacet: PropTypes.func,
+  search: PropTypes.func,
 };
 
 export default Facets;

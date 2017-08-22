@@ -6,12 +6,11 @@ import ResultPanel from '../ResultPanel';
 import './MainPanel.css';
 
 
-const MainPanel = ({ dataflows = [], searchData = {}, search, facets }) => (
+const MainPanel = ({ dataflows = [], searchData = {}, search }) => (
   <div className="mainpanel">
     <SearchPanel
       search={search}
       searchData={searchData}
-      facets={facets}
     />
     <div className="pt-card mainpanel_inner">
       <ResultPanel
@@ -26,7 +25,6 @@ MainPanel.propTypes = {
   dataflows: PropTypes.array.isRequired,
   searchData: PropTypes.object,
   search: PropTypes.func.isRequired,
-  facets: PropTypes.object.isRequired,
 };
 
 export default MainPanel;
