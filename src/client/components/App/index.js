@@ -85,7 +85,7 @@ const getStateFacets = state => state.facets;
 
 export const getFacets = createSelector(
   [getStateFacets],
-  facets => (reduce((acc, [name, facet]) => [...acc, { ...facet, name }], [], toPairs(facets))),
+  facets => reduce((acc, [name, facet]) => [...acc, { ...facet, name }], [], toPairs(facets)),
 );
 
 const mapStateToProps = state => ({

@@ -50,6 +50,13 @@ export const PopHoverElem = ({ data }) => (
         ))}
       </div>
     </div>}
+    {data.category && <div className="text_container">
+      <p className="category">Category: </p>
+      {data.category.map(type => (
+        <p key={type}>{type}</p>
+      ))}
+    </div>}
+
   </div>
 );
 

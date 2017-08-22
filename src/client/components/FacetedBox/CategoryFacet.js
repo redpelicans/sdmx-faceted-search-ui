@@ -15,7 +15,7 @@ const CatTreeNode = (id, label, defaultValue) => ({
   hasChildNodes() { return this.childNodes.length; },
   get hasCaret() { return this.hasChildNodes(); },
   get iconName() { return this.hasChildNodes() ? 'folder-close icon' : 'pt-icon-tag icon'; },
-  get secondaryLabel() { return `(${this.totalCount})`; },
+  get secondaryLabel() { return `(${this.count})`; },
 
   spreadExpanded() {
     this.isExpanded = true;
@@ -30,7 +30,7 @@ const CatTreeNode = (id, label, defaultValue) => ({
 
   setCount(count) {
     this.count = count;
-    if (count) this.spreadBottomUp(node => node.totalCount = (node.totalCount || 0) + count); //eslint-disable-line
+    // if (count) this.spreadBottomUp(node => node.totalCount = (node.totalCount || 0) + count); //eslint-disable-line
   },
 
   addChild(child) {
@@ -110,12 +110,12 @@ class TreeFacet extends React.Component {
 
   handleNodeClick = nodeData => {
     const { nodes } = this.state;
-    const { onClick, name } = this.props;
+    const { onClick } = this.props;
     if (nodeData.isSelected) return;
-    this.forEachNode(n => n.isSelected = false, nodes); //eslint-disable-line
+    this.forEachNode(n => n.isSelected = false, nodes); // eslint-disable-line
     nodeData.isSelected = true; //eslint-disable-line
-    this.forceUpdate();
-    onClick && onClick({ facets: { [name]: nodeData.id } }); //eslint-disable-line
+    // this.forceUpdate();
+    onClick && onClick([nodeData.id]); // eslint-disable-line no-unused-expressions
   }
 
   forEachNode = (cb, nodes) => {
@@ -133,7 +133,7 @@ class TreeFacet extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) { //eslint-disable-line
-    const { domain, value } = this.props;
+    const { domain, value } = nextProps;
     const nodes = CatTree(domain, value).getUINodes();
     this.setState({ nodes });
   }
@@ -155,21 +155,18 @@ class TreeFacet extends React.Component {
 TreeFacet.propTypes = {
   domain: PropTypes.array.isRequired,
   value: PropTypes.string,
-  name: PropTypes.string.isRequired,
   onClick: PropTypes.func,
 };
 
-const CategoryFacet = ({ name, domain, value, onClick }) => { // eslint-disable-line arrow-body-style
-  return (
-    <div className="facetedbox">
-      <div className="dimensionbox_name_container">
-        <Icon iconName="pt-icon-duplicate" className="icon_filter" />
-        <p className="facetedboxname">{name}</p>
-      </div>
-      <TreeFacet name={name} domain={domain} value={value} onClick={onClick} />
+const CategoryFacet = ({ name, domain, value, onClick }) => (
+  <div className="facetedbox">
+    <div className="dimensionbox_name_container">
+      <Icon iconName="pt-icon-duplicate" className="icon_filter" />
+      <p className="facetedboxname">{name}</p>
     </div>
-  );
-};
+    <TreeFacet domain={domain} value={value} onClick={onClick} />
+  </div>
+);
 
 CategoryFacet.propTypes = {
   domain: PropTypes.array.isRequired,
