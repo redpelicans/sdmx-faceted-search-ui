@@ -83,7 +83,7 @@ const actions = { search, setLocale };
 
 const getStateFacets = state => state.facets;
 
-export const getFacets = createSelector(
+const getFacets = createSelector(
   [getStateFacets],
   facets => reduce((acc, [name, facet]) => [...acc, { ...facet, name }], [], toPairs(facets)),
 );
