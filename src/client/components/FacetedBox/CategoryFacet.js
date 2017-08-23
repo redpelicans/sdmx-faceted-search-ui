@@ -167,13 +167,13 @@ const CategoryFacet = ({ name, domain, value, onClick }) => (
         {<FormattedMessage id={`${name}.header`} defaultMessage="{name}" values={{ name }} />}
       </p>
     </div>
-    <TreeFacet domain={domain} value={value} onClick={onClick} />
+    <TreeFacet domain={domain} value={value && value[0]} onClick={onClick} />
   </div>
 );
 
 CategoryFacet.propTypes = {
   domain: PropTypes.array.isRequired,
-  value: PropTypes.string,
+  value: PropTypes.array,
   name: PropTypes.string.isRequired,
   onClick: PropTypes.func,
 };
