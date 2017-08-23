@@ -1,5 +1,5 @@
 module.exports = {
-  title: 'SDMX Faceted Search',
+  title: 'SDMX Faceted Search by redpelicans',
   search: {
     rows: 12,
   },

@@ -7,6 +7,7 @@ const reducer = (state = {}, action) => {
         ...state,
         langs: action.langs,
         defaultLang: action.defaultLang,
+        searchFields: action.searchFields,
       };
     default:
       return state;

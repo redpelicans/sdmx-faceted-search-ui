@@ -1,6 +1,7 @@
 import { compose, toLower, prop, sortBy, init, join, reduce, addIndex, last } from 'ramda';
 import React from 'react';
 import PropTypes from 'prop-types';
+import { FormattedMessage } from 'react-intl';
 import { Classes, Tree, Icon } from '@blueprintjs/core';
 import { onlyUpdateForKeys } from 'recompose';
 import './FacetedBox.css';
@@ -111,7 +112,10 @@ class TreeFacet extends React.Component {
   handleNodeClick = nodeData => {
     const { nodes } = this.state;
     const { onClick } = this.props;
-    if (nodeData.isSelected) return;
+    if (nodeData.isSelected) {
+      nodeData.isSelected = false; //eslint-disable-line
+      return onClick && onClick([]); // eslint-disable-line no-unused-expressions
+    }
     this.forEachNode(n => n.isSelected = false, nodes); // eslint-disable-line
     nodeData.isSelected = true; //eslint-disable-line
     // this.forceUpdate();
@@ -162,15 +166,17 @@ const CategoryFacet = ({ name, domain, value, onClick }) => (
   <div className="facetedbox">
     <div className="dimensionbox_name_container">
       <Icon iconName="pt-icon-duplicate" className="icon_category" />
-      <p className="facetedboxname">{name}</p>
+      <p className="facetedboxname">
+        {<FormattedMessage id={`${name}.header`} defaultMessage="{name}" values={{ name }} />}
+      </p>
     </div>
-    <TreeFacet domain={domain} value={value} onClick={onClick} />
+    <TreeFacet domain={domain} value={value && value[0]} onClick={onClick} />
   </div>
 );
 
 CategoryFacet.propTypes = {
   domain: PropTypes.array.isRequired,
-  value: PropTypes.string,
+  value: PropTypes.array,
   name: PropTypes.string.isRequired,
   onClick: PropTypes.func,
 };

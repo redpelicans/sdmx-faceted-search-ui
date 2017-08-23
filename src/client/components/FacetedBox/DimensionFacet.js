@@ -2,6 +2,7 @@ import React from 'react';
 import { remove, indexOf } from 'ramda';
 import PropTypes from 'prop-types';
 import { Checkbox, Icon } from '@blueprintjs/core';
+import { FormattedMessage } from 'react-intl';
 
 const isChecked = (value, name) => value.includes(name);
 
@@ -10,7 +11,9 @@ const DimensionFacet = ({ name, value, buckets, onClick }) => (
   <div className="facetedbox dimension">
     <div className="dimensionbox_name_container">
       <Icon iconName="pt-icon-filter-list" className="icon_filter" />
-      <p className="dimensionboxname">{name}:</p>
+      <p className="dimensionboxname">
+        {<FormattedMessage id={`${name}.header`} defaultMessage="{name}" values={{ name }} />}:
+      </p>
     </div>
     {buckets.map(bucket => (
       <Checkbox
@@ -31,7 +34,11 @@ DimensionFacet.propTypes = {
   name: PropTypes.string.isRequired,
   buckets: PropTypes.array.isRequired,
   onClick: PropTypes.func.isRequired,
-  value: PropTypes.array.isRequired,
+  value: PropTypes.array,
+};
+
+DimensionFacet.defaultProps = {
+  value: [],
 };
 
 export default DimensionFacet;
