@@ -1,6 +1,5 @@
   import React from 'react';
   import PropTypes from 'prop-types';
-  import Media from 'react-media';
   import DataFlow from '../DataFlow';
   import SearchInfo from './SearchInfo';
   import EmptySearch from './EmptySearch';
@@ -14,19 +13,10 @@
         numFound={searchData.numFound}
       />
       {dataflows.map(dataflow => (
-        <Media key={dataflow.id} query={{ maxWidth: 1100 }}>
-          {matches => matches ? (
-            <DataFlow
-              data={dataflow}
-              screenSize
-            />
-          ) : (
-            <DataFlow
-              data={dataflow}
-              screenSize={false}
-            />
-          )}
-        </Media>
+        <DataFlow
+          key={dataflow.id}
+          data={dataflow}
+        />
       ))}
       {(searchData.numFound === 0 || !searchData.numFound) && <EmptySearch />}
     </div>

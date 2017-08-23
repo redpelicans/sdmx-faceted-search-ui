@@ -59,13 +59,8 @@ export const PopHoverElem = ({ data }) => (
   </div>
 );
 
-const DataFlow = ({ data, screenSize }) => (
-  <div
-    className={screenSize ?
-      'pt-card pt-elevation-0 dataflowcontainer large' :
-      'pt-card pt-elevation-0 dataflowcontainer small'
-      }
-  >
+const DataFlow = ({ data }) => (
+  <div className="pt-card pt-elevation-0 dataflowcontainer">
     <div className="dataflows_title">
       <p className="name">{data.name}</p>
       <Popover2
@@ -88,7 +83,6 @@ const DataFlow = ({ data, screenSize }) => (
 
 DataFlow.propTypes = {
   data: PropTypes.object.isRequired,
-  screenSize: PropTypes.bool,
 };
 
 PopHoverElem.propTypes = {
