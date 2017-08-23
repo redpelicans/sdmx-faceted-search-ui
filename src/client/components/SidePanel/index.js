@@ -15,7 +15,7 @@ const SidePanel = ({ facets, sidePanelIsVisible, moveSidePanel, overlay, search 
           marginLeft: `${x}px`,
           minWidth: `${y}px`,
           position: overlay ? 'absolute' : 'relative',
-          zIndex: overlay ? 3 : 1,
+          zIndex: overlay ? 4 : 1,
         }}
         className="sidepanel"
       >

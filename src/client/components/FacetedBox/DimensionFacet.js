@@ -17,7 +17,8 @@ const DimensionFacet = ({ name, buckets, handleClick }) => (
         key={bucket.val}
         className="dimension_checkbox"
       >
-        {bucket.val}({bucket.count})
+        <div>{bucket.val}</div>
+        <div>({bucket.count})</div>
       </Checkbox>
       ))
     }
