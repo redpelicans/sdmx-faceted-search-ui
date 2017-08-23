@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
-import { reduce, toPairs } from 'ramda';
 import { connect } from 'react-redux';
 import Media from 'react-media';
 import { compose, withHandlers, withState } from 'recompose';
-import { createSelector } from 'reselect';
+import { getFacets } from '../../selector';
 import { search } from '../../actions/dataflows';
 import Alert from '../Alert';
 import { setLocale } from '../../actions/intl';
@@ -82,13 +81,6 @@ App.propTypes = {
 };
 
 const actions = { search, setLocale };
-
-const getStateFacets = state => state.facets;
-
-const getFacets = createSelector(
-  [getStateFacets],
-  facets => reduce((acc, [name, facet]) => [...acc, { ...facet, name }], [], toPairs(facets)),
-);
 
 const mapStateToProps = state => ({
   message: state.message,
