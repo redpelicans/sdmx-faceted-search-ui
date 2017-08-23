@@ -140,7 +140,6 @@ class TreeFacet extends React.Component {
 
   render() {
     const { nodes } = this.state;
-    console.log('========== render');
     return (
       <Tree //eslint-disable-line
         contents={ nodes } //eslint-disable-line

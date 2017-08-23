@@ -69,3 +69,7 @@
 {
   background-color: rgb(79, 119, 255);
 }
+.pt-control-indicator::before
+{
+  background-color: rgb(79, 119, 255);
+}
