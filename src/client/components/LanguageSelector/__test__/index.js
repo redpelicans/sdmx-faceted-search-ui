@@ -46,6 +46,6 @@ describe ('<LanguageSelector />', () => {
   })
   it('SettingsMenu should render 5 MenuItem Component', () => {
     const wrapper = shallow(<SettingsMenu langs={['fr', 'en', 'us', 'es']} />); // there is 1 MenuItem and 4 sub MenuItems
-    should(wrapper.find(MenuItem).length).eql(5);
+    should(wrapper.find(MenuItem).length).eql(4);
   })
 })

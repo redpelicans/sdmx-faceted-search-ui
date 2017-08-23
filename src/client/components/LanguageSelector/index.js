@@ -1,5 +1,4 @@
 import React from 'react';
-import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import { Popover2 } from '@blueprintjs/labs';
 import {
@@ -14,26 +13,29 @@ import './LanguageSelector.css';
 
 export const SettingsMenu = ({ langs = [], currentLanguage = '', setLocale }) => (
   <Menu>
-    <MenuItem className="menu-item" text={<FormattedMessage id="params.language" defaultMessage="language" />}>
-      {langs.map(lang =>
-        currentLanguage === lang ?
-          <MenuItem
-            key={lang}
-            iconName={'pt-icon-tick'}
-            disabled
-            className="menu-item"
-            text={lang}
-            onClick={() => setLocale(lang)}
-          /> :
-          <MenuItem
-            key={lang}
-            className="menu-item"
-            text={lang}
-            onClick={() => setLocale(lang)}
-          />,
-        )
-      }
-    </MenuItem>
+    {langs.map(lang => currentLanguage === lang ?
+      <MenuItem
+        key={lang}
+        iconName={'pt-icon-tick'}
+        disabled
+        className="menu-item"
+        text={lang}
+        onClick={event => {
+          event.preventDefault();
+          setLocale(lang);
+        }}
+      /> :
+      <MenuItem
+        key={lang}
+        className="menu-item"
+        text={lang}
+        onClick={event => {
+          event.preventDefault();
+          setLocale(lang);
+        }}
+      />,
+    )
+  }
   </Menu>
 );
 
@@ -46,7 +48,7 @@ const LanguageSelector = ({ langs = [], currentLanguage = '', setLocale }) => (
         <SettingsMenu langs={langs} currentLanguage={currentLanguage} setLocale={setLocale} />
       }
     >
-      <Button className="dropdown-button pt-button pt-minimal pt-icon-cog" />
+      <Button className="dropdown-button pt-button pt-minimal pt-icon-caret-down">{currentLanguage}</Button>
     </Popover2>
   </div>
 );
