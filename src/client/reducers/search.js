@@ -9,7 +9,7 @@ const reducer = (state = {}, action) => {
         numFound: action.numFound,
       };
     case SEARCH:
-      if (action.search) {
+      if ('search' in action) {
         return {
           ...state,
           searchValue: action.search,

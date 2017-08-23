@@ -112,7 +112,10 @@ class TreeFacet extends React.Component {
   handleNodeClick = nodeData => {
     const { nodes } = this.state;
     const { onClick } = this.props;
-    if (nodeData.isSelected) return;
+    if (nodeData.isSelected) {
+      nodeData.isSelected = false; //eslint-disable-line
+      return onClick && onClick([]); // eslint-disable-line no-unused-expressions
+    }
     this.forEachNode(n => n.isSelected = false, nodes); // eslint-disable-line
     nodeData.isSelected = true; //eslint-disable-line
     // this.forceUpdate();

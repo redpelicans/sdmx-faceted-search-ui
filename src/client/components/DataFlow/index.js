@@ -1,4 +1,5 @@
 import React from 'react';
+import { tail, last } from 'ramda';
 import { onlyUpdateForKeys } from 'recompose';
 import PropTypes from 'prop-types';
 import { PopoverInteractionKind } from '@blueprintjs/core';
@@ -51,10 +52,8 @@ export const PopHoverElem = ({ data }) => (
       </div>
     </div>}
     {data.category && <div className="text_container">
-      <p className="category">Category: </p>
-      {data.category.map(type => (
-        <p key={type}>{type}</p>
-      ))}
+      <p className="title">Category: </p>
+      <p>{tail(last(data.category))}</p>
     </div>}
 
   </div>
