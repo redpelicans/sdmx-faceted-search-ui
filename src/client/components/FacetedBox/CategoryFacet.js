@@ -1,6 +1,7 @@
 import { compose, toLower, prop, sortBy, init, join, reduce, addIndex, last } from 'ramda';
 import React from 'react';
 import PropTypes from 'prop-types';
+import { FormattedMessage } from 'react-intl';
 import { Classes, Tree, Icon } from '@blueprintjs/core';
 import { onlyUpdateForKeys } from 'recompose';
 import './FacetedBox.css';
@@ -162,7 +163,9 @@ const CategoryFacet = ({ name, domain, value, onClick }) => (
   <div className="facetedbox">
     <div className="dimensionbox_name_container">
       <Icon iconName="pt-icon-duplicate" className="icon_category" />
-      <p className="facetedboxname">{name}</p>
+      <p className="facetedboxname">
+        {<FormattedMessage id={`${name}.header`} defaultMessage="{name}" values={{ name }} />}
+      </p>
     </div>
     <TreeFacet domain={domain} value={value && value[0]} onClick={onClick} />
   </div>

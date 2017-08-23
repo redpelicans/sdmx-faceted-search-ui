@@ -4,7 +4,8 @@ import Header from '../Header';
 import MainPanel from '../MainPanel';
 import './Container.css';
 
-const Container = ({ dataflows, currentLanguage, searchData, sidePanelIsVisible, displayShowPanel, search, langs, setLocale, overlay }) => (
+const Container = ({
+dataflows, currentLanguage, searchData, sidePanelIsVisible, displayShowPanel, search, langs, setLocale, overlay, searchFields }) => (
   <div className={overlay ? 'container overlay' : 'container'}>
     <Header
       langs={langs}
@@ -18,6 +19,7 @@ const Container = ({ dataflows, currentLanguage, searchData, sidePanelIsVisible,
       displayShowPanel={displayShowPanel}
       searchData={searchData}
       search={search}
+      searchFields={searchFields}
     />
   </div>
 );
@@ -27,6 +29,7 @@ Container.propTypes = {
   setLocale: PropTypes.func,
   currentLanguage: PropTypes.string,
   dataflows: PropTypes.array.isRequired,
+  searchFields: PropTypes.array,
   sidePanelIsVisible: PropTypes.bool,
   displayShowPanel: PropTypes.func.isRequired,
   searchData: PropTypes.object,

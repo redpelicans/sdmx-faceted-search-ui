@@ -7,10 +7,11 @@ import MiniPager from '../MiniPager';
 
 import './SearchPanel.css';
 
-const SearchPanel = ({ search, searchData }) => (
+const SearchPanel = ({ search, searchData, searchFields }) => (
   <div className="searchpanel">
     <SearchBar
       search={search}
+      searchFields={searchFields}
     />
     <div className="pager_wrapper">
       <Media query={{ maxWidth: 599 }}>
@@ -39,6 +40,7 @@ const SearchPanel = ({ search, searchData }) => (
 SearchPanel.propTypes = {
   search: PropTypes.func.isRequired,
   searchData: PropTypes.object.isRequired,
+  searchFields: PropTypes.array,
 };
 
 export default SearchPanel;

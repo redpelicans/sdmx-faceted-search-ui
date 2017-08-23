@@ -3,10 +3,7 @@ import { compose, filter, map } from 'ramda';
 import PropTypes from 'prop-types';
 import CategoryFacet from './CategoryFacet';
 import DimensionFacet from './DimensionFacet';
-
-const CATEGORY = 'category';
-const DIMENSION = 'dimension';
-
+import { CATEGORY, DIMENSION } from '../../dataflows';
 
 const getFacetComponent = search => ({ type, buckets, name, value }) => { // eslint-disable-line
   const handleClick = facetName => facetValue => search({ facets: { [facetName]: facetValue } });
