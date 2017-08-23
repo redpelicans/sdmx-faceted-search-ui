@@ -13,7 +13,8 @@ import SidePanel from '../SidePanel';
 import './App.css';
 
 const App = ({ facets, toggleSidePanel, sidePanelIsVisible, dataflows,
-searchData, search: doSearch, message, setLocale: doSetLocale, config = {}, intl = {} }) => (
+searchData, search: doSearch, message,
+setLocale: doSetLocale, config = {}, intl = {} }) => (
   <div className="App">
     <Alert message={message} />
     <Media query={{ maxWidth: 599 }}>
