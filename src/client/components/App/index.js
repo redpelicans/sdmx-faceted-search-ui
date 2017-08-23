@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Media from 'react-media';
 import { compose, withHandlers, withState } from 'recompose';
-import { getFacets } from '../../selector';
+import { getFacets } from '../../selectors';
 import { search } from '../../actions/dataflows';
 import Alert from '../Alert';
 import { setLocale } from '../../actions/intl';
