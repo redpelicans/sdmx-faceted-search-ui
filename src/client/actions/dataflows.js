@@ -17,8 +17,8 @@ export const search = (params, start = 0) => (dispatch, getState) => {
   const { search: { rows, searchValue } = '', facets, intl: { locale } } = getState();
   const baseQuery = { search: searchValue, facets: map(prop('value'), facets) };
   const query = merge(baseQuery, params);
-  const body = { ...query, start, rows, lang: locale };
+  const body = { ...query, start, rows, lang: locale, facets };
   const message = { label: 'Cannot search dataflows' };
   requestJson({ dispatch, method: 'post', url: '/api/search', body, message })
-   .then(data => dispatch(dataflowsLoaded(data)));
+  .then(data => dispatch(dataflowsLoaded(data)));
 };

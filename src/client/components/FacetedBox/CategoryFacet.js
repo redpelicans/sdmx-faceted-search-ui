@@ -1,7 +1,7 @@
 import { compose, toLower, prop, sortBy, init, join, reduce, addIndex, last } from 'ramda';
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Classes, Tree } from '@blueprintjs/core';
+import { Classes, Tree, Icon } from '@blueprintjs/core';
 import { onlyUpdateForKeys } from 'recompose';
 import './FacetedBox.css';
 
@@ -160,7 +160,10 @@ TreeFacet.propTypes = {
 
 const CategoryFacet = ({ name, domain, value, onClick }) => (
   <div className="facetedbox">
-    <p className="facetedboxname">{name}</p>
+    <div className="dimensionbox_name_container">
+      <Icon iconName="pt-icon-duplicate" className="icon_category" />
+      <p className="facetedboxname">{name}</p>
+    </div>
     <TreeFacet domain={domain} value={value} onClick={onClick} />
   </div>
 );
