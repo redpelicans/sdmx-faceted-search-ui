@@ -10,7 +10,7 @@ const DimensionFacet = ({ name, buckets, onClick }) => (
     </div>
     {buckets.map(bucket => (
       <Checkbox
-        onChange={() => onClick(bucket.val)}
+        onChange={() => onClick([bucket.val])}
         key={bucket.val}
         className="dimension_checkbox"
       >

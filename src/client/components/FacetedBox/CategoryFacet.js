@@ -140,7 +140,6 @@ class TreeFacet extends React.Component {
 
   render() {
     const { nodes } = this.state;
-    console.log('========== render');
     return (
       <Tree //eslint-disable-line
         contents={ nodes } //eslint-disable-line
@@ -165,13 +164,13 @@ const CategoryFacet = ({ name, domain, value, onClick }) => (
       <Icon iconName="pt-icon-duplicate" className="icon_category" />
       <p className="facetedboxname">{name}</p>
     </div>
-    <TreeFacet domain={domain} value={value} onClick={onClick} />
+    <TreeFacet domain={domain} value={value && value[0]} onClick={onClick} />
   </div>
 );
 
 CategoryFacet.propTypes = {
   domain: PropTypes.array.isRequired,
-  value: PropTypes.string,
+  value: PropTypes.array,
   name: PropTypes.string.isRequired,
   onClick: PropTypes.func,
 };

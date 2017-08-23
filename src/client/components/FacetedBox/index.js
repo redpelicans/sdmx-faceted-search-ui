@@ -8,11 +8,11 @@ const CATEGORY = 'category';
 const DIMENSION = 'dimension';
 
 
-const getFacetComponent = search => ({ type, buckets, name, value=[] }) => { // eslint-disable-line
+const getFacetComponent = search => ({ type, buckets, name, value }) => { // eslint-disable-line
   const handleClick = facetName => facetValue => search({ facets: { [facetName]: facetValue } });
   switch (type) {
     case CATEGORY:
-      return <CategoryFacet key={name} name={name} value={value[0]} domain={buckets} onClick={handleClick(name)} />;
+      return <CategoryFacet key={name} name={name} value={value} domain={buckets} onClick={handleClick(name)} />;
     case DIMENSION:
       return <DimensionFacet key={name} name={name} value={value} buckets={buckets} onClick={handleClick(name)} />;
     default:
