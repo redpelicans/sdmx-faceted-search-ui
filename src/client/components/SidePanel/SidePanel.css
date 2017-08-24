@@ -1,21 +1,20 @@
 .sidepanel
 {
-  overflow: auto;
-  overflow-y: overlay;
   direction:rtl;
-  height:100vh;
+  min-height:100vh;
 }
 .sidepanel_inner
 {
   display: flex;
+  position: relative;
   z-index:1;
   padding-top: 15px;
-  padding-left:20px;
+  padding-left:10px;
   padding-right:20px;
   padding-bottom:20px;
   align-items: flex-start;
   flex-direction: column;
-  min-height:100%;
+  height:100%;
   background-color:rgb(79, 119, 255);
   direction:ltr;
 }
