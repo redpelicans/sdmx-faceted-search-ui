@@ -2,7 +2,7 @@ import { compose, toLower, prop, sortBy, init, join, reduce, addIndex, last } fr
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
-import { Classes, Tree, Icon } from '@blueprintjs/core';
+import { Tree, Icon } from '@blueprintjs/core';
 import { onlyUpdateForKeys } from 'recompose';
 import './FacetedBox.css';
 
@@ -150,7 +150,7 @@ class TreeFacet extends React.Component {
         onNodeCollapse={this.handleNodeCollapse}
         onNodeExpand={this.handleNodeExpand}
         onNodeClick={this.handleNodeClick}
-        className={Classes.ELEVATION_0}
+        className="tree"
       />
     );
   }

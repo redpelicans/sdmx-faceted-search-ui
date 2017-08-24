@@ -25,7 +25,7 @@ const Pager = ({ start, rows, numFound, search }) => {
         {actualPage === lastPage &&
           <div
             className="pager_elem"
-            onClick={() => search({}, (actualPage) * rows)}
+            onClick={() => search({}, (actualPage - 3) * rows)}
           >
             {actualPage - 2}
           </div>
@@ -50,7 +50,7 @@ const Pager = ({ start, rows, numFound, search }) => {
         {actualPage === 1 &&
           <div
             className="pager_elem"
-            onClick={() => search({}, (actualPage) * rows)}
+            onClick={() => search({}, (actualPage + 1) * rows)}
           >
             {actualPage + 2}
           </div>

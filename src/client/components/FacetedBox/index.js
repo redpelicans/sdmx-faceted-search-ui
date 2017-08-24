@@ -11,7 +11,7 @@ const getFacetComponent = search => ({ type, buckets, name, value }) => { // esl
     case CATEGORY:
       return <CategoryFacet key={name} name={name} value={value} domain={buckets} onClick={handleClick(name)} />;
     case DIMENSION:
-      return <DimensionFacet key={name} name={name} value={value} buckets={buckets} onClick={handleClick(name)} />;
+      return <DimensionFacet key={name} name={name} value={value} domain={buckets} onClick={handleClick(name)} />;
     default:
       return <div className="facetedbox" key={name} />;
   }

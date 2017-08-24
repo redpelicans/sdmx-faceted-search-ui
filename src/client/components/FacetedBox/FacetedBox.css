@@ -1,11 +1,11 @@
 .facetedbox
 {
   width:100%;
-  min-width:410px;
-  border-radius: 2px;
+  min-width:430px;
+  border-radius: 3px;
   overflow: hidden;
   color:rgb(45,45,45);
-  margin-top:20px;
+  margin-top:10px;
   padding-bottom:15px;
   padding-top:5px;
   background-color: white;
@@ -84,4 +84,7 @@
   text-overflow: ellipsis;
 	white-space: nowrap;
 	overflow: hidden;
+}
+.pt-tree-node-content{
+  text-align:left;
 }

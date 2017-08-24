@@ -22,6 +22,6 @@ describe ('<ResultPanel />', () => {
     should(wrapper.matchesElement(<DataFlow data={ [] } screenSize={true} />));
   })
   it('ResultPanel should find 9 <DataFlow />', () => {
-    should(wrapper.find(Media).length).eql(dataflows.length);
+    should(wrapper.find(DataFlow).length).eql(dataflows.length);
   })
 })
