@@ -89,4 +89,4 @@ PopHoverElem.propTypes = {
   data: PropTypes.object.isRequired,
 };
 
-export default onlyUpdateForKeys(['data', 'screenSize'])(DataFlow);
+export default onlyUpdateForKeys(['data'])(DataFlow);

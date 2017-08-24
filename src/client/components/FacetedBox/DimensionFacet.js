@@ -3,9 +3,9 @@ import { remove, indexOf } from 'ramda';
 import PropTypes from 'prop-types';
 import { Checkbox, Icon } from '@blueprintjs/core';
 import { FormattedMessage } from 'react-intl';
+import { onlyUpdateForKeys } from 'recompose';
 
 const isChecked = (value, name) => value.includes(name);
-
 
 const DimensionFacet = ({ name, value, buckets, onClick }) => (
   <div className="facetedbox dimension">
@@ -42,4 +42,5 @@ DimensionFacet.defaultProps = {
   value: [],
 };
 
-export default DimensionFacet;
+const enhance = onlyUpdateForKeys(['domain', 'value', 'name']) //eslint-disable-line
+export default enhance(DimensionFacet);
