@@ -1,11 +1,12 @@
-import { reduce, toPairs, omit, map } from 'ramda';
+import { cond, prop, T, identity, reduce, toPairs, omit, map } from 'ramda';
 import { CONFIGLOADED } from '../actions/config';
 import { DATAFLOWSLOADED, SEARCH, RESET_FACET_VALUES } from '../actions/dataflows';
 
 const reducer = (state = {}, action) => {
   switch (action.type) {
     case RESET_FACET_VALUES:
-      return map(omit(['value']), state);
+      // return map(x => x.localized ? omit(['value'], x) : x, state);
+      return map(cond([[prop('localized'), omit(['value'])], [T, identity]]), state);
     case SEARCH:
       if (!action.facets) return state;
       return reduce((acc, [name, value]) => ({ ...acc, [name]: { ...state[name], value } }), state, toPairs(action.facets));

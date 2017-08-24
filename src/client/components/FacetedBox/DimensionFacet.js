@@ -7,7 +7,7 @@ import { onlyUpdateForKeys } from 'recompose';
 
 const isChecked = (value, name) => value.includes(name);
 
-const DimensionFacet = ({ name, value, buckets, onClick }) => (
+const DimensionFacet = ({ name, value, domain, onClick }) => (
   <div className="facetedbox dimension">
     <div className="dimensionbox_name_container">
       <Icon iconName="pt-icon-filter-list" className="icon_filter" />
@@ -15,7 +15,7 @@ const DimensionFacet = ({ name, value, buckets, onClick }) => (
         {<FormattedMessage id={`${name}.header`} defaultMessage="{name}" values={{ name }} />}
       </p>
     </div>
-    {buckets.map(bucket => (
+    {domain.map(bucket => (
       <div className="checkbox_container" key={bucket.val}>
         <Checkbox
           onChange={() => isChecked(value, bucket.val) ? onClick(remove(indexOf(bucket.val, value), 1, value)) : onClick([...value, bucket.val])}
@@ -33,7 +33,7 @@ const DimensionFacet = ({ name, value, buckets, onClick }) => (
 
 DimensionFacet.propTypes = {
   name: PropTypes.string.isRequired,
-  buckets: PropTypes.array.isRequired,
+  domain: PropTypes.array.isRequired,
   onClick: PropTypes.func.isRequired,
   value: PropTypes.array,
 };
