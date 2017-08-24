@@ -12,7 +12,7 @@ const DimensionFacet = ({ name, value, buckets, onClick }) => (
     <div className="dimensionbox_name_container">
       <Icon iconName="pt-icon-filter-list" className="icon_filter" />
       <p className="dimensionboxname">
-        {<FormattedMessage id={`${name}.header`} defaultMessage="{name}" values={{ name }} />}:
+        {<FormattedMessage id={`${name}.header`} defaultMessage="{name}" values={{ name }} />}
       </p>
     </div>
     {buckets.map(bucket => (

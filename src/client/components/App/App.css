@@ -1,6 +1,9 @@
 .App {
   display: flex;
+  position: relative;
   text-align: center;
+  height:100%;
+  min-height:100vh;
 }
 
 .App-logo {
@@ -20,5 +23,11 @@
 }
 body
 {
-  overflow: hidden;
+  position: relative;
+  height:100%;
+  width:100%;
+}
+html
+{
+  height:100%;
 }
