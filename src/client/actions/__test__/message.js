@@ -20,7 +20,7 @@ describe('Action:message', () => {
       }
     };
     const store = configureStore(reducer, {}, hook);
-    store.dispatch(alert(HEADER, LABEL, STATUS));
+    store.dispatch(alert(LABEL, HEADER, STATUS));
   });
   // it('ALERT Many', function(done) {
   //   const [LABEL1, LABEL2, STATUS] = ['label1', 'label2', 'status'];

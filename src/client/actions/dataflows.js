@@ -1,5 +1,6 @@
 import { map, prop, merge } from 'ramda';
 import { requestJson } from '../utils';
+import { alert } from './message';
 
 export const DATAFLOWSLOADED = 'DATAFLOWSLOADED';
 export const SEARCH = 'SEARCH';
@@ -23,7 +24,7 @@ export const search = (params, start = 0) => (dispatch, getState) => {
   const baseQuery = { search: searchValue, facets: map(prop('value'), facets) };
   const query = merge(params, baseQuery);
   const body = { ...query, start, rows, lang: locale };
-  const message = { label: 'Cannot search dataflows' };
-  requestJson({ dispatch, method: 'post', url: '/api/search', body, message })
-  .then(data => dispatch(dataflowsLoaded(data)));
+  requestJson({ method: 'post', url: '/api/search', body })
+  .then(data => dispatch(dataflowsLoaded(data)))
+  .catch(() => dispatch(alert('Cannot search dataflows, check the server!')));
 };
