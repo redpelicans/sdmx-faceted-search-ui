@@ -12,7 +12,7 @@ const reducer = (state = {}, action) => {
     case CONFIGLOADED:
       return action.facets;
     case DATAFLOWSLOADED:
-      return reduce((acc, [name, v]) => ({ ...acc, [name]: { ...state[name], buckets: v.buckets } }), state, toPairs(omit(['count'], action.facets)));
+      return reduce((acc, [name, v]) => ({ ...acc, [name]: { ...state[name], buckets: v.buckets } }), state, toPairs(action.facets));
     default:
       return state;
   }
