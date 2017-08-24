@@ -16,15 +16,16 @@ const DimensionFacet = ({ name, value, buckets, onClick }) => (
       </p>
     </div>
     {buckets.map(bucket => (
-      <Checkbox
-        onChange={() => isChecked(value, bucket.val) ? onClick(remove(indexOf(bucket.val, value), 1, value)) : onClick([...value, bucket.val])}
-        key={bucket.val}
-        className="dimension_checkbox"
-        checked={isChecked(value, bucket.val)}
-      >
-        <div>{bucket.val}</div>
-        <div>({bucket.count})</div>
-      </Checkbox>
+      <div className="checkbox_container" key={bucket.val}>
+        <Checkbox
+          onChange={() => isChecked(value, bucket.val) ? onClick(remove(indexOf(bucket.val, value), 1, value)) : onClick([...value, bucket.val])}
+          className="dimension_checkbox"
+          checked={isChecked(value, bucket.val)}
+        >
+          <div className="bucket_value">{bucket.val}</div>
+          <div>({bucket.count})</div>
+        </Checkbox>
+      </div>
       ))
     }
   </div>
