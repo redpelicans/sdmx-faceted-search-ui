@@ -5,9 +5,13 @@
   justify-content: flex-start;
   align-items: center;
   flex-wrap: wrap;
-  margin-top:17px;
+  margin-top:10px;
+  margin-bottom:10px;
+  margin-right:10px;
+  margin-left:10px;
   padding:0;
-  overflow: hidden;
+  flex:1;
+  min-width:20em;
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
   -webkit-box-shadow: 0 2px 4px rgba(0,0,0,0.05);
   border: 1px solid #ccc;
@@ -105,14 +109,6 @@
   border-radius: 100px;
   background-color:rgb(220, 220, 220);
   cursor:pointer;
-}
-.large
-{
-  width:100%;
-}
-.small
-{
-  width:32%;
 }
 .popover
 {

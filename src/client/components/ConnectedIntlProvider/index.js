@@ -3,18 +3,24 @@ import { connect } from 'react-redux';
 import { IntlProvider } from 'react-intl';
 import { onlyUpdateForKeys } from 'recompose';
 import PropTypes from 'prop-types';
+import AppError from '../AppError';
 
 const ConnectedIntlProvider = ({ children, locale, messages }) => {
-  if (!locale) return null;
+  if (locale) {
+    return (
+      <IntlProvider locale={locale} messages={messages}>
+        {children}
+      </IntlProvider>
+    );
+  }
   return (
-    <IntlProvider
-      locale={locale}
-      messages={messages}
-    >
-      {children}
+    <IntlProvider locale="en" messages={{}}>
+      <AppError />
     </IntlProvider>
   );
 };
+
+// connecter AppError au store
 
 const mapStateToProps = state => ({
   locale: state.intl.locale,
