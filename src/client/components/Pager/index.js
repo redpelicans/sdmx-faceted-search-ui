@@ -8,8 +8,6 @@ const Pager = ({ start, rows, numFound, search }) => {
   }
   const actualPage = (Math.ceil((start + 1) / rows));
   const lastPage = (Math.ceil(numFound / rows));
-  console.log('actualPage: ', actualPage);
-  console.log('lastPage: ', lastPage);
   return (
     <div className="pager_container">
       <div className="pager_container_inner">
