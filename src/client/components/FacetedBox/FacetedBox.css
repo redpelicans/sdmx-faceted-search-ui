@@ -85,3 +85,6 @@
 	white-space: nowrap;
 	overflow: hidden;
 }
+.pt-tree-node-content{
+  text-align:left;
+}
