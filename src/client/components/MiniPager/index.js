@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './MiniPager.css';
 
-const MiniPager = ({ searchValue, start, rows, numFound, search }) => {
+const MiniPager = ({ start, rows, numFound, search }) => {
   if (numFound <= rows) {
     return <div />;
   }
@@ -11,13 +11,13 @@ const MiniPager = ({ searchValue, start, rows, numFound, search }) => {
   return (
     <div className="minipager_container">
       <div className="minipager_container_inner">
-        <div className="minipager_elem" onClick={() => search(searchValue, 0, rows)}>
+        <div className="minipager_elem" onClick={() => search({}, 0, rows)}>
           <span
             className="pt-icon-standard pt-icon-double-chevron-left"
           />
         </div>
         {actualPage !== 1 &&
-          <div className="minipager_elem" onClick={start === 0 ? () => {} : () => search(searchValue, start - rows, rows)}>
+          <div className="minipager_elem" onClick={start === 0 ? () => {} : () => search({}, start - rows, rows)}>
             <span className="pt-icon-standard pt-icon-chevron-left" />
           </div>
         }
@@ -25,14 +25,14 @@ const MiniPager = ({ searchValue, start, rows, numFound, search }) => {
         {actualPage !== lastPage &&
           <div
             className="minipager_elem"
-            onClick={start + rows >= numFound ? () => {} : () => search(searchValue, start + rows, rows)}
+            onClick={start + rows >= numFound ? () => {} : () => search({}, start + rows, rows)}
           >
             <span
               className="pt-icon-standard pt-icon-chevron-right"
             />
           </div>
           }
-        <div className="minipager_elem" onClick={() => search(searchValue, (lastPage * rows) - rows, rows)}>
+        <div className="minipager_elem" onClick={() => search({}, (lastPage * rows) - rows, rows)}>
           <span
             className="pt-icon-standard pt-icon-double-chevron-right"
           />
@@ -43,7 +43,6 @@ const MiniPager = ({ searchValue, start, rows, numFound, search }) => {
 };
 
 MiniPager.propTypes = {
-  searchValue: PropTypes.string.isRequired,
   start: PropTypes.number.isRequired,
   rows: PropTypes.number.isRequired,
   numFound: PropTypes.number.isRequired,

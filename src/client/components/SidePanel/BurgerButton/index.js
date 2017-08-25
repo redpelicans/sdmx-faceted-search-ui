@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Tooltip2 } from '@blueprintjs/labs';
-import { onlyUpdateForKeys } from 'recompose';
 import './BurgerButton.css';
 
 const BurgerButton = ({ displayShowPanel }) => (
@@ -23,4 +22,4 @@ BurgerButton.propTypes = {
   displayShowPanel: PropTypes.func.isRequired,
 };
 
-export default onlyUpdateForKeys(['displayShowPanel'])(BurgerButton);
+export default BurgerButton;

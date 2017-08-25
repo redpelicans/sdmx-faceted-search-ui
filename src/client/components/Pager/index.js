@@ -22,7 +22,7 @@ const Pager = ({ start, rows, numFound, search }) => {
             <span className="pt-icon-standard pt-icon-double-chevron-left" />
           </div>
         }
-        {actualPage === lastPage &&
+        {actualPage === lastPage && lastPage > 2 &&
           <div
             className="pager_elem"
             onClick={() => search({}, (actualPage - 3) * rows)}
@@ -47,7 +47,7 @@ const Pager = ({ start, rows, numFound, search }) => {
             {actualPage + 1}
           </div>
         }
-        {actualPage === 1 &&
+        {actualPage === 1 && lastPage > 2 &&
           <div
             className="pager_elem"
             onClick={() => search({}, (actualPage + 1) * rows)}
