@@ -1,0 +1,90 @@
+.facetedbox
+{
+  width:100%;
+  min-width:430px;
+  border-radius: 3px;
+  overflow: hidden;
+  color:rgb(45,45,45);
+  margin-top:10px;
+  padding-bottom:15px;
+  padding-top:5px;
+  background-color: white;
+}
+.facetedboxname
+{
+  text-align: left;
+  font-size:1.1em;
+  padding-top:10px;
+  padding-left:0px;
+  color:rgb(79, 119, 255);
+  text-decoration: underline;
+}
+.dimensionboxname
+{
+  text-align: left;
+  font-size:1.1em;
+  padding-top:10px;
+  padding-left:0px;
+  color:rgb(79, 119, 255);
+  text-decoration: underline;
+}
+.icon
+{
+  color:rgb(79, 119, 255);
+}
+.checkbox_container
+{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width:100%;
+  min-height:30px;
+}
+.checkbox_container:hover
+{
+  background-color:rgb(229,235,239);
+}
+.dimension_checkbox
+{
+  display: flex;
+  justify-content: space-between;
+  text-align: left;
+  width:100%;
+  margin:0;
+  margin-left:20px;
+  margin-right:12px;
+}
+.dimension_checkbox:hover
+{
+  background-color:rgb(229,235,239);
+}
+.dimensionbox_name_container
+{
+  display: flex;
+  align-items: center;
+  padding-left:20px;
+}
+.icon_filter, .icon_category
+{
+  color:rgb(79, 119, 255);
+  margin-right:10px;
+}
+.pt-tree-node.pt-tree-node-selected > .pt-tree-node-content
+{
+  background-color: rgb(79, 119, 255);
+}
+.pt-control-indicator::before
+{
+  background-color: rgb(79, 119, 255);
+}
+.bucket_value
+{
+  height:16px;
+  max-width:310px;
+  text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+.pt-tree-node-content{
+  text-align:left;
+}

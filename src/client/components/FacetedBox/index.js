@@ -1,20 +1,32 @@
 import React from 'react';
+import { compose, filter, map } from 'ramda';
 import PropTypes from 'prop-types';
+import CategoryFacet from './CategoryFacet';
+import DimensionFacet from './DimensionFacet';
+import { CATEGORY, DIMENSION } from '../../dataflows';
 
-import './faceted_box.css';
-import Items from '../Items';
-
-const FacetedBox = ({ titleName }) => (
-  <div className="faceted-box-container">
-    <p>{ titleName }</p>
-    <ul>
-      <Items />
-    </ul>
-  </div>
-);
-
-FacetedBox.propTypes = {
-  titleName: PropTypes.string.isRequired,
+const getFacetComponent = search => ({ type, buckets, name, value }) => { // eslint-disable-line
+  const handleClick = facetName => facetValue => search({ facets: { [facetName]: facetValue } });
+  switch (type) {
+    case CATEGORY:
+      return <CategoryFacet key={name} name={name} value={value} domain={buckets} onClick={handleClick(name)} />;
+    case DIMENSION:
+      return <DimensionFacet key={name} name={name} value={value} domain={buckets} onClick={handleClick(name)} />;
+    default:
+      return <div className="facetedbox" key={name} />;
+  }
 };
 
-export default FacetedBox;
+const Facets = ({ facets, search }) => {
+  const facetBoxes = compose(filter(x => x), map(getFacetComponent(search)))(facets);
+  return (
+    <div>{facetBoxes}</div>
+  );
+};
+
+Facets.propTypes = {
+  facets: PropTypes.array.isRequired,
+  search: PropTypes.func,
+};
+
+export default Facets;

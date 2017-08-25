@@ -1,28 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import SearchPanel from '../SearchPanel';
+import ResultPanel from '../ResultPanel';
 
-import './main_panel.css';
-import SearchPanel from '../SearchPanel/';
-import ResultsPanel from '../ResultsPanel';
+import './MainPanel.css';
 
-const MainPanel = ({ searchValue, resultItems, searchHandler }) => (
-  <div className="main-panel-container">
+
+const MainPanel = ({ dataflows = [], searchData = {}, searchFields, search }) => (
+  <div className="mainpanel">
     <SearchPanel
-      className="search-panel-item"
-      searchHandler={searchHandler}
+      search={search}
+      searchData={searchData}
+      searchFields={searchFields}
     />
-    <ResultsPanel
-      className="results-panel-item"
-      resultItems={resultItems}
-      searchValue={searchValue}
-    />
-  </div>
-);
+    <div className="pt-card mainpanel_inner">
+      <ResultPanel
+        dataflows={dataflows}
+        searchValue={searchData.searchValue}
+        searchData={searchData}
+      />
+    </div>
+  </div>);
 
 MainPanel.propTypes = {
-  resultItems: PropTypes.array.isRequired,
-  searchHandler: PropTypes.func.isRequired,
-  searchValue: PropTypes.string.isRequired,
+  dataflows: PropTypes.array.isRequired,
+  searchData: PropTypes.object,
+  search: PropTypes.func.isRequired,
+  searchFields: PropTypes.array,
 };
 
 export default MainPanel;

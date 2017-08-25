@@ -1,15 +1,18 @@
-import { GET_SEARCH_BAR_INPUT } from '../actions';
+import { combineReducers } from 'redux';
+import message from './message';
+import dataflows from './dataflows';
+import config from './config';
+import search from './search';
+import facets from './facets';
+import intl from './intl';
 
-const reducer = (state, action) => {
-  switch (action.type) {
-    case GET_SEARCH_BAR_INPUT:
-      return {
-        ...state,
-        searchValue: action.value,
-      };
-    default:
-      return state;
-  }
-};
+const reducer = combineReducers({
+  message,
+  dataflows,
+  config,
+  intl,
+  search,
+  facets,
+});
 
 export default reducer;

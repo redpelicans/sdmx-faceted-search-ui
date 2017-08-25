@@ -1,26 +1,42 @@
 import React from 'react';
 import should from 'should';
 import { shallow } from 'enzyme';
-
 import DataFlow from '..';
+import PopHoverElem from '..';
 
 const { describe, it } = global;
 
-describe('Tests DataFlow component', function() {
-    const root = <DataFlow result='onsenfou' />
-    const nbItems = obj => {
-        let counter = 0, key;
-        for (key in obj) {
-            counter++;
-        }
-        return counter;
+describe ('<Container />', () => {
+  const data =
+    {
+      id: "ERGONOMIC COTTON COMPUTER-195",
+      agency: "SAS",
+      version: "6.9.0",
+      name: "back-end Intelligent Ergonomic Concrete Pizza (EN)",
+      description: "Ut non tempora adipisci et ducimus et doloribus. (EN)",
+      frequency: [
+      "Monthly (M)",
+      "Yearly (Y)"
+      ],
+      reference_area: [
+      "Senegal (SB)",
+      "Canada (NZ)",
+      "Romania (SA)",
+      "Western Sahara (SS)",
+      "French Guiana (AS)",
+      "Jamaica (MH)",
+      "Saint Barthelemy (CI)"
+      ],
+      interest_rate_type: [
+      "Bank interest rates (B)",
+      "Money market interest rates (M)"
+      ],
+      score: 0.0004996253
     }
-    it('Should have only one prop', function() {
-        const wrapper = shallow(root).props().children.props;
-        should(nbItems(wrapper)).eql(1);
-    });
-    it('Should be a string prop', function() {
-        const wrapper = shallow(root).props().children.props.children;
-        should(typeof(wrapper) === typeof('string')).eql(true);
-    });
-});
+  const wrapper = shallow(<DataFlow
+    data={data}
+  />);
+  it('DataFlow should render a PopHoverElem', () => {
+    should(wrapper.find(<PopHoverElem />));
+  })
+})

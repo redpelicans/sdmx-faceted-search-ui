@@ -1,0 +1,15 @@
+.dropdown-button {
+    cursor: pointer;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: white;
+    background-color: inherit;
+}
+
+.menu-item:hover
+{
+    background-color: rgb(79, 119, 255);
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+}

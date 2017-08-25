@@ -1,0 +1,16 @@
+.pager_wrapper
+{
+  flex:1;
+  width:100%;
+}
+
+.searchpanel
+{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width:100%;
+  align-items: flex-start;
+  min-height:100px;
+  margin-bottom:10px;
+}
