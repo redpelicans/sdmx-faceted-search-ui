@@ -29,4 +29,8 @@ describe ('<Header />', () => {
   it('Header should render two navbargroup divs', () => {
     should(wrapper.find('.pt-navbar-group'));
   })
+  it('Header should have an icon with classname fa-paper-plane', () => {
+    should(wrapper.find('.fa-paper-plane'));
+  })
 })
+
