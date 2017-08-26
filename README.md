@@ -16,3 +16,14 @@ $ yarn
 $ yarn start // dev mode
 $ yarn build // and follow instructions ...
 ```
+
+
+### Build Docker Image
+
+
+```
+$ build  -t redpelicans/sdmx-faceted-search-ui .
+$ docker run -it -p <port>:80 redpelicans/sdmx-faceted-search-ui:latest
+```
+
+Client config is under `src/params.js', to change server connexion setup juste mount a new file on it before starting docker image.
