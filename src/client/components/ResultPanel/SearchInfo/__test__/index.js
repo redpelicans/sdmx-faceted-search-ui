@@ -13,7 +13,7 @@ describe ('<Searchinfo />', () => {
   it('Searchinfo should render a searchinfo div', () => {
     should(wrapper.find('.searchinfo')).length(1);
   })
-  it('Searchinfo should render a pt-icon-large pt-icon-geosearch icon_search_result div', () => {
-    should(wrapper.find('.pt-icon-large pt-icon-geosearch icon_search_result')).length(1);
+  it('Searchinfo should render a icon_search_result div', () => {
+    should(wrapper.find('.icon_search_result')).length(1);
   })
 })
