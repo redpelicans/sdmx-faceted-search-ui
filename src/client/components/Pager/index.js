@@ -24,7 +24,7 @@ const Pager = ({ start, rows, numFound, search }) => {
         }
         {actualPage === lastPage && lastPage > 2 &&
           <div
-            className="pager_elem"
+            className="pager_elem prev2"
             onClick={() => search({}, (actualPage - 3) * rows)}
           >
             {actualPage - 2}
@@ -32,7 +32,7 @@ const Pager = ({ start, rows, numFound, search }) => {
         }
         {actualPage > 1 &&
           <div
-            className="pager_elem"
+            className="pager_elem prev3"
             onClick={() => search({}, (actualPage - 2) * rows)}
           >
             {actualPage - 1}
@@ -41,7 +41,7 @@ const Pager = ({ start, rows, numFound, search }) => {
         <div className="pager_elem selected">{actualPage}</div>
         {actualPage !== lastPage &&
           <div
-            className="pager_elem"
+            className="pager_elem next2"
             onClick={() => search({}, (actualPage) * rows)}
           >
             {actualPage + 1}
@@ -49,7 +49,7 @@ const Pager = ({ start, rows, numFound, search }) => {
         }
         {actualPage === 1 && lastPage > 2 &&
           <div
-            className="pager_elem"
+            className="pager_elem next3"
             onClick={() => search({}, (actualPage + 1) * rows)}
           >
             {actualPage + 2}
