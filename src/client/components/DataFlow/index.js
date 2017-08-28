@@ -1,6 +1,5 @@
 import React from 'react';
 import { tail, last } from 'ramda';
-import { onlyUpdateForKeys } from 'recompose';
 import PropTypes from 'prop-types';
 import { PopoverInteractionKind } from '@blueprintjs/core';
 import { Popover2 } from '@blueprintjs/labs';
@@ -8,7 +7,7 @@ import { Popover2 } from '@blueprintjs/labs';
 import './DataFlow.css';
 
 export const PopHoverElem = ({ data }) => (
-  <div className="popover_container ">
+  <div className="popover_container">
     <div className="pophover_title_container">
       <div className="pt-icon-info-sign logo_info pt-intent-primary" />
       <p className="pophover_title">{data.name}</p>
@@ -89,4 +88,4 @@ PopHoverElem.propTypes = {
   data: PropTypes.object.isRequired,
 };
 
-export default onlyUpdateForKeys(['data'])(DataFlow);
+export default DataFlow;

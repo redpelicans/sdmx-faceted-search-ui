@@ -2,7 +2,8 @@ import React from 'react';
 import should from 'should';
 import { shallow } from 'enzyme';
 import DataFlow from '..';
-import PopHoverElem from '..';
+import { PopoverInteractionKind } from '@blueprintjs/core';
+import { Popover2 } from '@blueprintjs/labs';
 
 const { describe, it } = global;
 
@@ -32,11 +33,23 @@ describe ('<Container />', () => {
       "Money market interest rates (M)"
       ],
       score: 0.0004996253
-    }
+    };
   const wrapper = shallow(<DataFlow
     data={data}
   />);
-  it('DataFlow should render a PopHoverElem', () => {
-    should(wrapper.find(<PopHoverElem />));
+  it('DataFlow should render a dataflowcontainer', () => {
+   should(wrapper.find('.dataflowcontainer')).length(1);
+  })
+  it('DataFlow should render a dataflows_title', () => {
+    should(wrapper.find('.dataflows_title')).length(1);
+  })
+  it('DataFlow should render a name', () => {
+    should(wrapper.find('.name')).length(1);
+  })
+  it('DataFlow should render a Popover2', () => {
+    should(wrapper.find(Popover2)).length(1);
+  })
+  it('DataFlow should render a id div', () => {
+    should(wrapper.find('.id')).length(1);
   })
 })

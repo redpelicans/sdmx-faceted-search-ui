@@ -11,20 +11,20 @@ const MiniPager = ({ start, rows, numFound, search }) => {
   return (
     <div className="minipager_container">
       <div className="minipager_container_inner">
-        <div className="minipager_elem" onClick={() => search({}, 0, rows)}>
+        <div className="minipager_elem first" onClick={() => search({}, 0, rows)}>
           <span
             className="pt-icon-standard pt-icon-double-chevron-left"
           />
         </div>
         {actualPage !== 1 &&
-          <div className="minipager_elem" onClick={start === 0 ? () => {} : () => search({}, start - rows, rows)}>
+          <div className="minipager_elem prev" onClick={start === 0 ? () => {} : () => search({}, start - rows, rows)}>
             <span className="pt-icon-standard pt-icon-chevron-left" />
           </div>
         }
         <div>Page {actualPage}</div>
         {actualPage !== lastPage &&
           <div
-            className="minipager_elem"
+            className="minipager_elem next"
             onClick={start + rows >= numFound ? () => {} : () => search({}, start + rows, rows)}
           >
             <span
@@ -32,7 +32,7 @@ const MiniPager = ({ start, rows, numFound, search }) => {
             />
           </div>
           }
-        <div className="minipager_elem" onClick={() => search({}, (lastPage * rows) - rows, rows)}>
+        <div className="minipager_elem last" onClick={() => search({}, (lastPage * rows) - rows, rows)}>
           <span
             className="pt-icon-standard pt-icon-double-chevron-right"
           />
